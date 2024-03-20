@@ -1,0 +1,102 @@
+<extend template="base.html" />
+
+<title id="title" var="$page.title"></title>
+
+<head id="head">
+  <style>
+    #content {
+      align-self: center;
+      max-width: 920px;
+      flex-grow: 1;
+    }
+
+    #content h2 {
+      margin-top: 1.5em;
+      border-bottom: 2px dotted #aaa;
+    }
+
+    pre {
+      margin: 10px;
+      padding: 0;
+      border: 1px dashed;
+      border-radius: 0;
+    }
+
+    pre code {
+      display: block;
+      padding: 30px;
+      padding-top: 0;
+      padding-right: 0;
+    }
+
+    p code {
+      background-color: #333;
+      border-radius: 4px;
+      color: white;
+      padding: 0.2em;
+    }
+
+    pre::before {
+      display: block;
+      content: "Shell";
+      background-color: #fff;
+      font-family: "Epilogue", sans-serif;
+      font-size: 0.7em;
+      color: #555;
+      padding: 10px;
+      padding-left: 15px;
+      padding-top: 12px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    pre:has(> code.markdown):before {
+      content: "Markdown";
+    }
+
+    pre:has(> code.javascript):before {
+      content: "JavaScript";
+    }
+
+    pre:has(> code.zig):before {
+      content: "Zig";
+    }
+
+    pre:has(> code.lua):before {
+      content: "Lua";
+    }
+
+    pre:has(> code.toml):before {
+      content: "TOML";
+    }
+
+    pre:has(> code.json):before {
+      content: "JSON";
+    }
+
+    pre:has(> code.ziggy):before {
+      content: "Ziggy Document";
+    }
+
+    pre:has(> code.ziggy-schema):before {
+      content: "Ziggy Schema";
+    }
+
+
+    @media (max-width: 1200px) {
+
+      #content {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+
+<body id="body">
+  <div id="content" var="$page.content">
+  </div>
+</body>

@@ -1,0 +1,88 @@
+---
+.title = "Ziggy Scalar Values",
+.date =  "2005-01-01T00:00:00",
+.author = "Loris Cro",
+.draft = false,
+.layout = "documentation.html",
+.tags = [],
+---
+# Ziggy Scalar Values
+
+## Integers and floats
+Numeric values in Ziggy can be either **integers** or **floats**.
+Both numeric values can have a negative sign in front of them and use underscores to group digits.
+
+### Integers
+Integers can have the following prefixes to indicate a base different than 10:
+
+- `0x` for base 16
+- `0o` for base 8
+- `0b` for base 2 
+
+*Note: `x`, `o`, and `b` must be lowercase, while `a` - `f` hex digits can be both lower or uppercase.*
+
+Examples: `123`, `0xffffff`, `0xFF_FF_FF`, `0o7_5_5`, `0b01_01_01` 
+
+### Floats
+Floats support exponential notation and can also be expressed in base 16. Base 10 floats use `e` as the exponent separator, while base 16 floats use `p`. Both letters can also be uppercase.
+
+Base 10 examples: `123.0`, `123_000.456_000`, `123.0e+77`, `123.0E+77`
+
+Base 16 examples: `0x103.70p-5`, `0x103.70`, `0x1234_5678.9ABC_CDEFp-10` 
+
+## Bools
+`true`, `false`
+
+## Null
+`null`
+
+## Bytes
+Bytes in Ziggy are comparable to strings in other data languages with the main distinction that they don't require you to encode valid unicode codepoints, hence the name.
+
+Applications that require valid unicode (or any other data invariant) will have to perform those checks separately as needed.
+
+To add quotes, newlines or other unprintable byte sequences to a Ziggy bytes literal, you can use escape sequences.
+
+### Escape sequences
+- `\n` newline
+- `\r` carriage return
+- `\t` tab
+- `\\` backslash
+- `\'` single quote
+- `\xNN` hexadecimal 8-bit byte value (2 digits)
+- `\u{NNNNNN}` hexadecimal Unicode code point UTF-8 encoded (1 or more digits)
+
+
+
+Examples: `"🧑‍🚀"`, `"\x1B[?1000h gang"`, `"lorem ipsum\ndolor sit"`, `"h\x65llo world"`, `"\xf0\x9f\x92\xaf"`
+
+
+### Multiline bytes literals
+When a byte value must encode multiline text, you can use multiline syntax to keep the text readable by humans.
+
+Example:
+```ziggy
+\\This is a mulitline literal.
+\\
+\\Lorem ipsum something something.
+\\Dolor sit something else.
+```
+**Note that multiline literals don't support escape sequences which makes them handy when you need a "raw string" to express things like regular expressions.**
+
+Lastly, multiline literals don't include the last newline, so to have a trailing newline be part of your bytes, you will need to add a final empty line.
+
+
+## Tagged literals
+Tagged literals are byte literals that have a "label" attached to them. This label can be used by applications to recognize special literals that represent values such as dates, for example.
+
+The Ziggy data language doesn't define any standard tag, leaving it to each application to define the meaning and expected syntax of their tags.
+
+Tagged literals are particularly useful when used in conjunction with Ziggy Schemas as that will give users documentation and autocomplete support, while parsers will be able to map tagged literals to custom parsing functions (eg all `@date`s will be parsed as `Date` types).
+
+A tagged literal has the following structure: `@tagName("bytes literal")`. The tag name must be an identifier prefixed by `@`. 
+
+
+*NOTE: multiline bytes literals cannot be tagged.*
+
+Examples: `@date("2020-12-01")`, `@v("1.0.0")`, `@foo("bar")`
+

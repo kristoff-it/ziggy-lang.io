@@ -1,0 +1,19 @@
+---
+.title = "About",
+.date =  "2000-01-01T00:00:00",
+.author = "Loris Cro",
+.draft = false,
+.layout = "documentation.html",
+.tags = [],
+---
+# About Ziggy
+
+Ziggy is a data serializaton format created to express and design better data layouts for config files and API messages.
+
+The name **Ziggy** is to be intended as an adjective (like *spicy* or *savory*). The Zig radix refers to the [Zig Programming Language](https://ziglang.org/), which is the source of inspiration for many syntax choices in Ziggy.
+
+While Ziggy syntax is meant to look familiar to those who already know Zig, Ziggy deviates from Zig when it makes sense to do so. The most prominent example is how Zig's `[]u8` has become `bytes` in Ziggy, motivated by the fact that Ziggy doesn't intend to offer a single byte type.
+
+This last point is particularly relevant as Ziggy's prime goal is to be a data language used to design clear data layouts regardless of which programming language you're using. In other words, Ziggy steals syntax ideas from Zig, but doesn't aim to be a lossless serialization format for Zig data structures.
+
+Ziggy was originally created to be the frontmatter language of [Zine](https://zine-ssg.io), a static site generator.

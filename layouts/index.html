@@ -1,0 +1,302 @@
+<extend template="with-top-sample.html" />
+
+<title id="title" var="$page.title"></title>
+
+<head id="head">
+
+  <style>
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+    }
+
+    .flex-item {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0;
+    }
+
+    .flex-big {
+      flex-grow: 1.5;
+      flex-shrink: 1;
+      flex-basis: 0;
+      height: fit-content;
+    }
+
+    @media only screen and (max-width: 48em) {
+      .flex {
+        flex-direction: column;
+      }
+
+      .flex-item {
+        flex-basis: auto;
+      }
+    }
+
+    .panel {
+      display: none;
+      width: 100%;
+      flex-direction: row;
+      padding: 0
+    }
+
+    .input:checked+.label+.panel {
+      display: flex;
+    }
+
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 10px;
+    }
+
+    .radiotab {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .label-left {
+      border-top-left-radius: 10px;
+    }
+
+
+    @keyframes pulse {
+      from {
+        background-color: hsl(180, 0%, 40%);
+      }
+
+      to {
+        background-color: hsl(180, 0%, 60%);
+      }
+    }
+
+    .label-right {
+      border-top-right-radius: 10px;
+      animation: 1s infinite alternate pulse;
+    }
+
+    .label {
+      padding-top: 15px;
+      padding-bottom: 5px;
+      height: 1.5em;
+      background: hsl(180, 0%, 40%);
+      cursor: pointer;
+      font-size: 1em;
+      color: black;
+      transition: background .3s, color .3s;
+      text-align: center;
+    }
+
+    .label:hover {
+      background: #d8d8d8;
+      animation: none;
+    }
+
+    .label:active {
+      background: #ccc;
+      animation: none;
+    }
+
+    .radiotab:checked+.label {
+      background: #111;
+      color: white;
+      font-weight: bold;
+      animation: none;
+    }
+
+    .panel {
+      display: none;
+      width: 100%;
+    }
+
+    .radiotab:checked+.label+.panel {
+      display: flex;
+    }
+
+
+    .panel {
+      order: 99;
+    }
+
+    .label {
+      width: 50%;
+    }
+
+
+    #main-code {
+      font-size: 2em;
+    }
+
+    #main1-ziggy {
+      padding: 30px 20px;
+    }
+
+    #features {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    #features>.flex {
+      gap: 20px;
+    }
+
+    #main-description {
+      font-size: 2.2em;
+      font-weight: black;
+    }
+
+
+    #features h2 {
+      margin-top: 0;
+    }
+
+
+    .tab-sample {
+      width: 100%;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      font-size: 1.8em;
+    }
+
+    #schema {
+      font-size: 1.1em;
+      padding: 20px;
+    }
+
+    h3 {
+      margin-bottom: -5px;
+    }
+
+
+    @media (max-width: 1200px) {
+      #main-description {
+        text-align: center;
+        padding: 0 15px;
+      }
+
+      #content {
+        padding: 0 15px;
+      }
+
+
+      .flex {
+        flex-direction: column;
+      }
+
+    }
+  </style>
+</head>
+
+<div id="content">
+  <div style="margin-top:40px;"></div>
+  <div id="features">
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>Notation designed to help users grok data layouts</h2>
+        <h3>Structs vs maps</h3>
+        <p>
+          Ziggy uses different notation for key-value pairs when the keys are
+          controlled by the application (i.e. keys must follow a schema), versus
+          when the user is in control, and thus expected to come up with key names.
+        </p>
+        <h3>Struct unions</h3>
+        <p>
+          <b>Ever had to fight JSON to express a tagged union?</b>
+          Ziggy structs have names that can be used by both humans and tooling
+          to discriminate between union cases.
+        </p>
+        <h3>Tagged literals</h3>
+        <p>
+          Tagged literals help you express things such as
+          <b><code>@date("2024-01-01")</code></b>,
+          <b><code>@keys("crtl+c")</code></b>, or
+          <b><code>@foo("bar")</code></b>.
+        </p>
+        <h3>...and more quality of life features!</h3>
+        <p>
+          Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric
+          literals, etc.
+        </p>
+        <p>See an example <code>package.json</code> vs a (hypotetical) Ziggy version.</p>
+      </div>
+      <div class="flex-big tabs">
+        <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tab1" checked="checked">
+        <label class="label label-left" for="tab1">package.json</label>
+        <div class="panel" tabindex="1">
+          <pre class="tab-sample"><code class="json"
+              var="$page.custom.get('package-json', '').syntaxHighlight('json')"></code></pre>
+        </div>
+        <input class="radiotab" name="tabs" tabindex="2" type="radio" id="tab2">
+        <label class="label label-right" for="tab2">package.ziggy</label>
+        <div class="panel" tabindex="2">
+          <pre class="tab-sample"><code class="ziggy"
+              var="$page.custom.get('package-ziggy', '').syntaxHighlight('ziggy')"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>A schema language for creating and documenting clear data layouts</h2>
+        <p>
+          Ziggy schemas help you define data layouts that are easy to grasp and
+          validate for correctness. Ziggy schemas can define struct unions, enums
+          and custom string literals.
+        </p>
+        <p>
+          The Ziggy LSP will be able to use your schema definitions to show
+          diagnostics, contextual help and give autocomplete suggestions to your
+          users.
+        </p>
+        <p>
+          Other tooling will be able to use schemas to autogenerate compatible
+          type definitions.
+        </p>
+        <p>
+          The best feature of Ziggy schemas is that <a href="/documentation/struct-unions/">they <b>can't</b> define
+            every possible
+            data layout!</a>
+        </p>
+      </div>
+
+      <div class="flex-big tabs">
+        <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
+        <label class="label label-left" for="tab3">package.ziggy-schema</label>
+        <div class="panel" tabindex="1">
+          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+              var="$page.custom.get('package-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
+        </div>
+        <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
+        <label class="label label-right" for="tab4">message.ziggy-schema</label>
+        <div class="panel" tabindex="2">
+          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+              var="$page.custom.get('message-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>Tooling Supremacy</h2>
+        <p>
+          One official CLI tool that solves the most common needs, like <b>auto-formatting</b>,
+          <b>schema validation</b>,
+          <b>format conversion</b>, <b>querying</b> (coming soon) and
+          <b>LSP support</b> for comfortable editing in your
+          favorite text editor or IDE.
+        </p>
+      </div>
+      <div class="flex-big">
+        <pre><code var="$page.custom.get('cli', '')"></code></pre>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

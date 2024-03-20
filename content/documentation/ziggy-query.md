@@ -1,0 +1,13 @@
+---
+.title = "ziggy query",
+.date =  "2015-01-01T00:00:00",
+.author = "Loris Cro",
+.draft = false,
+.layout = "documentation.html",
+.tags = [],
+---
+# `ziggy query`
+
+Not implemented yet. 
+
+Follow [#27](https://github.com/kristoff-it/ziggy/issues/27) to get notified about development updates.

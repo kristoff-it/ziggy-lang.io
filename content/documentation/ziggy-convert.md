@@ -1,0 +1,19 @@
+---
+.title = "ziggy convert",
+.date =  "2017-01-01T00:00:00",
+.author = "Loris Cro",
+.draft = false,
+.layout = "documentation.html",
+.tags = [],
+---
+# `ziggy convert`
+
+Converts between JSON / YAML / TOML and Ziggy.
+
+## Development status
+Currently only implements JSON -> Ziggy.
+
+Follow [#17](https://github.com/kristoff-it/ziggy/issues/17) to be notified of development updates.
+
+
+

@@ -1,0 +1,57 @@
+@font-face {
+	font-family: 'Glue Gun';
+	src: url('GlueGun.otf') format('opentype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-Regular.ttf') format('truetype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-Black.ttf') format('truetype');
+	font-weight: bolder;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-BlackItalic.ttf') format('truetype');
+	font-weight: bolder;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-Bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-Light.ttf') format('truetype');
+	font-weight: light;
+}
+
+@font-face {
+	font-family: 'Epilogue';
+	src: url('Epilogue/Epilogue-LightItalic.ttf') format('truetype');
+	font-weight: light;
+	font-style: italic;
+}
