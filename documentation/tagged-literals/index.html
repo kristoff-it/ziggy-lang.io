@@ -303,7 +303,7 @@
 <span class="function">@date</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 
 <span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation bracket">{</span>
-  <span class="keyword">sent_at</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">sent_at</span>: <span class="function">@date</span><span class="punctuation delimiter">,</span>
   <span class="comment line documentation">///Message contents</span>
   <span class="keyword">text</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
@@ -338,11 +338,11 @@
   <span class="comment line documentation">///Title of this job posting</span>
   <span class="keyword">title</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
   <span class="comment line documentation">///Date this job posting was created.</span>
-  <span class="keyword">creation_date</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">creation_date</span>: <span class="function">@date</span><span class="punctuation delimiter">,</span>
   <span class="comment line documentation">///Date this job posting becomes visible.</span>
-  <span class="keyword">publish_date</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">publish_date</span>: <span class="function">@date</span><span class="punctuation delimiter">,</span>
   <span class="comment line documentation">///Date this job posting goes offline.</span>
-  <span class="keyword">expiry_date</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">expiry_date</span>: <span class="function">@date</span><span class="punctuation delimiter">,</span>
   <span class="comment line documentation">///Main content</span>
   <span class="keyword">text</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
