@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head id="head">
+  <meta charset="UTF-8">
+  <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@croloris">
+  <meta name="twitter:author" content="@croloris">
+  <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+  <meta name="twitter:title" content="Ziggy Container Value Types - Ziggy">
+  <meta property="og:title" content="Ziggy Container Value Types">
+  <meta property="og:type" content="website">
+
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title id="title">
+    Ziggy Container Value Types - Ziggy Data Language
+  </title>
+  <link rel="stylesheet" type="text/css" href="/fonts.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/highlight.css">
+  
+	<style>
+		#content {
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+		}
+
+		#sidebar {
+			flex: 0 0 260px;
+			padding-top: 0.67em;
+		}
+
+		#sidebar details {
+			list-style: none;
+		}
+
+		#sidebar summary {
+			border-top: 1px solid var(--border-color);
+			list-style: none;
+			padding: 10px 0;
+			color: #333;
+			font-weight: bold;
+			padding-left: 10px;
+		}
+
+		#sidebar summary:hover {
+			color: #111;
+			background-color: #eee;
+		}
+
+		#sidebar ul {
+			list-style: none;
+			padding: 0;
+			margin: 0 0 10px;
+		}
+
+		#sidebar a {
+			display: block;
+			text-decoration: none;
+			padding: 5px 0;
+			color: inherit;
+			padding-left: 10px;
+		}
+
+		#sidebar a:hover {
+			background-color: #ddd;
+		}
+
+		#sidebar-content {
+			position: sticky;
+			top: 110px;
+		}
+
+		#footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			margin-top: 50px;
+			border-top: 1px solid var(--border-color);
+			text-align: right;
+		}
+
+		#footer a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		#footer .title {
+			font-weight: bold;
+			color: #222;
+			text-decoration: underline;
+		}
+
+		#main {
+			max-width: 920px;
+			flex-grow: 1;
+		}
+
+		#main h2 {
+			margin-top: 1.5em;
+			border-bottom: 2px dotted #aaa;
+		}
+
+		pre {
+			margin: 10px;
+			padding: 0;
+			border: 1px dashed;
+			border-radius: 0;
+		}
+
+		pre code {
+			display: block;
+			padding: 30px;
+			padding-top: 0;
+			padding-right: 0;
+		}
+
+		p code {
+			background-color: #333;
+			border-radius: 4px;
+			color: white;
+			padding: 0.2em;
+		}
+
+		pre::before {
+			display: block;
+			content: "Shell";
+			background-color: #fff;
+			font-family: "Epilogue", sans-serif;
+			font-size: 0.7em;
+			color: #555;
+			padding: 10px;
+			padding-left: 15px;
+			padding-top: 12px;
+			text-transform: uppercase;
+			margin-bottom: 30px;
+			position: sticky;
+			top: 0;
+			left: 0;
+			z-index: 10;
+		}
+
+		pre:has(> code.markdown):before {
+			content: "Markdown";
+		}
+
+		pre:has(> code.javascript):before {
+			content: "JavaScript";
+		}
+
+		pre:has(> code.zig):before {
+			content: "Zig";
+		}
+
+		pre:has(> code.lua):before {
+			content: "Lua";
+		}
+
+		pre:has(> code.toml):before {
+			content: "TOML";
+		}
+
+		pre:has(> code.json):before {
+			content: "JSON";
+		}
+
+		pre:has(> code.ziggy):before {
+			content: "Ziggy Document";
+		}
+
+		pre:has(> code.ziggy-schema):before {
+			content: "Ziggy Schema";
+		}
+
+
+		@media (max-width: 1000px) {
+			#content {
+				padding: 0 15px;
+				flex-direction: column-reverse;
+			}
+
+			#main {
+				max-width: 1000px;
+			}
+
+		}
+	</style>
+
+</head>
+
+<body id="body">
+  <nav id="top-nav">
+    <div id="top-nav-container">
+      <span>
+        <a href="/"
+          style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+        <span>v0.0.1</span>
+      </span>
+      <div id="top-nav-menu">
+        <a href="/documentation/getting-started/">
+          Quickstart
+        </a>
+        <a href="/documentation/about/">
+          Documentation
+        </a>
+        <a href="/log/">
+          Changelog
+        </a>
+        <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+          Code
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+	<div id="content">
+		<nav id="sidebar">
+			<div id="sidebar-content">
+				<details open>
+					<summary>Overview</summary>
+					<ul>
+						<li><a href="/documentation/about/">About</a></li>
+						<li><a href="/documentation/getting-started/">Getting Started</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Editor Configuration</summary>
+					<ul>
+						<li><a href="/documentation/editors/vscode/">VSCode</a></li>
+						<li><a href="/documentation/editors/neovim/">Neovim</a></li>
+						<li><a href="/documentation/editors/helix/">Helix</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Documents</summary>
+					<ul>
+						<li><a href="/documentation/scalars/">Scalar Values</a></li>
+						<li><a href="/documentation/containers/">Container Values</a></li>
+						<li><a href="/documentation/document/">Document Structure</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Schemas</summary>
+					<ul>
+						<li><a href="/documentation/builtin-types/">Builtin Types</a></li>
+						<li><a href="/documentation/custom-types/">Custom Types</a></li>
+						<li><a href="/documentation/schema-structure/">Schema Structure</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Design Tips</summary>
+					<ul>
+						<li><a href="/documentation/struct-unions/">Struct Unions</a></li>
+						<li><a href="/documentation/tagged-literals/">Tagged Literals</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Libraries</summary>
+					<ul>
+						<li><a href="/documentation/parsers/">Parsers</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy CLI Tool</summary>
+					<ul>
+						<li><a href="/documentation/ziggy-fmt/">fmt</a></li>
+						<li><a href="/documentation/ziggy-query/">query</a></li>
+						<li><a href="/documentation/ziggy-check/">check</a></li>
+						<li><a href="/documentation/ziggy-convert/">convert</a></li>
+						<li><a href="/documentation/ziggy-lsp/">lsp</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary>Specification</summary>
+					<ul>
+						<li><a href="/documentation/spec/">Specification</a></li>
+					</ul>
+				</details>
+			</div>
+		</nav>
+
+		<div id="main">
+			<div ><h1>Ziggy Container Value Types</h1><h2>Arrays</h2><p>Ziggy uses <code>[]</code> (square brakets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.</p><p>Ziggy arrays can contain different types of values and can be nested arbitrarily deep.</p><p>Examples: <code>[1, 2, 3]</code>, <code>[true, null, 42]</code>, <code>["hello", [1], []]</code></p><h2>Maps</h2><p>Maps are the first key-value mapping notation available in Ziggy.</p><p>Maps are meant to denote key-value mappings where key names are controlled <strong>by the user</strong>.</p><p>It's common for configuration files and API messages to have key-value mappings where key names are meant to be part of a schema, while some other key-value mappings are instead meant to be fully controlled by the user.</p><p>One example of this is NPM's <code>package.json</code>:</p><pre><code class="json">{
+  <span class="string special key">"name"</span>: <span class="string">"ziggy"</span>,
+  <span class="string special key">"dependencies"</span>: {
+    <span class="string special key">"react"</span>: <span class="string">"next"</span>,
+    <span class="string special key">"leftpad"</span>: <span class="string">"^1.0.0"</span>
+  }
+}
+</code></pre>
+<p>In this example you can see how <code>"name"</code> and <code>"dependencies"</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>"dependencies"</code> would be a map.</p><p>Ziggy map syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
+  <span class="string">"hello"</span>: <span class="string">"world"</span><span class="punctuation delimiter">,</span>
+  <span class="string">"foo"</span>: <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+<p>Ziggy maps have the same notation as JSON objects but allow trailing commas.</p><p>A hypotetical <code>package.ziggy</code>, where the outer key-value map is expressed as a struct, would look like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
+  .<span class="keyword">name</span> = <span class="string">"ziggy"</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
+    <span class="string">"react"</span>: <span class="string">"next"</span><span class="punctuation delimiter">,</span>
+    <span class="string">"leftpad"</span>: <span class="string">"^1.0.0"</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+<h2>Structs</h2><p>Structs are the second key-value mapping notation available in Ziggy. Structs are meant to denote key-value mappings where key names are controlled <strong>by the application</strong> (i.e. must follow a schema).</p><p>Judicious use of struct syntax should help users understand the data layout even before they reach for a Ziggy Schema or some other kind of documentation.</p><p>Basic struct syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
+  .<span class="keyword">hello</span> = <span class="string">"world"</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">foo</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+<p><i>NOTE: like arrays and maps, structs also allow trailing commas.</i></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable lanugage for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">"world"</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">foo</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+</code></pre>
+<h3>Named structs</h3><p>Structs can have a name attached to them.</p><p>This feature is particularly useful when used in conjunction with Ziggy Schemas to define <strong>struct unions</strong>.</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
+    .<span class="keyword">name</span> = <span class="string">"Ziggy"</span><span class="punctuation delimiter">,</span>
+    .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
+        <span class="string">"foo"</span>: <span class="type">Remote</span> <span class="punctuation bracket">{</span>
+            .<span class="keyword">url</span> = <span class="string">"https://github.com/"</span><span class="punctuation delimiter">,</span>
+            .<span class="keyword">hash</span> = <span class="string">"123abcdef"</span><span class="punctuation delimiter">,</span>  
+        <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+        <span class="string">"bar"</span>: <span class="type">Local</span> <span class="punctuation bracket">{</span>
+            .<span class="keyword">path</span> = <span class="string">"foo/bar/baz"</span><span class="punctuation delimiter">,</span>
+        <span class="punctuation bracket">}</span>
+    <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+</div>
+			<nav id="footer">
+				<div >
+					<a href="/documentation/scalars/">
+						<p>
+							← <span class="title" >Ziggy Scalar Values</span>
+						</p>
+					</a>
+				</div>
+				<div >
+					<a href="/documentation/document/">
+						<p>
+							<span class="title" >Ziggy Document File Structure</span> →
+						</p>
+					</a>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+</body>
+
+</html>

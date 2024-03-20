@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+<head id="head">
+  <meta charset="UTF-8">
+  <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@croloris">
+  <meta name="twitter:author" content="@croloris">
+  <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+  <meta name="twitter:title" content="Home - Ziggy">
+  <meta property="og:title" content="Home">
+  <meta property="og:type" content="website">
+
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title id="title">
+    
+	Home
+ - Ziggy Data Language
+  </title>
+  <link rel="stylesheet" type="text/css" href="/fonts.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/highlight.css">
+  
+	<style>
+		:root {
+			--text-yellow: hsl(59deg, 100%, 70%);
+			--text-cyan: hsl(194deg, 100%, 53%);
+		}
+
+
+		#top-sample-container {
+			width: 100vw;
+			background-color: #111;
+			color: white;
+		}
+
+
+		#top-sample {
+			margin: auto;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			max-width: 1200px;
+		}
+
+		@media only screen and (max-width: 48em) {
+			#top-sample {
+				flex-direction: column;
+			}
+		}
+	</style>
+	
+
+  <style>
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+    }
+
+    .flex-item {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0;
+    }
+
+    .flex-big {
+      flex-grow: 1.5;
+      flex-shrink: 1;
+      flex-basis: 0;
+      height: fit-content;
+    }
+
+    @media only screen and (max-width: 48em) {
+      .flex {
+        flex-direction: column;
+      }
+
+      .flex-item {
+        flex-basis: auto;
+      }
+    }
+
+    .panel {
+      display: none;
+      width: 100%;
+      flex-direction: row;
+      padding: 0
+    }
+
+    .input:checked+.label+.panel {
+      display: flex;
+    }
+
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 10px;
+    }
+
+    .radiotab {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .label-left {
+      border-top-left-radius: 10px;
+    }
+
+
+    @keyframes pulse {
+      from {
+        background-color: hsl(180, 0%, 40%);
+      }
+
+      to {
+        background-color: hsl(180, 0%, 60%);
+      }
+    }
+
+    .label-right {
+      border-top-right-radius: 10px;
+      animation: 1s infinite alternate pulse;
+    }
+
+    .label {
+      padding-top: 15px;
+      padding-bottom: 5px;
+      height: 1.5em;
+      background: hsl(180, 0%, 40%);
+      cursor: pointer;
+      font-size: 1em;
+      color: black;
+      transition: background .3s, color .3s;
+      text-align: center;
+    }
+
+    .label:hover {
+      background: #d8d8d8;
+      animation: none;
+    }
+
+    .label:active {
+      background: #ccc;
+      animation: none;
+    }
+
+    .radiotab:checked+.label {
+      background: #111;
+      color: white;
+      font-weight: bold;
+      animation: none;
+    }
+
+    .panel {
+      display: none;
+      width: 100%;
+    }
+
+    .radiotab:checked+.label+.panel {
+      display: flex;
+    }
+
+
+    .panel {
+      order: 99;
+    }
+
+    .label {
+      width: 50%;
+    }
+
+
+    #main-code {
+      font-size: 2em;
+    }
+
+    #main1-ziggy {
+      padding: 30px 20px;
+    }
+
+    #features {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    #features>.flex {
+      gap: 20px;
+    }
+
+    #main-description {
+      font-size: 2.2em;
+      font-weight: black;
+    }
+
+
+    #features h2 {
+      margin-top: 0;
+    }
+
+
+    .tab-sample {
+      width: 100%;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      font-size: 1.8em;
+    }
+
+    #schema {
+      font-size: 1.1em;
+      padding: 20px;
+    }
+
+    h3 {
+      margin-bottom: -5px;
+    }
+
+
+    @media (max-width: 1200px) {
+      #main-description {
+        text-align: center;
+        padding: 0 15px;
+      }
+
+      #content {
+        padding: 0 15px;
+      }
+
+
+      .flex {
+        flex-direction: column;
+      }
+
+    }
+  </style>
+
+
+</head>
+
+<body id="body">
+  <nav id="top-nav">
+    <div id="top-nav-container">
+      <span>
+        <a href="/"
+          style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+        <span>v0.0.1</span>
+      </span>
+      <div id="top-nav-menu">
+        <a href="/documentation/getting-started/">
+          Quickstart
+        </a>
+        <a href="/documentation/about/">
+          Documentation
+        </a>
+        <a href="/log/">
+          Changelog
+        </a>
+        <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+          Code
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+	<div id="top-sample-container">
+		<div id="top-sample">
+			<div class="flex-item" id="main-description">
+				<h2>
+					A
+					<span style="color:var(--text-yellow);">data serialization language</span>
+					for expressing
+					<span style="color:var(--text-cyan);">clear</span>
+					<span style="color:var(--light-red);">API messages</span>,
+					<span style="color:var(--light-red);">config files</span>, etc.
+				</h2>
+			</div>
+			<div id="main-code" class="flex-item">
+				<pre id="main1-ziggy" class="flex-item"><code class="ziggy"
+						>.<span class="keyword">id</span> = @<span class="function">uuid</span><span class="punctuation bracket">(</span><span class="string">"..."</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">time</span> = <span class="constant numeric">1710085168</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">payload</span> = <span class="type">Command</span> <span class="punctuation bracket">{</span>
+  .<span class="keyword">do</span> = @<span class="function">action</span><span class="punctuation bracket">(</span><span class="string">"clear_chat"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">sender</span> = <span class="string">"kristoff-it"</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">roles</span> = <span class="punctuation bracket">[</span><span class="string">"admin"</span><span class="punctuation delimiter">,</span> <span class="string">"mod"</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">extra</span> = <span class="punctuation bracket">{</span>
+    <span class="string">"agent"</span>: <span class="string">"Mozilla/5.0"</span><span class="punctuation delimiter">,</span>
+    <span class="string">"os"</span>: <span class="string">"Linux/x64"</span><span class="punctuation delimiter">,</span> 
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span></code></pre>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		
+  <div style="margin-top:40px;"></div>
+  <div id="features">
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>Notation designed to help users grok data layouts</h2>
+        <h3>Structs vs maps</h3>
+        <p>
+          Ziggy uses different notation for key-value pairs when the keys are
+          controlled by the application (i.e. keys must follow a schema), versus
+          when the user is in control, and thus expected to come up with key names.
+        </p>
+        <h3>Struct unions</h3>
+        <p>
+          <b>Ever had to fight JSON to express a tagged union?</b>
+          Ziggy structs have names that can be used by both humans and tooling
+          to discriminate between union cases.
+        </p>
+        <h3>Tagged literals</h3>
+        <p>
+          Tagged literals help you express things such as
+          <b><code>@date("2024-01-01")</code></b>,
+          <b><code>@keys("crtl+c")</code></b>, or
+          <b><code>@foo("bar")</code></b>.
+        </p>
+        <h3>...and more quality of life features!</h3>
+        <p>
+          Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric
+          literals, etc.
+        </p>
+        <p>See an example <code>package.json</code> vs a (hypotetical) Ziggy version.</p>
+      </div>
+      <div class="flex-big tabs">
+        <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tab1" checked="checked">
+        <label class="label label-left" for="tab1">package.json</label>
+        <div class="panel" tabindex="1">
+          <pre class="tab-sample"><code class="json"
+              >{
+  <span class="string special key">"name"</span>: <span class="string">"ziggy"</span>,
+  <span class="string special key">"version"</span>: <span class="string">"1.0.0"</span>,
+  <span class="string special key">"license"</span>: <span class="string">"MIT"</span>,
+  <span class="string special key">"dependencies"</span>: {
+    <span class="string special key">"react"</span>: <span class="string">"next"</span>,
+    <span class="string special key">"leftpad"</span>: <span class="string">"^1.0.0"</span>
+  },
+  <span class="string special key">"repository"</span>: {
+    <span class="string special key">"type"</span>: <span class="string">"git"</span>,
+    <span class="string special key">"url"</span> : <span class="string">"https://github.com"</span>
+ },
+  <span class="string special key">"description"</span>: 
+    <span class="string">"# Ziggy\n\nA Data Serializa..."</span>
+
+
+
+}</code></pre>
+        </div>
+        <input class="radiotab" name="tabs" tabindex="2" type="radio" id="tab2">
+        <label class="label label-right" for="tab2">package.ziggy</label>
+        <div class="panel" tabindex="2">
+          <pre class="tab-sample"><code class="ziggy"
+              ><span class="punctuation bracket">{</span>
+  .<span class="keyword">name</span> = <span class="string">"ziggy"</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">version</span> = @<span class="function">v</span><span class="punctuation bracket">(</span><span class="string">"1.0.0"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">license</span> = @<span class="function">spdx</span><span class="punctuation bracket">(</span><span class="string">"MIT"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
+    <span class="string">"react"</span>: <span class="string">"next"</span><span class="punctuation delimiter">,</span>
+    <span class="string">"leftpad"</span>: <span class="string">"^1.0.0"</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">repository</span> = <span class="type">Git</span> <span class="punctuation bracket">{</span>
+    <span class="comment line">// "type" is now the struct name</span>
+    .<span class="keyword">url</span> = <span class="string">"https://github.com"</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">description</span> = 
+    <span class="string">\\# Ziggy
+    \\
+    \\A Data Serialization Language.</span>
+  <span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>A schema language for creating and documenting clear data layouts</h2>
+        <p>
+          Ziggy schemas help you define data layouts that are easy to grasp and
+          validate for correctness. Ziggy schemas can define struct unions, enums
+          and custom string literals.
+        </p>
+        <p>
+          The Ziggy LSP will be able to use your schema definitions to show
+          diagnostics, contextual help and give autocomplete suggestions to your
+          users.
+        </p>
+        <p>
+          Other tooling will be able to use schemas to autogenerate compatible
+          type definitions.
+        </p>
+        <p>
+          The best feature of Ziggy schemas is that <a href="/documentation/struct-unions/">they <b>can't</b> define
+            every possible
+            data layout!</a>
+        </p>
+      </div>
+
+      <div class="flex-big tabs">
+        <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
+        <label class="label label-left" for="tab3">package.ziggy-schema</label>
+        <div class="panel" tabindex="1">
+          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+              ><span class="keyword">root</span> = <span class="type">Package</span>
+
+<span class="comment line documentation">///A Semantic Versioning version string.</span>
+<span class="function">@v</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+<span class="comment line documentation">///A valid SPDX expression.</span>
+<span class="function">@spdx</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+
+<span class="comment line documentation">///This is just a toy example, the NPM spec is very complex:
+///
+///https://docs.npmjs.com/cli/v10/configuring-npm/package-json</span>
+<span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">name</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">version</span>: <span class="function">@v</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">license</span>: <span class="function">@spdx</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">description</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">dependencies</span>: <span class="keyword">map</span><span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">repository</span>: <span class="type">Git</span> <span class="punctuation">|</span> <span class="type">Npm</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation bracket">{</span> <span class="keyword">url</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span> <span class="keyword">directory</span>: <span class="type">?</span><span class="constant builtin">bytes</span> <span class="punctuation bracket">}</span>
+<span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation bracket">{</span> <span class="keyword">name</span>: <span class="constant builtin">bytes</span> <span class="punctuation bracket">}</span></code></pre>
+        </div>
+        <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
+        <label class="label label-right" for="tab4">message.ziggy-schema</label>
+        <div class="panel" tabindex="2">
+          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+              ><span class="keyword">root</span> = <span class="type">Message</span>
+
+<span class="comment line documentation">/// A UUIDv5 value.</span>
+<span class="function">@uuid</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+<span class="function">@action</span> = <span class="keyword">enum</span> <span class="punctuation bracket">{</span> <span class="type">clear_chat</span><span class="punctuation delimiter">,</span> <span class="type">ban_user</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+
+<span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">id</span>: <span class="function">@uuid</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">time</span>: <span class="constant builtin">int</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">payload</span>: <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">do</span>: <span class="function">@action</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">sender</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">roles</span>: <span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
+  <span class="comment line documentation">///Optional metadata. </span>
+  <span class="keyword">extra</span>: <span class="type">?</span><span class="keyword">map</span><span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation bracket">{</span> <span class="keyword">text</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span> <span class="keyword">lvl</span>: <span class="constant builtin">int</span> <span class="punctuation bracket">}</span></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex">
+      <div class="flex-item">
+        <h2>Tooling Supremacy</h2>
+        <p>
+          One official CLI tool that solves the most common needs, like <b>auto-formatting</b>,
+          <b>schema validation</b>,
+          <b>format conversion</b>, <b>querying</b> (coming soon) and
+          <b>LSP support</b> for comfortable editing in your
+          favorite text editor or IDE.
+        </p>
+      </div>
+      <div class="flex-big">
+        <pre><code >$ ziggy help
+
+Usage: ziggy COMMAND [OPTIONS]
+
+Commands: 
+  fmt          Format Ziggy files      
+  query, q     Query Ziggy files 
+  check        Check Ziggy files against a Ziggy schema 
+  convert      Convert between JSON, YAML, TOML files and Ziggy
+  lsp          Start the Ziggy LSP
+  help         Show this menu and exit
+
+General Options:
+  --help, -h   Print command specific usage
+</code></pre>
+      </div>
+    </div>
+
+
+  </div>
+
+
+	</div>
+
+</body>
+
+</html>

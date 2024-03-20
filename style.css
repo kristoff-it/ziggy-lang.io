@@ -1,0 +1,129 @@
+:root {
+  --border-color: hsl(200deg, 20%, 67%);
+  --text: rgb(20, 27, 31);
+  font-size: 1.2em;
+}
+
+body {
+  margin: 0;
+  font-family: 'Epilogue', sans-serif;
+  background-color: white;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+p {
+  line-height: 1.4;
+}
+
+#top-nav {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  height: 70px;
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  background-color: #ffffffbb;
+  backdrop-filter: blur(8px);
+}
+
+#top-nav-container {
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#top-nav-menu {
+  height: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  align-items: center;
+  width: 0;
+  gap: 25px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  will-change: scroll-position;
+}
+
+#top-nav-menu a {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+}
+
+#top-nav-menu a:hover {
+  border-bottom: 3px solid black;
+  margin-bottom: -3px;
+}
+
+#content {
+  align-self: center;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 20px;
+  width: min(100%, 1200px);
+}
+
+
+pre {
+  color: white;
+  overflow: auto;
+  padding: 10px 10px;
+  background-color: #111;
+  border-radius: 10px;
+  margin: 0;
+  font-size: 1em;
+}
+
+pre.left {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+pre.right {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+pre.left:has(+ pre.right) {
+  border-right: 1px solid white;
+}
+
+
+@media (max-width: 1200px) {
+
+  #top-nav {
+    position: relative;
+    height: fit-content;
+  }
+
+  #top-nav-container,
+  #top-sample {
+    flex-direction: column;
+  }
+
+  #top-nav-menu {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+}

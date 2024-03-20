@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html>
+
+<head id="head">
+  <meta charset="UTF-8">
+  <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@croloris">
+  <meta name="twitter:author" content="@croloris">
+  <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+  <meta name="twitter:title" content="Struct Unions - Ziggy">
+  <meta property="og:title" content="Struct Unions">
+  <meta property="og:type" content="website">
+
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title id="title">
+    Struct Unions - Ziggy Data Language
+  </title>
+  <link rel="stylesheet" type="text/css" href="/fonts.css">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="stylesheet" type="text/css" href="/highlight.css">
+  
+	<style>
+		#content {
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+		}
+
+		#sidebar {
+			flex: 0 0 260px;
+			padding-top: 0.67em;
+		}
+
+		#sidebar details {
+			list-style: none;
+		}
+
+		#sidebar summary {
+			border-top: 1px solid var(--border-color);
+			list-style: none;
+			padding: 10px 0;
+			color: #333;
+			font-weight: bold;
+			padding-left: 10px;
+		}
+
+		#sidebar summary:hover {
+			color: #111;
+			background-color: #eee;
+		}
+
+		#sidebar ul {
+			list-style: none;
+			padding: 0;
+			margin: 0 0 10px;
+		}
+
+		#sidebar a {
+			display: block;
+			text-decoration: none;
+			padding: 5px 0;
+			color: inherit;
+			padding-left: 10px;
+		}
+
+		#sidebar a:hover {
+			background-color: #ddd;
+		}
+
+		#sidebar-content {
+			position: sticky;
+			top: 110px;
+		}
+
+		#footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			margin-top: 50px;
+			border-top: 1px solid var(--border-color);
+			text-align: right;
+		}
+
+		#footer a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		#footer .title {
+			font-weight: bold;
+			color: #222;
+			text-decoration: underline;
+		}
+
+		#main {
+			max-width: 920px;
+			flex-grow: 1;
+		}
+
+		#main h2 {
+			margin-top: 1.5em;
+			border-bottom: 2px dotted #aaa;
+		}
+
+		pre {
+			margin: 10px;
+			padding: 0;
+			border: 1px dashed;
+			border-radius: 0;
+		}
+
+		pre code {
+			display: block;
+			padding: 30px;
+			padding-top: 0;
+			padding-right: 0;
+		}
+
+		p code {
+			background-color: #333;
+			border-radius: 4px;
+			color: white;
+			padding: 0.2em;
+		}
+
+		pre::before {
+			display: block;
+			content: "Shell";
+			background-color: #fff;
+			font-family: "Epilogue", sans-serif;
+			font-size: 0.7em;
+			color: #555;
+			padding: 10px;
+			padding-left: 15px;
+			padding-top: 12px;
+			text-transform: uppercase;
+			margin-bottom: 30px;
+			position: sticky;
+			top: 0;
+			left: 0;
+			z-index: 10;
+		}
+
+		pre:has(> code.markdown):before {
+			content: "Markdown";
+		}
+
+		pre:has(> code.javascript):before {
+			content: "JavaScript";
+		}
+
+		pre:has(> code.zig):before {
+			content: "Zig";
+		}
+
+		pre:has(> code.lua):before {
+			content: "Lua";
+		}
+
+		pre:has(> code.toml):before {
+			content: "TOML";
+		}
+
+		pre:has(> code.json):before {
+			content: "JSON";
+		}
+
+		pre:has(> code.ziggy):before {
+			content: "Ziggy Document";
+		}
+
+		pre:has(> code.ziggy-schema):before {
+			content: "Ziggy Schema";
+		}
+
+
+		@media (max-width: 1000px) {
+			#content {
+				padding: 0 15px;
+				flex-direction: column-reverse;
+			}
+
+			#main {
+				max-width: 1000px;
+			}
+
+		}
+	</style>
+
+</head>
+
+<body id="body">
+  <nav id="top-nav">
+    <div id="top-nav-container">
+      <span>
+        <a href="/"
+          style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+        <span>v0.0.1</span>
+      </span>
+      <div id="top-nav-menu">
+        <a href="/documentation/getting-started/">
+          Quickstart
+        </a>
+        <a href="/documentation/about/">
+          Documentation
+        </a>
+        <a href="/log/">
+          Changelog
+        </a>
+        <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+          Code
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+	<div id="content">
+		<nav id="sidebar">
+			<div id="sidebar-content">
+				<details open>
+					<summary>Overview</summary>
+					<ul>
+						<li><a href="/documentation/about/">About</a></li>
+						<li><a href="/documentation/getting-started/">Getting Started</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Editor Configuration</summary>
+					<ul>
+						<li><a href="/documentation/editors/vscode/">VSCode</a></li>
+						<li><a href="/documentation/editors/neovim/">Neovim</a></li>
+						<li><a href="/documentation/editors/helix/">Helix</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Documents</summary>
+					<ul>
+						<li><a href="/documentation/scalars/">Scalar Values</a></li>
+						<li><a href="/documentation/containers/">Container Values</a></li>
+						<li><a href="/documentation/document/">Document Structure</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Schemas</summary>
+					<ul>
+						<li><a href="/documentation/builtin-types/">Builtin Types</a></li>
+						<li><a href="/documentation/custom-types/">Custom Types</a></li>
+						<li><a href="/documentation/schema-structure/">Schema Structure</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Design Tips</summary>
+					<ul>
+						<li><a href="/documentation/struct-unions/">Struct Unions</a></li>
+						<li><a href="/documentation/tagged-literals/">Tagged Literals</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Libraries</summary>
+					<ul>
+						<li><a href="/documentation/parsers/">Parsers</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy CLI Tool</summary>
+					<ul>
+						<li><a href="/documentation/ziggy-fmt/">fmt</a></li>
+						<li><a href="/documentation/ziggy-query/">query</a></li>
+						<li><a href="/documentation/ziggy-check/">check</a></li>
+						<li><a href="/documentation/ziggy-convert/">convert</a></li>
+						<li><a href="/documentation/ziggy-lsp/">lsp</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary>Specification</summary>
+					<ul>
+						<li><a href="/documentation/spec/">Specification</a></li>
+					</ul>
+				</details>
+			</div>
+		</nav>
+
+		<div id="main">
+			<div ><h1>Understanding Struct Unions</h1><h2>Introduction</h2><p>Struct unions are possibly the best feature of Ziggy as they define a simple yet powerful sweetspot between simplicity and expressiveness of the schema language.</p><p>While on one hand we could make the schema language more powerful and give it ways of specifying more nuanced constraints, on the other we could be making it so complex that people would end up not using it as much because it becomes too tedious to write a schema.</p><p>For comparison, see this excerpt from a <a href="https://json-schema.org/">JSON Schema</a>, where the extreme flexibility of the language causes some schemas to devolve into pure insanity.</p><style id="insanity">
+  style#insanity + pre {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+</style>
+<pre><code class="json"><span class="string">"project"</span>: {
+      <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+      <span class="string special key">"properties"</span>: {
+        <span class="string special key">"cli"</span>: {
+          <span class="string special key">"schematicCollections"</span>: {
+            <span class="string special key">"type"</span>: <span class="string">"array"</span>,
+            <span class="string special key">"description"</span>: <span class="string">"The list of schematic collections to use."</span>,
+            <span class="string special key">"items"</span>: {
+              <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+              <span class="string special key">"uniqueItems"</span>: <span class="constant builtin">true</span>
+            }
+          }
+        },
+        <span class="string special key">"schematics"</span>: {
+          <span class="string special key">"$ref"</span>: <span class="string">"#/definitions/schematicOptions"</span>
+        },
+        <span class="string special key">"prefix"</span>: {
+          <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+          <span class="string special key">"format"</span>: <span class="string">"html-selector"</span>,
+          <span class="string special key">"description"</span>: <span class="string">"The prefix to apply to generated selectors."</span>
+        },
+        <span class="string special key">"root"</span>: {
+          <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+          <span class="string special key">"description"</span>: <span class="string">"Root of the project files."</span>
+        },
+        <span class="string special key">"i18n"</span>: {
+          <span class="string special key">"$ref"</span>: <span class="string">"#/definitions/project/definitions/i18n"</span>
+        },
+        <span class="string special key">"sourceRoot"</span>: {
+          <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+          <span class="string special key">"description"</span>: <span class="string">"The root of the source files, assets and index.html file structure."</span>
+        },
+        <span class="string special key">"projectType"</span>: {
+          <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+          <span class="string special key">"description"</span>: <span class="string">"Project type."</span>,
+          <span class="string special key">"enum"</span>: [<span class="string">"application"</span>, <span class="string">"library"</span>]
+        },
+        <span class="string special key">"architect"</span>: {
+          <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+          <span class="string special key">"additionalProperties"</span>: {
+            <span class="string special key">"$ref"</span>: <span class="string">"#/definitions/project/definitions/target"</span>
+          }
+        },
+        <span class="string special key">"targets"</span>: {
+          <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+          <span class="string special key">"additionalProperties"</span>: {
+            <span class="string special key">"$ref"</span>: <span class="string">"#/definitions/project/definitions/target"</span>
+          }
+        }
+      },
+      <span class="string special key">"required"</span>: [<span class="string">"root"</span>, <span class="string">"projectType"</span>],
+      <span class="string special key">"anyOf"</span>: [
+        {
+          <span class="string special key">"required"</span>: [<span class="string">"architect"</span>],
+          <span class="string special key">"not"</span>: {
+            <span class="string special key">"required"</span>: [<span class="string">"targets"</span>]
+          }
+        },
+        {
+          <span class="string special key">"required"</span>: [<span class="string">"targets"</span>],
+          <span class="string special key">"not"</span>: {
+            <span class="string special key">"required"</span>: [<span class="string">"architect"</span>]
+          }
+        },
+        {
+          <span class="string special key">"not"</span>: {
+            <span class="string special key">"required"</span>: [<span class="string">"targets"</span>, <span class="string">"architect"</span>]
+          }
+        }
+      ],
+      <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+      <span class="string special key">"patternProperties"</span>: {
+        <span class="string special key">"^[a-z]{1,3}-.*"</span>: {}
+      },
+      <span class="string special key">"definitions"</span>: {
+        <span class="string special key">"i18n"</span>: {
+          <span class="string special key">"description"</span>: <span class="string">"Project i18n options"</span>,
+          <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+          <span class="string special key">"properties"</span>: {
+            <span class="string special key">"sourceLocale"</span>: {
+              <span class="string special key">"oneOf"</span>: [
+                {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"Specifies the source locale of the application."</span>,
+                  <span class="string special key">"default"</span>: <span class="string">"en-US"</span>,
+                  <span class="string special key">"$comment"</span>: <span class="string">"IETF BCP 47 language tag (simplified)"</span>,
+                  <span class="string special key">"pattern"</span>: <span class="string">"^[a-zA-Z]{2,3}(-[a-zA-Z]{4})?(-([a-zA-Z]{2}|[0-9]{3}))?(-[a-zA-Z]{5,8})?(-x(-[a-zA-Z0-9]{1,8})+)?$"</span>
+                },
+                {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"Localization options to use for the source locale"</span>,
+                  <span class="string special key">"properties"</span>: {
+                    <span class="string special key">"code"</span>: {
+                      <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                      <span class="string special key">"description"</span>: <span class="string">"Specifies the locale code of the source locale"</span>,
+                      <span class="string special key">"pattern"</span>: <span class="string">"^[a-zA-Z]{2,3}(-[a-zA-Z]{4})?(-([a-zA-Z]{2}|[0-9]{3}))?(-[a-zA-Z]{5,8})?(-x(-[a-zA-Z0-9]{1,8})+)?$"</span>
+                    },
+                    <span class="string special key">"baseHref"</span>: {
+                      <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                      <span class="string special key">"description"</span>: <span class="string">"HTML base HREF to use for the locale (defaults to the locale code)"</span>
+                    }
+                  },
+                  <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>
+                }
+              ]
+            },
+            <span class="string special key">"locales"</span>: {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"patternProperties"</span>: {
+                <span class="string special key">"^[a-zA-Z]{2,3}(-[a-zA-Z]{4})?(-([a-zA-Z]{2}|[0-9]{3}))?(-[a-zA-Z]{5,8})?(-x(-[a-zA-Z0-9]{1,8})+)?$"</span>: {
+                  <span class="string special key">"oneOf"</span>: [
+                    {
+                      <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                      <span class="string special key">"description"</span>: <span class="string">"Localization file to use for i18n"</span>
+                    },
+                    {
+                      <span class="string special key">"type"</span>: <span class="string">"array"</span>,
+                      <span class="string special key">"description"</span>: <span class="string">"Localization files to use for i18n"</span>,
+                      <span class="string special key">"items"</span>: {
+                        <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                        <span class="string special key">"uniqueItems"</span>: <span class="constant builtin">true</span>
+                      }
+                    },
+                    {
+                      <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                      <span class="string special key">"description"</span>: <span class="string">"Localization options to use for the locale"</span>,
+                      <span class="string special key">"properties"</span>: {
+                        <span class="string special key">"translation"</span>: {
+                          <span class="string special key">"oneOf"</span>: [
+                            {
+                              <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                              <span class="string special key">"description"</span>: <span class="string">"Localization file to use for i18n"</span>
+                            },
+                            {
+                              <span class="string special key">"type"</span>: <span class="string">"array"</span>,
+                              <span class="string special key">"description"</span>: <span class="string">"Localization files to use for i18n"</span>,
+                              <span class="string special key">"items"</span>: {
+                                <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                                <span class="string special key">"uniqueItems"</span>: <span class="constant builtin">true</span>
+                              }
+                            }
+                          ]
+                        },
+                        <span class="string special key">"baseHref"</span>: {
+                          <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                          <span class="string special key">"description"</span>: <span class="string">"HTML base HREF to use for the locale (defaults to the locale code)"</span>
+                        }
+                      },
+                      <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>
+        },
+        <span class="string special key">"target"</span>: {
+          <span class="string special key">"oneOf"</span>: [
+            {
+              <span class="string special key">"$comment"</span>: <span class="string">"Extendable target with custom builder"</span>,
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"The builder used for this package."</span>,
+                  <span class="string special key">"not"</span>: {
+                    <span class="string special key">"enum"</span>: [
+                      <span class="string">"@angular-devkit/build-angular:application"</span>,
+                      <span class="string">"@angular-devkit/build-angular:app-shell"</span>,
+                      <span class="string">"@angular-devkit/build-angular:browser"</span>,
+                      <span class="string">"@angular-devkit/build-angular:browser-esbuild"</span>,
+                      <span class="string">"@angular-devkit/build-angular:dev-server"</span>,
+                      <span class="string">"@angular-devkit/build-angular:extract-i18n"</span>,
+                      <span class="string">"@angular-devkit/build-angular:karma"</span>,
+                      <span class="string">"@angular-devkit/build-angular:ng-packagr"</span>,
+                      <span class="string">"@angular-devkit/build-angular:prerender"</span>,
+                      <span class="string">"@angular-devkit/build-angular:jest"</span>,
+                      <span class="string">"@angular-devkit/build-angular:web-test-runner"</span>,
+                      <span class="string">"@angular-devkit/build-angular:protractor"</span>,
+                      <span class="string">"@angular-devkit/build-angular:server"</span>,
+                      <span class="string">"@angular-devkit/build-angular:ssr-dev-server"</span>
+                    ]
+                  }
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A map of alternative target options."</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"type"</span>: <span class="string">"object"</span>
+                  }
+                }
+              },
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"required"</span>: [<span class="string">"builder"</span>]
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:application"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/application/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/application/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:app-shell"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/app-shell/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/app-shell/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:browser"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/browser/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/browser/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:browser-esbuild"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/browser-esbuild/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/browser-esbuild/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:dev-server"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/dev-server/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/dev-server/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:extract-i18n"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/extract-i18n/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/extract-i18n/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:karma"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/karma/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/karma/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:jest"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/jest/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/jest/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:web-test-runner"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/web-test-runner/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/web-test-runner/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:protractor"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/protractor/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/protractor/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:prerender"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/prerender/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/prerender/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:ssr-dev-server"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/ssr-dev-server/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/ssr-dev-server/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:server"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/server/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/server/schema.json"</span>
+                  }
+                }
+              }
+            },
+            {
+              <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+              <span class="string special key">"additionalProperties"</span>: <span class="constant builtin">false</span>,
+              <span class="string special key">"properties"</span>: {
+                <span class="string special key">"builder"</span>: {
+                  <span class="string special key">"const"</span>: <span class="string">"@angular-devkit/build-angular:ng-packagr"</span>
+                },
+                <span class="string special key">"defaultConfiguration"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"string"</span>,
+                  <span class="string special key">"description"</span>: <span class="string">"A default named configuration to use when a target configuration is not provided."</span>
+                },
+                <span class="string special key">"options"</span>: {
+                  <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/ng-packagr/schema.json"</span>
+                },
+                <span class="string special key">"configurations"</span>: {
+                  <span class="string special key">"type"</span>: <span class="string">"object"</span>,
+                  <span class="string special key">"additionalProperties"</span>: {
+                    <span class="string special key">"$ref"</span>: <span class="string">"../../../../angular_devkit/build_angular/src/builders/ng-packagr/schema.json"</span>
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+</code></pre>
+<p><strong>Where JSON Schema tries to describe any possible JSON data layout, Ziggy Schema is by design only able to describe precisely only a well-defined subset of combinations.</strong></p><p>This is true not just of the schema language but also of some Ziggy  Document notation. For example Ziggy has structs and maps, but no notation for a key-value mapping where <i>some</i> keys are fixed, while <i>some others</i> are up to the user. It should go without saying that JSON schema <a href="https://json-schema.org/understanding-json-schema/reference/object#additionalproperties">does indeed allow to model that aswell</a>.</p><h3>Unions all the way down</h3><p>The problem of schema expressivity is at its core a problem about expressing unions.</p><p>A schema is a way of saying that a value can be either <code>A</code> or <code>B</code>, where both could be a a variety of things: different values (e.g. strings that belong to a list or that match a pattern), different types, structs with a given set of fields, etc.</p><p>The more nuanced you want your <i>unions</i> to be, the more syntax and complexity you will need to pull in.</p><p><strong>One key consideration about this problem is that many data layouts are functionally equivalent and that guiding data layout designers towards well-understood patterns can not only help reduce the complexity of the schema language, but also of data layouts found in the wild.</strong></p><h3>Unions in Ziggy Schema</h3><p>Consider the two following Ziggy documents which are meant to model when an application should refresh itself. In the first example we are giving to <code>refresh</code> a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we're passing a string that represents a logic condition that must be true to trigger a refresh.</p><pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="constant numeric">10</span>
+</code></pre>
+<pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="string">"foo.bar && bar.baz"</span>
+</code></pre>
+<p>This kind of data layout is fairly common in JSON, where a field can hold different types each with a different meaning.</p><p>In Ziggy this data layout is not idiomatic and in fact Ziggy Schema can only model this <i>union</i> with <code>any</code>:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">App</span>
+
+<span class="keyword">struct</span> <span class="type">App</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">refresh</span>: <span class="keyword">any</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+<p>In Ziggy the unit of composition for unions is the struct, which means that any variant of your value must be wrapped in an appropriately-named struct.</p><p>This can be at times a mild inconvenience for data layout designers, but it has the upside of drastically diminishing the amount of syntax in the schema language and gives data layout consumers one singular language construct required to undestand layout variability.</p><p>Let's fix the previous example with this in mind:</p><pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="type">Interval</span> <span class="punctuation bracket">{</span>
+  .<span class="keyword">seconds</span> = <span class="constant numeric">10</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+</code></pre>
+<pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="type">Condition</span> <span class="punctuation bracket">{</span>
+  .<span class="keyword">expr</span> = <span class="string">"foo.bar && bar.baz"</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+</code></pre>
+<p>This is now the corresponding schema (much better):</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">App</span>
+
+<span class="keyword">struct</span> <span class="type">App</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">refresh</span>: <span class="type">Interval</span> <span class="punctuation">|</span> <span class="type">Condition</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Interval</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">seconds</span>: <span class="constant builtin">int</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Condition</span> <span class="punctuation bracket">{</span>
+  <span class="comment line documentation">///A logical condition that triggers a new  
+  ///refresh whenever it evaluates to true.</span>
+  <span class="keyword">expr</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+</code></pre>
+<p><strong>By making the value of <code>refresh</code> a struct, we can achieve in Ziggy the same level of expressiveness of the original layout with even greater clarity for the end user.</strong></p><h2>Parser-friendly Unions</h2><p>Struct unions are not only good for humans, but machines as well.</p><p>Consider this JSON document where we list some dependencies:</p><pre><code class="json">{
+  <span class="string special key">"dependencies"</span>: {
+    <span class="string special key">"foo"</span>: {
+      <span class="string special key">"url"</span>: <span class="string">"http://..."</span>,
+      <span class="string special key">"hash"</span>: <span class="string">"..."</span>
+    },
+    <span class="string special key">"bar"</span>: {
+      <span class="string special key">"path"</span>: <span class="string">"/home/kristoff/ziggy"</span>
+    }
+  }
+}
+</code></pre>
+<p>Abstute observers will notice that dependencies in this data layout can be of two kinds:</p><ul><li><p>remote, defined by a url and a shash value</p></li><li><p>local, defined by a path</p></li></ul><p>Unfortunately this data layout is hostile to being parsed using tagged unions. Using Zig lingo as an example, you would like to be able to parse this document into the following kind of type:</p><pre><code class="zig"><span class="type qualifier">const</span> <span class="variable">Dependency</span> = <span class="keyword">union</span><span class="punctuation bracket">(</span><span class="keyword">enum</span><span class="punctuation bracket">)</span> <span class="punctuation bracket">{</span>
+  <span class="constant">Remote</span><span class="punctuation delimiter">:</span> <span class="keyword">struct</span> <span class="punctuation bracket">{</span>
+    <span class="field">url</span><span class="punctuation delimiter">:</span> <span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="type qualifier">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+    <span class="field">hash</span><span class="punctuation delimiter">:</span> <span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="type qualifier">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+  <span class="constant">Local</span><span class="punctuation delimiter">:</span> <span class="keyword">struct</span> <span class="punctuation bracket">{</span>
+    <span class="field">path</span><span class="punctuation delimiter">:</span> <span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="type qualifier">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p>Unfortunately this won't work with type-driven parsers as those will need to know which union case they are in <i>before</i> parsing the value of each dependency.</p><p>In this specific case the parser could notice that if the first field it finds is <code>path</code>, then it's the <code>Local</code> case, but different cases could share some fields making a general solution to this problem more problematic than what it needs to be, which in practice it means that you can't rely on parsers supporting this feature.</p><p>Some JSON data layouts make use of a <code>type</code> field to help disambiguate:</p><pre><code class="json">{
+  <span class="string special key">"dependencies"</span>: {
+    <span class="string special key">"foo"</span>: {
+      <span class="string special key">"type"</span>: <span class="string">"remote"</span>,
+      <span class="string special key">"url"</span>: <span class="string">"http://..."</span>,
+      <span class="string special key">"hash"</span>: <span class="string">"..."</span>
+    },
+    <span class="string special key">"bar"</span>: {
+      <span class="string special key">"type"</span>: <span class="string">"local"</span>,
+      <span class="string special key">"path"</span>: <span class="string">"/home/kristoff/ziggy"</span>
+    }
+  }
+}
+</code></pre>
+<p>Unfortunately this approach doesn't solve the problem fully either because field order is not meaningful in JSON and so the parser can't be guaranteed that <code>type</code> will be the first field it sees.</p><p>It should be noted at this point that the problem only partially has to do with the rigidigy of statically typed languages. A language like JavaScript won't be affected by this problem because it will parse data into a dynamic object anyway, but statically typed languages can leverage type information to get dramatic performance improvements.</p><p>This means that statically typed, compiled languages could make this work by going through a dynamic value parsing phase, but the whole point of using a language of that kind is to aim for optimal behavior, which is made unreasonably harder by the lack of a tagged union construct in JSON.</p><p>The sad result is that too often people recur to creating <i>sausage</i> types, where every possible combination of fields is "minced" into a single struct type filled with optionals:</p><pre><code class="zig"><span class="type qualifier">const</span> <span class="variable">Dependency</span> = <span class="keyword">struct</span> <span class="punctuation bracket">{</span>
+  <span class="field">url</span><span class="punctuation delimiter">:</span> <span class="operator">?</span><span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="type qualifier">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+  <span class="field">hash</span><span class="punctuation delimiter">:</span> <span class="operator">?</span><span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="type qualifier">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+  <span class="field">path</span><span class="punctuation delimiter">:</span> <span class="operator">?</span><span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="type qualifier">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p>Ziggy struct unions use struct names to indicate the active union case, turning the previous example into the following document:</p><pre><code class="ziggy">.<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
+  <span class="string">"foo"</span>: <span class="type">Remote</span> <span class="punctuation bracket">{</span>
+    .<span class="keyword">url</span> = <span class="string">"http://..."</span><span class="punctuation delimiter">,</span>
+    .<span class="keyword">hash</span> = <span class="string">"..."</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+  <span class="string">"bar"</span>: <span class="type">Local</span> <span class="punctuation bracket">{</span>
+    .<span class="keyword">path</span> = <span class="string">"/home/kristoff/ziggy"</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+</code></pre>
+<p>This has two big advantages:</p><ul><li><p>guarantees that parsers see the union case before the value</p></li><li><p>helps the LSP provide relevant diagnostics and autocomplete without needing to guess which is the active union case</p></li></ul><h2>Concrete tips</h2><ul><li><p>When a key-value map has some fixed and some user-defined fields, push the latter kind of fields into a nested value of type <code>map</code>.</p><pre><code class="ziggy">.<span class="keyword">title</span> = <span class="string">"foo"</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">date</span> = @<span class="function">date</span><span class="punctuation bracket">(</span><span class="string">"2024-01-01"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">draft</span> = <span class="constant builtin boolean">false</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">custom</span> = <span class="punctuation bracket">{</span>
+  <span class="string">"put"</span>: <span class="string">"here"</span><span class="punctuation delimiter">,</span>
+  <span class="string">"custom"</span>: <span class="string">"fields"</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+</code></pre>
+</li><li><p>When all variants of a struct have a common field, you might want to pull it out into the parent type definition. Not a hard rule, but can occasionally help create a better user experience.</p><p>Good:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span>
+
+<span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation bracket">{</span>
+  <span class="keyword">id</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">sender</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">payload</span>: <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation bracket">{</span> <span class="keyword">do</span>: <span class="constant builtin">bytes</span> <span class="punctuation bracket">}</span>
+<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation bracket">{</span> <span class="keyword">text</span>: <span class="constant builtin">bytes</span> <span class="punctuation bracket">}</span>
+</code></pre>
+<p>Arguably not as good:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span>
+
+<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation bracket">{</span> 
+  <span class="keyword">id</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">sender</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">do</span>: <span class="constant builtin">bytes</span> 
+<span class="punctuation bracket">}</span>
+
+<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation bracket">{</span> 
+  <span class="keyword">id</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">sender</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+  <span class="keyword">text</span>: <span class="constant builtin">bytes</span>
+<span class="punctuation bracket">}</span>
+
+</code></pre>
+</li><li><p>Ziggy documents are more powerful than Ziggy Schema. For example this is a perfectly valid Ziggy document that can't be described precisely by a Ziggy Schema:</p><pre><code class="ziggy"><span class="punctuation bracket">[</span><span class="string">"hello"</span><span class="punctuation delimiter">,</span> <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span> <span class="constant numeric">42</span><span class="punctuation bracket">]</span>
+</code></pre>
+<p>If you're reading and writing Ziggy documents within a single application where you don't have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.</p></li></ul></div>
+			<nav id="footer">
+				<div >
+					<a href="/documentation/schema-structure/">
+						<p>
+							← <span class="title" >Ziggy Schema File Structure</span>
+						</p>
+					</a>
+				</div>
+				<div >
+					<a href="/documentation/tagged-literals/">
+						<p>
+							<span class="title" >Tagged Literals</span> →
+						</p>
+					</a>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+</body>
+
+</html>
