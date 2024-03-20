@@ -51,7 +51,7 @@ Should `date` be turned into a tagged literal? Let's look at the practical impli
   @date = bytes,
 
   struct Message {
-    sent_at: bytes,
+    sent_at: @date,
     ///Message contents
     text: bytes,
   }
@@ -109,11 +109,11 @@ Let's look again at the schema with and without tagged literals:
     ///Title of this job posting
     title: bytes,
     ///Date this job posting was created.
-    creation_date: bytes,
+    creation_date: @date,
     ///Date this job posting becomes visible.
-    publish_date: bytes,
+    publish_date: @date,
     ///Date this job posting goes offline.
-    expiry_date: bytes,
+    expiry_date: @date,
     ///Main content
     text: bytes,
   }
