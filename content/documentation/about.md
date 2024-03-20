@@ -8,6 +8,7 @@
 ---
 # About Ziggy
 
+
 Ziggy is a data serializaton format created to express and design better data layouts for config files and API messages.
 
 The name **Ziggy** is to be intended as an adjective (like *spicy* or *savory*). The Zig radix refers to the [Zig Programming Language](https://ziglang.org/), which is the source of inspiration for many syntax choices in Ziggy.
