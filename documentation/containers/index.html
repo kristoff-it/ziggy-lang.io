@@ -311,7 +311,7 @@
   .<span class="keyword">foo</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
-<p><i>NOTE: like arrays and maps, structs also allow trailing commas.</i></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable lanugage for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">"world"</span><span class="punctuation delimiter">,</span>
+<p><i>NOTE: like arrays and maps, structs also allow trailing commas.</i></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">"world"</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">foo</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 </code></pre>
 <h3>Named structs</h3><p>Structs can have a name attached to them.</p><p>This feature is particularly useful when used in conjunction with Ziggy Schemas to define <strong>struct unions</strong>.</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
