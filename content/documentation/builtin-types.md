@@ -48,9 +48,9 @@ Ziggy maps can be defined using the `map[T]` notation, where `T` is a type expre
 Examples: `map[bytes]`, `map[bool]`, `map[?[bytes]]`
 
 
-## What About Etherogeneous Arrays And Maps?
+## What About Heterogeneous Arrays And Maps?
 
-Ziggy documents can indeed express etherogeneous collections:
+Ziggy documents can indeed express heterogeneous collections:
 
 ```ziggy
 ["hi", true, 42]

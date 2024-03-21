@@ -91,7 +91,7 @@ struct Foo {
 
 ### Struct definitions
 
-The final section of a Ziggy Schema file is a list of struct definitnions.
+The final section of a Ziggy Schema file is a list of struct definitions.
 
 
 ```ziggy-schema
