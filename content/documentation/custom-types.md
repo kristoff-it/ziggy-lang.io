@@ -74,7 +74,7 @@ Struct unions don't require to be defined beforehand but are listed in this page
 
 A struct union expression is a list of `|` separated **struct names** .
 
-When you need to make a struct union optional, you must surround it with parentesis.  
+When you need to make a struct union optional, you must surround it with parenthesis.  
 
 
 Examples: `Command | Notification`, `map[Person | Company]`, `?(Foo | Bar)`

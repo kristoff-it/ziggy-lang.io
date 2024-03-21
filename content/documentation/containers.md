@@ -73,7 +73,7 @@ Basic struct syntax looks like this:
 *NOTE: like arrays and maps, structs also allow trailing commas.*
 
 ### Omitting top-level curlies
-When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable lanugage for config files and Markdown frontmatters.
+When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.
 
 This is the same as the previous example:
 ```ziggy

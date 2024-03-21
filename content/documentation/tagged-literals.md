@@ -217,4 +217,4 @@ If you Ziggy data layout accepts user-provided fields, and users are allowed to 
 
 It should be noted that this last point should still be evaluated in light of the "avoid abstract purity" principle. It's often the case that applications must deal with many literals, like `@url` or `@path` for example, but that doesn't immediately mean that one should create literals for each.
 
-The Zine frontmatter example was relevant precisely because by recognizing dates early the user experience got improved. If creating a tagged literal for a type dosen't trigger the same kind of practical improvement, it might be best to prefer creating a simpler schema in order to gain the very real benefit of lowering the cognitive load on your users. 
+The Zine frontmatter example was relevant precisely because by recognizing dates early the user experience got improved. If creating a tagged literal for a type doesn't trigger the same kind of practical improvement, it might be best to prefer creating a simpler schema in order to gain the very real benefit of lowering the cognitive load on your users. 
