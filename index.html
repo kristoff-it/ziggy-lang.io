@@ -212,7 +212,8 @@
       font-size: 1.8em;
     }
 
-    #schema {
+    #schema1,
+    #schema2 {
       font-size: 1.1em;
       padding: 20px;
     }
@@ -237,6 +238,24 @@
         flex-direction: column;
       }
 
+    }
+
+    @media (max-width: 800px) {
+      #top-sample {
+        font-size: 0.7em;
+      }
+
+      #main-code {
+        font-size: 1.5em;
+      }
+
+      .flex-big {
+        font-size: 0.6em;
+      }
+
+      #schema1 {
+        overflow-x: scroll;
+      }
     }
   </style>
 
@@ -409,7 +428,7 @@
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
         <label class="label label-left" for="tab3">package.ziggy-schema</label>
         <div class="panel" tabindex="1">
-          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+          <pre class="tab-sample" id="schema1"><code class="ziggy-schema"
               ><span class="keyword">root</span> = <span class="type">Package</span>
 
 <span class="comment line documentation">///A Semantic Versioning version string.</span>
@@ -417,9 +436,6 @@
 <span class="comment line documentation">///A valid SPDX expression.</span>
 <span class="function">@spdx</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 
-<span class="comment line documentation">///This is just a toy example, the NPM spec is very complex:
-///
-///https://docs.npmjs.com/cli/v10/configuring-npm/package-json</span>
 <span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation bracket">{</span>
   <span class="keyword">name</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
   <span class="keyword">version</span>: <span class="function">@v</span><span class="punctuation delimiter">,</span>
@@ -435,7 +451,7 @@
         <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
         <label class="label label-right" for="tab4">message.ziggy-schema</label>
         <div class="panel" tabindex="2">
-          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+          <pre class="tab-sample" id="schema2"><code class="ziggy-schema"
               ><span class="keyword">root</span> = <span class="type">Message</span>
 
 <span class="comment line documentation">/// A UUIDv5 value.</span>

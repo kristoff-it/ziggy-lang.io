@@ -110,7 +110,6 @@ pre.left:has(+ pre.right) {
 
 
 @media (max-width: 1200px) {
-
   #top-nav {
     position: relative;
     height: fit-content;
@@ -126,4 +125,22 @@ pre.left:has(+ pre.right) {
     margin-bottom: 10px;
   }
 
+}
+
+@media (max-width: 800px) {
+  #top-nav {
+    position: relative;
+    height: fit-content;
+  }
+
+  #top-nav-container,
+  #top-sample {
+    flex-direction: column;
+  }
+
+  #top-nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
 }
