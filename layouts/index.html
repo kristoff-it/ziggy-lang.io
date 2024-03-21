@@ -162,7 +162,8 @@
       font-size: 1.8em;
     }
 
-    #schema {
+    #schema1,
+    #schema2 {
       font-size: 1.1em;
       padding: 20px;
     }
@@ -187,6 +188,24 @@
         flex-direction: column;
       }
 
+    }
+
+    @media (max-width: 800px) {
+      #top-sample {
+        font-size: 0.7em;
+      }
+
+      #main-code {
+        font-size: 1.5em;
+      }
+
+      .flex-big {
+        font-size: 0.6em;
+      }
+
+      #schema1 {
+        overflow-x: scroll;
+      }
     }
   </style>
 </head>
@@ -268,13 +287,13 @@
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
         <label class="label label-left" for="tab3">package.ziggy-schema</label>
         <div class="panel" tabindex="1">
-          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+          <pre class="tab-sample" id="schema1"><code class="ziggy-schema"
               var="$page.custom.get('package-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
         </div>
         <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
         <label class="label label-right" for="tab4">message.ziggy-schema</label>
         <div class="panel" tabindex="2">
-          <pre class="tab-sample" id="schema"><code class="ziggy-schema"
+          <pre class="tab-sample" id="schema2"><code class="ziggy-schema"
               var="$page.custom.get('message-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
         </div>
       </div>

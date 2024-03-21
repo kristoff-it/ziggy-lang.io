@@ -27,9 +27,6 @@
       \\///A valid SPDX expression.
       \\@spdx = bytes,
       \\
-      \\///This is just a toy example, the NPM spec is very complex:
-      \\///
-      \\///https://docs.npmjs.com/cli/v10/configuring-npm/package-json
       \\struct Package {
       \\  name: bytes,
       \\  version: @v,
