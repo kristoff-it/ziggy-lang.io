@@ -1,0 +1,60 @@
+<extend template="base.shtml">
+<title id="title">
+  <super>
+</title>
+<head id="head">
+  <style>
+    :root {
+			--text-yellow: hsl(59deg, 100%, 70%);
+			--text-cyan: hsl(194deg, 100%, 53%);
+		}
+
+
+		#top-sample-container {
+			width: 100vw;
+			background-color: #111;
+			color: white;
+		}
+
+
+		#top-sample {
+			margin: auto;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			max-width: 1200px;
+		}
+
+		@media only screen and (max-width: 48em) {
+			#top-sample {
+				flex-direction: column;
+			}
+		}
+  </style>
+  <super>
+</head>
+<body id="body">
+  <div id="top-sample-container">
+    <div id="top-sample">
+      <div class="flex-item" id="main-description">
+        <h2>
+          A
+          <span style="color:var(--text-yellow);">data serialization language</span>
+          for expressing
+          <span style="color:var(--text-cyan);">clear</span>
+          <span style="color:var(--light-red);">API messages</span>,
+          <span style="color:var(--light-red);">config files</span>, etc.
+        </h2>
+      </div>
+      <div id="main-code" class="flex-item">
+        <pre id="main1-ziggy" class="flex-item"><code
+            class="ziggy"
+            var="$page.custom.get!('main-sample').syntaxHighlight('ziggy')"
+          ></code></pre>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <super>
+  </div>
+</body>

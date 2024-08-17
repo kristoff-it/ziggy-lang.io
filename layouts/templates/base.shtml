@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head id="head">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@croloris">
+    <meta name="twitter:author" content="@croloris">
+    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:title" content="$page.title.suffix(' - Ziggy')">
+    <meta property="og:title" content="$page.title">
+    <meta property="og:type" content="website">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  >
+    <title id="title">
+      <super>
+      - Ziggy Data Language
+    </title>
+    <link rel="stylesheet" type="text/css" href="$site.asset('fonts.css').link()">
+    <link rel="stylesheet" type="text/css" href="$site.asset('style.css').link()">
+    <link rel="stylesheet" type="text/css" href="$site.asset('highlight.css').link()">
+    <super>
+  </head>
+  <body id="body">
+    <nav id="top-nav">
+      <div id="top-nav-container">
+        <span>
+          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+          <span>v0.0.1</span>
+        </span>
+        <div id="top-nav-menu">
+          <a href="$site.page('documentation/getting-started').link()">
+            Quickstart
+          </a>
+          <a href="$site.page('documentation/about').link()">
+            Documentation
+          </a>
+          <a href="$site.page('log').link()">
+            Changelog
+          </a>
+          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+            Code
+          </a>
+        </div>
+      </div>
+    </nav>
+    <super>
+  </body>
+</html>

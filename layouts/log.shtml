@@ -1,7 +1,5 @@
-<extend template="base.html" />
-
+<extend template="base.shtml">
 <title id="title" var="$page.title"></title>
-
 <head id="head">
   <style>
     #content {
@@ -95,8 +93,7 @@
     }
   </style>
 </head>
-
 <body id="body">
-  <div id="content" var="$page.content">
+  <div id="content" var="$page.content()">
   </div>
 </body>

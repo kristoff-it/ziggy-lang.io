@@ -3,7 +3,7 @@
 .date =  "2020-07-06T00:00:00",
 .author = "Loris Cro",
 .draft = false,
-.layout = "index.html",
+.layout = "index.shtml",
 .tags = [],
 .custom = {
     "main-sample": 
@@ -121,18 +121,55 @@
       \\  ,
       \\}
   ,
-  "struct": 
-      \\{
-      \\  .foo = "bar",
-      \\  .bar = "baz",  
-      \\}
-  ,
-  "map": 
-      \\{
-      \\  "foo": "bar",
-      \\  "bar": "baz",  
-      \\}
-  ,
-  
+ 
 }
 --- 
+
+## [Notation designed to help users grok data layouts]($block.id('first-section'))
+### Structs vs maps
+Ziggy uses different notation for key-value pairs when the keys are
+controlled by the application (i.e. keys must follow a schema), versus
+when the user is in control, and thus expected to come up with key names.
+
+### Struct unions
+
+**Ever had to fight JSON to express a tagged union?**
+Ziggy structs have names that can be used by both humans and tooling
+to discriminate between union cases.
+
+### Tagged literals
+
+Tagged literals help you express things such as **`@date("2024-01-01")`**,
+**`@keys("crtl+c")`**, or **`@foo("bar")`**.
+
+### ...and more quality of life features!
+
+Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.
+
+See an example `package.json` vs a (hypotetical) Ziggy version.
+
+## [A schema language for creating and documenting clear data layouts]($block.id('second-section'))
+
+  Ziggy schemas help you define data layouts that are easy to grasp and
+  validate for correctness. Ziggy schemas can define struct unions, enums
+  and custom string literals.
+
+  The Ziggy LSP will be able to use your schema definitions to show
+  diagnostics, contextual help and give autocomplete suggestions to your
+  users.
+
+  Other tooling will be able to use schemas to autogenerate compatible
+  type definitions.
+
+  The best feature of Ziggy schemas is that
+[they
+    **can't**
+    define
+    every possible
+    data layout!]($link.page('documentation/struct-unions'))
+
+
+
+## [Tooling Supremacy]($block.id('third-section'))
+
+One official CLI tool that solves the most common needs, like **auto-formatting**, **schema validation**, **format conversion**, **querying** (coming soon) and **LSP support** for comfortable editing in your favorite text editor or IDE.
