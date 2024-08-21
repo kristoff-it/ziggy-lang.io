@@ -11,7 +11,7 @@ pub fn build(b: *std.Build) !void {
         .static_assets = &.{
             "CNAME",
             "BenchNine-Bold.ttf",
-            "Gluegun.otf",
+            "GlueGun.otf",
             "Epilogue/Epilogue-Black.ttf",
             "Epilogue/Epilogue-BlackItalic.ttf",
             "Epilogue/Epilogue-Bold.ttf",
