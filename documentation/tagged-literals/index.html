@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-
-<head id="head">
-  <meta charset="UTF-8">
-  <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@croloris">
-  <meta name="twitter:author" content="@croloris">
-  <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-  <meta name="twitter:title" content="Tagged Literals - Ziggy">
-  <meta property="og:title" content="Tagged Literals">
-  <meta property="og:type" content="website">
-
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <title id="title">
-    Tagged Literals - Ziggy Data Language
-  </title>
-  <link rel="stylesheet" type="text/css" href="/fonts.css">
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <link rel="stylesheet" type="text/css" href="/highlight.css">
-  
-	<style>
-		#content {
+  <head id="head">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@croloris">
+    <meta name="twitter:author" content="@croloris">
+    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:title" content="Tagged Literals - Ziggy">
+    <meta property="og:title" content="Tagged Literals">
+    <meta property="og:type" content="website">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  >
+    <title id="title">
+      Tagged Literals
+      - Ziggy Data Language
+    </title>
+    <link rel="stylesheet" type="text/css" href="/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/highlight.css">
+    
+  <style>
+    #content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
@@ -66,7 +67,7 @@
 			padding-left: 10px;
 		}
 
-		#sidebar a:hover {
+		#sidebar a:hover, #sidebar .selected { 
 			background-color: #ddd;
 		}
 
@@ -189,103 +190,160 @@
 			}
 
 		}
-	</style>
 
-</head>
+		
+  #insanity {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  </style>
 
-<body id="body">
-  <nav id="top-nav">
-    <div id="top-nav-container">
-      <span>
-        <a href="/"
-          style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-        <span>v0.0.1</span>
-      </span>
-      <div id="top-nav-menu">
-        <a href="/documentation/getting-started/">
-          Quickstart
-        </a>
-        <a href="/documentation/about/">
-          Documentation
-        </a>
-        <a href="/log/">
-          Changelog
-        </a>
-        <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-          Code
-        </a>
+  </head>
+  <body id="body">
+    <nav id="top-nav">
+      <div id="top-nav-container">
+        <span>
+          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+          <span>v0.0.1</span>
+        </span>
+        <div id="top-nav-menu">
+          <a href="/documentation/getting-started/">
+            Quickstart
+          </a>
+          <a href="/documentation/about/">
+            Documentation
+          </a>
+          <a href="/log/">
+            Changelog
+          </a>
+          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+            Code
+          </a>
+        </div>
       </div>
-    </div>
-  </nav>
-  
-	<div id="content">
-		<nav id="sidebar">
-			<div id="sidebar-content">
-				<details open>
-					<summary>Overview</summary>
-					<ul>
-						<li><a href="/documentation/about/">About</a></li>
-						<li><a href="/documentation/getting-started/">Getting Started</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Editor Configuration</summary>
-					<ul>
-						<li><a href="/documentation/editors/vscode/">VSCode</a></li>
-						<li><a href="/documentation/editors/neovim/">Neovim</a></li>
-						<li><a href="/documentation/editors/helix/">Helix</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Documents</summary>
-					<ul>
-						<li><a href="/documentation/scalars/">Scalar Values</a></li>
-						<li><a href="/documentation/containers/">Container Values</a></li>
-						<li><a href="/documentation/document/">Document Structure</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Schemas</summary>
-					<ul>
-						<li><a href="/documentation/builtin-types/">Builtin Types</a></li>
-						<li><a href="/documentation/custom-types/">Custom Types</a></li>
-						<li><a href="/documentation/schema-structure/">Schema Structure</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Design Tips</summary>
-					<ul>
-						<li><a href="/documentation/struct-unions/">Struct Unions</a></li>
-						<li><a href="/documentation/tagged-literals/">Tagged Literals</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Libraries</summary>
-					<ul>
-						<li><a href="/documentation/parsers/">Parsers</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy CLI Tool</summary>
-					<ul>
-						<li><a href="/documentation/ziggy-fmt/">fmt</a></li>
-						<li><a href="/documentation/ziggy-query/">query</a></li>
-						<li><a href="/documentation/ziggy-check/">check</a></li>
-						<li><a href="/documentation/ziggy-convert/">convert</a></li>
-						<li><a href="/documentation/ziggy-lsp/">lsp</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary>Specification</summary>
-					<ul>
-						<li><a href="/documentation/spec/">Specification</a></li>
-					</ul>
-				</details>
-			</div>
-		</nav>
-
-		<div id="main">
-			<div ><h1>Tagged Literals</h1><p>In the previous page we discussed struct unions, which come with some benefits for humans and also some benefits for parsers, especially when it comes statically typed, compiled languages.</p><p>Tagged literals also bring their own set of benefits for users but in some ways are the inverse of struct unions, as they mainly cater to dynamically typed languages.</p><h2>What are tagged literals for?</h2><p>Tagged literals offer two main benefits:</p><ul><li><p>give a hint to the user about expected data formats</p></li><li><p>help parsers map strings to other data types</p></li></ul><p>It is important to understand these benefits in the context of a fully fledged use case, otherwise we risk overusing (or underusing) this tool.</p><h2>Use Case: Chat Message</h2><p>Consider this very simple chat message example:</p><pre><code class="ziggy">.<span class="keyword">sent_at</span> = <span class="string">"2024-01-01T00:00:00"</span><span class="punctuation delimiter">,</span>
+    </nav>
+    
+  <div id="content">
+    <nav id="sidebar">
+      <div id="sidebar-content">
+        <details open>
+          <summary>Overview</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/about/">About</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/getting-started/">Getting Started</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Editor Configuration</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/editors/vscode/">VSCode</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/neovim/">Neovim</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/helix/">Helix</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/flow/">Flow</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy Document</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/scalars/">Scalar Values</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/containers/">Container Values</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/document/">Document Structure</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy Schema</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/builtin-types/">Builtin Types</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/custom-types/">Custom Types</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/schema-structure/">Schema Structure</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Design Tips</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/struct-unions/">Struct Unions</a>
+            </li>
+          
+            <li>
+              <a class="selected" href="/documentation/tagged-literals/">Tagged Literals</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Libraries</summary>
+          <ul>
+            <li><a href="/documentation/parsers/">Parsers</a></li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy CLI Tool</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-query/">ziggy query</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-check/">ziggy check</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>Specification</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/spec/">Specification</a>
+            </li>
+          </ul>
+        </details>
+      </div>
+    </nav>
+    <div id="main">
+      <div><h1>Tagged Literals</h1><p>In the previous page we discussed struct unions, which come with some benefits for humans and also some benefits for parsers, especially when it comes statically typed, compiled languages.</p><p>Tagged literals also bring their own set of benefits for users but in some ways are the inverse of struct unions, as they mainly cater to dynamically typed languages.</p><h2>What are tagged literals for?</h2><p>Tagged literals offer two main benefits:</p><ul><li>give a hint to the user about expected data formats</li><li>help parsers map strings to other data types</li></ul><p>It is important to understand these benefits in the context of a fully fledged use case, otherwise we risk overusing (or underusing) this tool.</p><h2>Use Case: Chat Message</h2><p>Consider this very simple chat message example:</p><pre><code class="ziggy">.<span class="keyword">sent_at</span> = <span class="string">"2024-01-01T00:00:00"</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">text</span> = <span class="string">"hello world"</span><span class="punctuation delimiter">,</span>
 </code></pre>
 <p>Should <code>date</code> be turned into a tagged literal? Let's look at the practical implications of doing so to make a decision.</p><ul><li><p><strong>No</strong> tagged literal</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span> 
@@ -347,7 +405,7 @@
   <span class="keyword">text</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
-</li></ul><p>In contrast with the Chat message use case, this second example shows how by creating a dedicated tagged literal to express dates, we were able to collect all repeated date format requirements into one place.</p><h2>Parsing From Dynamic Languages</h2><p>In the "Struct Unions" page we mentioned how statically typed, compiled languages benefit from Ziggy struct unions more than dynamic languages.</p><p>If those kind of languages aim to approximate optimal behavior from the machine, dynamic languages in contrast are more about letting the programmer leave details unstated in order to achieve faster development speed.</p><p>One clear example of this differerence is how in Zig (statically typed, compiled and generally low-level) the programmer always wants to have a type definition for Ziggy data layouts, while in JavaScript (dynamic, interpreted, high-level) one can easily get away with parsing Ziggy documents on the fly.</p><p>And it's in this second scenario that string literals offer the right amount of typization.</p><p>Ziggy doesn't have yet a JavaScript parser library, so the following code is not a <i>concrete</i> example, but it's still a valid way of showing how tagged literals are useful in that scenario:</p><pre><code class="javascript"><span class="comment">// Imaginary "ziggy" package.</span>
+</li></ul><p>In contrast with the Chat message use case, this second example shows how by creating a dedicated tagged literal to express dates, we were able to collect all repeated date format requirements into one place.</p><h2>Parsing From Dynamic Languages</h2><p>In the "Struct Unions" page we mentioned how statically typed, compiled languages benefit from Ziggy struct unions more than dynamic languages.</p><p>If those kind of languages aim to approximate optimal behavior from the machine, dynamic languages in contrast are more about letting the programmer leave details unstated in order to achieve faster development speed.</p><p>One clear example of this differerence is how in Zig (statically typed, compiled and generally low-level) the programmer always wants to have a type definition for Ziggy data layouts, while in JavaScript (dynamic, interpreted, high-level) one can easily get away with parsing Ziggy documents on the fly.</p><p>And it's in this second scenario that string literals offer the right amount of typization.</p><p>Ziggy doesn't have yet a JavaScript parser library, so the following code is not a <em>concrete</em> example, but it's still a valid way of showing how tagged literals are useful in that scenario:</p><pre><code class="javascript"><span class="comment">// Imaginary "ziggy" package.</span>
 <span class="keyword">const</span> <span class="variable">ziggy</span> <span class="operator">=</span> <span class="function">require</span><span class="punctuation bracket">(</span><span class="string">"ziggy"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
 
 <span class="keyword">const</span> <span class="variable">posting</span> <span class="operator">=</span> <span class="variable">ziggy</span><span class="punctuation delimiter">.</span><span class="function method">parse</span><span class="punctuation bracket">(</span><span class="string">"posting.ziggy"</span><span class="punctuation delimiter">,</span> <span class="punctuation bracket">{</span>
@@ -375,26 +433,27 @@ Yadda yadda...
   <span class="string">"sale_end"</span>: @<span class="function">date</span><span class="punctuation bracket">(</span><span class="string">"2024-04-01T00:00:00"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 </code></pre>
-<p>In this case <code>sale_start</code> and <code>sale_end</code> are two custom fields provided by the user that don't belong to the Zine frontmatter schema.</p><p>This means that even though Zine is an application written in Zig, for all intents and purposes, we are in a similar situation to where JavaScript was, when it comes to parsing contents of the <code>custom</code> field.</p><p>Zine leverages tagged unions in order to recognize when a user-provided field is meant to represent a date, which brings a couple practical benefits:</p><ul><li><p>the user doesn't have to parse a date out of a string everytime they want to access custom date fields</p></li><li><p>a malformed date will result in a frontmatter parsing error, instead of a template evaluation error</p></li></ul><h2>Concrete Tips</h2><p>The goldern rule of tagged literals (and maybe of a few other things as well):</p><p><strong>Abstract purity doesn't belong in engineering.</strong>,</p><p><strong>Resist always the temptation of creating tagged literals for abstract reasons. Always think of the practical implications and act exclusively in accordance to the intent of achieving a practical outcome.</strong></p><h3>Manual editing or automated generation?</h3><p>If your Ziggy data layout is going to be edited by humans manually (e.g. it's a config file format), then they might benefit from the <a href="https://en.wikipedia.org/wiki/Affordance">affordance</a> offered by a tagged literal, like dedicated documentation and autocomplete suggestions. Although you should also keep in mind that if your literal is only used in one place, then a field doc comment might suffice (like in the chat message use case).</p><p>If your data layouts are instead designed to be consumed by programs (e.g. API messages), then the previous point become much weaker and you will want to leverage other considerations in order to make a final decision.</p><h3>Who will consume your data layout?</h3><p>If your Ziggy data layout might be consumed by clients implemented in dynamic languages, they might want to parse your Ziggy documents without hardcoding a schema in their code, and in that case tagged literals could help them improve their parsing experience.</p><p>If your data layouts are instead going to be consumed exclusively by statically typed, compiled, low-level languages, then you will want to leverage other considerations in order to make a final decision.</p><h3>Do you have user-provided fields?</h3><p>If you Ziggy data layout accepts user-provided fields, and users are allowed to input strings that represent types understood by your application (e.g. dates) then you have a good reason to defne those types as tagged literals.</p><p>It should be noted that this last point should still be evaluated in light of the "avoid abstract purity" principle. It's often the case that applications must deal with many literals, like <code>@url</code> or <code>@path</code> for example, but that doesn't immediately mean that one should create literals for each.</p><p>The Zine frontmatter example was relevant precisely because by recognizing dates early the user experience got improved. If creating a tagged literal for a type doesn't trigger the same kind of practical improvement, it might be best to prefer creating a simpler schema in order to gain the very real benefit of lowering the cognitive load on your users.</p></div>
-			<nav id="footer">
-				<div >
-					<a href="/documentation/struct-unions/">
-						<p>
-							← <span class="title" >Struct Unions</span>
-						</p>
-					</a>
-				</div>
-				<div >
-					<a href="/documentation/parsers/">
-						<p>
-							<span class="title" >Parsers</span> →
-						</p>
-					</a>
-				</div>
-			</nav>
-		</div>
-	</div>
+<p>In this case <code>sale_start</code> and <code>sale_end</code> are two custom fields provided by the user that don't belong to the Zine frontmatter schema.</p><p>This means that even though Zine is an application written in Zig, for all intents and purposes, we are in a similar situation to where JavaScript was, when it comes to parsing contents of the <code>custom</code> field.</p><p>Zine leverages tagged unions in order to recognize when a user-provided field is meant to represent a date, which brings a couple practical benefits:</p><ul><li>the user doesn't have to parse a date out of a string everytime they want to access custom date fields</li><li>a malformed date will result in a frontmatter parsing error, instead of a template evaluation error</li></ul><h2>Concrete Tips</h2><p>The goldern rule of tagged literals (and maybe of a few other things as well):</p><p><strong>Abstract purity doesn't belong in engineering.</strong>,</p><p><strong>Resist always the temptation of creating tagged literals for abstract reasons. Always think of the practical implications and act exclusively in accordance to the intent of achieving a practical outcome.</strong></p><h3>Manual editing or automated generation?</h3><p>If your Ziggy data layout is going to be edited by humans manually (e.g. it's a config file format), then they might benefit from the <a href="https://en.wikipedia.org/wiki/Affordance">affordance</a> offered by a tagged literal, like dedicated documentation and autocomplete suggestions. Although you should also keep in mind that if your literal is only used in one place, then a field doc comment might suffice (like in the chat message use case).</p><p>If your data layouts are instead designed to be consumed by programs (e.g. API messages), then the previous point become much weaker and you will want to leverage other considerations in order to make a final decision.</p><h3>Who will consume your data layout?</h3><p>If your Ziggy data layout might be consumed by clients implemented in dynamic languages, they might want to parse your Ziggy documents without hardcoding a schema in their code, and in that case tagged literals could help them improve their parsing experience.</p><p>If your data layouts are instead going to be consumed exclusively by statically typed, compiled, low-level languages, then you will want to leverage other considerations in order to make a final decision.</p><h3>Do you have user-provided fields?</h3><p>If you Ziggy data layout accepts user-provided fields, and users are allowed to input strings that represent types understood by your application (e.g. dates) then you have a good reason to defne those types as tagged literals.</p><p>It should be noted that this last point should still be evaluated in light of the "avoid abstract purity" principle. It's often the case that applications must deal with many literals, like <code>@url</code> or <code>@path</code> for example, but that doesn't immediately mean that one should create literals for each.</p><p>The Zine frontmatter example was relevant precisely because by recognizing dates early the user experience got improved. If creating a tagged literal for a type doesn't trigger the same kind of practical improvement, it might be best to prefer creating a simpler schema in order to gain the very real benefit of lowering the cognitive load on your users.</p></div>
+      <nav id="footer">
+        <div>
+          <a href="/documentation/struct-unions/">
+            <p>
+              ←
+              <span class="title">Struct Unions</span>
+            </p>
+          </a>
+        </div>
+        <div>
+          <a href="/documentation/parsers/">
+            <p>
+              <span class="title">Parsers</span>
+              →
+            </p>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-</body>
-
+  </body>
 </html>

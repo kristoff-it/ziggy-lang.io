@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-
-<head id="head">
-  <meta charset="UTF-8">
-  <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@croloris">
-  <meta name="twitter:author" content="@croloris">
-  <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-  <meta name="twitter:title" content="Neovim - Ziggy">
-  <meta property="og:title" content="Neovim">
-  <meta property="og:type" content="website">
-
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <title id="title">
-    Neovim - Ziggy Data Language
-  </title>
-  <link rel="stylesheet" type="text/css" href="/fonts.css">
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <link rel="stylesheet" type="text/css" href="/highlight.css">
-  
-	<style>
-		#content {
+  <head id="head">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@croloris">
+    <meta name="twitter:author" content="@croloris">
+    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:title" content="Helix - Ziggy">
+    <meta property="og:title" content="Helix">
+    <meta property="og:type" content="website">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  >
+    <title id="title">
+      Helix
+      - Ziggy Data Language
+    </title>
+    <link rel="stylesheet" type="text/css" href="/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/highlight.css">
+    
+  <style>
+    #content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
@@ -66,7 +67,7 @@
 			padding-left: 10px;
 		}
 
-		#sidebar a:hover {
+		#sidebar a:hover, #sidebar .selected { 
 			background-color: #ddd;
 		}
 
@@ -189,103 +190,160 @@
 			}
 
 		}
-	</style>
 
-</head>
+		
+  #insanity {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  </style>
 
-<body id="body">
-  <nav id="top-nav">
-    <div id="top-nav-container">
-      <span>
-        <a href="/"
-          style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-        <span>v0.0.1</span>
-      </span>
-      <div id="top-nav-menu">
-        <a href="/documentation/getting-started/">
-          Quickstart
-        </a>
-        <a href="/documentation/about/">
-          Documentation
-        </a>
-        <a href="/log/">
-          Changelog
-        </a>
-        <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-          Code
-        </a>
+  </head>
+  <body id="body">
+    <nav id="top-nav">
+      <div id="top-nav-container">
+        <span>
+          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+          <span>v0.0.1</span>
+        </span>
+        <div id="top-nav-menu">
+          <a href="/documentation/getting-started/">
+            Quickstart
+          </a>
+          <a href="/documentation/about/">
+            Documentation
+          </a>
+          <a href="/log/">
+            Changelog
+          </a>
+          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+            Code
+          </a>
+        </div>
       </div>
-    </div>
-  </nav>
-  
-	<div id="content">
-		<nav id="sidebar">
-			<div id="sidebar-content">
-				<details open>
-					<summary>Overview</summary>
-					<ul>
-						<li><a href="/documentation/about/">About</a></li>
-						<li><a href="/documentation/getting-started/">Getting Started</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Editor Configuration</summary>
-					<ul>
-						<li><a href="/documentation/editors/vscode/">VSCode</a></li>
-						<li><a href="/documentation/editors/neovim/">Neovim</a></li>
-						<li><a href="/documentation/editors/helix/">Helix</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Documents</summary>
-					<ul>
-						<li><a href="/documentation/scalars/">Scalar Values</a></li>
-						<li><a href="/documentation/containers/">Container Values</a></li>
-						<li><a href="/documentation/document/">Document Structure</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Schemas</summary>
-					<ul>
-						<li><a href="/documentation/builtin-types/">Builtin Types</a></li>
-						<li><a href="/documentation/custom-types/">Custom Types</a></li>
-						<li><a href="/documentation/schema-structure/">Schema Structure</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Design Tips</summary>
-					<ul>
-						<li><a href="/documentation/struct-unions/">Struct Unions</a></li>
-						<li><a href="/documentation/tagged-literals/">Tagged Literals</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Libraries</summary>
-					<ul>
-						<li><a href="/documentation/parsers/">Parsers</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy CLI Tool</summary>
-					<ul>
-						<li><a href="/documentation/ziggy-fmt/">fmt</a></li>
-						<li><a href="/documentation/ziggy-query/">query</a></li>
-						<li><a href="/documentation/ziggy-check/">check</a></li>
-						<li><a href="/documentation/ziggy-convert/">convert</a></li>
-						<li><a href="/documentation/ziggy-lsp/">lsp</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary>Specification</summary>
-					<ul>
-						<li><a href="/documentation/spec/">Specification</a></li>
-					</ul>
-				</details>
-			</div>
-		</nav>
-
-		<div id="main">
-			<div ><h1>Helix</h1><h2>1. Copy Tree Sitter queries</h2><p>In your Helix <strong>runtime directory</strong> (https://docs.helix-editor.com/install.html#configuring-helixs-runtime-files), copy the Tree Sitter queries from our parsers.<br><br>From the root of the <a href="https://github.com/kristoff-it/ziggy">Ziggy repository</a>, run the following two commands after replacing <code>HELIX_RUNTIME_PATH</code>:</p><ul><li><p><code>cp -rT tree-sitter-ziggy/queries HELIX_RUNTIME_PATH/queries/ziggy</code></p></li><li><p><code>cp -rT tree-sitter-ziggy-schema/queries HELIX_RUNTIME_PATH/queries/ziggy_schema</code></p></li></ul><p>NOTE: '-T' makes it so you can run the command multiple times without nesting new copies of <code>queries</code> more deeply than intended. Also macOS doesn't support it, sorry.</p><h2>2. Add Ziggy (and Ziggy Schema) to your language config</h2><p>In your Helix <strong>config directory</strong> (usually <code>~/.config/helix/</code>)create <code>languages.toml</code> and copy the following lines:</p><pre><code class="toml">
+    </nav>
+    
+  <div id="content">
+    <nav id="sidebar">
+      <div id="sidebar-content">
+        <details open>
+          <summary>Overview</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/about/">About</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/getting-started/">Getting Started</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Editor Configuration</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/editors/vscode/">VSCode</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/neovim/">Neovim</a>
+            </li>
+          
+            <li>
+              <a class="selected" href="/documentation/editors/helix/">Helix</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/flow/">Flow</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy Document</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/scalars/">Scalar Values</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/containers/">Container Values</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/document/">Document Structure</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy Schema</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/builtin-types/">Builtin Types</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/custom-types/">Custom Types</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/schema-structure/">Schema Structure</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Design Tips</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/struct-unions/">Struct Unions</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Libraries</summary>
+          <ul>
+            <li><a href="/documentation/parsers/">Parsers</a></li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy CLI Tool</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-query/">ziggy query</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-check/">ziggy check</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>Specification</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/spec/">Specification</a>
+            </li>
+          </ul>
+        </details>
+      </div>
+    </nav>
+    <div id="main">
+      <div><h1>Helix</h1><h2>1. Copy Tree Sitter queries</h2><p>In your Helix <strong>runtime directory</strong> (https://docs.helix-editor.com/install.html#configuring-helixs-runtime-files), copy the Tree Sitter queries from our parsers.<br>From the root of the <a href="https://github.com/kristoff-it/ziggy">Ziggy repository</a>, run the following two commands after replacing <code>HELIX_RUNTIME_PATH</code>:</p><ul><li><code>cp -rT tree-sitter-ziggy/queries HELIX_RUNTIME_PATH/queries/ziggy</code></li><li><code>cp -rT tree-sitter-ziggy-schema/queries HELIX_RUNTIME_PATH/queries/ziggy_schema</code></li></ul><p>NOTE: '-T' makes it so you can run the command multiple times without nesting new copies of <code>queries</code> more deeply than intended. Also macOS doesn't support it, sorry.</p><h2>2. Add Ziggy (and Ziggy Schema) to your language config</h2><p>In your Helix <strong>config directory</strong> (usually <code>~/.config/helix/</code>)create <code>languages.toml</code> and copy the following lines:</p><pre><code class="toml">
 <span class="punctuation bracket">[</span><span class="property">language-server</span><span class="punctuation delimiter">.</span><span class="property">ziggy-lsp</span><span class="punctuation bracket">]</span>
 <span class="property">command</span> <span class="operator">=</span> <span class="string">"ziggy"</span>
 <span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"lsp"</span><span class="punctuation bracket">]</span>
@@ -326,25 +384,26 @@
 <span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"lsp"</span><span class="punctuation delimiter">,</span> <span class="string">"--schema"</span><span class="punctuation bracket">]</span>
 </code></pre>
 <h2>3. Build Tree Sitter grammars</h2><p>Run <code>hx --grammar build</code>, it should report that <code>ziggy</code> and <code>ziggy_schema</code> were built successfully.</p></div>
-			<nav id="footer">
-				<div >
-					<a href="/documentation/editors/neovim/">
-						<p>
-							← <span class="title" >Neovim</span>
-						</p>
-					</a>
-				</div>
-				<div >
-					<a href="/documentation/scalars/">
-						<p>
-							<span class="title" >Ziggy Scalar Values</span> →
-						</p>
-					</a>
-				</div>
-			</nav>
-		</div>
-	</div>
+      <nav id="footer">
+        <div>
+          <a href="/documentation/editors/flow/">
+            <p>
+              ←
+              <span class="title">Flow</span>
+            </p>
+          </a>
+        </div>
+        <div>
+          <a href="/documentation/scalars/">
+            <p>
+              <span class="title">Scalar Values</span>
+              →
+            </p>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-</body>
-
+  </body>
 </html>

@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-
-<head id="head">
-  <meta charset="UTF-8">
-  <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@croloris">
-  <meta name="twitter:author" content="@croloris">
-  <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-  <meta name="twitter:title" content="Ziggy Schema Custom Types - Ziggy">
-  <meta property="og:title" content="Ziggy Schema Custom Types">
-  <meta property="og:type" content="website">
-
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-  <title id="title">
-    Ziggy Schema Custom Types - Ziggy Data Language
-  </title>
-  <link rel="stylesheet" type="text/css" href="/fonts.css">
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <link rel="stylesheet" type="text/css" href="/highlight.css">
-  
-	<style>
-		#content {
+  <head id="head">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@croloris">
+    <meta name="twitter:author" content="@croloris">
+    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+    <meta name="twitter:title" content="Custom Types - Ziggy">
+    <meta property="og:title" content="Custom Types">
+    <meta property="og:type" content="website">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  >
+    <title id="title">
+      Custom Types
+      - Ziggy Data Language
+    </title>
+    <link rel="stylesheet" type="text/css" href="/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/highlight.css">
+    
+  <style>
+    #content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
@@ -66,7 +67,7 @@
 			padding-left: 10px;
 		}
 
-		#sidebar a:hover {
+		#sidebar a:hover, #sidebar .selected { 
 			background-color: #ddd;
 		}
 
@@ -189,103 +190,160 @@
 			}
 
 		}
-	</style>
 
-</head>
+		
+  #insanity {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  </style>
 
-<body id="body">
-  <nav id="top-nav">
-    <div id="top-nav-container">
-      <span>
-        <a href="/"
-          style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-        <span>v0.0.1</span>
-      </span>
-      <div id="top-nav-menu">
-        <a href="/documentation/getting-started/">
-          Quickstart
-        </a>
-        <a href="/documentation/about/">
-          Documentation
-        </a>
-        <a href="/log/">
-          Changelog
-        </a>
-        <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-          Code
-        </a>
+  </head>
+  <body id="body">
+    <nav id="top-nav">
+      <div id="top-nav-container">
+        <span>
+          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
+          <span>v0.0.1</span>
+        </span>
+        <div id="top-nav-menu">
+          <a href="/documentation/getting-started/">
+            Quickstart
+          </a>
+          <a href="/documentation/about/">
+            Documentation
+          </a>
+          <a href="/log/">
+            Changelog
+          </a>
+          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
+            Code
+          </a>
+        </div>
       </div>
-    </div>
-  </nav>
-  
-	<div id="content">
-		<nav id="sidebar">
-			<div id="sidebar-content">
-				<details open>
-					<summary>Overview</summary>
-					<ul>
-						<li><a href="/documentation/about/">About</a></li>
-						<li><a href="/documentation/getting-started/">Getting Started</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Editor Configuration</summary>
-					<ul>
-						<li><a href="/documentation/editors/vscode/">VSCode</a></li>
-						<li><a href="/documentation/editors/neovim/">Neovim</a></li>
-						<li><a href="/documentation/editors/helix/">Helix</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Documents</summary>
-					<ul>
-						<li><a href="/documentation/scalars/">Scalar Values</a></li>
-						<li><a href="/documentation/containers/">Container Values</a></li>
-						<li><a href="/documentation/document/">Document Structure</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Schemas</summary>
-					<ul>
-						<li><a href="/documentation/builtin-types/">Builtin Types</a></li>
-						<li><a href="/documentation/custom-types/">Custom Types</a></li>
-						<li><a href="/documentation/schema-structure/">Schema Structure</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Design Tips</summary>
-					<ul>
-						<li><a href="/documentation/struct-unions/">Struct Unions</a></li>
-						<li><a href="/documentation/tagged-literals/">Tagged Literals</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Libraries</summary>
-					<ul>
-						<li><a href="/documentation/parsers/">Parsers</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy CLI Tool</summary>
-					<ul>
-						<li><a href="/documentation/ziggy-fmt/">fmt</a></li>
-						<li><a href="/documentation/ziggy-query/">query</a></li>
-						<li><a href="/documentation/ziggy-check/">check</a></li>
-						<li><a href="/documentation/ziggy-convert/">convert</a></li>
-						<li><a href="/documentation/ziggy-lsp/">lsp</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary>Specification</summary>
-					<ul>
-						<li><a href="/documentation/spec/">Specification</a></li>
-					</ul>
-				</details>
-			</div>
-		</nav>
-
-		<div id="main">
-			<div ><h1>Ziggy Schema Custom Types</h1><p>In this section we're going to see types that require to be defined before they can be used in a type expression.</p><h2>Tagged literal</h2><h3>Definition</h3><p>A tagged literal can be defined in two ways:</p><ul><li><p>as an <code>enum</code>, when all possible values come from a fixed list.</p></li><li><p>as <code>bytes</code> otherwise.</p></li></ul><h4>Enum definition</h4><pre><code class="ziggy-schema"><span class="error">@fruits = enum { apple, banana, cherry },
+    </nav>
+    
+  <div id="content">
+    <nav id="sidebar">
+      <div id="sidebar-content">
+        <details open>
+          <summary>Overview</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/about/">About</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/getting-started/">Getting Started</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Editor Configuration</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/editors/vscode/">VSCode</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/neovim/">Neovim</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/helix/">Helix</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/editors/flow/">Flow</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy Document</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/scalars/">Scalar Values</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/containers/">Container Values</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/document/">Document Structure</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy Schema</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/builtin-types/">Builtin Types</a>
+            </li>
+          
+            <li>
+              <a class="selected" href="/documentation/custom-types/">Custom Types</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/schema-structure/">Schema Structure</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Design Tips</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/struct-unions/">Struct Unions</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Libraries</summary>
+          <ul>
+            <li><a href="/documentation/parsers/">Parsers</a></li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Ziggy CLI Tool</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-query/">ziggy query</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-check/">ziggy check</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>Specification</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/spec/">Specification</a>
+            </li>
+          </ul>
+        </details>
+      </div>
+    </nav>
+    <div id="main">
+      <div><h1>Ziggy Schema Custom Types</h1><p>In this section we're going to see types that require to be defined before they can be used in a type expression.</p><h2>Tagged literal</h2><h3>Definition</h3><p>A tagged literal can be defined in two ways:</p><ul><li>as an <code>enum</code>, when all possible values come from a fixed list.</li><li>as <code>bytes</code> otherwise.</li></ul><h4>Enum definition</h4><pre><code class="ziggy-schema"><span class="error">@fruits = enum { apple, banana, cherry },
 </span></code></pre>
 <h4>Bytes definition</h4><p>It's generally a good idea to give a doc comment to byte tagged literals.</p><pre><code class="ziggy-schema"><span class="error">/// A RFC3339 date literal, e.g. `2024-01-01T00:00:00`
 @date = bytes,
@@ -322,25 +380,26 @@ struct Notification {
 }
 </span></code></pre>
 </div>
-			<nav id="footer">
-				<div >
-					<a href="/documentation/builtin-types/">
-						<p>
-							← <span class="title" >Ziggy Schema Builtin Types</span>
-						</p>
-					</a>
-				</div>
-				<div >
-					<a href="/documentation/schema-structure/">
-						<p>
-							<span class="title" >Ziggy Schema File Structure</span> →
-						</p>
-					</a>
-				</div>
-			</nav>
-		</div>
-	</div>
+      <nav id="footer">
+        <div>
+          <a href="/documentation/builtin-types/">
+            <p>
+              ←
+              <span class="title">Builtin Types</span>
+            </p>
+          </a>
+        </div>
+        <div>
+          <a href="/documentation/schema-structure/">
+            <p>
+              <span class="title">Schema Structure</span>
+              →
+            </p>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-</body>
-
+  </body>
 </html>
