@@ -1,5 +1,5 @@
 ---
-.title = "Ziggy Document File Structure",
+.title = "Document Structure",
 .date =  "2007-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,

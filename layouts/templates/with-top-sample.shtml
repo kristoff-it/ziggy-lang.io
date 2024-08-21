@@ -49,7 +49,7 @@
       <div id="main-code" class="flex-item">
         <pre id="main1-ziggy" class="flex-item"><code
             class="ziggy"
-            var="$page.custom.get!('main-sample').syntaxHighlight('ziggy')"
+            html="$page.custom.get!('main-sample').syntaxHighlight('ziggy')"
           ></code></pre>
       </div>
     </div>

@@ -1,5 +1,5 @@
 ---
-.title = "Ziggy Scalar Values",
+.title = "Scalar Values",
 .date =  "2005-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,

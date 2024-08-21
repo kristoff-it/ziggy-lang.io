@@ -1,0 +1,14 @@
+---
+.title = "Flow",
+.date =  "2004-01-01T00:00:00",
+.author = "Loris Cro",
+.draft = false,
+.layout = "documentation.shtml",
+.tags = [],
+---
+# Flow Control
+
+[Flow Control](https://github.com/neurocyte/flow) comes with out-of-the-box support for Ziggy.
+
+Add the Ziggy CLI tool to your `PATH` and the editor should pick it up automatically.
+

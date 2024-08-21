@@ -1,5 +1,5 @@
 <extend template="base.shtml">
-<title id="title" var="$page.title"></title>
+<title id="title" text="$page.title"></title>
 <head id="head">
   <style>
     #content {
@@ -45,7 +45,7 @@
 			padding-left: 10px;
 		}
 
-		#sidebar a:hover {
+		#sidebar a:hover, #sidebar .selected { 
 			background-color: #ddd;
 		}
 
@@ -182,40 +182,76 @@
       <div id="sidebar-content">
         <details open>
           <summary>Overview</summary>
-          <ul>
-            <li><a href="/documentation/about/">About</a></li>
-            <li><a href="/documentation/getting-started/">Getting Started</a></li>
+          <ul loop="$site.pages('documentation/about', 
+                                'documentation/getting-started'
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
         <details open>
           <summary>Editor Configuration</summary>
-          <ul>
-            <li><a href="/documentation/editors/vscode/">VSCode</a></li>
-            <li><a href="/documentation/editors/neovim/">Neovim</a></li>
-            <li><a href="/documentation/editors/helix/">Helix</a></li>
+          <ul loop="$site.pages('documentation/editors/vscode', 
+                                'documentation/editors/neovim',
+                                'documentation/editors/helix',
+                                'documentation/editors/flow',
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
         <details open>
-          <summary>Ziggy Documents</summary>
-          <ul>
-            <li><a href="/documentation/scalars/">Scalar Values</a></li>
-            <li><a href="/documentation/containers/">Container Values</a></li>
-            <li><a href="/documentation/document/">Document Structure</a></li>
+          <summary>Ziggy Document</summary>
+          <ul loop="$site.pages('documentation/scalars', 
+                                'documentation/containers',
+                                'documentation/document',
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
         <details open>
-          <summary>Ziggy Schemas</summary>
-          <ul>
-            <li><a href="/documentation/builtin-types/">Builtin Types</a></li>
-            <li><a href="/documentation/custom-types/">Custom Types</a></li>
-            <li><a href="/documentation/schema-structure/">Schema Structure</a></li>
+          <summary>Ziggy Schema</summary>
+          <ul loop="$site.pages('documentation/builtin-types', 
+                                'documentation/custom-types',
+                                'documentation/schema-structure',
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
         <details open>
           <summary>Design Tips</summary>
-          <ul>
-            <li><a href="/documentation/struct-unions/">Struct Unions</a></li>
-            <li><a href="/documentation/tagged-literals/">Tagged Literals</a></li>
+          <ul loop="$site.pages('documentation/struct-unions', 
+                                'documentation/tagged-literals',
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
         <details open>
@@ -226,37 +262,50 @@
         </details>
         <details open>
           <summary>Ziggy CLI Tool</summary>
-          <ul>
-            <li><a href="/documentation/ziggy-fmt/">fmt</a></li>
-            <li><a href="/documentation/ziggy-query/">query</a></li>
-            <li><a href="/documentation/ziggy-check/">check</a></li>
-            <li><a href="/documentation/ziggy-convert/">convert</a></li>
-            <li><a href="/documentation/ziggy-lsp/">lsp</a></li>
+          <ul loop="$site.pages('documentation/ziggy-fmt', 
+                                'documentation/ziggy-query',
+                                'documentation/ziggy-check',
+                                'documentation/ziggy-convert',
+                                'documentation/ziggy-lsp',
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
         <details>
           <summary>Specification</summary>
-          <ul>
-            <li><a href="/documentation/spec/">Specification</a></li>
+          <ul loop="$site.pages('documentation/spec')">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
           </ul>
         </details>
       </div>
     </nav>
     <div id="main">
-      <div var="$page.content()"></div>
+      <div html="$page.content()"></div>
       <nav id="footer">
         <div if="$page.prevPage()">
           <a href="$if.link()">
             <p>
               ←
-              <span class="title" var="$if.title"></span>
+              <span class="title" text="$if.title"></span>
             </p>
           </a>
         </div>
         <div if="$page.nextPage()">
           <a href="$if.link()">
             <p>
-              <span class="title" var="$if.title"></span>
+              <span class="title" text="$if.title"></span>
               →
             </p>
           </a>

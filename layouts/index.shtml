@@ -1,5 +1,5 @@
 <extend template="with-top-sample.shtml">
-<title id="title" var="$page.title"></title>
+<title id="title" text="$page.title"></title>
 <head id="head">
   <style>
     .flex {
@@ -210,42 +210,42 @@
   <div style="margin-top:40px;"></div>
   <div id="features">
     <div class="flex">
-      <div class="flex-item" var="$page.block('first-section')">
+      <div class="flex-item" html="$page.block('first-section')">
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tab1" checked="checked">
         <label class="label label-left" for="tab1">package.json</label>
         <div class="panel" tabindex="1">
-          <pre class="tab-sample"><code class="json" var="$page.custom.get('package-json', '').syntaxHighlight('json')"></code></pre>
+          <pre class="tab-sample"><code class="json" html="$page.custom.get('package-json', '').syntaxHighlight('json')"></code></pre>
         </div>
         <input class="radiotab" name="tabs" tabindex="2" type="radio" id="tab2">
         <label class="label label-right" for="tab2">package.ziggy</label>
         <div class="panel" tabindex="2">
-          <pre class="tab-sample"><code class="ziggy" var="$page.custom.get('package-ziggy', '').syntaxHighlight('ziggy')"></code></pre>
+          <pre class="tab-sample"><code class="ziggy" html="$page.custom.get('package-ziggy', '').syntaxHighlight('ziggy')"></code></pre>
         </div>
       </div>
     </div>
     <div class="flex">
-      <div class="flex-item" var="$page.block('second-section')">
+      <div class="flex-item" html="$page.block('second-section')">
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
         <label class="label label-left" for="tab3">package.ziggy-schema</label>
         <div class="panel" tabindex="1">
-          <pre class="tab-sample" id="schema1"><code class="ziggy-schema" var="$page.custom.get('package-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
+          <pre class="tab-sample" id="schema1"><code class="ziggy-schema" html="$page.custom.get('package-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
         </div>
         <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
         <label class="label label-right" for="tab4">message.ziggy-schema</label>
         <div class="panel" tabindex="2">
-          <pre class="tab-sample" id="schema2"><code class="ziggy-schema" var="$page.custom.get('message-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
+          <pre class="tab-sample" id="schema2"><code class="ziggy-schema" html="$page.custom.get('message-schema', '').syntaxHighlight('ziggy-schema')"></code></pre>
         </div>
       </div>
     </div>
     <div class="flex">
-      <div class="flex-item" var="$page.block('third-section')">
+      <div class="flex-item" html="$page.block('third-section')">
       </div>
       <div class="flex-big">
-        <pre><code var="$page.custom.get('cli', '')"></code></pre>
+        <pre><code html="$page.custom.get('cli', '')"></code></pre>
       </div>
     </div>
   </div>

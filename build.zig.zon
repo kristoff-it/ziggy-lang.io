@@ -1,10 +1,10 @@
 .{
-    .name = "Zine Official Website",
+    .name = "Ziggy Language Official Website",
     .version = "0.0.0",
     .dependencies = .{
         .zine = .{
-            .url = "git+https://github.com/kristoff-it/zine?ref=supermd#618773a327b10d9a6b718c1ec53d8b90a772892c",
-            .hash = "12209f5f0970d012eaff500bc7f3e898aca00d5a057bb436bdbea46a628ded31b761",
+            .url = "git+https://github.com/kristoff-it/zine?ref=supermd#26665d3c452b6607b468c22d009e46a593f41496",
+            .hash = "122036bf8c5bc712e30efc82be9ee629c8a08eb847f4f4ddf431e76a0568f906c9ac",
         },
     },
     .paths = .{"."},

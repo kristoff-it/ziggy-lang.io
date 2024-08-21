@@ -1,5 +1,5 @@
 ---
-.title = "Ziggy Schema File Structure",
+.title = "Schema Structure",
 .date =  "2010-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
