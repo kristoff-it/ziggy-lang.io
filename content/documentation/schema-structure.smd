@@ -73,7 +73,7 @@ root = [@fruit]
 
 ### Tagged literal definitions
 
-After the root definition follows a list of comma separated tagged literals. All tagged literals mentioned in the schema must be mentioned in that list of definitions.
+After the root definition follows a list of comma-separated tagged literals. All tagged literals mentioned in the schema must be mentioned in that list of definitions.
 
 ```ziggy-schema
 root = [Foo]

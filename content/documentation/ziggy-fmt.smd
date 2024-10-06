@@ -40,7 +40,7 @@ Similar behavior also applies to Ziggy Schemas.
 
 ## Upgrading Maps
 
-If a Ziggy document has a map value in it, you can give it a name to have `ziggy fmt` turn it into a struct. Maps cannot have names accorting to the Ziggy grammar, but the autoformatter will take that as a hint that you intend to turn a map into a struct and could you use some help.
+If a Ziggy document has a map value in it, you can give it a name to have `ziggy fmt` turn it into a struct. Maps cannot have names according to the Ziggy grammar, but the autoformatter will take that as a hint that you intend to turn a map into a struct and could you use some help.
 
 Given this Ziggy document:
 ```ziggy
@@ -81,6 +81,6 @@ On save the autoformatter will turn all map-style fields into struct-style field
 ```
 *Note how the innermost map was **not** transformed.* 
 
-Ziggy documents are not a proprer superset of JSON because Ziggy uses a different string escape sequences, but for simple enough JSON documents you can easily upgrade them to Ziggy using this trick.
+Ziggy documents are not a proper superset of JSON because Ziggy uses a different string escape sequence, but for simple enough JSON documents you can easily upgrade them to Ziggy using this trick.
 
 That said, for anything more than one-off transformations of trivial JSON files in your editor, you should use `ziggy convert`.

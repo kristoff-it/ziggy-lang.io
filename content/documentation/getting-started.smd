@@ -38,4 +38,4 @@ Once downloaded, you will need to put the `ziggy` executable in your `PATH` so t
 
 ### Next steps
 
-Add to your editor Ziggy syntax highlighting and Ziggy LSP support by following one of the guides in the Editor Configuration section.
+Add Ziggy syntax highlighting and Ziggy LSP support to your editor by following one of the guides in the Editor Configuration section.

@@ -8,7 +8,7 @@
 ---
 # Ziggy Container Value Types
 ## Arrays
-Ziggy uses `[]` (square brakets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.
+Ziggy uses `[]` (square brackets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.
 
 Ziggy arrays can contain different types of values and can be nested arbitrarily deep.
 
@@ -44,7 +44,7 @@ Ziggy map syntax looks like this:
 
 Ziggy maps have the same notation as JSON objects but allow trailing commas.
 
-A hypotetical `package.ziggy`, where the outer key-value map is expressed as a struct, would look like this:
+A hypothetical `package.ziggy`, where the outer key-value map is expressed as a struct, would look like this:
 
 ```ziggy
 {

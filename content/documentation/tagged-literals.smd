@@ -60,7 +60,7 @@ Should `date` be turned into a tagged literal? Let's look at the practical impli
 
 As you can see, in this very simple case there isn't much to gain by introducing a tagged literal.
 
-This is mainly caused by the fact that there is only one field that holds a date, so we ended up moving the docstring from one place to the other, with little difference to the overal result.
+This is mainly caused by the fact that there is only one field that holds a date, so we ended up moving the docstring from one place to the other, with little difference to the overall result.
 
 It should be noted that looking at how this choice influences the resulting Ziggy Schema does not tell you the full picture, and in fact later on we will focus on parsing, but for now let's keep looking at Ziggy Schemas a bit more.
 
@@ -126,7 +126,7 @@ In the "Struct Unions" page we mentioned how statically typed, compiled language
 
 If those kind of languages aim to approximate optimal behavior from the machine, dynamic languages in contrast are more about letting the programmer leave details unstated in order to achieve faster development speed.
 
-One clear example of this differerence is how in Zig (statically typed, compiled and generally low-level) the programmer always wants to have a type definition for Ziggy data layouts, while in JavaScript (dynamic, interpreted, high-level) one can easily get away with parsing Ziggy documents on the fly.
+One clear example of this difference is how in Zig (statically typed, compiled and generally low-level) the programmer always wants to have a type definition for Ziggy data layouts, while in JavaScript (dynamic, interpreted, high-level) one can easily get away with parsing Ziggy documents on the fly.
 
 And it's in this second scenario that string literals offer the right amount of typization.
 
@@ -187,7 +187,7 @@ This means that even though Zine is an application written in Zig, for all inten
 
 Zine leverages tagged unions in order to recognize when a user-provided field is meant to represent a date, which brings a couple practical benefits:
 
-- the user doesn't have to parse a date out of a string everytime they want to access custom date fields
+- the user doesn't have to parse a date out of a string every time they want to access custom date fields
 - a malformed date will result in a frontmatter parsing error, instead of a template evaluation error
 
 
@@ -195,7 +195,7 @@ Zine leverages tagged unions in order to recognize when a user-provided field is
 
 ## Concrete Tips
 
-The goldern rule of tagged literals (and maybe of a few other things as well):
+The golden rule of tagged literals (and maybe of a few other things as well):
 
 **Abstract purity doesn't belong in engineering.**,
 
