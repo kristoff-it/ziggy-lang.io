@@ -261,6 +261,21 @@
           </ul>
         </details>
         <details open>
+          <summary>Ziggy in Your Project</summary>
+          <ul loop="$site.pages('documentation/getting-started-dev', 
+                                'documentation/parser-example',
+                                'documentation/serialization-example',
+          )">
+            <li>
+              <a
+                class="$loop.it.isCurrent().then('selected')"
+                href="$loop.it.link()"
+                text="$loop.it.title"
+              ></a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul loop="$site.pages('documentation/ziggy-fmt', 
                                 'documentation/ziggy-query',

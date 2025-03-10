@@ -1,0 +1,47 @@
+---
+.title = "Getting Started",
+.date =  "2025-03-10T18:54:59",
+.author = "LowByteFox",
+.draft = false,
+.layout = "documentation.shtml",
+.tags = [],
+---
+
+# Getting Started
+A step by step guide to get Ziggy up and running your Zig project.
+
+## Fetching the package
+Before we continue, ensure you have at least version `0.14.0-dev.3451+d8d2aa9af` of Zig installed.
+
+To add Ziggy to your project you can use `zig fetch` like so
+```sh
+zig fetch --save git+https://github.com/kristoff-it/ziggy.git
+```
+This will fetch latest version of Ziggy into your project, you can verify this by looking into `build.zig.zon`
+```zig
+.dependencies = .{
+    // ...
+    .ziggy = .{
+        .url = "git+https://github.com/kristoff-it/ziggy.git#COMMIT",
+        .hash = "ziggy-0.1.0-HASH",
+    },
+    // ...
+},
+```
+Both `COMMIT` and `HASH` will be different
+
+## Setting up `build.zig`
+After you have successfully fetch ziggy package, open up `build.zig` and search for your executable module variable e.g. `exe_mod` (this should be the case in freshly created Zig project)
+
+Once you have located your executable module variable, let's add the dependency into our project
+```zig
+const ziggy_dep = b.dependency("ziggy", .{
+    .target = target,
+    .optimize = optimize,
+});
+```
+Now just add it to the executable module as an import using `addImport` like so
+```zig
+exe_mod.addImport("ziggy", ziggy_dep.module("ziggy"));
+```
+Again, `exe_mod` may be called differently in your project
