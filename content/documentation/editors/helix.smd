@@ -10,7 +10,7 @@
  
 ## 1. Copy Tree Sitter queries
 
-In your Helix **runtime directory** (https://docs.helix-editor.com/install.html#configuring-helixs-runtime-files), copy the Tree Sitter queries from our parsers.  
+In your Helix [**runtime directory**](https://docs.helix-editor.com/install.html#configuring-helixs-runtime-files), copy the Tree Sitter queries from our parsers.  
   From the root of the [Ziggy repository](https://github.com/kristoff-it/ziggy), run the following two commands after replacing `HELIX_RUNTIME_PATH`:
   - `cp -rT tree-sitter-ziggy/queries HELIX_RUNTIME_PATH/queries/ziggy`
   - `cp -rT tree-sitter-ziggy-schema/queries HELIX_RUNTIME_PATH/queries/ziggy_schema`  

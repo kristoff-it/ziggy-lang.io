@@ -1,0 +1,37 @@
+---
+.title = "Frontmatter",
+.date =  "2025-03-11T19:11:59",
+.author = "",
+.draft = false,
+.layout = "documentation.shtml",
+.tags = [],
+---
+
+All Ziggy pasers support parsing a Ziggy document used as frontmatter in an
+external document file format, like SuperMD.
+
+This is what a frontmatter looks like in SuperMD:
+
+```md
+---
+.title = "Frontmatter",
+.date =  "2025-03-11T19:11:59",
+.author = "",
+.draft = false,
+.layout = "documentation.shtml",
+.tags = [],
+---
+Your **SuperMD** content goes here.
+```
+
+As you can see the Ziggy document is framed by two `---` delimiters.
+
+The Ziggy LSP can be configured to run on SuperMD files and it will correctly
+provide diagnostics for the frontmatter section of the document.
+
+
+See the frontmatter-related options in `ziggy.Ast` and `ziggy.Parser` to learn
+how to parse a Ziggy frontmatter out of an external document.
+
+
+

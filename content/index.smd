@@ -125,7 +125,8 @@
 }
 --- 
 
-## [Notation designed to help users grok data layouts]($block.id('first-section'))
+[]($section.id('first-section'))
+## Notation designed to help users grok data layouts
 ### Structs vs maps
 Ziggy uses different notation for key-value pairs when the keys are
 controlled by the application (i.e. keys must follow a schema), versus
@@ -146,10 +147,10 @@ Tagged literals help you express things such as **`@date("2024-01-01")`**,
 
 Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.
 
-See an example `package.json` vs a (hypotetical) Ziggy version.
+See an example `package.json` vs a (hypothetical) Ziggy version.
 
-## [A schema language for creating and documenting clear data layouts]($block.id('second-section'))
-
+[]($section.id('second-section'))
+## A schema language for creating and documenting clear data layouts
   Ziggy schemas help you define data layouts that are easy to grasp and
   validate for correctness. Ziggy schemas can define struct unions, enums
   and custom string literals.
@@ -170,6 +171,6 @@ See an example `package.json` vs a (hypotetical) Ziggy version.
 
 
 
-## [Tooling Supremacy]($block.id('third-section'))
-
+[]($section.id('third-section'))
+## Tooling Supremacy
 One official CLI tool that solves the most common needs, like **auto-formatting**, **schema validation**, **format conversion**, **querying** (coming soon) and **LSP support** for comfortable editing in your favorite text editor or IDE.
