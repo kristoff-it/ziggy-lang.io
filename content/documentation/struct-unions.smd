@@ -246,7 +246,5 @@ This has two big advantages:
   ["hello", true, 42]
   ``` 
 
-  If you're reading and writing Ziggy documents within a single application where you don't have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.
+If you're reading and writing Ziggy documents within a single application where you don't have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.
 
-<!--  LocalWords:  sweetspot JSON schemas structs
- -->
