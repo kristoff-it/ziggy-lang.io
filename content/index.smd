@@ -22,9 +22,9 @@
     "package-schema": 
       \\root = Package
       \\
-      \\///A Semantic Versioning version string.
+      \\/// A Semantic Versioning version string.
       \\@v = bytes,
-      \\///A valid SPDX expression.
+      \\/// A valid SPDX expression.
       \\@spdx = bytes,
       \\
       \\struct Package {
@@ -56,7 +56,7 @@
       \\  do: @action,
       \\  sender: bytes,
       \\  roles: [bytes],
-      \\  ///Optional metadata. 
+      \\  /// Optional metadata. 
       \\  extra: ?map[bytes],
       \\}
       \\
