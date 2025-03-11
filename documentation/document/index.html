@@ -309,6 +309,30 @@
           </ul>
         </details>
         <details open>
+          <summary>Using Ziggy from Zig</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/parser-example/">Parser Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul>
             <li>
@@ -343,18 +367,18 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Ziggy Document File Structure</h1><h2>File Extension</h2><p>A Ziggy Document file can have either a <code>ziggy</code> or a <code>zgy</code> file extension.</p><h2>Contents</h2><p>A Ziggy Document encodes one Ziggy value. A very common choice is to encode a struct in a Ziggy Document, but in fact a Ziggy Document can be an array, a map, a bytes literal or even just a single <code>null</code>.</p><p>The following are all valid Ziggy Documents:</p><pre><code class="ziggy"><span class="string">"hello world"</span>
+      <div><h1>Ziggy Document File Structure</h1><h2>File Extension</h2><p>A Ziggy Document file can have either a <code>ziggy</code> or a <code>zgy</code> file extension.</p><h2>Contents</h2><p>A Ziggy Document encodes one Ziggy value. A very common choice is to encode a struct in a Ziggy Document, but in fact a Ziggy Document can be an array, a map, a bytes literal or even just a single <code>null</code>.</p><p>The following are all valid Ziggy Documents:</p><pre><code class="ziggy"><span class="string">&quot;hello world&quot;</span>
 </code></pre>
 <pre><code class="ziggy"><span class="constant numeric">42</span>
 </code></pre>
 <pre><code class="ziggy"><span class="punctuation bracket">{</span>
-  <span class="string">"this"</span>: <span class="string">"is"</span><span class="punctuation delimiter">,</span>
-  <span class="string">"a"</span>: <span class="string">"map"</span><span class="punctuation delimiter">,</span>
+  <span class="string">&quot;this&quot;</span>: <span class="string">&quot;is&quot;</span><span class="punctuation delimiter">,</span>
+  <span class="string">&quot;a&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
 <pre><code class="ziggy"><span class="punctuation bracket">[</span>
-  <span class="punctuation bracket">{</span> .<span class="keyword">more</span> = <span class="string">"structs"</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span> 
-  <span class="punctuation bracket">{</span> .<span class="keyword">more</span> = <span class="string">"glory"</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+  <span class="punctuation bracket">{</span> .<span class="keyword">more</span> = <span class="string">&quot;structs&quot;</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span> 
+  <span class="punctuation bracket">{</span> .<span class="keyword">more</span> = <span class="string">&quot;glory&quot;</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">]</span>
 </code></pre>
 <h2>Top-level comment</h2><p>A Ziggy file can contain an optional top-level comment block:</p><pre><code class="ziggy"><span class="comment line">//!This is a top level comment made up of multiple lines.
@@ -363,16 +387,16 @@
 //!the structure of this Ziggy Document, Ziggy Schemas 
 //!are much better at that.</span>
 
-.<span class="keyword">this</span> = <span class="string">"is"</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">a</span> = <span class="string">"braceless struct"</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">this</span> = <span class="string">&quot;is&quot;</span><span class="punctuation delimiter">,</span>
+.<span class="keyword">a</span> = <span class="string">&quot;braceless struct&quot;</span><span class="punctuation delimiter">,</span>
 </code></pre>
-<h2>Other comments</h2><p>Ziggy allows you to put other comments in the document, but with some restrictions.</p><p>To put it simply, you're only allowed to put comments inside of structs, maps and arrays. In practice, this means that you can comment out array elements and map/struct fields.</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="error">bar,
+<h2>Other comments</h2><p>Ziggy allows you to put other comments in the document, but with some restrictions.</p><p>To put it simply, you’re only allowed to put comments inside of structs, maps and arrays. In practice, this means that you can comment out array elements and map/struct fields.</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="error">bar,
 //.bar = baz,
 .tags =</span> <span class="punctuation bracket">[</span>
-  <span class="string">"tag1"</span><span class="punctuation delimiter">,</span>
+  <span class="string">&quot;tag1&quot;</span><span class="punctuation delimiter">,</span>
   <span class="comment line">//can also sneak in a comment if you really want to
-  //"tag2",</span>
-  <span class="string">"tag3"</span><span class="punctuation delimiter">,</span>
+  //&quot;tag2&quot;,</span>
+  <span class="string">&quot;tag3&quot;</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
 </code></pre>
 </div>

@@ -309,6 +309,30 @@
           </ul>
         </details>
         <details open>
+          <summary>Using Ziggy from Zig</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/parser-example/">Parser Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul>
             <li>
@@ -343,12 +367,12 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Ziggy Schema Custom Types</h1><p>In this section we're going to see types that require to be defined before they can be used in a type expression.</p><h2>Tagged literal</h2><h3>Definition</h3><p>A tagged literal can be defined in two ways:</p><ul><li>as an <code>enum</code>, when all possible values come from a fixed list.</li><li>as <code>bytes</code> otherwise.</li></ul><h4>Enum definition</h4><pre><code class="ziggy-schema"><span class="error">@fruits = enum { apple, banana, cherry },
+      <div><h1>Ziggy Schema Custom Types</h1><p>In this section we’re going to see types that must be defined before they can be used in a type expression.</p><h2>Tagged literal</h2><h3>Definition</h3><p>A tagged literal can be defined in two ways:</p><ul><li>as an <code>enum</code>, when all possible values come from a fixed list.</li><li>as <code>bytes</code> otherwise.</li></ul><h4>Enum definition</h4><pre><code class="ziggy-schema"><span class="error">@fruits = enum { apple, banana, cherry },
 </span></code></pre>
-<h4>Bytes definition</h4><p>It's generally a good idea to give a doc comment to byte tagged literals.</p><pre><code class="ziggy-schema"><span class="error">/// A RFC3339 date literal, e.g. `2024-01-01T00:00:00`
+<h4>Bytes definition</h4><p>It’s generally a good idea to give a doc comment to byte tagged literals.</p><pre><code class="ziggy-schema"><span class="error">/// A RFC3339 date literal, e.g. `2024-01-01T00:00:00`
 @date = bytes,
 </span></code></pre>
-<h3>Expression</h3><p>You can use the <code>@</code>-prefixed tag name to denote a tagged literal type.</p><p>Examples: <code>@v</code>, <code>map[@date]</code>, <code>[@fruit]</code>, <code>?@spdx</code></p><h2>Struct</h2><h3>Definition</h3><p>Here's an example struct definion:</p><pre><code class="ziggy-schema"><span class="error">///An example struct representing a person.
+<h3>Expression</h3><p>You can use the <code>@</code>-prefixed tag name to denote a tagged literal type.</p><p>Examples: <code>@v</code>, <code>map[@date]</code>, <code>[@fruit]</code>, <code>?@spdx</code></p><h2>Struct</h2><h3>Definition</h3><p>Here’s an example struct definion:</p><pre><code class="ziggy-schema"><span class="error">///An example struct representing a person.
 struct Person {
   name: bytes,
   birthday: @date,
@@ -358,7 +382,7 @@ struct Person {
   interests: [bytes],
 }
 </span></code></pre>
-<p>In this example <code>Person</code> is the struct name. It's recommended to use TitleCase for struct names, but not mandatory.</p><p>A struct can have zero or more comma separated field definitions. A field definition is comprised of an identifier, followed by <code>:</code> and a type expression.</p><p>Both struct definitions and their fields can have an optional doc comment attached to them.</p><h3>Expression</h3><p>A struct can be referenced in a type expression by its name.</p><p>Examples: <code>Person</code>, <code>map[Person]</code>, <code>[Command]</code>, <code>?Notification</code></p><h2>Struct Union</h2><p>Struct unions denote when a value can be one of two or more struct types.</p><p>Struct unions don't require to be defined beforehand but are listed in this page as they depend on at least two struct definitions to be used.</p><h3>Expression</h3><p>A struct union expression is a list of <code>|</code> separated <strong>struct names</strong> .</p><p>When you need to make a struct union optional, you must surround it with parenthesis.</p><p>Examples: <code>Command | Notification</code>, <code>map[Person | Company]</code>, <code>?(Foo | Bar)</code></p><p>Example of usage in a struct definition:</p><pre><code class="ziggy-schema"><span class="error">///A UUIDv4 value.
+<p>In this example <code>Person</code> is the struct name. It’s recommended to use TitleCase for struct names, but not mandatory.</p><p>A struct can have zero or more comma separated field definitions. A field definition comprises an identifier, followed by <code>:</code> and a type expression.</p><p>Both struct definitions and their fields can have an optional doc comment attached to them.</p><h3>Expression</h3><p>A struct can be referenced in a type expression by its name.</p><p>Examples: <code>Person</code>, <code>map[Person]</code>, <code>[Command]</code>, <code>?Notification</code></p><h2>Struct Union</h2><p>Struct unions denote when a value can be one of two or more struct types.</p><p>Struct unions aren’t required to be defined beforehand but are listed in this page as they depend on at least two struct definitions to be used.</p><h3>Expression</h3><p>A struct union expression is a list of <code>|</code> separated <strong>struct names</strong> .</p><p>When you need to make a struct union optional, you must surround it with parentheses.</p><p>Examples: <code>Command | Notification</code>, <code>map[Person | Company]</code>, <code>?(Foo | Bar)</code></p><p>Example of usage in a struct definition:</p><pre><code class="ziggy-schema"><span class="error">///A UUIDv4 value.
 @uuid = bytes,
 ///Possible command actions.
 @action = enum { clear_chat, ban_user },

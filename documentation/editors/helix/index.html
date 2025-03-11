@@ -309,6 +309,30 @@
           </ul>
         </details>
         <details open>
+          <summary>Using Ziggy from Zig</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/parser-example/">Parser Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul>
             <li>
@@ -343,45 +367,45 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Helix</h1><h2>1. Copy Tree Sitter queries</h2><p>In your Helix <strong>runtime directory</strong> (https://docs.helix-editor.com/install.html#configuring-helixs-runtime-files), copy the Tree Sitter queries from our parsers.<br>From the root of the <a href="https://github.com/kristoff-it/ziggy">Ziggy repository</a>, run the following two commands after replacing <code>HELIX_RUNTIME_PATH</code>:</p><ul><li><code>cp -rT tree-sitter-ziggy/queries HELIX_RUNTIME_PATH/queries/ziggy</code></li><li><code>cp -rT tree-sitter-ziggy-schema/queries HELIX_RUNTIME_PATH/queries/ziggy_schema</code></li></ul><p>NOTE: '-T' makes it so you can run the command multiple times without nesting new copies of <code>queries</code> more deeply than intended. Also macOS doesn't support it, sorry.</p><h2>2. Add Ziggy (and Ziggy Schema) to your language config</h2><p>In your Helix <strong>config directory</strong> (usually <code>~/.config/helix/</code>)create <code>languages.toml</code> and copy the following lines:</p><pre><code class="toml">
+      <div><h1>Helix</h1><h2>1. Copy Tree Sitter queries</h2><p>In your Helix <a href="https://docs.helix-editor.com/install.html#configuring-helixs-runtime-files" target="_blank"><strong>runtime directory</strong></a>, copy the Tree Sitter queries from our parsers.<br>From the root of the <a href="https://github.com/kristoff-it/ziggy" target="_blank">Ziggy repository</a>, run the following two commands after replacing <code>HELIX_RUNTIME_PATH</code>:</p><ul><li><code>cp -rT tree-sitter-ziggy/queries HELIX_RUNTIME_PATH/queries/ziggy</code></li><li><code>cp -rT tree-sitter-ziggy-schema/queries HELIX_RUNTIME_PATH/queries/ziggy_schema</code></li></ul><p>NOTE: ‘-T’ makes it so you can run the command multiple times without nesting new copies of <code>queries</code> more deeply than intended. Also macOS doesn’t support it, sorry.</p><h2>2. Add Ziggy (and Ziggy Schema) to your language config</h2><p>In your Helix <strong>config directory</strong> (usually <code>~/.config/helix/</code>)create <code>languages.toml</code> and copy the following lines:</p><pre><code class="toml">
 <span class="punctuation bracket">[</span><span class="property">language-server</span><span class="punctuation delimiter">.</span><span class="property">ziggy-lsp</span><span class="punctuation bracket">]</span>
-<span class="property">command</span> <span class="operator">=</span> <span class="string">"ziggy"</span>
-<span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"lsp"</span><span class="punctuation bracket">]</span>
+<span class="property">command</span> <span class="operator">=</span> <span class="string">&quot;ziggy&quot;</span>
+<span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">&quot;lsp&quot;</span><span class="punctuation bracket">]</span>
 
 <span class="punctuation bracket">[[</span><span class="property">language</span><span class="punctuation bracket">]]</span>
-<span class="property">name</span> <span class="operator">=</span> <span class="string">"ziggy"</span>
-<span class="property">scope</span> <span class="operator">=</span> <span class="string">"text.ziggy"</span>
+<span class="property">name</span> <span class="operator">=</span> <span class="string">&quot;ziggy&quot;</span>
+<span class="property">scope</span> <span class="operator">=</span> <span class="string">&quot;text.ziggy&quot;</span>
 <span class="property">roots</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="punctuation bracket">]</span>
-<span class="property">injection-regex</span> <span class="operator">=</span> <span class="string">"ziggy|zgy"</span>
-<span class="property">file-types</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"ziggy"</span><span class="punctuation delimiter">,</span> <span class="string">"zgy"</span><span class="punctuation bracket">]</span>
-<span class="property">comment-token</span> <span class="operator">=</span> <span class="string">"//"</span>
+<span class="property">injection-regex</span> <span class="operator">=</span> <span class="string">&quot;ziggy|zgy&quot;</span>
+<span class="property">file-types</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;zgy&quot;</span><span class="punctuation bracket">]</span>
+<span class="property">comment-token</span> <span class="operator">=</span> <span class="string">&quot;//&quot;</span>
 <span class="property">auto-format</span> <span class="operator">=</span> <span class="constant builtin">true</span>
-<span class="property">formatter</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">command</span> <span class="operator">=</span> <span class="string">"ziggy"</span> <span class="punctuation delimiter">,</span> <span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"fmt"</span><span class="punctuation delimiter">,</span> <span class="string">"--stdin"</span><span class="punctuation bracket">]</span> <span class="punctuation bracket">}</span>
-<span class="property">language-servers</span> <span class="operator">=</span> <span class="punctuation bracket">[</span> <span class="string">"ziggy-lsp"</span> <span class="punctuation bracket">]</span>
+<span class="property">formatter</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">command</span> <span class="operator">=</span> <span class="string">&quot;ziggy&quot;</span> <span class="punctuation delimiter">,</span> <span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">&quot;fmt&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;--stdin&quot;</span><span class="punctuation bracket">]</span> <span class="punctuation bracket">}</span>
+<span class="property">language-servers</span> <span class="operator">=</span> <span class="punctuation bracket">[</span> <span class="string">&quot;ziggy-lsp&quot;</span> <span class="punctuation bracket">]</span>
 
 <span class="punctuation bracket">[[</span><span class="property">grammar</span><span class="punctuation bracket">]]</span>
-<span class="property">name</span> <span class="operator">=</span> <span class="string">"ziggy"</span>
-<span class="property">source</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">git</span> <span class="operator">=</span> <span class="string">"https://github.com/kristoff-it/ziggy"</span><span class="punctuation delimiter">,</span> <span class="property">rev</span> <span class="operator">=</span> <span class="string">"0e46579ed878bb28a78cf624c2e593eb39301648"</span><span class="punctuation delimiter">,</span> <span class="property">subpath</span> <span class="operator">=</span> <span class="string">"tree-sitter-ziggy"</span> <span class="punctuation bracket">}</span>
+<span class="property">name</span> <span class="operator">=</span> <span class="string">&quot;ziggy&quot;</span>
+<span class="property">source</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">git</span> <span class="operator">=</span> <span class="string">&quot;https://github.com/kristoff-it/ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="property">rev</span> <span class="operator">=</span> <span class="string">&quot;0e46579ed878bb28a78cf624c2e593eb39301648&quot;</span><span class="punctuation delimiter">,</span> <span class="property">subpath</span> <span class="operator">=</span> <span class="string">&quot;tree-sitter-ziggy&quot;</span> <span class="punctuation bracket">}</span>
 
 <span class="punctuation bracket">[[</span><span class="property">language</span><span class="punctuation bracket">]]</span>
-<span class="property">name</span> <span class="operator">=</span> <span class="string">"ziggy_schema"</span>
-<span class="property">scope</span> <span class="operator">=</span> <span class="string">"text.ziggy_schema"</span>
+<span class="property">name</span> <span class="operator">=</span> <span class="string">&quot;ziggy_schema&quot;</span>
+<span class="property">scope</span> <span class="operator">=</span> <span class="string">&quot;text.ziggy_schema&quot;</span>
 <span class="property">roots</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="punctuation bracket">]</span>
-<span class="property">injection-regex</span> <span class="operator">=</span> <span class="string">"ziggy-schema|zgy-schema"</span>
-<span class="property">file-types</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"ziggy-schema"</span><span class="punctuation delimiter">,</span> <span class="string">"zgy-schema"</span><span class="punctuation bracket">]</span>
-<span class="property">comment-token</span> <span class="operator">=</span> <span class="string">"///"</span>
-<span class="property">indent</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">tab-width</span> <span class="operator">=</span> <span class="number">4</span><span class="punctuation delimiter">,</span> <span class="property">unit</span> <span class="operator">=</span> <span class="string">"    "</span> <span class="punctuation bracket">}</span>
-<span class="property">formatter</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">command</span> <span class="operator">=</span> <span class="string">"ziggy"</span> <span class="punctuation delimiter">,</span> <span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"fmt"</span><span class="punctuation delimiter">,</span> <span class="string">"-"</span><span class="punctuation delimiter">,</span> <span class="string">"--type"</span><span class="punctuation delimiter">,</span> <span class="string">"schema"</span><span class="punctuation bracket">]</span> <span class="punctuation bracket">}</span>
+<span class="property">injection-regex</span> <span class="operator">=</span> <span class="string">&quot;ziggy-schema|zgy-schema&quot;</span>
+<span class="property">file-types</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">&quot;ziggy-schema&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;zgy-schema&quot;</span><span class="punctuation bracket">]</span>
+<span class="property">comment-token</span> <span class="operator">=</span> <span class="string">&quot;///&quot;</span>
+<span class="property">indent</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">tab-width</span> <span class="operator">=</span> <span class="number">4</span><span class="punctuation delimiter">,</span> <span class="property">unit</span> <span class="operator">=</span> <span class="string">&quot;    &quot;</span> <span class="punctuation bracket">}</span>
+<span class="property">formatter</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">command</span> <span class="operator">=</span> <span class="string">&quot;ziggy&quot;</span> <span class="punctuation delimiter">,</span> <span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">&quot;fmt&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;-&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;--type&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;schema&quot;</span><span class="punctuation bracket">]</span> <span class="punctuation bracket">}</span>
 <span class="property">auto-format</span> <span class="operator">=</span> <span class="constant builtin">true</span>
-<span class="property">language-servers</span> <span class="operator">=</span> <span class="punctuation bracket">[</span> <span class="string">"ziggy-schema-lsp"</span> <span class="punctuation bracket">]</span>
+<span class="property">language-servers</span> <span class="operator">=</span> <span class="punctuation bracket">[</span> <span class="string">&quot;ziggy-schema-lsp&quot;</span> <span class="punctuation bracket">]</span>
 
 <span class="punctuation bracket">[[</span><span class="property">grammar</span><span class="punctuation bracket">]]</span>
-<span class="property">name</span> <span class="operator">=</span> <span class="string">"ziggy_schema"</span>
-<span class="property">source</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">git</span> <span class="operator">=</span> <span class="string">"https://github.com/kristoff-it/ziggy"</span><span class="punctuation delimiter">,</span> <span class="property">rev</span> <span class="operator">=</span> <span class="string">"0e46579ed878bb28a78cf624c2e593eb39301648"</span><span class="punctuation delimiter">,</span> <span class="property">subpath</span> <span class="operator">=</span> <span class="string">"tree-sitter-ziggy-schema"</span> <span class="punctuation bracket">}</span>
+<span class="property">name</span> <span class="operator">=</span> <span class="string">&quot;ziggy_schema&quot;</span>
+<span class="property">source</span> <span class="operator">=</span> <span class="punctuation bracket">{</span> <span class="property">git</span> <span class="operator">=</span> <span class="string">&quot;https://github.com/kristoff-it/ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="property">rev</span> <span class="operator">=</span> <span class="string">&quot;0e46579ed878bb28a78cf624c2e593eb39301648&quot;</span><span class="punctuation delimiter">,</span> <span class="property">subpath</span> <span class="operator">=</span> <span class="string">&quot;tree-sitter-ziggy-schema&quot;</span> <span class="punctuation bracket">}</span>
 
 <span class="punctuation bracket">[</span><span class="property">language-server</span><span class="punctuation delimiter">.</span><span class="property">ziggy-schema-lsp</span><span class="punctuation bracket">]</span>
-<span class="property">command</span> <span class="operator">=</span> <span class="string">"ziggy"</span>
-<span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">"lsp"</span><span class="punctuation delimiter">,</span> <span class="string">"--schema"</span><span class="punctuation bracket">]</span>
+<span class="property">command</span> <span class="operator">=</span> <span class="string">&quot;ziggy&quot;</span>
+<span class="property">args</span> <span class="operator">=</span> <span class="punctuation bracket">[</span><span class="string">&quot;lsp&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;--schema&quot;</span><span class="punctuation bracket">]</span>
 </code></pre>
 <h2>3. Build Tree Sitter grammars</h2><p>Run <code>hx --grammar build</code>, it should report that <code>ziggy</code> and <code>ziggy_schema</code> were built successfully.</p></div>
       <nav id="footer">

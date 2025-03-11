@@ -7,8 +7,8 @@
     <meta name="twitter:site" content="@croloris">
     <meta name="twitter:author" content="@croloris">
     <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="Getting Started - Ziggy">
-    <meta property="og:title" content="Getting Started">
+    <meta name="twitter:title" content="Parser Example - Ziggy">
+    <meta property="og:title" content="Parser Example">
     <meta property="og:type" content="website">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta
@@ -16,7 +16,7 @@
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   >
     <title id="title">
-      Getting Started
+      Parser Example
       - Ziggy Data Language
     </title>
     <link rel="stylesheet" type="text/css" href="/fonts.css">
@@ -234,7 +234,7 @@
             </li>
           
             <li>
-              <a class="selected" href="/documentation/getting-started/">Getting Started</a>
+              <a class="" href="/documentation/getting-started/">Getting Started</a>
             </li>
           </ul>
         </details>
@@ -316,7 +316,7 @@
             </li>
           
             <li>
-              <a class="" href="/documentation/parser-example/">Parser Example</a>
+              <a class="selected" href="/documentation/parser-example/">Parser Example</a>
             </li>
           
             <li>
@@ -367,34 +367,29 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Getting Started</h1><p>Ziggy is a file format so to get started you only need a text editor, but setting up a proper dev environment can make a significant difference in the quality of your experience.</p><h2>The Ziggy CLI Tool</h2><p>Ziggy has a all-in-one CLI tool that gives you access to all the basics.</p><pre><code>$ ziggy help
-
-Usage: ziggy COMMAND [OPTIONS]
-
-Commands: 
-  fmt          Format Ziggy files      
-  query, q     Query Ziggy files 
-  check        Check Ziggy files against a Ziggy schema 
-  convert      Convert between JSON, YAML, TOML files and Ziggy
-  lsp          Start the Ziggy LSP
-  help         Show this menu and exit
-
-General Options:
-  --help, -h   Print command specific usage
-</code></pre><h3>Download</h3><p>You can get a copy of the Ziggy CLI tool <a href="https://github.com/kristoff-it/ziggy/releases/" target="_blank">from the releases page on GitHub</a>.</p><p>Alternatively, you can compile it from source. See the README instructions for more information.</p><p>Once downloaded, you will need to put the <code>ziggy</code> executable in your <code>PATH</code> so that editors can find it.</p><h3>Next steps</h3><p>Add Ziggy syntax highlighting and Ziggy LSP support to your editor by following one of the guides in the Editor Configuration section.</p></div>
+      <div><h1>Parser Example</h1><p>To access the ziggy module, simply add top-level import</p><pre><code class="zig"><span class="keyword">const</span> <span class="variable">ziggy</span> <span class="operator">=</span> <span class="keyword import">@import</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p>Ziggy has two main parser APIs:</p><ul><li><code>ziggy.Ast</code>, which allows you to parse a Ziggy file into an AST, useful when doing source-level analysis of Ziggy documents.</li><li><code>ziggy.Parser</code>, a type-driven parser that allows you to parse a Ziggy document either into a known type defined by you, or into a <code>ziggy.dynamic.Value</code> (a type able to represent any Ziggy document).</li></ul><p>The AST parser is a bit of a specialty parser so we won’t expand on it in this document.</p><h2>Parsing a Ziggy document</h2><p>First, define a type you want Ziggy document to reflect</p><pre><code class="zig"><span class="keyword">const</span> <span class="variable">Example</span> <span class="operator">=</span> <span class="keyword type">struct</span> <span class="punctuation bracket">{</span>
+    <span class="variable member">foo</span><span class="punctuation delimiter">:</span> <span class="punctuation bracket">[</span><span class="punctuation bracket">]</span><span class="keyword">const</span> <span class="type builtin">u8</span><span class="punctuation delimiter">,</span>
+    <span class="variable member">bar</span><span class="punctuation delimiter">:</span> <span class="type builtin">bool</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p><code>ziggy.Parser</code> includes a function called <code>parseLeaky</code> (which is also re-exported by the root namespace), you can call the function, and it will return instance of your type from the parsed string:</p><pre><code class="zig"><span class="keyword">const</span> <span class="variable">example</span> <span class="operator">=</span> <span class="keyword exception">try</span> <span class="variable">ziggy</span><span class="punctuation delimiter">.</span><span class="function call">parseLeaky</span><span class="punctuation bracket">(</span><span class="variable">Example</span><span class="punctuation delimiter">,</span> <span class="variable">allocator</span><span class="punctuation delimiter">,</span> <span class="variable">str</span><span class="punctuation delimiter">,</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span><span class="punctuation bracket">}</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p>Now you can access the data through the returned value. The function will only return <code>error.Syntax</code> in case of a syntax error. If you want more detailed diagnostics, provide an instance of <code>ziggy.Diagnostic</code> to the last argument of <code>parseLeaky</code>. In case of an error you will be able to inspect it to get more information about the error (it also has convenience formatting functions).</p><p>The last parameter is an instance of <code>ziggy.ParseOptions</code> and can define more parsing options.</p><p>Parsing a Ziggy document might require to heap allocate values (e.g. to unescape a string), and it’s normally problematic to keep track of such occurrences, meaning that you should use a <code>std.heap.ArenaAllocator</code> (or equivalents) in order to prevent memory leakages (hence the <code>Leaky</code> part of the function name).</p></div>
       <nav id="footer">
         <div>
-          <a href="/documentation/about/">
+          <a href="/documentation/getting-started-dev/">
             <p>
               ←
-              <span class="title">About</span>
+              <span class="title">Getting Started</span>
             </p>
           </a>
         </div>
         <div>
-          <a href="/documentation/editors/vscode/">
+          <a href="/documentation/serialization-example/">
             <p>
-              <span class="title">VSCode</span>
+              <span class="title">Serialization Example</span>
               →
             </p>
           </a>

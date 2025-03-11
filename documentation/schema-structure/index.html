@@ -309,6 +309,30 @@
           </ul>
         </details>
         <details open>
+          <summary>Using Ziggy from Zig</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/parser-example/">Parser Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul>
             <li>
@@ -343,7 +367,7 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Ziggy Schema File Structure</h1><h2>File Extension</h2><p>A Ziggy Schema file can have either a <code>ziggy-schema</code> or a <code>zgy-schema</code> file extension.</p><h2>Contents</h2><p>Here's an example Ziggy Schema:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span>
+      <div><h1>Ziggy Schema File Structure</h1><h2>File Extension</h2><p>A Ziggy Schema file can have either a <code>ziggy-schema</code> or a <code>zgy-schema</code> file extension.</p><h2>Contents</h2><p>Here’s an example Ziggy Schema:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span>
 
 
 <span class="comment line documentation">///A UUIDv4 value.</span>
@@ -377,7 +401,7 @@
 
 <span class="function">@fruit</span> = <span class="keyword">enum</span> <span class="punctuation bracket">{</span> <span class="type">apple</span><span class="punctuation delimiter">,</span> <span class="type">banana</span><span class="punctuation delimiter">,</span> <span class="type">cherry</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 </code></pre>
-<h3>Tagged literal definitions</h3><p>After the root definition follows a list of comma separated tagged literals. All tagged literals mentioned in the schema must be mentioned in that list of definitions.</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="punctuation bracket">[</span><span class="type">Foo</span><span class="punctuation bracket">]</span>
+<h3>Tagged literal definitions</h3><p>After the root definition follows a list of comma-separated tagged literals. All tagged literals mentioned in the schema must be mentioned in that list of definitions.</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="punctuation bracket">[</span><span class="type">Foo</span><span class="punctuation bracket">]</span>
 
 <span class="function">@uuid</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 <span class="function">@date</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>

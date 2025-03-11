@@ -298,15 +298,15 @@
         </h2>
       </div>
       <div id="main-code" class="flex-item">
-        <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = @<span class="function">uuid</span><span class="punctuation bracket">(</span><span class="string">"..."</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+        <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = @<span class="function">uuid</span><span class="punctuation bracket">(</span><span class="string">&quot;...&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">time</span> = <span class="constant numeric">1710085168</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">payload</span> = <span class="type">Command</span> <span class="punctuation bracket">{</span>
-  .<span class="keyword">do</span> = @<span class="function">action</span><span class="punctuation bracket">(</span><span class="string">"clear_chat"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">sender</span> = <span class="string">"kristoff-it"</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">roles</span> = <span class="punctuation bracket">[</span><span class="string">"admin"</span><span class="punctuation delimiter">,</span> <span class="string">"mod"</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">do</span> = @<span class="function">action</span><span class="punctuation bracket">(</span><span class="string">&quot;clear_chat&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">sender</span> = <span class="string">&quot;kristoff-it&quot;</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">roles</span> = <span class="punctuation bracket">[</span><span class="string">&quot;admin&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;mod&quot;</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">extra</span> = <span class="punctuation bracket">{</span>
-    <span class="string">"agent"</span>: <span class="string">"Mozilla/5.0"</span><span class="punctuation delimiter">,</span>
-    <span class="string">"os"</span>: <span class="string">"Linux/x64"</span><span class="punctuation delimiter">,</span> 
+    <span class="string">&quot;agent&quot;</span>: <span class="string">&quot;Mozilla/5.0&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;os&quot;</span>: <span class="string">&quot;Linux/x64&quot;</span><span class="punctuation delimiter">,</span> 
   <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span></code></pre>
       </div>
@@ -317,26 +317,26 @@
   <div style="margin-top:40px;"></div>
   <div id="features">
     <div class="flex">
-      <div class="flex-item"><h2 id=first-section>Notation designed to help users grok data layouts</h2><h3>Structs vs maps</h3><p>Ziggy uses different notation for key-value pairs when the keys are controlled by the application (i.e. keys must follow a schema), versus when the user is in control, and thus expected to come up with key names.</p><h3>Struct unions</h3><p><strong>Ever had to fight JSON to express a tagged union?</strong> Ziggy structs have names that can be used by both humans and tooling to discriminate between union cases.</p><h3>Tagged literals</h3><p>Tagged literals help you express things such as <strong><code>@date("2024-01-01")</code></strong>, <strong><code>@keys("crtl+c")</code></strong>, or <strong><code>@foo("bar")</code></strong>.</p><h3>...and more quality of life features!</h3><p>Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.</p><p>See an example <code>package.json</code> vs a (hypotetical) Ziggy version.</p>
+      <div class="flex-item"><div id="first-section"><h2>Notation designed to help users grok data layouts</h2><h3>Structs vs maps</h3><p>Ziggy uses different notation for key-value pairs when the keys are controlled by the application (i.e. keys must follow a schema), versus when the user is in control, and thus expected to come up with key names.</p><h3>Struct unions</h3><p><strong>Ever had to fight JSON to express a tagged union?</strong> Ziggy structs have names that can be used by both humans and tooling to discriminate between union cases.</p><h3>Tagged literals</h3><p>Tagged literals help you express things such as <strong><code>@date(&quot;2024-01-01&quot;)</code></strong>, <strong><code>@keys(&quot;crtl+c&quot;)</code></strong>, or <strong><code>@foo(&quot;bar&quot;)</code></strong>.</p><h3>…and more quality of life features!</h3><p>Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.</p><p>See an example <code>package.json</code> vs a (hypothetical) Ziggy version.</p></div>
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tab1" checked="checked">
         <label class="label label-left" for="tab1">package.json</label>
         <div class="panel" tabindex="1">
           <pre class="tab-sample"><code class="json">{
-  <span class="string special key">"name"</span>: <span class="string">"ziggy"</span>,
-  <span class="string special key">"version"</span>: <span class="string">"1.0.0"</span>,
-  <span class="string special key">"license"</span>: <span class="string">"MIT"</span>,
-  <span class="string special key">"dependencies"</span>: {
-    <span class="string special key">"react"</span>: <span class="string">"next"</span>,
-    <span class="string special key">"leftpad"</span>: <span class="string">"^1.0.0"</span>
+  <span class="string special key">&quot;name&quot;</span>: <span class="string">&quot;ziggy&quot;</span>,
+  <span class="string special key">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,
+  <span class="string special key">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,
+  <span class="string special key">&quot;dependencies&quot;</span>: {
+    <span class="string special key">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span>,
+    <span class="string special key">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span>
   },
-  <span class="string special key">"repository"</span>: {
-    <span class="string special key">"type"</span>: <span class="string">"git"</span>,
-    <span class="string special key">"url"</span> : <span class="string">"https://github.com"</span>
+  <span class="string special key">&quot;repository&quot;</span>: {
+    <span class="string special key">&quot;type&quot;</span>: <span class="string">&quot;git&quot;</span>,
+    <span class="string special key">&quot;url&quot;</span> : <span class="string">&quot;https://github.com&quot;</span>
  },
-  <span class="string special key">"description"</span>: 
-    <span class="string">"# Ziggy\n\nA Data Serializa..."</span>
+  <span class="string special key">&quot;description&quot;</span>: 
+    <span class="string">&quot;# Ziggy\n\nA Data Serializa...&quot;</span>
 
 
 
@@ -346,16 +346,16 @@
         <label class="label label-right" for="tab2">package.ziggy</label>
         <div class="panel" tabindex="2">
           <pre class="tab-sample"><code class="ziggy"><span class="punctuation bracket">{</span>
-  .<span class="keyword">name</span> = <span class="string">"ziggy"</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">version</span> = @<span class="function">v</span><span class="punctuation bracket">(</span><span class="string">"1.0.0"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">license</span> = @<span class="function">spdx</span><span class="punctuation bracket">(</span><span class="string">"MIT"</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">name</span> = <span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">version</span> = @<span class="function">v</span><span class="punctuation bracket">(</span><span class="string">&quot;1.0.0&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">license</span> = @<span class="function">spdx</span><span class="punctuation bracket">(</span><span class="string">&quot;MIT&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
-    <span class="string">"react"</span>: <span class="string">"next"</span><span class="punctuation delimiter">,</span>
-    <span class="string">"leftpad"</span>: <span class="string">"^1.0.0"</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation delimiter">,</span>
   <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">repository</span> = <span class="type">Git</span> <span class="punctuation bracket">{</span>
-    <span class="comment line">// "type" is now the struct name</span>
-    .<span class="keyword">url</span> = <span class="string">"https://github.com"</span><span class="punctuation delimiter">,</span>
+    <span class="comment line">// &quot;type&quot; is now the struct name</span>
+    .<span class="keyword">url</span> = <span class="string">&quot;https://github.com&quot;</span><span class="punctuation delimiter">,</span>
   <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">description</span> = 
     <span class="string">\\# Ziggy
@@ -367,7 +367,7 @@
       </div>
     </div>
     <div class="flex">
-      <div class="flex-item"><h2 id=second-section>A schema language for creating and documenting clear data layouts</h2><p>Ziggy schemas help you define data layouts that are easy to grasp and validate for correctness. Ziggy schemas can define struct unions, enums and custom string literals.</p><p>The Ziggy LSP will be able to use your schema definitions to show diagnostics, contextual help and give autocomplete suggestions to your users.</p><p>Other tooling will be able to use schemas to autogenerate compatible type definitions.</p><p>The best feature of Ziggy schemas is that <a href="/documentation/struct-unions/">they <strong>can't</strong> define every possible data layout!</a></p>
+      <div class="flex-item"><div id="second-section"><h2>A schema language for creating and documenting clear data layouts</h2><p>Ziggy schemas help you define data layouts that are easy to grasp and validate for correctness. Ziggy schemas can define struct unions, enums and custom string literals.</p><p>The Ziggy LSP will be able to use your schema definitions to show diagnostics, contextual help and give autocomplete suggestions to your users.</p><p>Other tooling will be able to use schemas to autogenerate compatible type definitions.</p><p>The best feature of Ziggy schemas is that <a href="/documentation/struct-unions/">they <strong>can’t</strong> define every possible data layout!</a></p></div>
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
@@ -375,9 +375,9 @@
         <div class="panel" tabindex="1">
           <pre class="tab-sample" id="schema1"><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Package</span>
 
-<span class="comment line documentation">///A Semantic Versioning version string.</span>
+<span class="comment line documentation">/// A Semantic Versioning version string.</span>
 <span class="function">@v</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
-<span class="comment line documentation">///A valid SPDX expression.</span>
+<span class="comment line documentation">/// A valid SPDX expression.</span>
 <span class="function">@spdx</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
 
 <span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation bracket">{</span>
@@ -411,7 +411,7 @@
   <span class="keyword">do</span>: <span class="function">@action</span><span class="punctuation delimiter">,</span>
   <span class="keyword">sender</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
   <span class="keyword">roles</span>: <span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
-  <span class="comment line documentation">///Optional metadata. </span>
+  <span class="comment line documentation">/// Optional metadata. </span>
   <span class="keyword">extra</span>: <span class="type">?</span><span class="keyword">map</span><span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 
@@ -420,7 +420,7 @@
       </div>
     </div>
     <div class="flex">
-      <div class="flex-item"><h2 id=third-section>Tooling Supremacy</h2><p>One official CLI tool that solves the most common needs, like <strong>auto-formatting</strong>, <strong>schema validation</strong>, <strong>format conversion</strong>, <strong>querying</strong> (coming soon) and <strong>LSP support</strong> for comfortable editing in your favorite text editor or IDE.</p>
+      <div class="flex-item"><div id="third-section"><h2>Tooling Supremacy</h2><p>One official CLI tool that solves the most common needs, like <strong>auto-formatting</strong>, <strong>schema validation</strong>, <strong>format conversion</strong>, <strong>querying</strong> (coming soon) and <strong>LSP support</strong> for comfortable editing in your favorite text editor or IDE.</p></div>
       </div>
       <div class="flex-big">
         <pre><code>$ ziggy help

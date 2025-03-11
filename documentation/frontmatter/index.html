@@ -7,8 +7,8 @@
     <meta name="twitter:site" content="@croloris">
     <meta name="twitter:author" content="@croloris">
     <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="Getting Started - Ziggy">
-    <meta property="og:title" content="Getting Started">
+    <meta name="twitter:title" content="Frontmatter - Ziggy">
+    <meta property="og:title" content="Frontmatter">
     <meta property="og:type" content="website">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta
@@ -16,7 +16,7 @@
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   >
     <title id="title">
-      Getting Started
+      Frontmatter
       - Ziggy Data Language
     </title>
     <link rel="stylesheet" type="text/css" href="/fonts.css">
@@ -234,7 +234,7 @@
             </li>
           
             <li>
-              <a class="selected" href="/documentation/getting-started/">Getting Started</a>
+              <a class="" href="/documentation/getting-started/">Getting Started</a>
             </li>
           </ul>
         </details>
@@ -320,7 +320,7 @@
             </li>
           
             <li>
-              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+              <a class="selected" href="/documentation/frontmatter/">Frontmatter</a>
             </li>
           
             <li>
@@ -367,38 +367,27 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Getting Started</h1><p>Ziggy is a file format so to get started you only need a text editor, but setting up a proper dev environment can make a significant difference in the quality of your experience.</p><h2>The Ziggy CLI Tool</h2><p>Ziggy has a all-in-one CLI tool that gives you access to all the basics.</p><pre><code>$ ziggy help
-
-Usage: ziggy COMMAND [OPTIONS]
-
-Commands: 
-  fmt          Format Ziggy files      
-  query, q     Query Ziggy files 
-  check        Check Ziggy files against a Ziggy schema 
-  convert      Convert between JSON, YAML, TOML files and Ziggy
-  lsp          Start the Ziggy LSP
-  help         Show this menu and exit
-
-General Options:
-  --help, -h   Print command specific usage
-</code></pre><h3>Download</h3><p>You can get a copy of the Ziggy CLI tool <a href="https://github.com/kristoff-it/ziggy/releases/" target="_blank">from the releases page on GitHub</a>.</p><p>Alternatively, you can compile it from source. See the README instructions for more information.</p><p>Once downloaded, you will need to put the <code>ziggy</code> executable in your <code>PATH</code> so that editors can find it.</p><h3>Next steps</h3><p>Add Ziggy syntax highlighting and Ziggy LSP support to your editor by following one of the guides in the Editor Configuration section.</p></div>
+      <div><p>All Ziggy pasers support parsing a Ziggy document used as frontmatter in an external document file format, like SuperMD.</p><p>This is what a frontmatter looks like in SuperMD:</p><pre><code class="md">---
+.title = &quot;Frontmatter&quot;,
+.date =  &quot;2025-03-11T19:11:59&quot;,
+.author = &quot;&quot;,
+.draft = false,
+.layout = &quot;documentation.shtml&quot;,
+.tags = [],
+---
+Your **SuperMD** content goes here.
+</code></pre>
+<p>As you can see the Ziggy document is framed by two <code>---</code> delimiters.</p><p>The Ziggy LSP can be configured to run on SuperMD files and it will correctly provide diagnostics for the frontmatter section of the document.</p><p>See the frontmatter-related options in <code>ziggy.Ast</code> and <code>ziggy.Parser</code> to learn how to parse a Ziggy frontmatter out of an external document.</p></div>
       <nav id="footer">
         <div>
-          <a href="/documentation/about/">
+          <a href="/documentation/metaprogramming/">
             <p>
               ←
-              <span class="title">About</span>
+              <span class="title">Metaprogramming</span>
             </p>
           </a>
         </div>
-        <div>
-          <a href="/documentation/editors/vscode/">
-            <p>
-              <span class="title">VSCode</span>
-              →
-            </p>
-          </a>
-        </div>
+        <div></div>
       </nav>
     </div>
   </div>

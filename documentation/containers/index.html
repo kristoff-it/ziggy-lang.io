@@ -309,6 +309,30 @@
           </ul>
         </details>
         <details open>
+          <summary>Using Ziggy from Zig</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/parser-example/">Parser Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul>
             <li>
@@ -343,44 +367,44 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Ziggy Container Value Types</h1><h2>Arrays</h2><p>Ziggy uses <code>[]</code> (square brakets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.</p><p>Ziggy arrays can contain different types of values and can be nested arbitrarily deep.</p><p>Examples: <code>[1, 2, 3]</code>, <code>[true, null, 42]</code>, <code>["hello", [1], []]</code></p><h2>Maps</h2><p>Maps are the first key-value mapping notation available in Ziggy.</p><p>Maps are meant to denote key-value mappings where key names are controlled <strong>by the user</strong>.</p><p>It's common for configuration files and API messages to have key-value mappings where key names are meant to be part of a schema, while some other key-value mappings are instead meant to be fully controlled by the user.</p><p>One example of this is NPM's <code>package.json</code>:</p><pre><code class="json">{
-  <span class="string special key">"name"</span>: <span class="string">"ziggy"</span>,
-  <span class="string special key">"dependencies"</span>: {
-    <span class="string special key">"react"</span>: <span class="string">"next"</span>,
-    <span class="string special key">"leftpad"</span>: <span class="string">"^1.0.0"</span>
+      <div><h1>Ziggy Container Value Types</h1><h2>Arrays</h2><p>Ziggy uses <code>[]</code> (square brackets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.</p><p>Ziggy arrays can contain different types of values and can be nested arbitrarily deep.</p><p>Examples: <code>[1, 2, 3]</code>, <code>[true, null, 42]</code>, <code>[&quot;hello&quot;, [1], []]</code></p><h2>Maps</h2><p>Maps are the first key-value mapping notation available in Ziggy.</p><p>Maps are meant to denote key-value mappings where key names are controlled <strong>by the user</strong>.</p><p>It’s common for configuration files and API messages to have key-value mappings where key names are meant to be part of a schema, while some other key-value mappings are instead meant to be fully controlled by the user.</p><p>One example of this is NPM’s <code>package.json</code>:</p><pre><code class="json">{
+  <span class="string special key">&quot;name&quot;</span>: <span class="string">&quot;ziggy&quot;</span>,
+  <span class="string special key">&quot;dependencies&quot;</span>: {
+    <span class="string special key">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span>,
+    <span class="string special key">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span>
   }
 }
 </code></pre>
-<p>In this example you can see how <code>"name"</code> and <code>"dependencies"</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>"dependencies"</code> would be a map.</p><p>Ziggy map syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
-  <span class="string">"hello"</span>: <span class="string">"world"</span><span class="punctuation delimiter">,</span>
-  <span class="string">"foo"</span>: <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+<p>In this example you can see how <code>&quot;name&quot;</code> and <code>&quot;dependencies&quot;</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>&quot;dependencies&quot;</code> would be a map.</p><p>Ziggy map syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
+  <span class="string">&quot;hello&quot;</span>: <span class="string">&quot;world&quot;</span><span class="punctuation delimiter">,</span>
+  <span class="string">&quot;foo&quot;</span>: <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
-<p>Ziggy maps have the same notation as JSON objects but allow trailing commas.</p><p>A hypotetical <code>package.ziggy</code>, where the outer key-value map is expressed as a struct, would look like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
-  .<span class="keyword">name</span> = <span class="string">"ziggy"</span><span class="punctuation delimiter">,</span>
+<p>Ziggy maps have the same notation as JSON objects but allow trailing commas.</p><p>A hypothetical <code>package.ziggy</code>, where the outer key-value map is expressed as a struct, would look like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
+  .<span class="keyword">name</span> = <span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
-    <span class="string">"react"</span>: <span class="string">"next"</span><span class="punctuation delimiter">,</span>
-    <span class="string">"leftpad"</span>: <span class="string">"^1.0.0"</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation delimiter">,</span>
   <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
 <h2>Structs</h2><p>Structs are the second key-value mapping notation available in Ziggy. Structs are meant to denote key-value mappings where key names are controlled <strong>by the application</strong> (i.e. must follow a schema).</p><p>Judicious use of struct syntax should help users understand the data layout even before they reach for a Ziggy Schema or some other kind of documentation.</p><p>Basic struct syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
-  .<span class="keyword">hello</span> = <span class="string">"world"</span><span class="punctuation delimiter">,</span>
+  .<span class="keyword">hello</span> = <span class="string">&quot;world&quot;</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">foo</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
-<p><em>NOTE: like arrays and maps, structs also allow trailing commas.</em></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">"world"</span><span class="punctuation delimiter">,</span>
+<p><em>NOTE: like arrays and maps, structs also allow trailing commas.</em></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">&quot;world&quot;</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">foo</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 </code></pre>
 <h3>Named structs</h3><p>Structs can have a name attached to them.</p><p>This feature is particularly useful when used in conjunction with Ziggy Schemas to define <strong>struct unions</strong>.</p><pre><code class="ziggy"><span class="punctuation bracket">{</span>
-    .<span class="keyword">name</span> = <span class="string">"Ziggy"</span><span class="punctuation delimiter">,</span>
+    .<span class="keyword">name</span> = <span class="string">&quot;Ziggy&quot;</span><span class="punctuation delimiter">,</span>
     .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
-        <span class="string">"foo"</span>: <span class="type">Remote</span> <span class="punctuation bracket">{</span>
-            .<span class="keyword">url</span> = <span class="string">"https://github.com/"</span><span class="punctuation delimiter">,</span>
-            .<span class="keyword">hash</span> = <span class="string">"123abcdef"</span><span class="punctuation delimiter">,</span>  
+        <span class="string">&quot;foo&quot;</span>: <span class="type">Remote</span> <span class="punctuation bracket">{</span>
+            .<span class="keyword">url</span> = <span class="string">&quot;https://github.com/&quot;</span><span class="punctuation delimiter">,</span>
+            .<span class="keyword">hash</span> = <span class="string">&quot;123abcdef&quot;</span><span class="punctuation delimiter">,</span>  
         <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
-        <span class="string">"bar"</span>: <span class="type">Local</span> <span class="punctuation bracket">{</span>
-            .<span class="keyword">path</span> = <span class="string">"foo/bar/baz"</span><span class="punctuation delimiter">,</span>
+        <span class="string">&quot;bar&quot;</span>: <span class="type">Local</span> <span class="punctuation bracket">{</span>
+            .<span class="keyword">path</span> = <span class="string">&quot;foo/bar/baz&quot;</span><span class="punctuation delimiter">,</span>
         <span class="punctuation bracket">}</span>
     <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>

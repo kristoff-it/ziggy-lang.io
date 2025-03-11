@@ -309,6 +309,30 @@
           </ul>
         </details>
         <details open>
+          <summary>Using Ziggy from Zig</summary>
+          <ul>
+            <li>
+              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/parser-example/">Parser Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
+            </li>
+          
+            <li>
+              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+            </li>
+          </ul>
+        </details>
+        <details open>
           <summary>Ziggy CLI Tool</summary>
           <ul>
             <li>
@@ -343,41 +367,41 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1><code>ziggy fmt</code></h1><p>Formats Ziggy documents and Ziggy schemas.</p><p><strong>It's highly recommended you enable format on save in your editor to get the most out of the autoformatter.</strong></p><h2>Trailing Commas</h2><p>Trailing commas in structs, maps, and arrays tell the autoformatter to perform vertical alignment.</p><p>Lack of a trailing comma requests horizontal alignment instead.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">"bar"</span><span class="punctuation delimiter">,</span> .<span class="keyword">bar</span> = <span class="punctuation bracket">[</span><span class="constant numeric">1</span><span class="punctuation delimiter">,</span> 
+      <div><h1><code>ziggy fmt</code></h1><p>Formats Ziggy documents and Ziggy schemas.</p><p><strong>It’s highly recommended you enable format on save in your editor to get the most out of the autoformatter.</strong></p><h2>Trailing Commas</h2><p>Trailing commas in structs, maps, and arrays tell the autoformatter to perform vertical alignment.</p><p>Lack of a trailing comma requests horizontal alignment instead.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span> .<span class="keyword">bar</span> = <span class="punctuation bracket">[</span><span class="constant numeric">1</span><span class="punctuation delimiter">,</span> 
 <span class="constant numeric">2</span><span class="punctuation delimiter">,</span> <span class="constant numeric">3</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span> .<span class="keyword">baz</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 </code></pre>
-<p>This is the autoformatted result:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">"bar"</span><span class="punctuation delimiter">,</span>
+<p>This is the autoformatted result:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">bar</span> = <span class="punctuation bracket">[</span><span class="constant numeric">1</span><span class="punctuation delimiter">,</span> <span class="constant numeric">2</span><span class="punctuation delimiter">,</span> <span class="constant numeric">3</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">baz</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
 </code></pre>
-<ul><li>the outer struct was vertically aligned because of the trailing comma</li><li>the array value of <code>bar</code> was horizontally aligned because there was no comma after <code>3</code></li></ul><p>Similar behavior also applies to Ziggy Schemas.</p><h2>Upgrading Maps</h2><p>If a Ziggy document has a map value in it, you can give it a name to have <code>ziggy fmt</code> turn it into a struct. Maps cannot have names accorting to the Ziggy grammar, but the autoformatter will take that as a hint that you intend to turn a map into a struct and could you use some help.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">"bar"</span><span class="punctuation delimiter">,</span>
+<ul><li>the outer struct was vertically aligned because of the trailing comma</li><li>the array value of <code>bar</code> was horizontally aligned because there was no comma after <code>3</code></li></ul><p>Similar behavior also applies to Ziggy Schemas.</p><h2>Upgrading Maps</h2><p>If a Ziggy document has a map value in it, you can give it a name to have <code>ziggy fmt</code> turn it into a struct. Maps cannot have names according to the Ziggy grammar, but the autoformatter will take that as a hint that you intend to turn a map into a struct and could you use some help.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">bar</span> = <span class="punctuation bracket">{</span>
-  <span class="string">"arst"</span>: <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
-  <span class="string">"qwfp"</span>: <span class="punctuation bracket">{</span>
-    <span class="string">"anoter"</span>: <span class="string">"map"</span><span class="punctuation delimiter">,</span>
-    <span class="string">"nested"</span>: <span class="string">"more deeply"</span><span class="punctuation delimiter">,</span>
+  <span class="string">&quot;arst&quot;</span>: <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+  <span class="string">&quot;qwfp&quot;</span>: <span class="punctuation bracket">{</span>
+    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation delimiter">,</span>
   <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
-<p>Give a name to the value of <code>bar</code>:</p><pre><code class="ziggy"><span class="error">.foo = "bar",
+<p>Give a name to the value of <code>bar</code>:</p><pre><code class="ziggy"><span class="error">.foo = &quot;bar&quot;,
 .bar = Foo {
-  "arst": true,
-  "qwfp":</span> <span class="punctuation bracket">{</span>
-    <span class="string">"anoter"</span>: <span class="string">"map"</span><span class="punctuation delimiter">,</span>
-    <span class="string">"nested"</span>: <span class="string">"more deeply"</span><span class="punctuation delimiter">,</span>
+  &quot;arst&quot;: true,
+  &quot;qwfp&quot;:</span> <span class="punctuation bracket">{</span>
+    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation delimiter">,</span>
   <span class="punctuation bracket">}</span><span class="error">,
 }</span>
 </code></pre>
-<p>On save the autoformatter will turn all map-style fields into struct-style fields:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">"bar"</span><span class="punctuation delimiter">,</span>
+<p>On save the autoformatter will turn all map-style fields into struct-style fields:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span>
 .<span class="keyword">bar</span> = <span class="type">Foo</span> <span class="punctuation bracket">{</span>
   .<span class="keyword">arst</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
   .<span class="keyword">qwfp</span> = <span class="punctuation bracket">{</span>
-    <span class="string">"anoter"</span>: <span class="string">"map"</span><span class="punctuation delimiter">,</span>
-    <span class="string">"nested"</span>: <span class="string">"more deeply"</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation delimiter">,</span>
   <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
 <span class="punctuation bracket">}</span>
 </code></pre>
-<p><em>Note how the innermost map was <strong>not</strong> transformed.</em></p><p>Ziggy documents are not a proprer superset of JSON because Ziggy uses a different string escape sequences, but for simple enough JSON documents you can easily upgrade them to Ziggy using this trick.</p><p>That said, for anything more than one-off transformations of trivial JSON files in your editor, you should use <code>ziggy convert</code>.</p></div>
+<p><em>Note how the innermost map was <strong>not</strong> transformed.</em></p><p>Ziggy documents are not a proper superset of JSON because Ziggy uses a different string escape sequence, but for simple enough JSON documents you can easily upgrade them to Ziggy using this trick.</p><p>That said, for anything more than one-off transformations of trivial JSON files in your editor, you should use <code>ziggy convert</code>.</p></div>
       <nav id="footer">
         <div>
           <a href="/documentation/parsers/">

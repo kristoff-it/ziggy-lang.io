@@ -234,7 +234,7 @@
             </li>
           
             <li>
-              <a class="selected" href="/documentation/getting-started/">Getting Started</a>
+              <a class="" href="/documentation/getting-started/">Getting Started</a>
             </li>
           </ul>
         </details>
@@ -312,7 +312,7 @@
           <summary>Using Ziggy from Zig</summary>
           <ul>
             <li>
-              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+              <a class="selected" href="/documentation/getting-started-dev/">Getting Started</a>
             </li>
           
             <li>
@@ -367,34 +367,38 @@
       </div>
     </nav>
     <div id="main">
-      <div><h1>Getting Started</h1><p>Ziggy is a file format so to get started you only need a text editor, but setting up a proper dev environment can make a significant difference in the quality of your experience.</p><h2>The Ziggy CLI Tool</h2><p>Ziggy has a all-in-one CLI tool that gives you access to all the basics.</p><pre><code>$ ziggy help
-
-Usage: ziggy COMMAND [OPTIONS]
-
-Commands: 
-  fmt          Format Ziggy files      
-  query, q     Query Ziggy files 
-  check        Check Ziggy files against a Ziggy schema 
-  convert      Convert between JSON, YAML, TOML files and Ziggy
-  lsp          Start the Ziggy LSP
-  help         Show this menu and exit
-
-General Options:
-  --help, -h   Print command specific usage
-</code></pre><h3>Download</h3><p>You can get a copy of the Ziggy CLI tool <a href="https://github.com/kristoff-it/ziggy/releases/" target="_blank">from the releases page on GitHub</a>.</p><p>Alternatively, you can compile it from source. See the README instructions for more information.</p><p>Once downloaded, you will need to put the <code>ziggy</code> executable in your <code>PATH</code> so that editors can find it.</p><h3>Next steps</h3><p>Add Ziggy syntax highlighting and Ziggy LSP support to your editor by following one of the guides in the Editor Configuration section.</p></div>
+      <div><h1>Getting Started</h1><p>A step by step guide to get Ziggy up and running your Zig project.</p><h2>Fetching the package</h2><p>Before we continue, ensure you have at least version <code>0.14.0</code> of Zig installed.</p><p>To add Ziggy to your project you can use <code>zig fetch</code> like so</p><pre><code class="sh"><span class="constant">zig</span> <span class="constant">fetch</span> <span class="constant">--save</span> <span class="constant">git+https://github.com/kristoff-it/ziggy.git</span>
+</code></pre>
+<p>This will fetch latest version of Ziggy into your project, you can verify this by looking into <code>build.zig.zon</code></p><pre><code class="zig"><span class="punctuation delimiter">.</span><span class="constant">dependencies</span> <span class="operator">=</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span>
+    <span class="comment">// ...</span>
+    <span class="punctuation delimiter">.</span><span class="variable member">ziggy</span> <span class="operator">=</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span>
+        <span class="punctuation delimiter">.</span><span class="variable member">url</span> <span class="operator">=</span> <span class="string">&quot;git+https://github.com/kristoff-it/ziggy.git#COMMIT&quot;</span><span class="punctuation delimiter">,</span>
+        <span class="punctuation delimiter">.</span><span class="variable member">hash</span> <span class="operator">=</span> <span class="string">&quot;ziggy-0.1.0-HASH&quot;</span><span class="punctuation delimiter">,</span>
+    <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+    <span class="comment">// ...</span>
+<span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+</code></pre>
+<p>Both <code>COMMIT</code> and <code>HASH</code> will be different</p><h2>Setting up <code>build.zig</code></h2><p>After you have successfully fetch ziggy package, open up <code>build.zig</code> and search for your executable module variable e.g. <code>exe_mod</code> (this should be the case in freshly created Zig project)</p><p>Once you have located your executable module variable, let’s add the dependency into our project</p><pre><code class="zig"><span class="keyword">const</span> <span class="variable">ziggy_dep</span> <span class="operator">=</span> <span class="variable">b</span><span class="punctuation delimiter">.</span><span class="function call">dependency</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span>
+    <span class="punctuation delimiter">.</span><span class="variable member">target</span> <span class="operator">=</span> <span class="variable">target</span><span class="punctuation delimiter">,</span>
+    <span class="punctuation delimiter">.</span><span class="variable member">optimize</span> <span class="operator">=</span> <span class="variable">optimize</span><span class="punctuation delimiter">,</span>
+<span class="punctuation bracket">}</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p>Now just add it to the executable module as an import using <code>addImport</code> like so</p><pre><code class="zig"><span class="variable">exe_mod</span><span class="punctuation delimiter">.</span><span class="function call">addImport</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="variable">ziggy_dep</span><span class="punctuation delimiter">.</span><span class="function call">module</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation bracket">)</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+</code></pre>
+<p>Again, <code>exe_mod</code> may be called differently in your project</p></div>
       <nav id="footer">
         <div>
-          <a href="/documentation/about/">
+          <a href="/documentation/spec/">
             <p>
               ←
-              <span class="title">About</span>
+              <span class="title">Specification</span>
             </p>
           </a>
         </div>
         <div>
-          <a href="/documentation/editors/vscode/">
+          <a href="/documentation/parser-example/">
             <p>
-              <span class="title">VSCode</span>
+              <span class="title">Parser Example</span>
               →
             </p>
           </a>
