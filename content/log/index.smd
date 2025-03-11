@@ -1,0 +1,27 @@
+---
+.title = "Changelog",
+.date =  "2000-01-01T00:00:00",
+.author = "Loris Cro",
+.draft = false,
+.layout = "log.shtml",
+.tags = [],
+---
+# Changelog 
+## About
+This is a non-exhaustive, curated list of changes meant to help users quickly see what has improved since they last checked.
+
+Refer to [the repository](https://github.com/kristoff-it/ziggy) and the [issue tracker](https://github.com/kristoff-it/ziggy/issues) for more in-depth information.
+
+
+## 2025-03-11
+Improved Ziggy frontmatter parsing. Previously we were considering the frontmatter
+framing delimiters `---` as external text that the Ziggy parser should not concern
+itself with, but it turns out that it's a great idea to add them as tokens to the
+tokenizer and instructing parsers to be aware when attempting to parse a Ziggy
+document embedded as frontmatter in an external document (e.g. SuperMD).
+
+See [documentation/frontmatter/](documentation/frontmatter) for more info.
+
+
+## 2024-03-20
+Website launched!

@@ -1,0 +1,55 @@
+---
+.title = "Parser Example",
+.date =  "2025-03-10T19:11:59",
+.author = "LowByteFox",
+.draft = false,
+.layout = "documentation.shtml",
+.tags = [],
+---
+
+# Parser Example
+To access the ziggy module, simply add top-level import
+```zig
+const ziggy = @import("ziggy");
+```
+
+Ziggy has two main parser APIs:
+- `ziggy.Ast`, which allows you to parse a Ziggy file into an AST, useful when
+  doing source-level analysis of Ziggy documents.
+- `ziggy.Parser`, a type-driven parser that allows you to parse a Ziggy document
+  either into a known type defined by you, or into a `ziggy.dynamic.Value` (a
+  type able to represent any Ziggy document).
+
+The AST parser is a bit of a specialty parser so we won't expand on it in this
+document.
+
+## Parsing a Ziggy document
+First, define a type you want Ziggy document to reflect
+
+```zig
+const Example = struct {
+    foo: []const u8,
+    bar: bool,
+};
+```
+
+`ziggy.Parser` includes a function called `parseLeaky` (which is also re-exported
+by the root namespace), you can call the function, and it will return instance
+of your type from the parsed string:
+
+```zig
+const example = try ziggy.parseLeaky(Example, allocator, str, .{});
+```
+Now you can access the data through the returned value. The function will only
+return `error.Syntax` in case of a syntax error. If you want more detailed
+diagnostics, provide an instance of `ziggy.Diagnostic` to the last argument of
+`parseLeaky`. In case of an error you will be able to inspect it to get more
+information about the error (it also has convenience formatting functions).
+
+The last parameter is an instance of `ziggy.ParseOptions` and can define more
+parsing options.
+
+Parsing a Ziggy document might require to heap allocate values (e.g. to unescape
+a string), and it's normally problematic to keep track of such occurrences,
+meaning that you should use a `std.heap.ArenaAllocator` (or equivalents) in order
+to prevent memory leakages (hence the `Leaky` part of the function name).

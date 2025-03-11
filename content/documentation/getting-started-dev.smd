@@ -11,7 +11,7 @@
 A step by step guide to get Ziggy up and running your Zig project.
 
 ## Fetching the package
-Before we continue, ensure you have at least version `0.14.0-dev.3451+d8d2aa9af` of Zig installed.
+Before we continue, ensure you have at least version `0.14.0` of Zig installed.
 
 To add Ziggy to your project you can use `zig fetch` like so
 ```sh

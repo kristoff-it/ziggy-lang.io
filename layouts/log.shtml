@@ -1,5 +1,5 @@
 <extend template="base.shtml">
-<title id="title" text="$page.title"></title>
+<title id="title" :text="$page.title"></title>
 <head id="head">
   <style>
     #content {
@@ -94,6 +94,6 @@
   </style>
 </head>
 <body id="body">
-  <div id="content" html="$page.content()">
+  <div id="content" :html="$page.content()">
   </div>
 </body>
