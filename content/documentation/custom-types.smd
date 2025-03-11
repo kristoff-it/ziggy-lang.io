@@ -8,7 +8,7 @@
 ---
 # Ziggy Schema Custom Types
 
-In this section we're going to see types that require to be defined before they can be used in a type expression.
+In this section we're going to see types that must be defined before they can be used in a type expression.
 
 ## Tagged literal
 
@@ -55,7 +55,7 @@ struct Person {
 
 In this example `Person` is the struct name. It's recommended to use TitleCase for struct names, but not mandatory.
 
-A struct can have zero or more comma separated field definitions. A field definition is comprised of an identifier, followed by `:` and a type expression.
+A struct can have zero or more comma separated field definitions. A field definition comprises an identifier, followed by `:` and a type expression.
 
 Both struct definitions and their fields can have an optional doc comment attached to them.
 
@@ -68,13 +68,13 @@ Examples: `Person`, `map[Person]`, `[Command]`, `?Notification`
 
 Struct unions denote when a value can be one of two or more struct types.
 
-Struct unions don't require to be defined beforehand but are listed in this page as they depend on at least two struct definitions to be used.
+Struct unions aren't required to be defined beforehand but are listed in this page as they depend on at least two struct definitions to be used.
 
 ### Expression
 
 A struct union expression is a list of `|` separated **struct names** .
 
-When you need to make a struct union optional, you must surround it with parenthesis.  
+When you need to make a struct union optional, you must surround it with parentheses.  
 
 
 Examples: `Command | Notification`, `map[Person | Company]`, `?(Foo | Bar)`

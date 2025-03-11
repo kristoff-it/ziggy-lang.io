@@ -23,7 +23,7 @@ For comparison, see this excerpt from a [JSON Schema](https://json-schema.org/),
 
 **Where JSON Schema tries to describe any possible JSON data layout, Ziggy Schema is by design only able to describe precisely only a well-defined subset of combinations.**
 
-This is true not just of the schema language but also of some Ziggy  Document notation. For example Ziggy has structs and maps, but no notation for a key-value mapping where *some* keys are fixed, while *some others* are up to the user. It should go without saying that JSON schema [does indeed allow to model that aswell](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties).
+This is true not just of the schema language but also of some Ziggy  Document notation. For example Ziggy has structs and maps, but no notation for a key-value mapping where *some* keys are fixed, while *some others* are up to the user. It should go without saying that JSON schema [does indeed allow to model that as well](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties).
 
 ### Unions all the way down
 The problem of schema expressivity is at its core a problem about expressing unions. 
@@ -60,7 +60,7 @@ struct App {
 
 In Ziggy the unit of composition for unions is the struct, which means that any variant of your value must be wrapped in an appropriately-named struct.
 
-This can be at times a mild inconvenience for data layout designers, but it has the upside of drastically diminishing the amount of syntax in the schema language and gives data layout consumers one singular language construct required to undestand layout variability.
+This can be at times a mild inconvenience for data layout designers, but it has the upside of drastically diminishing the amount of syntax in the schema language and gives data layout consumers one singular language construct required to understand layout variability.
 
 Let's fix the previous example with this in mind:
 
@@ -117,9 +117,9 @@ Consider this JSON document where we list some dependencies:
 }
 ```
 
-Abstute observers will notice that dependencies in this data layout can be of two kinds: 
+Astute observers will notice that dependencies in this data layout can be of two kinds: 
 
-- remote, defined by a url and a shash value
+- remote, defined by a url and a hash value
 - local, defined by a path 
 
 Unfortunately this data layout is hostile to being parsed using tagged unions. Using Zig lingo as an example, you would like to be able to parse this document into the following kind of type:
@@ -161,7 +161,7 @@ Some JSON data layouts make use of a `type` field to help disambiguate:
 
 Unfortunately this approach doesn't solve the problem fully either because field order is not meaningful in JSON and so the parser can't be guaranteed that `type` will be the first field it sees.
 
-It should be noted at this point that the problem only partially has to do with the rigidigy of statically typed languages. A language like JavaScript won't be affected by this problem because it will parse data into a dynamic object anyway, but statically typed languages can leverage type information to get dramatic performance improvements.
+It should be noted at this point that the problem only partially has to do with the rigidity of statically typed languages. A language like JavaScript won't be affected by this problem because it will parse data into a dynamic object anyway, but statically typed languages can leverage type information to get dramatic performance improvements.
 
 This means that statically typed, compiled languages could make this work by going through a dynamic value parsing phase, but the whole point of using a language of that kind is to aim for optimal behavior, which is made unreasonably harder by the lack of a tagged union construct in JSON.
 
@@ -247,3 +247,6 @@ This has two big advantages:
   ``` 
 
   If you're reading and writing Ziggy documents within a single application where you don't have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.
+
+<!--  LocalWords:  sweetspot JSON schemas structs
+ -->
