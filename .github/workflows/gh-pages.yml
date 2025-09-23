@@ -12,18 +12,18 @@ jobs:
         with:
           fetch-depth: 0  # Change if you need git info
 
-      - name: Setup Zig
-        uses: mlugg/setup-zig@v1
+      - name: Setup Zine
+        uses: kristoff-it/setup-zine@v1
         with:
-          version: 0.14.0
+          version: v0.11.1
           
       - name: Build
-        run: zig build --summary new
+        run: zine release 
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./zig-out
+          publish_dir: ./public
           

@@ -1,22 +1,22 @@
 <extend template="base.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
-  <style>
-    #content {
+	<style>
+		#content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
 		}
-
+		
 		#sidebar {
 			flex: 0 0 260px;
 			padding-top: 0.67em;
 		}
-
+		
 		#sidebar details {
 			list-style: none;
 		}
-
+		
 		#sidebar summary {
 			border-top: 1px solid var(--border-color);
 			list-style: none;
@@ -25,18 +25,18 @@
 			font-weight: bold;
 			padding-left: 10px;
 		}
-
+		
 		#sidebar summary:hover {
 			color: #111;
 			background-color: #eee;
 		}
-
+		
 		#sidebar ul {
 			list-style: none;
 			padding: 0;
 			margin: 0 0 10px;
 		}
-
+		
 		#sidebar a {
 			display: block;
 			text-decoration: none;
@@ -44,16 +44,16 @@
 			color: inherit;
 			padding-left: 10px;
 		}
-
-		#sidebar a:hover, #sidebar .selected { 
+		
+		#sidebar a:hover, #sidebar .selected {
 			background-color: #ddd;
 		}
-
+		
 		#sidebar-content {
 			position: sticky;
 			top: 110px;
 		}
-
+		
 		#footer {
 			display: flex;
 			flex-direction: row;
@@ -63,49 +63,49 @@
 			border-top: 1px solid var(--border-color);
 			text-align: right;
 		}
-
+		
 		#footer a {
 			text-decoration: none;
 			color: inherit;
 		}
-
+		
 		#footer .title {
 			font-weight: bold;
 			color: #222;
 			text-decoration: underline;
 		}
-
+		
 		#main {
 			max-width: 920px;
 			flex-grow: 1;
 		}
-
+		
 		#main h2 {
 			margin-top: 1.5em;
 			border-bottom: 2px dotted #aaa;
 		}
-
+		
 		pre {
 			margin: 10px;
 			padding: 0;
 			border: 1px dashed;
 			border-radius: 0;
 		}
-
+		
 		pre code {
 			display: block;
 			padding: 30px;
 			padding-top: 0;
 			padding-right: 0;
 		}
-
+		
 		p code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
 			padding: 0.2em;
 		}
-
+		
 		pre::before {
 			display: block;
 			content: "Shell";
@@ -123,211 +123,229 @@
 			left: 0;
 			z-index: 10;
 		}
-
+		
 		pre:has(> code.markdown):before {
 			content: "Markdown";
 		}
-
+		
 		pre:has(> code.javascript):before {
 			content: "JavaScript";
 		}
-
+		
 		pre:has(> code.zig):before {
 			content: "Zig";
 		}
-
+		
 		pre:has(> code.lua):before {
 			content: "Lua";
 		}
-
+		
 		pre:has(> code.toml):before {
 			content: "TOML";
 		}
-
+		
 		pre:has(> code.json):before {
 			content: "JSON";
 		}
-
+		
 		pre:has(> code.ziggy):before {
 			content: "Ziggy Document";
 		}
-
+		
 		pre:has(> code.ziggy-schema):before {
 			content: "Ziggy Schema";
 		}
-
-
+		
+		@media (prefers-color-scheme: dark) {
+			#sidebar summary {
+				border-color: var(--border-color);
+				color: #eee;
+			}
+			
+			#sidebar summary:hover {
+				color: var(--text-color);
+				background-color: #ffffff11;
+			}
+			
+			#sidebar a:hover, #sidebar .selected {
+				background-color: #ffffff33;
+			}
+			
+			#footer .title {
+				color: var(--text-color);
+			}
+			
+			#main h2 {
+				border-color: #aaa;
+			}
+			pre::before {
+				background-color: #ffffff22;
+				color: var(--text-color);
+			}
+		}
+		
 		@media (max-width: 1000px) {
 			#content {
 				padding: 0 15px;
 				flex-direction: column-reverse;
 			}
-
+			
 			#main {
 				max-width: 1000px;
 			}
-
+			
 		}
-
 		
-  #insanity {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-  </style>
+		#insanity {
+			max-height: 400px;
+			overflow-y: scroll;
+		}
+	</style>
 </head>
 <body id="body">
-  <div id="content">
-    <nav id="sidebar">
-      <div id="sidebar-content">
-        <details open>
-          <summary>Overview</summary>
-          <ul :loop="$site.pages('documentation/about', 
+	<div id="content">
+		<nav id="sidebar">
+			<div id="sidebar-content">
+				<details open>
+					<summary>Overview</summary>
+					<ul :loop="$site.pages('documentation/about', 
                                 'documentation/getting-started'
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Editor Configuration</summary>
-          <ul :loop="$site.pages('documentation/editors/vscode', 
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Editor Configuration</summary>
+					<ul :loop="$site.pages('documentation/editors/vscode', 
                                 'documentation/editors/neovim',
                                 'documentation/editors/helix',
                                 'documentation/editors/flow',
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Document</summary>
-          <ul :loop="$site.pages('documentation/scalars', 
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Document</summary>
+					<ul :loop="$site.pages('documentation/scalars', 
                                 'documentation/containers',
                                 'documentation/document',
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Schema</summary>
-          <ul :loop="$site.pages('documentation/builtin-types', 
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Schema</summary>
+					<ul :loop="$site.pages('documentation/builtin-types', 
                                 'documentation/custom-types',
                                 'documentation/schema-structure',
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Design Tips</summary>
-          <ul :loop="$site.pages('documentation/struct-unions', 
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Design Tips</summary>
+					<ul :loop="$site.pages('documentation/struct-unions', 
                                 'documentation/tagged-literals',
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Libraries</summary>
-          <ul>
-            <li><a href="/documentation/parsers/">Parsers</a></li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Using Ziggy from Zig</summary>
-          <ul :loop="$site.pages('documentation/getting-started-dev', 
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Libraries</summary>
+					<ul>
+						<li><a href="/documentation/parsers/">Parsers</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Using Ziggy from Zig</summary>
+					<ul :loop="$site.pages('documentation/getting-started-dev', 
                                 'documentation/parser-example',
                                 'documentation/frontmatter',
                                 'documentation/serialization-example',
                                 'documentation/metaprogramming',
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy CLI Tool</summary>
-          <ul :loop="$site.pages('documentation/ziggy-fmt', 
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy CLI Tool</summary>
+					<ul :loop="$site.pages('documentation/ziggy-fmt', 
                                 'documentation/ziggy-query',
                                 'documentation/ziggy-check',
                                 'documentation/ziggy-convert',
                                 'documentation/ziggy-lsp',
           )">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-        <details>
-          <summary>Specification</summary>
-          <ul :loop="$site.pages('documentation/spec')">
-            <li>
-              <a
-                class="$loop.it.isCurrent().then('selected')"
-                href="$loop.it.link()"
-                :text="$loop.it.title"
-              ></a>
-            </li>
-          </ul>
-        </details>
-      </div>
-    </nav>
-    <div id="main">
-      <div :html="$page.content()"></div>
-      <nav id="footer">
-        <div :if="$page.prevPage?()">
-          <a href="$if.link()">
-            <p>
-              ←
-              <span class="title" :text="$if.title"></span>
-            </p>
-          </a>
-        </div>
-        <div :if="$page.nextPage?()">
-          <a href="$if.link()">
-            <p>
-              <span class="title" :text="$if.title"></span>
-              →
-            </p>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </div>
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+				<details>
+					<summary>Specification</summary>
+					<ul :loop="$site.pages('documentation/spec')">
+						<li>
+							<a class="$loop.it.isCurrent().then('selected')"
+							   href="$loop.it.link()"
+							   :text="$loop.it.title"
+							></a>
+						</li>
+					</ul>
+				</details>
+			</div>
+		</nav>
+		<div id="main">
+			<div :html="$page.content()"></div>
+			<nav id="footer">
+				<div :if="$page.prevPage?()">
+					<a href="$if.link()">
+						<p>
+							←
+							<span class="title" :text="$if.title"></span>
+						</p>
+					</a>
+				</div>
+				<div :if="$page.nextPage?()">
+					<a href="$if.link()">
+						<p>
+							<span class="title" :text="$if.title"></span>
+							→
+						</p>
+					</a>
+				</div>
+			</nav>
+		</div>
+	</div>
 </body>

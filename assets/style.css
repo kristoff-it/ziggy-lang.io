@@ -2,7 +2,32 @@
   --border-color: hsl(200deg, 20%, 67%);
   --text: rgb(20, 27, 31);
   font-size: 1.2em;
+  color-scheme: light dark;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --border-color: hsl(200deg, 20%, 20%);
+    --text: #ddd;
+    font-size: 1.2em;
+  }
+
+  b,
+  strong,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eee;
+  }
+
+  a {
+    color: yellow;
+  }
+}
+
 
 body {
   margin: 0;
@@ -16,6 +41,13 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   box-sizing: border-box;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #151b23;
+  }
 }
 
 p {
@@ -36,6 +68,12 @@ p {
   top: 0;
   background-color: #ffffffbb;
   backdrop-filter: blur(8px);
+}
+
+@media (prefers-color-scheme: dark) {
+  #top-nav {
+    background-color: #ffffff22;
+  }
 }
 
 #top-nav-container {
@@ -73,6 +111,16 @@ p {
 #top-nav-menu a:hover {
   border-bottom: 3px solid black;
   margin-bottom: -3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  #top-nav-menu a {
+    color: var(--text-color);
+  }
+
+  #top-nav-menu a:hover {
+    border-color: var(--text-color);
+  }
 }
 
 #content {
