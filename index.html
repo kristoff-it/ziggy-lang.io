@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head id="head">
-    <meta charset="UTF-8">
-    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@croloris">
-    <meta name="twitter:author" content="@croloris">
-    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="Home - Ziggy">
-    <meta property="og:title" content="Home">
-    <meta property="og:type" content="website">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  >
-    <title id="title">
-      
+	<head id="head">
+		<meta charset="UTF-8">
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@croloris">
+		<meta name="twitter:author" content="@croloris">
+		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:title" content="Home - Ziggy">
+		<meta property="og:title" content="Home">
+		<meta property="og:type" content="website">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title id="title">
+			
   Home
 
-      - Ziggy Data Language
-    </title>
-    <link rel="stylesheet" type="text/css" href="/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/highlight.css">
-    
+			- Ziggy Data Language
+		</title>
+		<link rel="stylesheet" type="text/css" href="/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link rel="stylesheet" type="text/css" href="/highlight.css">
+		
   <style>
     :root {
 			--text-yellow: hsl(59deg, 100%, 70%);
@@ -260,31 +258,33 @@
   </style>
 
 
-  </head>
-  <body id="body">
-    <nav id="top-nav">
-      <div id="top-nav-container">
-        <span>
-          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-          <span>v0.0.1</span>
-        </span>
-        <div id="top-nav-menu">
-          <a href="/documentation/getting-started/">
-            Quickstart
-          </a>
-          <a href="/documentation/about/">
-            Documentation
-          </a>
-          <a href="/log/">
-            Changelog
-          </a>
-          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-            Code
-          </a>
-        </div>
-      </div>
-    </nav>
-    
+	</head>
+	<body id="body">
+		<nav id="top-nav">
+			<div id="top-nav-container">
+				<span>
+					<a href="/"
+					   style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;"
+					>Ziggy</a>
+					<span>v0.0.1</span>
+				</span>
+				<div id="top-nav-menu">
+					<a href="/documentation/getting-started/">
+						Quickstart
+					</a>
+					<a href="/documentation/about/">
+						Documentation
+					</a>
+					<a href="/log/">
+						Changelog
+					</a>
+					<a href="https://github.com/kristoff-it/ziggy" target="_blank">
+						Code
+					</a>
+				</div>
+			</div>
+		</nav>
+		
   <div id="top-sample-container">
     <div id="top-sample">
       <div class="flex-item" id="main-description">
@@ -298,17 +298,17 @@
         </h2>
       </div>
       <div id="main-code" class="flex-item">
-        <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = @<span class="function">uuid</span><span class="punctuation bracket">(</span><span class="string">&quot;...&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">time</span> = <span class="constant numeric">1710085168</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">payload</span> = <span class="type">Command</span> <span class="punctuation bracket">{</span>
-  .<span class="keyword">do</span> = @<span class="function">action</span><span class="punctuation bracket">(</span><span class="string">&quot;clear_chat&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">sender</span> = <span class="string">&quot;kristoff-it&quot;</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">roles</span> = <span class="punctuation bracket">[</span><span class="string">&quot;admin&quot;</span><span class="punctuation delimiter">,</span> <span class="string">&quot;mod&quot;</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">extra</span> = <span class="punctuation bracket">{</span>
-    <span class="string">&quot;agent&quot;</span>: <span class="string">&quot;Mozilla/5.0&quot;</span><span class="punctuation delimiter">,</span>
-    <span class="string">&quot;os&quot;</span>: <span class="string">&quot;Linux/x64&quot;</span><span class="punctuation delimiter">,</span> 
-  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span></code></pre>
+        <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = @<span class="function">uuid</span><span class="punctuation_bracket">(</span><span class="string">&quot;...&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">time</span> = <span class="constant_numeric">1710085168</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">payload</span> = <span class="type">Command</span> <span class="punctuation_bracket">{</span>
+  .<span class="keyword">do</span> = @<span class="function">action</span><span class="punctuation_bracket">(</span><span class="string">&quot;clear_chat&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">sender</span> = <span class="string">&quot;kristoff-it&quot;</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">roles</span> = <span class="punctuation_bracket">[</span><span class="string">&quot;admin&quot;</span><span class="punctuation_delimiter">,</span> <span class="string">&quot;mod&quot;</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">extra</span> = <span class="punctuation_bracket">{</span>
+    <span class="string">&quot;agent&quot;</span>: <span class="string">&quot;Mozilla/5.0&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;os&quot;</span>: <span class="string">&quot;Linux/x64&quot;</span><span class="punctuation_delimiter">,</span> 
+  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span></code></pre>
       </div>
     </div>
   </div>
@@ -324,19 +324,19 @@
         <label class="label label-left" for="tab1">package.json</label>
         <div class="panel" tabindex="1">
           <pre class="tab-sample"><code class="json">{
-  <span class="string special key">&quot;name&quot;</span>: <span class="string">&quot;ziggy&quot;</span>,
-  <span class="string special key">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,
-  <span class="string special key">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,
-  <span class="string special key">&quot;dependencies&quot;</span>: {
-    <span class="string special key">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span>,
-    <span class="string special key">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span>
+  <span class="string_special_key string">&quot;name&quot;</span>: <span class="string">&quot;ziggy&quot;</span>,
+  <span class="string_special_key string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,
+  <span class="string_special_key string">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span>,
+  <span class="string_special_key string">&quot;dependencies&quot;</span>: {
+    <span class="string_special_key string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span>,
+    <span class="string_special_key string">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span>
   },
-  <span class="string special key">&quot;repository&quot;</span>: {
-    <span class="string special key">&quot;type&quot;</span>: <span class="string">&quot;git&quot;</span>,
-    <span class="string special key">&quot;url&quot;</span> : <span class="string">&quot;https://github.com&quot;</span>
+  <span class="string_special_key string">&quot;repository&quot;</span>: {
+    <span class="string_special_key string">&quot;type&quot;</span>: <span class="string">&quot;git&quot;</span>,
+    <span class="string_special_key string">&quot;url&quot;</span> : <span class="string">&quot;https://github.com&quot;</span>
  },
-  <span class="string special key">&quot;description&quot;</span>: 
-    <span class="string">&quot;# Ziggy\n\nA Data Serializa...&quot;</span>
+  <span class="string_special_key string">&quot;description&quot;</span>: 
+    <span class="string">&quot;# Ziggy</span><span class="string escape">\n</span><span class="string escape">\n</span><span class="string">A Data Serializa...&quot;</span>
 
 
 
@@ -345,24 +345,24 @@
         <input class="radiotab" name="tabs" tabindex="2" type="radio" id="tab2">
         <label class="label label-right" for="tab2">package.ziggy</label>
         <div class="panel" tabindex="2">
-          <pre class="tab-sample"><code class="ziggy"><span class="punctuation bracket">{</span>
-  .<span class="keyword">name</span> = <span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">version</span> = @<span class="function">v</span><span class="punctuation bracket">(</span><span class="string">&quot;1.0.0&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">license</span> = @<span class="function">spdx</span><span class="punctuation bracket">(</span><span class="string">&quot;MIT&quot;</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">dependencies</span> = <span class="punctuation bracket">{</span>
-    <span class="string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span><span class="punctuation delimiter">,</span>
-    <span class="string">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation delimiter">,</span>
-  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">repository</span> = <span class="type">Git</span> <span class="punctuation bracket">{</span>
-    <span class="comment line">// &quot;type&quot; is now the struct name</span>
-    .<span class="keyword">url</span> = <span class="string">&quot;https://github.com&quot;</span><span class="punctuation delimiter">,</span>
-  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+          <pre class="tab-sample"><code class="ziggy"><span class="punctuation_bracket">{</span>
+  .<span class="keyword">name</span> = <span class="string">&quot;ziggy&quot;</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">version</span> = @<span class="function">v</span><span class="punctuation_bracket">(</span><span class="string">&quot;1.0.0&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">license</span> = @<span class="function">spdx</span><span class="punctuation_bracket">(</span><span class="string">&quot;MIT&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
+    <span class="string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">repository</span> = <span class="type">Git</span> <span class="punctuation_bracket">{</span>
+    <span class="comment_line">// &quot;type&quot; is now the struct name</span>
+    .<span class="keyword">url</span> = <span class="string">&quot;https://github.com&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">description</span> = 
-    <span class="string">\\# Ziggy
-    \\
-    \\A Data Serialization Language.</span>
-  <span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span></code></pre>
+    <span class="string">\\# Ziggy</span>
+    <span class="string">\\</span>
+    <span class="string">\\A Data Serialization Language.</span>
+  <span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span></code></pre>
         </div>
       </div>
     </div>
@@ -375,47 +375,47 @@
         <div class="panel" tabindex="1">
           <pre class="tab-sample" id="schema1"><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Package</span>
 
-<span class="comment line documentation">/// A Semantic Versioning version string.</span>
-<span class="function">@v</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
-<span class="comment line documentation">/// A valid SPDX expression.</span>
-<span class="function">@spdx</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
+<span class="comment_line_documentation">/// A Semantic Versioning version string.</span>
+<span class="function">@v</span> = <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+<span class="comment_line_documentation">/// A valid SPDX expression.</span>
+<span class="function">@spdx</span> = <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
 
-<span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation bracket">{</span>
-  <span class="keyword">name</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">version</span>: <span class="function">@v</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">license</span>: <span class="function">@spdx</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">description</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">dependencies</span>: <span class="keyword">map</span><span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">repository</span>: <span class="type">Git</span> <span class="punctuation">|</span> <span class="type">Npm</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span>
+<span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation_bracket">{</span>
+  <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">version</span>: <span class="function">@v</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">license</span>: <span class="function">@spdx</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">description</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">dependencies</span>: <span class="keyword">map</span><span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">repository</span>: <span class="type">Git</span> <span class="punctuation">|</span> <span class="type">Npm</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span>
 
-<span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation bracket">{</span> <span class="keyword">url</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span> <span class="keyword">directory</span>: <span class="type">?</span><span class="constant builtin">bytes</span> <span class="punctuation bracket">}</span>
-<span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation bracket">{</span> <span class="keyword">name</span>: <span class="constant builtin">bytes</span> <span class="punctuation bracket">}</span></code></pre>
+<span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation_bracket">{</span> <span class="keyword type">url</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="keyword type">directory</span>: <span class="type">?</span><span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+<span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation_bracket">{</span> <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span></code></pre>
         </div>
         <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
         <label class="label label-right" for="tab4">message.ziggy-schema</label>
         <div class="panel" tabindex="2">
           <pre class="tab-sample" id="schema2"><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span>
 
-<span class="comment line documentation">/// A UUIDv5 value.</span>
-<span class="function">@uuid</span> = <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
-<span class="function">@action</span> = <span class="keyword">enum</span> <span class="punctuation bracket">{</span> <span class="type">clear_chat</span><span class="punctuation delimiter">,</span> <span class="type">ban_user</span> <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<span class="comment_line_documentation">/// A UUIDv5 value.</span>
+<span class="function">@uuid</span> = <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+<span class="function">@action</span> = <span class="keyword">enum</span> <span class="punctuation_bracket">{</span> <span class="type">clear_chat</span><span class="punctuation_delimiter">,</span> <span class="type">ban_user</span> <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 
-<span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation bracket">{</span>
-  <span class="keyword">id</span>: <span class="function">@uuid</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">time</span>: <span class="constant builtin">int</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">payload</span>: <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span>
+<span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation_bracket">{</span>
+  <span class="keyword type">id</span>: <span class="function">@uuid</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">time</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">payload</span>: <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span>
 
-<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation bracket">{</span>
-  <span class="keyword">do</span>: <span class="function">@action</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">sender</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span>
-  <span class="keyword">roles</span>: <span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
-  <span class="comment line documentation">/// Optional metadata. </span>
-  <span class="keyword">extra</span>: <span class="type">?</span><span class="keyword">map</span><span class="punctuation bracket">[</span><span class="constant builtin">bytes</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span>
+<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation_bracket">{</span>
+  <span class="keyword type">do</span>: <span class="function">@action</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">sender</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">roles</span>: <span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+  <span class="comment_line_documentation">/// Optional metadata. </span>
+  <span class="keyword type">extra</span>: <span class="type">?</span><span class="keyword">map</span><span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span>
 
-<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation bracket">{</span> <span class="keyword">text</span>: <span class="constant builtin">bytes</span><span class="punctuation delimiter">,</span> <span class="keyword">lvl</span>: <span class="constant builtin">int</span> <span class="punctuation bracket">}</span></code></pre>
+<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation_bracket">{</span> <span class="keyword type">text</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="keyword type">lvl</span>: <span class="constant_builtin">int</span> <span class="punctuation_bracket">}</span></code></pre>
         </div>
       </div>
     </div>
@@ -444,5 +444,5 @@ General Options:
 
   </div>
 
-  </body>
+	</body>
 </html>

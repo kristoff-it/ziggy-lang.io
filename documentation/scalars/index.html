@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head id="head">
-    <meta charset="UTF-8">
-    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@croloris">
-    <meta name="twitter:author" content="@croloris">
-    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="Scalar Values - Ziggy">
-    <meta property="og:title" content="Scalar Values">
-    <meta property="og:type" content="website">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  >
-    <title id="title">
-      Scalar Values
-      - Ziggy Data Language
-    </title>
-    <link rel="stylesheet" type="text/css" href="/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/highlight.css">
-    
-  <style>
-    #content {
+	<head id="head">
+		<meta charset="UTF-8">
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@croloris">
+		<meta name="twitter:author" content="@croloris">
+		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:title" content="Scalar Values - Ziggy">
+		<meta property="og:title" content="Scalar Values">
+		<meta property="og:type" content="website">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title id="title">
+			Scalar Values
+			- Ziggy Data Language
+		</title>
+		<link rel="stylesheet" type="text/css" href="/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link rel="stylesheet" type="text/css" href="/highlight.css">
+		
+	<style>
+		#content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
 		}
-
+		
 		#sidebar {
 			flex: 0 0 260px;
 			padding-top: 0.67em;
 		}
-
+		
 		#sidebar details {
 			list-style: none;
 		}
-
+		
 		#sidebar summary {
 			border-top: 1px solid var(--border-color);
 			list-style: none;
@@ -47,18 +45,18 @@
 			font-weight: bold;
 			padding-left: 10px;
 		}
-
+		
 		#sidebar summary:hover {
 			color: #111;
 			background-color: #eee;
 		}
-
+		
 		#sidebar ul {
 			list-style: none;
 			padding: 0;
 			margin: 0 0 10px;
 		}
-
+		
 		#sidebar a {
 			display: block;
 			text-decoration: none;
@@ -66,16 +64,16 @@
 			color: inherit;
 			padding-left: 10px;
 		}
-
-		#sidebar a:hover, #sidebar .selected { 
+		
+		#sidebar a:hover, #sidebar .selected {
 			background-color: #ddd;
 		}
-
+		
 		#sidebar-content {
 			position: sticky;
 			top: 110px;
 		}
-
+		
 		#footer {
 			display: flex;
 			flex-direction: row;
@@ -85,49 +83,49 @@
 			border-top: 1px solid var(--border-color);
 			text-align: right;
 		}
-
+		
 		#footer a {
 			text-decoration: none;
 			color: inherit;
 		}
-
+		
 		#footer .title {
 			font-weight: bold;
 			color: #222;
 			text-decoration: underline;
 		}
-
+		
 		#main {
 			max-width: 920px;
 			flex-grow: 1;
 		}
-
+		
 		#main h2 {
 			margin-top: 1.5em;
 			border-bottom: 2px dotted #aaa;
 		}
-
+		
 		pre {
 			margin: 10px;
 			padding: 0;
 			border: 1px dashed;
 			border-radius: 0;
 		}
-
+		
 		pre code {
 			display: block;
 			padding: 30px;
 			padding-top: 0;
 			padding-right: 0;
 		}
-
+		
 		p code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
 			padding: 0.2em;
 		}
-
+		
 		pre::before {
 			display: block;
 			content: "Shell";
@@ -145,254 +143,282 @@
 			left: 0;
 			z-index: 10;
 		}
-
+		
 		pre:has(> code.markdown):before {
 			content: "Markdown";
 		}
-
+		
 		pre:has(> code.javascript):before {
 			content: "JavaScript";
 		}
-
+		
 		pre:has(> code.zig):before {
 			content: "Zig";
 		}
-
+		
 		pre:has(> code.lua):before {
 			content: "Lua";
 		}
-
+		
 		pre:has(> code.toml):before {
 			content: "TOML";
 		}
-
+		
 		pre:has(> code.json):before {
 			content: "JSON";
 		}
-
+		
 		pre:has(> code.ziggy):before {
 			content: "Ziggy Document";
 		}
-
+		
 		pre:has(> code.ziggy-schema):before {
 			content: "Ziggy Schema";
 		}
-
-
+		
+		@media (prefers-color-scheme: dark) {
+			#sidebar summary {
+				border-color: var(--border-color);
+				color: #eee;
+			}
+			
+			#sidebar summary:hover {
+				color: var(--text-color);
+				background-color: #ffffff11;
+			}
+			
+			#sidebar a:hover, #sidebar .selected {
+				background-color: #ffffff33;
+			}
+			
+			#footer .title {
+				color: var(--text-color);
+			}
+			
+			#main h2 {
+				border-color: #aaa;
+			}
+			pre::before {
+				background-color: #ffffff22;
+				color: var(--text-color);
+			}
+		}
+		
 		@media (max-width: 1000px) {
 			#content {
 				padding: 0 15px;
 				flex-direction: column-reverse;
 			}
-
+			
 			#main {
 				max-width: 1000px;
 			}
-
+			
 		}
-
 		
-  #insanity {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-  </style>
+		#insanity {
+			max-height: 400px;
+			overflow-y: scroll;
+		}
+	</style>
 
-  </head>
-  <body id="body">
-    <nav id="top-nav">
-      <div id="top-nav-container">
-        <span>
-          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-          <span>v0.0.1</span>
-        </span>
-        <div id="top-nav-menu">
-          <a href="/documentation/getting-started/">
-            Quickstart
-          </a>
-          <a href="/documentation/about/">
-            Documentation
-          </a>
-          <a href="/log/">
-            Changelog
-          </a>
-          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-            Code
-          </a>
-        </div>
-      </div>
-    </nav>
-    
-  <div id="content">
-    <nav id="sidebar">
-      <div id="sidebar-content">
-        <details open>
-          <summary>Overview</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/about/">About</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/getting-started/">Getting Started</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Editor Configuration</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/editors/vscode/">VSCode</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/neovim/">Neovim</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/helix/">Helix</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/flow/">Flow</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Document</summary>
-          <ul>
-            <li>
-              <a class="selected" href="/documentation/scalars/">Scalar Values</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/containers/">Container Values</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/document/">Document Structure</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Schema</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/builtin-types/">Builtin Types</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/custom-types/">Custom Types</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/schema-structure/">Schema Structure</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Design Tips</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/struct-unions/">Struct Unions</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Libraries</summary>
-          <ul>
-            <li><a href="/documentation/parsers/">Parsers</a></li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Using Ziggy from Zig</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/parser-example/">Parser Example</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy CLI Tool</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-query/">ziggy query</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-check/">ziggy check</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
-            </li>
-          </ul>
-        </details>
-        <details>
-          <summary>Specification</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/spec/">Specification</a>
-            </li>
-          </ul>
-        </details>
-      </div>
-    </nav>
-    <div id="main">
-      <div><h1>Ziggy Scalar Values</h1><h2>Integers and floats</h2><p>Numeric values in Ziggy can be either <strong>integers</strong> or <strong>floats</strong>. Both numeric values can have a negative sign in front of them and use underscores to group digits.</p><h3>Integers</h3><p>Integers can have the following prefixes to indicate a base different than 10:</p><ul><li><code>0x</code> for base 16</li><li><code>0o</code> for base 8</li><li><code>0b</code> for base 2</li></ul><p><em>Note: <code>x</code>, <code>o</code>, and <code>b</code> must be lowercase, while <code>a</code> - <code>f</code> hex digits can be both lower or uppercase.</em></p><p>Examples: <code>123</code>, <code>0xffffff</code>, <code>0xFF_FF_FF</code>, <code>0o7_5_5</code>, <code>0b01_01_01</code></p><h3>Floats</h3><p>Floats support exponential notation and can also be expressed in base 16. Base 10 floats use <code>e</code> as the exponent separator, while base 16 floats use <code>p</code>. Both letters can also be uppercase.</p><p>Base 10 examples: <code>123.0</code>, <code>123_000.456_000</code>, <code>123.0e+77</code>, <code>123.0E+77</code></p><p>Base 16 examples: <code>0x103.70p-5</code>, <code>0x103.70</code>, <code>0x1234_5678.9ABC_CDEFp-10</code></p><h2>Bools</h2><p><code>true</code>, <code>false</code></p><h2>Null</h2><p><code>null</code></p><h2>Bytes</h2><p>Bytes in Ziggy are comparable to strings in other data languages with the main distinction that they don’t require you to encode valid Unicode codepoints, hence the name.</p><p>Applications that require valid Unicode (or any other data invariant) will have to perform those checks separately as needed.</p><p>To add quotes, newlines or other unprintable byte sequences to a Ziggy bytes literal, you can use escape sequences.</p><h3>Escape sequences</h3><ul><li><code>\n</code> newline</li><li><code>\r</code> carriage return</li><li><code>\t</code> tab</li><li><code>\\</code> backslash</li><li><code>\&apos;</code> single quote</li><li><code>\xNN</code> hexadecimal 8-bit byte value (2 digits)</li><li><code>\u{NNNNNN}</code> hexadecimal Unicode code point UTF-8 encoded (1 or more digits)</li></ul><p>Examples: <code>&quot;🧑‍🚀&quot;</code>, <code>&quot;\x1B[?1000h gang&quot;</code>, <code>&quot;lorem ipsum\ndolor sit&quot;</code>, <code>&quot;h\x65llo world&quot;</code>, <code>&quot;\xf0\x9f\x92\xaf&quot;</code></p><h3>Multiline bytes literals</h3><p>When a byte value must encode multiline text, you can use multiline syntax to keep the text readable by humans.</p><p>Example:</p><pre><code class="ziggy"><span class="string">\\This is a mulitline literal.
-\\
-\\Lorem ipsum something something.
-\\Dolor sit something else.</span>
+	</head>
+	<body id="body">
+		<nav id="top-nav">
+			<div id="top-nav-container">
+				<span>
+					<a href="/"
+					   style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;"
+					>Ziggy</a>
+					<span>v0.0.1</span>
+				</span>
+				<div id="top-nav-menu">
+					<a href="/documentation/getting-started/">
+						Quickstart
+					</a>
+					<a href="/documentation/about/">
+						Documentation
+					</a>
+					<a href="/log/">
+						Changelog
+					</a>
+					<a href="https://github.com/kristoff-it/ziggy" target="_blank">
+						Code
+					</a>
+				</div>
+			</div>
+		</nav>
+		
+	<div id="content">
+		<nav id="sidebar">
+			<div id="sidebar-content">
+				<details open>
+					<summary>Overview</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/about/">About</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/getting-started/">Getting Started</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Editor Configuration</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/editors/vscode/">VSCode</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/neovim/">Neovim</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/helix/">Helix</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/flow/">Flow</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Document</summary>
+					<ul>
+						<li>
+							<a class="selected" href="/documentation/scalars/">Scalar Values</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/containers/">Container Values</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/document/">Document Structure</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Schema</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/builtin-types/">Builtin Types</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/custom-types/">Custom Types</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/schema-structure/">Schema Structure</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Design Tips</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Libraries</summary>
+					<ul>
+						<li><a href="/documentation/parsers/">Parsers</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Using Ziggy from Zig</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/parser-example/">Parser Example</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/frontmatter/">Frontmatter</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/serialization-example/">Serialization Example</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy CLI Tool</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-query/">ziggy query</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-check/">ziggy check</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
+						</li>
+					</ul>
+				</details>
+				<details>
+					<summary>Specification</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/spec/">Specification</a>
+						</li>
+					</ul>
+				</details>
+			</div>
+		</nav>
+		<div id="main">
+			<div><h1>Ziggy Scalar Values</h1><h2>Integers and floats</h2><p>Numeric values in Ziggy can be either <strong>integers</strong> or <strong>floats</strong>. Both numeric values can have a negative sign in front of them and use underscores to group digits.</p><h3>Integers</h3><p>Integers can have the following prefixes to indicate a base different than 10:</p><ul><li><code>0x</code> for base 16</li><li><code>0o</code> for base 8</li><li><code>0b</code> for base 2</li></ul><p><em>Note: <code>x</code>, <code>o</code>, and <code>b</code> must be lowercase, while <code>a</code> - <code>f</code> hex digits can be both lower or uppercase.</em></p><p>Examples: <code>123</code>, <code>0xffffff</code>, <code>0xFF_FF_FF</code>, <code>0o7_5_5</code>, <code>0b01_01_01</code></p><h3>Floats</h3><p>Floats support exponential notation and can also be expressed in base 16. Base 10 floats use <code>e</code> as the exponent separator, while base 16 floats use <code>p</code>. Both letters can also be uppercase.</p><p>Base 10 examples: <code>123.0</code>, <code>123_000.456_000</code>, <code>123.0e+77</code>, <code>123.0E+77</code></p><p>Base 16 examples: <code>0x103.70p-5</code>, <code>0x103.70</code>, <code>0x1234_5678.9ABC_CDEFp-10</code></p><h2>Bools</h2><p><code>true</code>, <code>false</code></p><h2>Null</h2><p><code>null</code></p><h2>Bytes</h2><p>Bytes in Ziggy are comparable to strings in other data languages with the main distinction that they don’t require you to encode valid Unicode codepoints, hence the name.</p><p>Applications that require valid Unicode (or any other data invariant) will have to perform those checks separately as needed.</p><p>To add quotes, newlines or other unprintable byte sequences to a Ziggy bytes literal, you can use escape sequences.</p><h3>Escape sequences</h3><ul><li><code>\n</code> newline</li><li><code>\r</code> carriage return</li><li><code>\t</code> tab</li><li><code>\\</code> backslash</li><li><code>\&apos;</code> single quote</li><li><code>\xNN</code> hexadecimal 8-bit byte value (2 digits)</li><li><code>\u{NNNNNN}</code> hexadecimal Unicode code point UTF-8 encoded (1 or more digits)</li></ul><p>Examples: <code>&quot;🧑‍🚀&quot;</code>, <code>&quot;\x1B[?1000h gang&quot;</code>, <code>&quot;lorem ipsum\ndolor sit&quot;</code>, <code>&quot;h\x65llo world&quot;</code>, <code>&quot;\xf0\x9f\x92\xaf&quot;</code></p><h3>Multiline bytes literals</h3><p>When a byte value must encode multiline text, you can use multiline syntax to keep the text readable by humans.</p><p>Example:</p><pre><code class="ziggy"><span class="string">\\This is a mulitline literal.</span>
+<span class="string">\\</span>
+<span class="string">\\Lorem ipsum something something.</span>
+<span class="string">\\Dolor sit something else.</span>
 </code></pre>
 <p><strong>Note that multiline literals don’t support escape sequences which makes them handy when you need a “raw string” to express things like regular expressions.</strong></p><p>Lastly, multiline literals don’t include the last newline, so to have a trailing newline be part of your bytes, you will need to add a final empty line.</p><h2>Tagged literals</h2><p>Tagged literals are byte literals that have a “label” attached to them. This label can be used by applications to recognize special literals that represent values such as dates, for example.</p><p>The Ziggy data language doesn’t define any standard tag, leaving it to each application to define the meaning and expected syntax of their tags.</p><p>Tagged literals are particularly useful when used in conjunction with Ziggy Schemas as that will give users documentation and autocomplete support, while parsers will be able to map tagged literals to custom parsing functions (e.g., all <code>@date</code>s will be parsed as <code>Date</code> types).</p><p>A tagged literal has the following structure: <code>@tagName(&quot;bytes literal&quot;)</code>. The tag name must be an identifier prefixed by <code>@</code>.</p><p><em>NOTE: multiline bytes literals cannot be tagged.</em></p><p>Examples: <code>@date(&quot;2020-12-01&quot;)</code>, <code>@v(&quot;1.0.0&quot;)</code>, <code>@foo(&quot;bar&quot;)</code></p></div>
-      <nav id="footer">
-        <div>
-          <a href="/documentation/editors/helix/">
-            <p>
-              ←
-              <span class="title">Helix</span>
-            </p>
-          </a>
-        </div>
-        <div>
-          <a href="/documentation/containers/">
-            <p>
-              <span class="title">Container Values</span>
-              →
-            </p>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </div>
+			<nav id="footer">
+				<div>
+					<a href="/documentation/editors/helix/">
+						<p>
+							←
+							<span class="title">Helix</span>
+						</p>
+					</a>
+				</div>
+				<div>
+					<a href="/documentation/containers/">
+						<p>
+							<span class="title">Container Values</span>
+							→
+						</p>
+					</a>
+				</div>
+			</nav>
+		</div>
+	</div>
 
-  </body>
+	</body>
 </html>

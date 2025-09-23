@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head id="head">
-    <meta charset="UTF-8">
-    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@croloris">
-    <meta name="twitter:author" content="@croloris">
-    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="Getting Started - Ziggy">
-    <meta property="og:title" content="Getting Started">
-    <meta property="og:type" content="website">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  >
-    <title id="title">
-      Getting Started
-      - Ziggy Data Language
-    </title>
-    <link rel="stylesheet" type="text/css" href="/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/highlight.css">
-    
-  <style>
-    #content {
+	<head id="head">
+		<meta charset="UTF-8">
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@croloris">
+		<meta name="twitter:author" content="@croloris">
+		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:title" content="Getting Started - Ziggy">
+		<meta property="og:title" content="Getting Started">
+		<meta property="og:type" content="website">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title id="title">
+			Getting Started
+			- Ziggy Data Language
+		</title>
+		<link rel="stylesheet" type="text/css" href="/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link rel="stylesheet" type="text/css" href="/highlight.css">
+		
+	<style>
+		#content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
 		}
-
+		
 		#sidebar {
 			flex: 0 0 260px;
 			padding-top: 0.67em;
 		}
-
+		
 		#sidebar details {
 			list-style: none;
 		}
-
+		
 		#sidebar summary {
 			border-top: 1px solid var(--border-color);
 			list-style: none;
@@ -47,18 +45,18 @@
 			font-weight: bold;
 			padding-left: 10px;
 		}
-
+		
 		#sidebar summary:hover {
 			color: #111;
 			background-color: #eee;
 		}
-
+		
 		#sidebar ul {
 			list-style: none;
 			padding: 0;
 			margin: 0 0 10px;
 		}
-
+		
 		#sidebar a {
 			display: block;
 			text-decoration: none;
@@ -66,16 +64,16 @@
 			color: inherit;
 			padding-left: 10px;
 		}
-
-		#sidebar a:hover, #sidebar .selected { 
+		
+		#sidebar a:hover, #sidebar .selected {
 			background-color: #ddd;
 		}
-
+		
 		#sidebar-content {
 			position: sticky;
 			top: 110px;
 		}
-
+		
 		#footer {
 			display: flex;
 			flex-direction: row;
@@ -85,49 +83,49 @@
 			border-top: 1px solid var(--border-color);
 			text-align: right;
 		}
-
+		
 		#footer a {
 			text-decoration: none;
 			color: inherit;
 		}
-
+		
 		#footer .title {
 			font-weight: bold;
 			color: #222;
 			text-decoration: underline;
 		}
-
+		
 		#main {
 			max-width: 920px;
 			flex-grow: 1;
 		}
-
+		
 		#main h2 {
 			margin-top: 1.5em;
 			border-bottom: 2px dotted #aaa;
 		}
-
+		
 		pre {
 			margin: 10px;
 			padding: 0;
 			border: 1px dashed;
 			border-radius: 0;
 		}
-
+		
 		pre code {
 			display: block;
 			padding: 30px;
 			padding-top: 0;
 			padding-right: 0;
 		}
-
+		
 		p code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
 			padding: 0.2em;
 		}
-
+		
 		pre::before {
 			display: block;
 			content: "Shell";
@@ -145,267 +143,295 @@
 			left: 0;
 			z-index: 10;
 		}
-
+		
 		pre:has(> code.markdown):before {
 			content: "Markdown";
 		}
-
+		
 		pre:has(> code.javascript):before {
 			content: "JavaScript";
 		}
-
+		
 		pre:has(> code.zig):before {
 			content: "Zig";
 		}
-
+		
 		pre:has(> code.lua):before {
 			content: "Lua";
 		}
-
+		
 		pre:has(> code.toml):before {
 			content: "TOML";
 		}
-
+		
 		pre:has(> code.json):before {
 			content: "JSON";
 		}
-
+		
 		pre:has(> code.ziggy):before {
 			content: "Ziggy Document";
 		}
-
+		
 		pre:has(> code.ziggy-schema):before {
 			content: "Ziggy Schema";
 		}
-
-
+		
+		@media (prefers-color-scheme: dark) {
+			#sidebar summary {
+				border-color: var(--border-color);
+				color: #eee;
+			}
+			
+			#sidebar summary:hover {
+				color: var(--text-color);
+				background-color: #ffffff11;
+			}
+			
+			#sidebar a:hover, #sidebar .selected {
+				background-color: #ffffff33;
+			}
+			
+			#footer .title {
+				color: var(--text-color);
+			}
+			
+			#main h2 {
+				border-color: #aaa;
+			}
+			pre::before {
+				background-color: #ffffff22;
+				color: var(--text-color);
+			}
+		}
+		
 		@media (max-width: 1000px) {
 			#content {
 				padding: 0 15px;
 				flex-direction: column-reverse;
 			}
-
+			
 			#main {
 				max-width: 1000px;
 			}
-
+			
 		}
-
 		
-  #insanity {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-  </style>
+		#insanity {
+			max-height: 400px;
+			overflow-y: scroll;
+		}
+	</style>
 
-  </head>
-  <body id="body">
-    <nav id="top-nav">
-      <div id="top-nav-container">
-        <span>
-          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-          <span>v0.0.1</span>
-        </span>
-        <div id="top-nav-menu">
-          <a href="/documentation/getting-started/">
-            Quickstart
-          </a>
-          <a href="/documentation/about/">
-            Documentation
-          </a>
-          <a href="/log/">
-            Changelog
-          </a>
-          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-            Code
-          </a>
-        </div>
-      </div>
-    </nav>
-    
-  <div id="content">
-    <nav id="sidebar">
-      <div id="sidebar-content">
-        <details open>
-          <summary>Overview</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/about/">About</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/getting-started/">Getting Started</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Editor Configuration</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/editors/vscode/">VSCode</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/neovim/">Neovim</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/helix/">Helix</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/flow/">Flow</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Document</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/scalars/">Scalar Values</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/containers/">Container Values</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/document/">Document Structure</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Schema</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/builtin-types/">Builtin Types</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/custom-types/">Custom Types</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/schema-structure/">Schema Structure</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Design Tips</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/struct-unions/">Struct Unions</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Libraries</summary>
-          <ul>
-            <li><a href="/documentation/parsers/">Parsers</a></li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Using Ziggy from Zig</summary>
-          <ul>
-            <li>
-              <a class="selected" href="/documentation/getting-started-dev/">Getting Started</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/parser-example/">Parser Example</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy CLI Tool</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-query/">ziggy query</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-check/">ziggy check</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
-            </li>
-          </ul>
-        </details>
-        <details>
-          <summary>Specification</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/spec/">Specification</a>
-            </li>
-          </ul>
-        </details>
-      </div>
-    </nav>
-    <div id="main">
-      <div><h1>Getting Started</h1><p>A step by step guide to get Ziggy up and running your Zig project.</p><h2>Fetching the package</h2><p>Before we continue, ensure you have at least version <code>0.14.0</code> of Zig installed.</p><p>To add Ziggy to your project you can use <code>zig fetch</code> like so</p><pre><code class="sh"><span class="constant">zig</span> <span class="constant">fetch</span> <span class="constant">--save</span> <span class="constant">git+https://github.com/kristoff-it/ziggy.git</span>
+	</head>
+	<body id="body">
+		<nav id="top-nav">
+			<div id="top-nav-container">
+				<span>
+					<a href="/"
+					   style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;"
+					>Ziggy</a>
+					<span>v0.0.1</span>
+				</span>
+				<div id="top-nav-menu">
+					<a href="/documentation/getting-started/">
+						Quickstart
+					</a>
+					<a href="/documentation/about/">
+						Documentation
+					</a>
+					<a href="/log/">
+						Changelog
+					</a>
+					<a href="https://github.com/kristoff-it/ziggy" target="_blank">
+						Code
+					</a>
+				</div>
+			</div>
+		</nav>
+		
+	<div id="content">
+		<nav id="sidebar">
+			<div id="sidebar-content">
+				<details open>
+					<summary>Overview</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/about/">About</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/getting-started/">Getting Started</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Editor Configuration</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/editors/vscode/">VSCode</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/neovim/">Neovim</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/helix/">Helix</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/flow/">Flow</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Document</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/scalars/">Scalar Values</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/containers/">Container Values</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/document/">Document Structure</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Schema</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/builtin-types/">Builtin Types</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/custom-types/">Custom Types</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/schema-structure/">Schema Structure</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Design Tips</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Libraries</summary>
+					<ul>
+						<li><a href="/documentation/parsers/">Parsers</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Using Ziggy from Zig</summary>
+					<ul>
+						<li>
+							<a class="selected" href="/documentation/getting-started-dev/">Getting Started</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/parser-example/">Parser Example</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/frontmatter/">Frontmatter</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/serialization-example/">Serialization Example</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy CLI Tool</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/ziggy-fmt/">ziggy fmt</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-query/">ziggy query</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-check/">ziggy check</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
+						</li>
+					</ul>
+				</details>
+				<details>
+					<summary>Specification</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/spec/">Specification</a>
+						</li>
+					</ul>
+				</details>
+			</div>
+		</nav>
+		<div id="main">
+			<div><h1>Getting Started</h1><p>A step by step guide to get Ziggy up and running your Zig project.</p><h2>Fetching the package</h2><p>Before we continue, ensure you have at least version <code>0.14.0</code> of Zig installed.</p><p>To add Ziggy to your project you can use <code>zig fetch</code> like so</p><pre><code class="sh"><span class="constant function">zig</span> <span class="constant">fetch</span> <span class="constant">--save</span> <span class="constant">git+https://github.com/kristoff-it/ziggy.git</span>
 </code></pre>
-<p>This will fetch latest version of Ziggy into your project, you can verify this by looking into <code>build.zig.zon</code></p><pre><code class="zig"><span class="punctuation delimiter">.</span><span class="constant">dependencies</span> <span class="operator">=</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span>
-    <span class="comment">// ...</span>
-    <span class="punctuation delimiter">.</span><span class="variable member">ziggy</span> <span class="operator">=</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span>
-        <span class="punctuation delimiter">.</span><span class="variable member">url</span> <span class="operator">=</span> <span class="string">&quot;git+https://github.com/kristoff-it/ziggy.git#COMMIT&quot;</span><span class="punctuation delimiter">,</span>
-        <span class="punctuation delimiter">.</span><span class="variable member">hash</span> <span class="operator">=</span> <span class="string">&quot;ziggy-0.1.0-HASH&quot;</span><span class="punctuation delimiter">,</span>
-    <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
-    <span class="comment">// ...</span>
-<span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
+<p>This will fetch latest version of Ziggy into your project, you can verify this by looking into <code>build.zig.zon</code></p><pre><code class="zig"><span class="punctuation_delimiter">.</span><span class="constant variable_builtin type variable">dependencies</span> <span class="operator">=</span> <span class="punctuation_delimiter">.</span><span class="punctuation_bracket">{</span>
+    <span class="comment_documentation comment spell">// ...</span>
+    <span class="punctuation_delimiter">.</span><span class="constant variable_builtin type variable_member variable">ziggy</span> <span class="operator">=</span> <span class="punctuation_delimiter">.</span><span class="punctuation_bracket">{</span>
+        <span class="punctuation_delimiter">.</span><span class="constant variable_builtin type variable_member variable">url</span> <span class="operator">=</span> <span class="string">&quot;git+https://github.com/kristoff-it/ziggy.git#COMMIT&quot;</span><span class="punctuation_delimiter">,</span>
+        <span class="punctuation_delimiter">.</span><span class="constant variable_builtin type variable_member variable">hash</span> <span class="operator">=</span> <span class="string">&quot;ziggy-0.1.0-HASH&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+    <span class="comment_documentation comment spell">// ...</span>
+<span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<p>Both <code>COMMIT</code> and <code>HASH</code> will be different</p><h2>Setting up <code>build.zig</code></h2><p>After you have successfully fetch ziggy package, open up <code>build.zig</code> and search for your executable module variable e.g. <code>exe_mod</code> (this should be the case in freshly created Zig project)</p><p>Once you have located your executable module variable, let’s add the dependency into our project</p><pre><code class="zig"><span class="keyword">const</span> <span class="variable">ziggy_dep</span> <span class="operator">=</span> <span class="variable">b</span><span class="punctuation delimiter">.</span><span class="function call">dependency</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="punctuation delimiter">.</span><span class="punctuation bracket">{</span>
-    <span class="punctuation delimiter">.</span><span class="variable member">target</span> <span class="operator">=</span> <span class="variable">target</span><span class="punctuation delimiter">,</span>
-    <span class="punctuation delimiter">.</span><span class="variable member">optimize</span> <span class="operator">=</span> <span class="variable">optimize</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+<p>Both <code>COMMIT</code> and <code>HASH</code> will be different</p><h2>Setting up <code>build.zig</code></h2><p>After you have successfully fetch ziggy package, open up <code>build.zig</code> and search for your executable module variable e.g. <code>exe_mod</code> (this should be the case in freshly created Zig project)</p><p>Once you have located your executable module variable, let’s add the dependency into our project</p><pre><code class="zig"><span class="keyword">const</span> <span class="constant variable_builtin type variable">ziggy_dep</span> <span class="operator">=</span> <span class="constant variable_builtin type variable">b</span><span class="punctuation_delimiter">.</span><span class="type constant variable_builtin function_call variable_member variable">dependency</span><span class="punctuation_bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation_delimiter">,</span> <span class="punctuation_delimiter">.</span><span class="punctuation_bracket">{</span>
+    <span class="punctuation_delimiter">.</span><span class="constant variable_builtin type variable_member variable">target</span> <span class="operator">=</span> <span class="constant variable_builtin type variable">target</span><span class="punctuation_delimiter">,</span>
+    <span class="punctuation_delimiter">.</span><span class="constant variable_builtin type variable_member variable">optimize</span> <span class="operator">=</span> <span class="constant variable_builtin type variable">optimize</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">;</span>
 </code></pre>
-<p>Now just add it to the executable module as an import using <code>addImport</code> like so</p><pre><code class="zig"><span class="variable">exe_mod</span><span class="punctuation delimiter">.</span><span class="function call">addImport</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation delimiter">,</span> <span class="variable">ziggy_dep</span><span class="punctuation delimiter">.</span><span class="function call">module</span><span class="punctuation bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation bracket">)</span><span class="punctuation bracket">)</span><span class="punctuation delimiter">;</span>
+<p>Now just add it to the executable module as an import using <code>addImport</code> like so</p><pre><code class="zig"><span class="constant variable_builtin type variable">exe_mod</span><span class="punctuation_delimiter">.</span><span class="type constant variable_builtin function_call variable_member variable">addImport</span><span class="punctuation_bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation_delimiter">,</span> <span class="constant variable_builtin type variable">ziggy_dep</span><span class="punctuation_delimiter">.</span><span class="type constant variable_builtin function_call variable_member variable">module</span><span class="punctuation_bracket">(</span><span class="string">&quot;ziggy&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">;</span>
 </code></pre>
 <p>Again, <code>exe_mod</code> may be called differently in your project</p></div>
-      <nav id="footer">
-        <div>
-          <a href="/documentation/spec/">
-            <p>
-              ←
-              <span class="title">Specification</span>
-            </p>
-          </a>
-        </div>
-        <div>
-          <a href="/documentation/parser-example/">
-            <p>
-              <span class="title">Parser Example</span>
-              →
-            </p>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </div>
+			<nav id="footer">
+				<div>
+					<a href="/documentation/spec/">
+						<p>
+							←
+							<span class="title">Specification</span>
+						</p>
+					</a>
+				</div>
+				<div>
+					<a href="/documentation/parser-example/">
+						<p>
+							<span class="title">Parser Example</span>
+							→
+						</p>
+					</a>
+				</div>
+			</nav>
+		</div>
+	</div>
 
-  </body>
+	</body>
 </html>

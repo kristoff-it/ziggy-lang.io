@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head id="head">
-    <meta charset="UTF-8">
-    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@croloris">
-    <meta name="twitter:author" content="@croloris">
-    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="ziggy fmt - Ziggy">
-    <meta property="og:title" content="ziggy fmt">
-    <meta property="og:type" content="website">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  >
-    <title id="title">
-      ziggy fmt
-      - Ziggy Data Language
-    </title>
-    <link rel="stylesheet" type="text/css" href="/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/highlight.css">
-    
-  <style>
-    #content {
+	<head id="head">
+		<meta charset="UTF-8">
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@croloris">
+		<meta name="twitter:author" content="@croloris">
+		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:title" content="ziggy fmt - Ziggy">
+		<meta property="og:title" content="ziggy fmt">
+		<meta property="og:type" content="website">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title id="title">
+			ziggy fmt
+			- Ziggy Data Language
+		</title>
+		<link rel="stylesheet" type="text/css" href="/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link rel="stylesheet" type="text/css" href="/highlight.css">
+		
+	<style>
+		#content {
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
 		}
-
+		
 		#sidebar {
 			flex: 0 0 260px;
 			padding-top: 0.67em;
 		}
-
+		
 		#sidebar details {
 			list-style: none;
 		}
-
+		
 		#sidebar summary {
 			border-top: 1px solid var(--border-color);
 			list-style: none;
@@ -47,18 +45,18 @@
 			font-weight: bold;
 			padding-left: 10px;
 		}
-
+		
 		#sidebar summary:hover {
 			color: #111;
 			background-color: #eee;
 		}
-
+		
 		#sidebar ul {
 			list-style: none;
 			padding: 0;
 			margin: 0 0 10px;
 		}
-
+		
 		#sidebar a {
 			display: block;
 			text-decoration: none;
@@ -66,16 +64,16 @@
 			color: inherit;
 			padding-left: 10px;
 		}
-
-		#sidebar a:hover, #sidebar .selected { 
+		
+		#sidebar a:hover, #sidebar .selected {
 			background-color: #ddd;
 		}
-
+		
 		#sidebar-content {
 			position: sticky;
 			top: 110px;
 		}
-
+		
 		#footer {
 			display: flex;
 			flex-direction: row;
@@ -85,49 +83,49 @@
 			border-top: 1px solid var(--border-color);
 			text-align: right;
 		}
-
+		
 		#footer a {
 			text-decoration: none;
 			color: inherit;
 		}
-
+		
 		#footer .title {
 			font-weight: bold;
 			color: #222;
 			text-decoration: underline;
 		}
-
+		
 		#main {
 			max-width: 920px;
 			flex-grow: 1;
 		}
-
+		
 		#main h2 {
 			margin-top: 1.5em;
 			border-bottom: 2px dotted #aaa;
 		}
-
+		
 		pre {
 			margin: 10px;
 			padding: 0;
 			border: 1px dashed;
 			border-radius: 0;
 		}
-
+		
 		pre code {
 			display: block;
 			padding: 30px;
 			padding-top: 0;
 			padding-right: 0;
 		}
-
+		
 		p code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
 			padding: 0.2em;
 		}
-
+		
 		pre::before {
 			display: block;
 			content: "Shell";
@@ -145,283 +143,311 @@
 			left: 0;
 			z-index: 10;
 		}
-
+		
 		pre:has(> code.markdown):before {
 			content: "Markdown";
 		}
-
+		
 		pre:has(> code.javascript):before {
 			content: "JavaScript";
 		}
-
+		
 		pre:has(> code.zig):before {
 			content: "Zig";
 		}
-
+		
 		pre:has(> code.lua):before {
 			content: "Lua";
 		}
-
+		
 		pre:has(> code.toml):before {
 			content: "TOML";
 		}
-
+		
 		pre:has(> code.json):before {
 			content: "JSON";
 		}
-
+		
 		pre:has(> code.ziggy):before {
 			content: "Ziggy Document";
 		}
-
+		
 		pre:has(> code.ziggy-schema):before {
 			content: "Ziggy Schema";
 		}
-
-
+		
+		@media (prefers-color-scheme: dark) {
+			#sidebar summary {
+				border-color: var(--border-color);
+				color: #eee;
+			}
+			
+			#sidebar summary:hover {
+				color: var(--text-color);
+				background-color: #ffffff11;
+			}
+			
+			#sidebar a:hover, #sidebar .selected {
+				background-color: #ffffff33;
+			}
+			
+			#footer .title {
+				color: var(--text-color);
+			}
+			
+			#main h2 {
+				border-color: #aaa;
+			}
+			pre::before {
+				background-color: #ffffff22;
+				color: var(--text-color);
+			}
+		}
+		
 		@media (max-width: 1000px) {
 			#content {
 				padding: 0 15px;
 				flex-direction: column-reverse;
 			}
-
+			
 			#main {
 				max-width: 1000px;
 			}
-
+			
 		}
-
 		
-  #insanity {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-  </style>
+		#insanity {
+			max-height: 400px;
+			overflow-y: scroll;
+		}
+	</style>
 
-  </head>
-  <body id="body">
-    <nav id="top-nav">
-      <div id="top-nav-container">
-        <span>
-          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-          <span>v0.0.1</span>
-        </span>
-        <div id="top-nav-menu">
-          <a href="/documentation/getting-started/">
-            Quickstart
-          </a>
-          <a href="/documentation/about/">
-            Documentation
-          </a>
-          <a href="/log/">
-            Changelog
-          </a>
-          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-            Code
-          </a>
-        </div>
-      </div>
-    </nav>
-    
-  <div id="content">
-    <nav id="sidebar">
-      <div id="sidebar-content">
-        <details open>
-          <summary>Overview</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/about/">About</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/getting-started/">Getting Started</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Editor Configuration</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/editors/vscode/">VSCode</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/neovim/">Neovim</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/helix/">Helix</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/editors/flow/">Flow</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Document</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/scalars/">Scalar Values</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/containers/">Container Values</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/document/">Document Structure</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy Schema</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/builtin-types/">Builtin Types</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/custom-types/">Custom Types</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/schema-structure/">Schema Structure</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Design Tips</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/struct-unions/">Struct Unions</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Libraries</summary>
-          <ul>
-            <li><a href="/documentation/parsers/">Parsers</a></li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Using Ziggy from Zig</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/getting-started-dev/">Getting Started</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/parser-example/">Parser Example</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/frontmatter/">Frontmatter</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/serialization-example/">Serialization Example</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>Ziggy CLI Tool</summary>
-          <ul>
-            <li>
-              <a class="selected" href="/documentation/ziggy-fmt/">ziggy fmt</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-query/">ziggy query</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-check/">ziggy check</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
-            </li>
-          
-            <li>
-              <a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
-            </li>
-          </ul>
-        </details>
-        <details>
-          <summary>Specification</summary>
-          <ul>
-            <li>
-              <a class="" href="/documentation/spec/">Specification</a>
-            </li>
-          </ul>
-        </details>
-      </div>
-    </nav>
-    <div id="main">
-      <div><h1><code>ziggy fmt</code></h1><p>Formats Ziggy documents and Ziggy schemas.</p><p><strong>It’s highly recommended you enable format on save in your editor to get the most out of the autoformatter.</strong></p><h2>Trailing Commas</h2><p>Trailing commas in structs, maps, and arrays tell the autoformatter to perform vertical alignment.</p><p>Lack of a trailing comma requests horizontal alignment instead.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span> .<span class="keyword">bar</span> = <span class="punctuation bracket">[</span><span class="constant numeric">1</span><span class="punctuation delimiter">,</span> 
-<span class="constant numeric">2</span><span class="punctuation delimiter">,</span> <span class="constant numeric">3</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span> .<span class="keyword">baz</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+	</head>
+	<body id="body">
+		<nav id="top-nav">
+			<div id="top-nav-container">
+				<span>
+					<a href="/"
+					   style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;"
+					>Ziggy</a>
+					<span>v0.0.1</span>
+				</span>
+				<div id="top-nav-menu">
+					<a href="/documentation/getting-started/">
+						Quickstart
+					</a>
+					<a href="/documentation/about/">
+						Documentation
+					</a>
+					<a href="/log/">
+						Changelog
+					</a>
+					<a href="https://github.com/kristoff-it/ziggy" target="_blank">
+						Code
+					</a>
+				</div>
+			</div>
+		</nav>
+		
+	<div id="content">
+		<nav id="sidebar">
+			<div id="sidebar-content">
+				<details open>
+					<summary>Overview</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/about/">About</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/getting-started/">Getting Started</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Editor Configuration</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/editors/vscode/">VSCode</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/neovim/">Neovim</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/helix/">Helix</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/editors/flow/">Flow</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Document</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/scalars/">Scalar Values</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/containers/">Container Values</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/document/">Document Structure</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy Schema</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/builtin-types/">Builtin Types</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/custom-types/">Custom Types</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/schema-structure/">Schema Structure</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Design Tips</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Libraries</summary>
+					<ul>
+						<li><a href="/documentation/parsers/">Parsers</a></li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Using Ziggy from Zig</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/getting-started-dev/">Getting Started</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/parser-example/">Parser Example</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/frontmatter/">Frontmatter</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/serialization-example/">Serialization Example</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/metaprogramming/">Metaprogramming</a>
+						</li>
+					</ul>
+				</details>
+				<details open>
+					<summary>Ziggy CLI Tool</summary>
+					<ul>
+						<li>
+							<a class="selected" href="/documentation/ziggy-fmt/">ziggy fmt</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-query/">ziggy query</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-check/">ziggy check</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-convert/">ziggy convert</a>
+						</li>
+					
+						<li>
+							<a class="" href="/documentation/ziggy-lsp/">ziggy lsp</a>
+						</li>
+					</ul>
+				</details>
+				<details>
+					<summary>Specification</summary>
+					<ul>
+						<li>
+							<a class="" href="/documentation/spec/">Specification</a>
+						</li>
+					</ul>
+				</details>
+			</div>
+		</nav>
+		<div id="main">
+			<div><h1><code>ziggy fmt</code></h1><p>Formats Ziggy documents and Ziggy schemas.</p><p><strong>It’s highly recommended you enable format on save in your editor to get the most out of the autoformatter.</strong></p><h2>Trailing Commas</h2><p>Trailing commas in structs, maps, and arrays tell the autoformatter to perform vertical alignment.</p><p>Lack of a trailing comma requests horizontal alignment instead.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span> .<span class="keyword">bar</span> = <span class="punctuation_bracket">[</span><span class="constant_numeric">1</span><span class="punctuation_delimiter">,</span> 
+<span class="constant_numeric">2</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">3</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span> .<span class="keyword">baz</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<p>This is the autoformatted result:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">bar</span> = <span class="punctuation bracket">[</span><span class="constant numeric">1</span><span class="punctuation delimiter">,</span> <span class="constant numeric">2</span><span class="punctuation delimiter">,</span> <span class="constant numeric">3</span><span class="punctuation bracket">]</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">baz</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
+<p>This is the autoformatted result:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">bar</span> = <span class="punctuation_bracket">[</span><span class="constant_numeric">1</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">2</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">3</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">baz</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<ul><li>the outer struct was vertically aligned because of the trailing comma</li><li>the array value of <code>bar</code> was horizontally aligned because there was no comma after <code>3</code></li></ul><p>Similar behavior also applies to Ziggy Schemas.</p><h2>Upgrading Maps</h2><p>If a Ziggy document has a map value in it, you can give it a name to have <code>ziggy fmt</code> turn it into a struct. Maps cannot have names according to the Ziggy grammar, but the autoformatter will take that as a hint that you intend to turn a map into a struct and could you use some help.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">bar</span> = <span class="punctuation bracket">{</span>
-  <span class="string">&quot;arst&quot;</span>: <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
-  <span class="string">&quot;qwfp&quot;</span>: <span class="punctuation bracket">{</span>
-    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
-    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation delimiter">,</span>
-  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span>
+<ul><li>the outer struct was vertically aligned because of the trailing comma</li><li>the array value of <code>bar</code> was horizontally aligned because there was no comma after <code>3</code></li></ul><p>Similar behavior also applies to Ziggy Schemas.</p><h2>Upgrading Maps</h2><p>If a Ziggy document has a map value in it, you can give it a name to have <code>ziggy fmt</code> turn it into a struct. Maps cannot have names according to the Ziggy grammar, but the autoformatter will take that as a hint that you intend to turn a map into a struct and could you use some help.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">bar</span> = <span class="punctuation_bracket">{</span>
+  <span class="string">&quot;arst&quot;</span>: <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
+  <span class="string">&quot;qwfp&quot;</span>: <span class="punctuation_bracket">{</span>
+    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span>
 </code></pre>
-<p>Give a name to the value of <code>bar</code>:</p><pre><code class="ziggy"><span class="error">.foo = &quot;bar&quot;,
-.bar = Foo {
-  &quot;arst&quot;: true,
-  &quot;qwfp&quot;:</span> <span class="punctuation bracket">{</span>
-    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
-    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation delimiter">,</span>
-  <span class="punctuation bracket">}</span><span class="error">,
-}</span>
+<p>Give a name to the value of <code>bar</code>:</p><pre><code class="ziggy"><span class="error">.</span><span class="error keyword">foo</span><span class="error"> = </span><span class="error string">&quot;bar&quot;</span><span class="error punctuation_delimiter">,</span><span class="error">
+.</span><span class="error keyword">bar</span><span class="error"> = </span><span class="error">Foo </span><span class="error punctuation_bracket">{</span><span class="error">
+  &quot;arst</span><span class="string">&quot;: true,
+  &quot;</span>qwfp&quot;: <span class="punctuation_bracket">{</span>
+    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="error punctuation_delimiter">,</span><span class="error">
+</span><span class="error punctuation_bracket">}</span>
 </code></pre>
-<p>On save the autoformatter will turn all map-style fields into struct-style fields:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation delimiter">,</span>
-.<span class="keyword">bar</span> = <span class="type">Foo</span> <span class="punctuation bracket">{</span>
-  .<span class="keyword">arst</span> = <span class="constant builtin boolean">true</span><span class="punctuation delimiter">,</span>
-  .<span class="keyword">qwfp</span> = <span class="punctuation bracket">{</span>
-    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation delimiter">,</span>
-    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation delimiter">,</span>
-  <span class="punctuation bracket">}</span><span class="punctuation delimiter">,</span>
-<span class="punctuation bracket">}</span>
+<p>On save the autoformatter will turn all map-style fields into struct-style fields:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">bar</span> = <span class="type">Foo</span> <span class="punctuation_bracket">{</span>
+  .<span class="keyword">arst</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">qwfp</span> = <span class="punctuation_bracket">{</span>
+    <span class="string">&quot;anoter&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+<span class="punctuation_bracket">}</span>
 </code></pre>
 <p><em>Note how the innermost map was <strong>not</strong> transformed.</em></p><p>Ziggy documents are not a proper superset of JSON because Ziggy uses a different string escape sequence, but for simple enough JSON documents you can easily upgrade them to Ziggy using this trick.</p><p>That said, for anything more than one-off transformations of trivial JSON files in your editor, you should use <code>ziggy convert</code>.</p></div>
-      <nav id="footer">
-        <div>
-          <a href="/documentation/parsers/">
-            <p>
-              ←
-              <span class="title">Parsers</span>
-            </p>
-          </a>
-        </div>
-        <div>
-          <a href="/documentation/ziggy-query/">
-            <p>
-              <span class="title">ziggy query</span>
-              →
-            </p>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </div>
+			<nav id="footer">
+				<div>
+					<a href="/documentation/parsers/">
+						<p>
+							←
+							<span class="title">Parsers</span>
+						</p>
+					</a>
+				</div>
+				<div>
+					<a href="/documentation/ziggy-query/">
+						<p>
+							<span class="title">ziggy query</span>
+							→
+						</p>
+					</a>
+				</div>
+			</nav>
+		</div>
+	</div>
 
-  </body>
+	</body>
 </html>

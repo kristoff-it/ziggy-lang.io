@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head id="head">
-    <meta charset="UTF-8">
-    <meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@croloris">
-    <meta name="twitter:author" content="@croloris">
-    <meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-    <meta name="twitter:title" content="Changelog - Ziggy">
-    <meta property="og:title" content="Changelog">
-    <meta property="og:type" content="website">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  >
-    <title id="title">
-      Changelog
-      - Ziggy Data Language
-    </title>
-    <link rel="stylesheet" type="text/css" href="/fonts.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" type="text/css" href="/highlight.css">
-    
+	<head id="head">
+		<meta charset="UTF-8">
+		<meta name="color-scheme" content="light dark">
+		<meta name="description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@croloris">
+		<meta name="twitter:author" content="@croloris">
+		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
+		<meta name="twitter:title" content="Changelog - Ziggy">
+		<meta property="og:title" content="Changelog">
+		<meta property="og:type" content="website">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title id="title">
+			Changelog
+			- Ziggy Data Language
+		</title>
+		<link rel="stylesheet" type="text/css" href="/fonts.css">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link rel="stylesheet" type="text/css" href="/highlight.css">
+		
   <style>
     #content {
       align-self: center;
@@ -115,33 +113,35 @@
     }
   </style>
 
-  </head>
-  <body id="body">
-    <nav id="top-nav">
-      <div id="top-nav-container">
-        <span>
-          <a href="/" style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;">Ziggy</a>
-          <span>v0.0.1</span>
-        </span>
-        <div id="top-nav-menu">
-          <a href="/documentation/getting-started/">
-            Quickstart
-          </a>
-          <a href="/documentation/about/">
-            Documentation
-          </a>
-          <a href="/log/">
-            Changelog
-          </a>
-          <a href="https://github.com/kristoff-it/ziggy" target="_blank">
-            Code
-          </a>
-        </div>
-      </div>
-    </nav>
-    
+	</head>
+	<body id="body">
+		<nav id="top-nav">
+			<div id="top-nav-container">
+				<span>
+					<a href="/"
+					   style="font-size: 1.8em;font-family:'Glue Gun';font-weight:bold;text-decoration: none; color: black;"
+					>Ziggy</a>
+					<span>v0.0.1</span>
+				</span>
+				<div id="top-nav-menu">
+					<a href="/documentation/getting-started/">
+						Quickstart
+					</a>
+					<a href="/documentation/about/">
+						Documentation
+					</a>
+					<a href="/log/">
+						Changelog
+					</a>
+					<a href="https://github.com/kristoff-it/ziggy" target="_blank">
+						Code
+					</a>
+				</div>
+			</div>
+		</nav>
+		
   <div id="content"><h1>Changelog</h1><h2>About</h2><p>This is a non-exhaustive, curated list of changes meant to help users quickly see what has improved since they last checked.</p><p>Refer to <a href="https://github.com/kristoff-it/ziggy" target="_blank">the repository</a> and the <a href="https://github.com/kristoff-it/ziggy/issues" target="_blank">issue tracker</a> for more in-depth information.</p><h2>2025-03-11</h2><p>Improved Ziggy frontmatter parsing. Previously we were considering the frontmatter framing delimiters <code>---</code> as external text that the Ziggy parser should not concern itself with, but it turns out that it’s a great idea to add them as tokens to the tokenizer and instructing parsers to be aware when attempting to parse a Ziggy document embedded as frontmatter in an external document (e.g. SuperMD).</p><p>See <a href="/documentation/frontmatter/">documentation/frontmatter/</a> for more info.</p><h2>2024-03-20</h2><p>Website launched!</p>
   </div>
 
-  </body>
+	</body>
 </html>
