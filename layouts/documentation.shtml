@@ -225,6 +225,7 @@
                                 'documentation/editors/neovim',
                                 'documentation/editors/helix',
                                 'documentation/editors/flow',
+                                'documentation/editors/emacs',
           )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
