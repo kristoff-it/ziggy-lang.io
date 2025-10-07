@@ -163,7 +163,7 @@
 			}
 			
 			#sidebar summary:hover {
-				color: var(--text-color);
+				color: var(--text);
 				background-color: #ffffff11;
 			}
 			
@@ -172,7 +172,7 @@
 			}
 			
 			#footer .title {
-				color: var(--text-color);
+				color: var(--text);
 			}
 			
 			#main h2 {
@@ -180,7 +180,7 @@
 			}
 			pre::before {
 				background-color: #ffffff22;
-				color: var(--text-color);
+				color: var(--text);
 			}
 		}
 		
