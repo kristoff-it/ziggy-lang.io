@@ -34,7 +34,7 @@ Moreover, `ziggy-mode` assumes that `ziggy` is on your PATH or the variable `zig
 
 ## LSP
 
-To use the `ziggy` LSP with `eglot[, add the following to your configuration:
+To use the `ziggy` LSP with `eglot`, add the following to your configuration:
 
 ```
 (add-to-list 'eglot-server-programs
