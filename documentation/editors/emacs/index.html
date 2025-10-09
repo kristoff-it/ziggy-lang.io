@@ -8,13 +8,13 @@
 		<meta name="twitter:site" content="@croloris">
 		<meta name="twitter:author" content="@croloris">
 		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-		<meta name="twitter:title" content="ziggy check - Ziggy">
-		<meta property="og:title" content="ziggy check">
+		<meta name="twitter:title" content="Emacs - Ziggy">
+		<meta property="og:title" content="Emacs">
 		<meta property="og:type" content="website">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title id="title">
-			ziggy check
+			Emacs
 			- Ziggy Data Language
 		</title>
 		<link rel="stylesheet" type="text/css" href="/fonts.css">
@@ -284,7 +284,7 @@
 						</li>
 					
 						<li>
-							<a class="" href="/documentation/editors/emacs/">Emacs</a>
+							<a class="selected" href="/documentation/editors/emacs/">Emacs</a>
 						</li>
 					</ul>
 				</details>
@@ -374,7 +374,7 @@
 						</li>
 					
 						<li>
-							<a class="selected" href="/documentation/ziggy-check/">ziggy check</a>
+							<a class="" href="/documentation/ziggy-check/">ziggy check</a>
 						</li>
 					
 						<li>
@@ -397,24 +397,39 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1><code>ziggy check</code></h1><p>Checks Ziggy Documents for schema adherence.</p><h2>Development status</h2><p>Main features are complete but the schema language is not yet fully defined, leaving some minor gaps in the schema checking behavior.</p><p>Not fully tested, users could experience bugs.</p></div>
+			<div><h1>Emacs</h1><p><a href="https://github.com/dcolazin/ziggy-mode/" target="_blank">ziggy-mode</a> is a simple tree-sitter major mode for Emacs 29.1 and later.</p><h2>Installation</h2><p><code>ziggy-mode</code> assumes Emacs was built with tree-sitter support. If <code>(treesit-available-p)</code> evaluates to <code>t</code> then your installation supports tree-sitter; otherwise you might consider building Emacs from source. A guide can be found <a href="https://www.masteringemacs.org/article/how-to-get-started-tree-sitter" target="_blank">here</a>.</p><p><code>ziggy-mode</code> is available on Melpa, so it possible to install it with most package managers. You still need to install the tree-sitter grammars for ziggy and ziggy-schema, for example adding the following snippets in your configuration:</p><pre><code>(unless (treesit-language-available-p &apos;ziggy)
+  (require &apos;treesit)
+  (add-to-list &apos;treesit-language-source-alist
+			   &apos;(ziggy &quot;https://github.com/kristoff-it/ziggy&quot; &quot;main&quot; &quot;tree-sitter-ziggy/src&quot; nil nil))
+  (treesit-install-language-grammar &apos;ziggy))
+
+(unless (treesit-language-available-p &apos;ziggy-schema)
+  (require &apos;treesit)
+  (add-to-list &apos;treesit-language-source-alist
+			   &apos;(ziggy-schema &quot;https://github.com/kristoff-it/ziggy&quot; &quot;main&quot; &quot;tree-sitter-ziggy-schema/src&quot; nil nil))
+  (treesit-install-language-grammar &apos;ziggy-schema))
+</code></pre><p>Moreover, <code>ziggy-mode</code> assumes that <code>ziggy</code> is on your PATH or the variable <code>ziggy-bin</code> is properly customized</p><h2>LSP</h2><p>To use the <code>ziggy</code> LSP with <code>eglot</code>, add the following to your configuration:</p><pre><code>(add-to-list &apos;eglot-server-programs
+             &apos;(((ziggy-mode :language-id &quot;ziggy&quot;)
+                (ziggy-schema-mode :language-id &quot;ziggy-schema&quot;)) &quot;ziggy&quot; &quot;lsp&quot;))
+</code></pre><p>Instead, to use <code>ziggy</code> LSP with <code>lsp-mode</code>, add the following to your configuration:</p><pre><code>(add-hook &apos;ziggy-mode-hook &apos;lsp)
+
+(with-eval-after-load &apos;lsp-mode
+  (add-to-list &apos;lsp-language-id-configuration &apos;(ziggy-mode . &quot;ziggy&quot;))
+  (lsp-register-client (make-lsp-client
+						:new-connection (lsp-stdio-connection &quot;ziggy&quot;)
+						:activation-fn (lsp-activate-on &quot;ziggy&quot;)
+						:server-id &apos;ziggy)))
+</code></pre></div>
 			<nav id="footer">
 				<div>
-					<a href="/documentation/ziggy-query/">
+					<a href="/documentation/metaprogramming/">
 						<p>
 							←
-							<span class="title">ziggy query</span>
+							<span class="title">Metaprogramming</span>
 						</p>
 					</a>
 				</div>
-				<div>
-					<a href="/documentation/ziggy-convert/">
-						<p>
-							<span class="title">ziggy convert</span>
-							→
-						</p>
-					</a>
-				</div>
+				<div></div>
 			</nav>
 		</div>
 	</div>
