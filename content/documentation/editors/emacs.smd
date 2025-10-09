@@ -1,0 +1,56 @@
+---
+.title = "Emacs",
+.date =  "2025-10-07T00:00:00",
+.author = "Davide Colazingari",
+.draft = false,
+.layout = "documentation.shtml",
+.tags = [],
+---
+# Emacs
+
+[ziggy-mode](https://github.com/dcolazin/ziggy-mode/) is a simple tree-sitter major mode for Emacs 29.1 and later.
+
+## Installation
+
+`ziggy-mode` assumes Emacs was built with tree-sitter support. If `(treesit-available-p)` evaluates to `t` then your installation supports tree-sitter; otherwise you might consider building Emacs from source. A guide can be found [here](https://www.masteringemacs.org/article/how-to-get-started-tree-sitter).
+
+`ziggy-mode` is available on Melpa, so it possible to install it with most package managers. You still need to install the tree-sitter grammars for ziggy and ziggy-schema, for example adding the following snippets in your configuration:
+
+```
+(unless (treesit-language-available-p 'ziggy)
+  (require 'treesit)
+  (add-to-list 'treesit-language-source-alist
+			   '(ziggy "https://github.com/kristoff-it/ziggy" "main" "tree-sitter-ziggy/src" nil nil))
+  (treesit-install-language-grammar 'ziggy))
+
+(unless (treesit-language-available-p 'ziggy-schema)
+  (require 'treesit)
+  (add-to-list 'treesit-language-source-alist
+			   '(ziggy-schema "https://github.com/kristoff-it/ziggy" "main" "tree-sitter-ziggy-schema/src" nil nil))
+  (treesit-install-language-grammar 'ziggy-schema))
+```
+
+Moreover, `ziggy-mode` assumes that `ziggy` is on your PATH or the variable `ziggy-bin` is properly customized
+
+## LSP
+
+To use the `ziggy` LSP with `eglot`, add the following to your configuration:
+
+```
+(add-to-list 'eglot-server-programs
+             '(((ziggy-mode :language-id "ziggy")
+                (ziggy-schema-mode :language-id "ziggy-schema")) "ziggy" "lsp"))
+```
+
+Instead, to use `ziggy` LSP with `lsp-mode`, add the following to your configuration:
+
+```
+(add-hook 'ziggy-mode-hook 'lsp)
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(ziggy-mode . "ziggy"))
+  (lsp-register-client (make-lsp-client
+						:new-connection (lsp-stdio-connection "ziggy")
+						:activation-fn (lsp-activate-on "ziggy")
+						:server-id 'ziggy)))
+```
