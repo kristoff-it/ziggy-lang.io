@@ -221,12 +221,14 @@
 				</details>
 				<details open>
 					<summary>Editor Configuration</summary>
-					<ul :loop="$site.pages('documentation/editors/vscode', 
-                                'documentation/editors/neovim',
-                                'documentation/editors/helix',
-                                'documentation/editors/flow',
+					<ul :loop="$site.pages(
+					            'documentation/editors/vscode', 
                                 'documentation/editors/emacs',
-          )">
+                                'documentation/editors/flow',
+                                'documentation/editors/helix',
+                                'documentation/editors/neovim',
+                                'documentation/editors/zed',
+                               )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
 							   href="$loop.it.link()"
