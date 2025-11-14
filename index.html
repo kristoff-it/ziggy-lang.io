@@ -298,16 +298,16 @@
         </h2>
       </div>
       <div id="main-code" class="flex-item">
-        <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = @<span class="function">uuid</span><span class="punctuation_bracket">(</span><span class="string">&quot;...&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+        <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = <span class="error">.uuid</span><span class="error punctuation_bracket">(</span><span class="string">&quot;...&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 .<span class="keyword">time</span> = <span class="constant_numeric">1710085168</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">payload</span> = <span class="type">Command</span> <span class="punctuation_bracket">{</span>
-  .<span class="keyword">do</span> = @<span class="function">action</span><span class="punctuation_bracket">(</span><span class="string">&quot;clear_chat&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
-  .<span class="keyword">sender</span> = <span class="string">&quot;kristoff-it&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">payload</span> = <span class="error">.command</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
+  .<span class="keyword">do</span> = <span class="error">.clear_chat</span><span class="error punctuation_delimiter">,</span><span class="error">
+  .sender =</span> <span class="string">&quot;kristoff-it&quot;</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">roles</span> = <span class="punctuation_bracket">[</span><span class="string">&quot;admin&quot;</span><span class="punctuation_delimiter">,</span> <span class="string">&quot;mod&quot;</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">extra</span> = <span class="punctuation_bracket">{</span>
     <span class="string">&quot;agent&quot;</span>: <span class="string">&quot;Mozilla/5.0&quot;</span><span class="punctuation_delimiter">,</span>
     <span class="string">&quot;os&quot;</span>: <span class="string">&quot;Linux/x64&quot;</span><span class="punctuation_delimiter">,</span> 
-  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span></code></pre>
       </div>
     </div>
@@ -317,7 +317,7 @@
   <div style="margin-top:40px;"></div>
   <div id="features">
     <div class="flex">
-      <div class="flex-item"><div id="first-section"><h2>Notation designed to help users grok data layouts</h2><h3>Structs vs maps</h3><p>Ziggy uses different notation for key-value pairs when the keys are controlled by the application (i.e. keys must follow a schema), versus when the user is in control, and thus expected to come up with key names.</p><h3>Struct unions</h3><p><strong>Ever had to fight JSON to express a tagged union?</strong> Ziggy structs have names that can be used by both humans and tooling to discriminate between union cases.</p><h3>Tagged literals</h3><p>Tagged literals help you express things such as <strong><code>@date(&quot;2024-01-01&quot;)</code></strong>, <strong><code>@keys(&quot;crtl+c&quot;)</code></strong>, or <strong><code>@foo(&quot;bar&quot;)</code></strong>.</p><h3>…and more quality of life features!</h3><p>Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.</p><p>See an example <code>package.json</code> vs a (hypothetical) Ziggy version.</p></div>
+      <div class="flex-item"><div id="first-section"><h2>Notation designed to help users grok data layouts</h2><h3>Structs vs Dictionaries</h3><p>Ziggy has two notations for key-value pairs. Structs are for when valid keys are specified in a Ziggy Schema, and dictionaries are for when key names are up to the user.</p><p>This helps users get a better intuition for the schema before they even see it, and it also offers affodances like knowing when it makes sense to “goto definition” on a field.</p><h3>Tagged Unions</h3><p><strong>Ever had to fight JSON to express a tagged union?</strong> Ziggy structs have names that can be used by both humans and tooling to discriminate between union cases.</p><h3>…and more quality of life features!</h3><p>Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.</p><p>See an example <code>package.json</code> vs a (hypothetical) Ziggy version.</p></div>
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tab1" checked="checked">
@@ -347,16 +347,16 @@
         <div class="panel" tabindex="2">
           <pre class="tab-sample"><code class="ziggy"><span class="punctuation_bracket">{</span>
   .<span class="keyword">name</span> = <span class="string">&quot;ziggy&quot;</span><span class="punctuation_delimiter">,</span>
-  .<span class="keyword">version</span> = @<span class="function">v</span><span class="punctuation_bracket">(</span><span class="string">&quot;1.0.0&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
-  .<span class="keyword">license</span> = @<span class="function">spdx</span><span class="punctuation_bracket">(</span><span class="string">&quot;MIT&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">version</span> = <span class="string">&quot;1.0.0&quot;</span><span class="punctuation_delimiter">,</span>
+  .<span class="keyword">license</span> = <span class="error">.spdx</span><span class="error punctuation_bracket">(</span><span class="string">&quot;MIT&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
     <span class="string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span><span class="punctuation_delimiter">,</span>
     <span class="string">&quot;leftpad&quot;</span>: <span class="string">&quot;^1.0.0&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
-  .<span class="keyword">repository</span> = <span class="type">Git</span> <span class="punctuation_bracket">{</span>
-    <span class="comment_line">// &quot;type&quot; is now the struct name</span>
+  .<span class="keyword">repository</span> = <span class="error">.git</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
+    <span class="comment_line">// &quot;type&quot; is now the union case</span>
     .<span class="keyword">url</span> = <span class="string">&quot;https://github.com&quot;</span><span class="punctuation_delimiter">,</span>
-  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">description</span> = 
     <span class="string">\\# Ziggy</span>
     <span class="string">\\</span>
@@ -367,7 +367,7 @@
       </div>
     </div>
     <div class="flex">
-      <div class="flex-item"><div id="second-section"><h2>A schema language for creating and documenting clear data layouts</h2><p>Ziggy schemas help you define data layouts that are easy to grasp and validate for correctness. Ziggy schemas can define struct unions, enums and custom string literals.</p><p>The Ziggy LSP will be able to use your schema definitions to show diagnostics, contextual help and give autocomplete suggestions to your users.</p><p>Other tooling will be able to use schemas to autogenerate compatible type definitions.</p><p>The best feature of Ziggy schemas is that <a href="/documentation/struct-unions/">they <strong>can’t</strong> define every possible data layout!</a></p></div>
+      <div class="flex-item"><div id="second-section"><h2>A schema language for creating and documenting clear data layouts</h2><p>Ziggy schemas help you define data layouts that are easy to grasp and validate for correctness. Ziggy schemas can define struct unions, enums and custom string literals.</p><p>The Ziggy LSP will be able to use your schema definitions to show diagnostics, contextual help and give autocomplete suggestions to your users.</p><p>Other tooling will be able to use schemas to autogenerate compatible type definitions.</p><p>The best feature of Ziggy schemas is that <a href="/documentation/unions/">they <strong>can’t</strong> define every possible data layout!</a></p></div>
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
@@ -375,47 +375,58 @@
         <div class="panel" tabindex="1">
           <pre class="tab-sample" id="schema1"><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Package</span>
 
-<span class="comment_line_documentation">/// A Semantic Versioning version string.</span>
-<span class="function">@v</span> = <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-<span class="comment_line_documentation">/// A valid SPDX expression.</span>
-<span class="function">@spdx</span> = <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-
 <span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation_bracket">{</span>
   <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">version</span>: <span class="function">@v</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">license</span>: <span class="function">@spdx</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">version</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">license</span>: <span class="type">License</span><span class="punctuation_delimiter">,</span>
   <span class="keyword type">description</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
   <span class="keyword type">dependencies</span>: <span class="keyword">map</span><span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">repository</span>: <span class="type">Git</span> <span class="punctuation">|</span> <span class="type">Npm</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">repository</span>: <span class="type">Repository</span><span class="punctuation_delimiter">,</span>
+
 <span class="punctuation_bracket">}</span>
 
-<span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation_bracket">{</span> <span class="keyword type">url</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="keyword type">directory</span>: <span class="type">?</span><span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
-<span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation_bracket">{</span> <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span></code></pre>
+<span class="error type">union</span><span class="error"> </span><span class="error type">License</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
+  </span><span class="error comment_line_documentation">/// Valid SPDX identifier </span><span class="error">
+  </span><span class="error type">spdx</span><span class="error">: </span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span>
+  <span class="comment_line_documentation">/// URL to license definition</span>
+  <span class="error type">custom</span><span class="error">: </span><span class="error constant_builtin">bytes</span><span class="error">
+</span><span class="error punctuation_bracket">}</span><span class="error"> 
+
+</span><span class="error type">union</span><span class="error"> </span><span class="error type">Repository</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
+  </span><span class="error type">git</span><span class="error">: </span><span class="error type">Git</span><span class="error punctuation_delimiter">,</span><span class="error">
+  </span><span class="error type">npm</span><span class="error">: </span><span class="error type">Npm</span><span class="error punctuation_delimiter">,</span>
+
+  <span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation_bracket">{</span> <span class="keyword type">url</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="keyword type">directory</span>: <span class="type">?</span><span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+  <span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation_bracket">{</span> <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+<span class="error punctuation_bracket">}</span></code></pre>
         </div>
         <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
         <label class="label label-right" for="tab4">message.ziggy-schema</label>
         <div class="panel" tabindex="2">
-          <pre class="tab-sample" id="schema2"><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span>
-
-<span class="comment_line_documentation">/// A UUIDv5 value.</span>
-<span class="function">@uuid</span> = <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-<span class="function">@action</span> = <span class="keyword">enum</span> <span class="punctuation_bracket">{</span> <span class="type">clear_chat</span><span class="punctuation_delimiter">,</span> <span class="type">ban_user</span> <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+          <pre class="tab-sample" id="schema2"><code class="ziggy-schema"><span class="error">$</span> = <span class="type">Message</span>
 
 <span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">id</span>: <span class="function">@uuid</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">time</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">payload</span>: <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span>
+  <span class="type">id</span>: <span class="type">Id</span><span class="punctuation_delimiter">,</span>
+  <span class="type">time</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
+  <span class="type">payload</span>: <span class="type">Payload</span><span class="punctuation_delimiter">,</span>
 
-<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">do</span>: <span class="function">@action</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">sender</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">roles</span>: <span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
-  <span class="comment_line_documentation">/// Optional metadata. </span>
-  <span class="keyword type">extra</span>: <span class="type">?</span><span class="keyword">map</span><span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span>
+  <span class="type">union</span> <span class="type">Payload</span> <span class="punctuation_bracket">{</span>
+    <span class="type">command</span>: <span class="type">Command</span><span class="punctuation_delimiter">,</span>
+    <span class="type">notification</span>: <span class="type">Notification</span><span class="punctuation_delimiter">,</span> 
 
-<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation_bracket">{</span> <span class="keyword type">text</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="keyword type">lvl</span>: <span class="constant_builtin">int</span> <span class="punctuation_bracket">}</span></code></pre>
+    <span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation_bracket">{</span>
+      <span class="type">do</span>: <span class="type">Action</span><span class="punctuation_delimiter">,</span>
+      <span class="type">sender</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+      <span class="type">roles</span>: <span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+      /// Optional metadata. 
+      <span class="type">extra</span>: <span class="type">?</span><span class="punctuation_bracket">{</span>:<span class="punctuation_bracket">}</span><span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+   
+      <span class="type">union</span> <span class="type">Action</span> <span class="punctuation_bracket">{</span> <span class="type">clear_chat</span><span class="punctuation_delimiter">,</span> <span class="type">ban_user</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+    <span class="punctuation_bracket">}</span>
+
+    <span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation_bracket">{</span> <span class="type">text</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="type">lvl</span>: <span class="constant_builtin">int</span> <span class="punctuation_bracket">}</span>
+  <span class="punctuation_bracket">}</span>
+<span class="punctuation_bracket">}</span></code></pre>
         </div>
       </div>
     </div>

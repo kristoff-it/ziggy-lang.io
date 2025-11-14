@@ -324,11 +324,7 @@
 					<summary>Design Tips</summary>
 					<ul>
 						<li>
-							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
-						</li>
-					
-						<li>
-							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+							<a class="" href="/documentation/unions/">Tagged Unions</a>
 						</li>
 					</ul>
 				</details>
@@ -402,7 +398,7 @@
 <span class="string">\\Lorem ipsum something something.</span>
 <span class="string">\\Dolor sit something else.</span>
 </code></pre>
-<p><strong>Note that multiline literals don’t support escape sequences which makes them handy when you need a “raw string” to express things like regular expressions.</strong></p><p>Lastly, multiline literals don’t include the last newline, so to have a trailing newline be part of your bytes, you will need to add a final empty line.</p><h2>Tagged literals</h2><p>Tagged literals are byte literals that have a “label” attached to them. This label can be used by applications to recognize special literals that represent values such as dates, for example.</p><p>The Ziggy data language doesn’t define any standard tag, leaving it to each application to define the meaning and expected syntax of their tags.</p><p>Tagged literals are particularly useful when used in conjunction with Ziggy Schemas as that will give users documentation and autocomplete support, while parsers will be able to map tagged literals to custom parsing functions (e.g., all <code>@date</code>s will be parsed as <code>Date</code> types).</p><p>A tagged literal has the following structure: <code>@tagName(&quot;bytes literal&quot;)</code>. The tag name must be an identifier prefixed by <code>@</code>.</p><p><em>NOTE: multiline bytes literals cannot be tagged.</em></p><p>Examples: <code>@date(&quot;2020-12-01&quot;)</code>, <code>@v(&quot;1.0.0&quot;)</code>, <code>@foo(&quot;bar&quot;)</code></p></div>
+<p><strong>Note that multiline literals don’t support escape sequences which makes them handy when you need a “raw string” to express things like regular expressions.</strong></p><p>Lastly, multiline literals don’t include the last newline, so to have a trailing newline be part of your bytes, you will need to add a final empty line.</p></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/editors/helix/">

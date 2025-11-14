@@ -324,11 +324,7 @@
 					<summary>Design Tips</summary>
 					<ul>
 						<li>
-							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
-						</li>
-					
-						<li>
-							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+							<a class="" href="/documentation/unions/">Tagged Unions</a>
 						</li>
 					</ul>
 				</details>
@@ -397,7 +393,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><p>All Ziggy pasers support parsing a Ziggy document used as frontmatter in an external document file format, like SuperMD.</p><p>This is what a frontmatter looks like in SuperMD:</p><pre><code class="md">---
+			<div><h1>Frontmatter</h1><p>All Ziggy pasers support parsing a Ziggy document used as frontmatter in an external document file format, like SuperMD.</p><p>This is what a frontmatter looks like in SuperMD:</p><pre><code class="md">---
 .title = &quot;Frontmatter&quot;,
 .date =  &quot;2025-03-11T19:11:59&quot;,
 .author = &quot;&quot;,
@@ -407,7 +403,7 @@
 ---
 Your **SuperMD** content goes here.
 </code></pre>
-<p>As you can see the Ziggy document is framed by two <code>---</code> delimiters.</p><p>The Ziggy LSP can be configured to run on SuperMD files and it will correctly provide diagnostics for the frontmatter section of the document.</p><p>See the frontmatter-related options in <code>ziggy.Ast</code> and <code>ziggy.Parser</code> to learn how to parse a Ziggy frontmatter out of an external document.</p></div>
+<p>As you can see the Ziggy document is framed by two <code>---</code> delimiters.</p><p>The Ziggy LSP can be configured to run on SuperMD files and it will correctly provide diagnostics for the frontmatter section of the document.</p><p>See the delimiter-related options in <code>ziggy.Ast</code> and <code>ziggy.Deserializer</code> to learn how to parse a Ziggy frontmatter out of an external document.</p></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/serialization-example/">

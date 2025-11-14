@@ -324,11 +324,7 @@
 					<summary>Design Tips</summary>
 					<ul>
 						<li>
-							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
-						</li>
-					
-						<li>
-							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+							<a class="" href="/documentation/unions/">Tagged Unions</a>
 						</li>
 					</ul>
 				</details>
@@ -397,7 +393,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1><code>ziggy lsp</code></h1><p>Ziggy diagnostics, documentation and autocompletion for your editor.</p><h2>Development status</h2><p>Main features implemented, some autocomplete behavior could be improved.</p><p>Not fully tested, users could experience bugs.</p><h2>Detection of Ziggy Schemas</h2><p>The LSP will automatically pick up the schema for a document if both share the same name and location.</p><p>Suppose that your application has a config file located at <code>~/.config/myapp/config.ziggy</code>. If your application also generates <code>~/.config/myapp/config.ziggy-schema</code>, then your users will automatically get diagnostics, docs and autocompletion support when opening <code>config.ziggy</code>.</p></div>
+			<div><h1><code>ziggy lsp</code></h1><p>Ziggy diagnostics, documentation and autocompletion for your editor.</p><h2>Detection of Ziggy Schemas</h2><p>Ziggy tooling looks for matching Ziggy Schemas in two ways:</p><ol><li>Document and Schema share the same file name and are placed in the same directory (e.g. <code>foo.ziggy</code> -> <code>foo.ziggy-schema</code>), like before.</li><li>Presence of a Ziggy Schema named <code>.ziggy-schema</code> which will apply to all Ziggy Documents in the subtree that do not have a Schema file with the same name (or another .ziggy-schema file closer to them).</li></ol></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/ziggy-convert/">

@@ -8,13 +8,13 @@
 		<meta name="twitter:site" content="@croloris">
 		<meta name="twitter:author" content="@croloris">
 		<meta name="twitter:description" content="Ziggy: A JSON/YAML/TOML alternative.">
-		<meta name="twitter:title" content="Struct Unions - Ziggy">
-		<meta property="og:title" content="Struct Unions">
+		<meta name="twitter:title" content="Tagged Unions - Ziggy">
+		<meta property="og:title" content="Tagged Unions">
 		<meta property="og:type" content="website">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title id="title">
-			Struct Unions
+			Tagged Unions
 			- Ziggy Data Language
 		</title>
 		<link rel="stylesheet" type="text/css" href="/fonts.css">
@@ -324,11 +324,7 @@
 					<summary>Design Tips</summary>
 					<ul>
 						<li>
-							<a class="selected" href="/documentation/struct-unions/">Struct Unions</a>
-						</li>
-					
-						<li>
-							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+							<a class="selected" href="/documentation/unions/">Tagged Unions</a>
 						</li>
 					</ul>
 				</details>
@@ -397,7 +393,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1>Understanding Struct Unions</h1><h2>Introduction</h2><p>Struct unions are possibly the best feature of Ziggy as they define a simple yet powerful sweetspot between simplicity and expressiveness of the schema language.</p><p>While on one hand we could make the schema language more powerful and give it ways of specifying more nuanced constraints, on the other we could be making it so complex that people would end up not using it as much because it becomes too tedious to write a schema.</p><p>For comparison, see this excerpt from a <a href="https://json-schema.org/" target="_blank">JSON Schema</a>, where the extreme flexibility of the language causes some schemas to devolve into pure insanity.</p><p><pre id="insanity"><code class="json"><span class="string">&quot;project&quot;</span>: {
+			<div><h1>Understanding Tagged Unions</h1><h2>Introduction</h2><p>Tagged unions are possibly the best feature of Ziggy as they define a simple yet powerful sweetspot between simplicity and expressiveness of the schema language.</p><p>While on one hand we could make the schema language more powerful and give it ways of specifying more nuanced constraints, on the other we could be making it so complex that people would end up not using it as much because it becomes too tedious to write a schema.</p><p>For comparison, see this excerpt from a <a href="https://json-schema.org/" target="_blank">JSON Schema</a>, where the extreme flexibility of the language causes some schemas to devolve into pure insanity.</p><p><pre id="insanity"><code class="json"><span class="string">&quot;project&quot;</span>: {
   <span class="string_special_key string">&quot;type&quot;</span>: <span class="string">&quot;object&quot;</span>,
   <span class="string_special_key string">&quot;properties&quot;</span>: {
     <span class="string_special_key string">&quot;cli&quot;</span>: {
@@ -931,41 +927,35 @@
       ]
     }
   }
-},</code></pre></p><p><strong>Where JSON Schema tries to describe any possible JSON data layout, Ziggy Schema is by design only able to describe precisely only a well-defined subset of combinations.</strong></p><p>This is true not just of the schema language but also of some Ziggy  Document notation. For example Ziggy has structs and maps, but no notation for a key-value mapping where <em>some</em> keys are fixed, while <em>some others</em> are up to the user. It should go without saying that JSON schema <a href="https://json-schema.org/understanding-json-schema/reference/object#additionalproperties" target="_blank">does indeed allow to model that as well</a>.</p><h3>Unions all the way down</h3><p>The problem of schema expressivity is at its core a problem about expressing unions.</p><p>A schema is a way of saying that a value can be either <code>A</code> or <code>B</code>, where both could be a a variety of things: different values (e.g. strings that belong to a list or that match a pattern), different types, structs with a given set of fields, etc.</p><p>The more nuanced you want your <em>unions</em> to be, the more syntax and complexity you will need to pull in.</p><p><strong>One key consideration about this problem is that many data layouts are functionally equivalent and that guiding data layout designers towards well-understood patterns can not only help reduce the complexity of the schema language, but also of data layouts found in the wild.</strong></p><h3>Unions in Ziggy Schema</h3><p>Consider the two following Ziggy documents which are meant to model when an application should refresh itself. In the first example we are giving to <code>refresh</code> a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we’re passing a string that represents a logic condition that must be true to trigger a refresh.</p><pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="constant_numeric">10</span>
+},</code></pre></p><p><strong>Where JSON Schema tries to describe any possible JSON data layout, Ziggy Schema is by design only able to describe precisely only a well-defined subset of combinations.</strong></p><p>This is true not just of the schema language but also of some Ziggy Document notation. For example Ziggy has structs and dicts, but no notation for a key-value mapping where <em>some</em> keys are fixed, while <em>some others</em> are up to the user. It should go without saying that JSON schema <a href="https://json-schema.org/understanding-json-schema/reference/object#additionalproperties" target="_blank">does indeed allow to model that as well</a>.</p><h3>Unions all the way down</h3><p>The problem of schema expressivity is at its core a problem about expressing unions.</p><p>A schema is a way of saying that a value can be either <code>A</code> or <code>B</code>, where both could be a a variety of things: different values (e.g. strings that belong to a list or that match a pattern), different types, structs with a given set of fields, etc.</p><p>The more nuanced you want your <em>unions</em> to be, the more syntax and complexity you will need to pull in.</p><p><strong>One key consideration about this problem is that many data layouts are functionally equivalent, and that guiding data layout designers towards well-understood patterns can not only help reduce the complexity of the schema language, but also of data layouts found in the wild.</strong></p><h3>Unions in Ziggy Schema</h3><p>Consider the two following Ziggy documents which are meant to model when an application should refresh itself. In the first example we are giving to <code>refresh</code> a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we’re passing a string that represents a logic condition that must be true to trigger a refresh.</p><pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="constant_numeric">10</span>
 </code></pre>
 <pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span>
 </code></pre>
-<p>This kind of data layout is fairly common in JSON, where a field can hold different types each with a different meaning.</p><p>In Ziggy this data layout is not idiomatic and in fact Ziggy Schema can only model this <em>union</em> with <code>any</code>:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">App</span>
+<p>This kind of data layout is fairly common in JSON, where a field can hold different types each with a different meaning.</p><p>In Ziggy this data layout is not idiomatic and in fact Ziggy Schema can only model this <em>union</em> with <code>any</code>:</p><pre><code class="ziggy-schema"><span class="error">$</span> = <span class="type">App</span>
 
 <span class="keyword">struct</span> <span class="type">App</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">refresh</span>: <span class="keyword">any</span><span class="punctuation_delimiter">,</span>
+  <span class="type">refresh</span>: <span class="keyword">any</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p>In Ziggy the unit of composition for unions is the struct, which means that any variant of your value must be wrapped in an appropriately-named struct.</p><p>This can be at times a mild inconvenience for data layout designers, but it has the upside of drastically diminishing the amount of syntax in the schema language and gives data layout consumers one singular language construct required to understand layout variability.</p><p>Let’s fix the previous example with this in mind:</p><pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="type">Interval</span> <span class="punctuation_bracket">{</span>
-  .<span class="keyword">seconds</span> = <span class="constant_numeric">10</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+<p>Let’s fix the previous example using a tagged union:</p><pre><code class="ziggy"><span class="error">.refresh = .interval</span><span class="error punctuation_bracket">(</span><span class="error">10</span><span class="error punctuation_bracket">)</span><span class="error punctuation_delimiter">,</span>
 </code></pre>
-<pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="type">Condition</span> <span class="punctuation_bracket">{</span>
-  .<span class="keyword">expr</span> = <span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+<pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="error">.condition</span><span class="error punctuation_bracket">(</span><span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<p>This is now the corresponding schema (much better):</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">App</span>
+<p>This is now the corresponding schema (much better):</p><pre><code class="ziggy-schema"><span class="error">$</span> = <span class="type">App</span>
 
 <span class="keyword">struct</span> <span class="type">App</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">refresh</span>: <span class="type">Interval</span> <span class="punctuation">|</span> <span class="type">Condition</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span>
+  <span class="type">refresh</span>: <span class="type">Refresh</span><span class="punctuation_delimiter">,</span>
 
-<span class="keyword">struct</span> <span class="type">Interval</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">seconds</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span>
-
-<span class="keyword">struct</span> <span class="type">Condition</span> <span class="punctuation_bracket">{</span>
-  <span class="comment_line_documentation">///A logical condition that triggers a new  
-  ///refresh whenever it evaluates to true.</span>
-  <span class="keyword type">expr</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="type">union</span> <span class="type">Refresh</span> <span class="punctuation_bracket">{</span>
+    /// Interval between refreshes, in seconds
+    <span class="type">interval</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
+    ///A logical condition that triggers a new  
+    ///refresh whenever it evaluates to true.
+    <span class="type">condition</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p><strong>By making the value of <code>refresh</code> a struct, we can achieve in Ziggy the same level of expressiveness of the original layout with even greater clarity for the end user.</strong></p><h2>Parser-friendly Unions</h2><p>Struct unions are not only good for humans, but machines as well.</p><p>Consider this JSON document where we list some dependencies:</p><pre><code class="json">{
+<h2>Parser-friendly Unions</h2><p>Tagged unions are not only good for humans, but machines as well.</p><p>Consider this JSON document where we list some dependencies:</p><pre><code class="json">{
   <span class="string_special_key string">&quot;dependencies&quot;</span>: {
     <span class="string_special_key string">&quot;foo&quot;</span>: {
       <span class="string_special_key string">&quot;url&quot;</span>: <span class="string">&quot;http://...&quot;</span>,
@@ -977,17 +967,17 @@
   }
 }
 </code></pre>
-<p>Astute observers will notice that dependencies in this data layout can be of two kinds:</p><ul><li>remote, defined by a url and a hash value</li><li>local, defined by a path</li></ul><p>Unfortunately this data layout is hostile to being parsed using tagged unions. Using Zig lingo as an example, you would like to be able to parse this document into the following kind of type:</p><pre><code class="zig"><span class="keyword">const</span> <span class="constant variable_builtin type variable">Dependency</span> <span class="operator">=</span> <span class="keyword_type">union</span><span class="punctuation_bracket">(</span><span class="keyword_type">enum</span><span class="punctuation_bracket">)</span> <span class="punctuation_bracket">{</span>
-  <span class="constant variable_builtin type variable_member variable">Remote</span><span class="punctuation_delimiter">:</span> <span class="keyword_type">struct</span> <span class="punctuation_bracket">{</span>
+<p>Astute observers will notice that dependencies in this data layout can be of two kinds:</p><ul><li>remote, defined by a url and a hash value</li><li>local, defined by a path</li></ul><p>Unfortunately this data layout is hostile to parsing.</p><p>Using Zig lingo as an example, you would like to be able to parse this document into the following kind of type:</p><pre><code class="zig"><span class="keyword">const</span> <span class="constant variable_builtin type variable">Dependency</span> <span class="operator">=</span> <span class="keyword_type">union</span><span class="punctuation_bracket">(</span><span class="keyword_type">enum</span><span class="punctuation_bracket">)</span> <span class="punctuation_bracket">{</span>
+  <span class="constant variable_builtin type variable_member variable">remote</span><span class="punctuation_delimiter">:</span> <span class="keyword_type">struct</span> <span class="punctuation_bracket">{</span>
     <span class="constant variable_builtin type variable_member variable">url</span><span class="punctuation_delimiter">:</span> <span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="keyword">const</span> <span class="type_builtin">u8</span><span class="punctuation_delimiter">,</span>
     <span class="constant variable_builtin type variable_member variable">hash</span><span class="punctuation_delimiter">:</span> <span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="keyword">const</span> <span class="type_builtin">u8</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
-  <span class="constant variable_builtin type variable_member variable">Local</span><span class="punctuation_delimiter">:</span> <span class="keyword_type">struct</span> <span class="punctuation_bracket">{</span>
+  <span class="constant variable_builtin type variable_member variable">local</span><span class="punctuation_delimiter">:</span> <span class="keyword_type">struct</span> <span class="punctuation_bracket">{</span>
     <span class="constant variable_builtin type variable_member variable">path</span><span class="punctuation_delimiter">:</span> <span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="keyword">const</span> <span class="type_builtin">u8</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">;</span>
 </code></pre>
-<p>Unfortunately this won’t work with type-driven parsers as those will need to know which union case they are in <em>before</em> parsing the value of each dependency.</p><p>In this specific case the parser could notice that if the first field it finds is <code>path</code>, then it’s the <code>Local</code> case, but different cases could share some fields making a general solution to this problem more problematic than what it needs to be, which in practice it means that you can’t rely on parsers supporting this feature.</p><p>Some JSON data layouts make use of a <code>type</code> field to help disambiguate:</p><pre><code class="json">{
+<p>Unfortunately this won’t work with type-driven parsers as those will need to know which union case they are in <em>before</em> parsing the value of each dependency.</p><p>In this specific case the parser could notice that if the first field it finds is <code>path</code>, then it’s the <code>local</code> case, but different cases could share some fields making a general solution to this problem more problematic than what it needs to be, which in practice it means that you can’t rely on parsers supporting this feature.</p><p>Some JSON data layouts make use of a <code>type</code> field to help disambiguate:</p><pre><code class="json">{
   <span class="string_special_key string">&quot;dependencies&quot;</span>: {
     <span class="string_special_key string">&quot;foo&quot;</span>: {
       <span class="string_special_key string">&quot;type&quot;</span>: <span class="string">&quot;remote&quot;</span>,
@@ -1007,53 +997,27 @@
   <span class="constant variable_builtin type variable_member variable">path</span><span class="punctuation_delimiter">:</span> <span class="operator">?</span><span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="keyword">const</span> <span class="type_builtin">u8</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">;</span>
 </code></pre>
-<p>Ziggy struct unions use struct names to indicate the active union case, turning the previous example into the following document:</p><pre><code class="ziggy">.<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
-  <span class="string">&quot;foo&quot;</span>: <span class="type">Remote</span> <span class="punctuation_bracket">{</span>
+<p>Ziggy unions use struct names to indicate the active union case, turning the previous example into the following document:</p><pre><code class="ziggy">.<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
+  <span class="string">&quot;foo&quot;</span>: <span class="error">.remote</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
     .<span class="keyword">url</span> = <span class="string">&quot;http://...&quot;</span><span class="punctuation_delimiter">,</span>
     .<span class="keyword">hash</span> = <span class="string">&quot;...&quot;</span>
-  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
-  <span class="string">&quot;bar&quot;</span>: <span class="type">Local</span> <span class="punctuation_bracket">{</span>
+  <span class="punctuation_bracket">}</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+  <span class="string">&quot;bar&quot;</span>: <span class="error">.local</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
     .<span class="keyword">path</span> = <span class="string">&quot;/home/kristoff/ziggy&quot;</span><span class="punctuation_delimiter">,</span>
-  <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<p>This has two big advantages:</p><ul><li>guarantees that parsers see the union case before the value</li><li>helps the LSP provide relevant diagnostics and autocomplete without needing to guess which is the active union case</li></ul><h2>Concrete tips</h2><ul><li><p>When a key-value map has some fixed and some user-defined fields, push the latter kind of fields into a nested value of type <code>map</code>.</p><pre><code class="ziggy">.<span class="keyword">title</span> = <span class="string">&quot;foo&quot;</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">date</span> = @<span class="function">date</span><span class="punctuation_bracket">(</span><span class="string">&quot;2024-01-01&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+<p>This has two big advantages:</p><ul><li>guarantees that parsers see the union case before the value</li><li>helps the LSP provide relevant diagnostics and autocomplete without needing to guess which is the active union case</li></ul><h2>Concrete tips</h2><ul><li><p>When a key-value map has some fixed and some user-defined fields, push the latter kind of fields into a nested dict value.</p><pre><code class="ziggy">.<span class="keyword">title</span> = <span class="string">&quot;foo&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">date</span> = <span class="error">.iso</span><span class="error punctuation_bracket">(</span><span class="string">&quot;2024-01-01&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 .<span class="keyword">draft</span> = <span class="constant_builtin_boolean">false</span><span class="punctuation_delimiter">,</span>
 .<span class="keyword">custom</span> = <span class="punctuation_bracket">{</span>
   <span class="string">&quot;put&quot;</span>: <span class="string">&quot;here&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="string">&quot;custom&quot;</span>: <span class="string">&quot;fields&quot;</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-</li><li><p>When all variants of a struct have a common field, you might want to pull it out into the parent type definition. Not a hard rule, but can occasionally help create a better user experience.</p><p>Good:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Message</span>
-
-<span class="keyword">struct</span> <span class="type">Message</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">id</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">sender</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">payload</span>: <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span>
-
-<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation_bracket">{</span> <span class="keyword type">do</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
-<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation_bracket">{</span> <span class="keyword type">text</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+</li><li><p>Ziggy Documents are more powerful than Ziggy Schema. For example this is a perfectly valid Ziggy document that can’t be described precisely by a Ziggy Schema:</p><pre><code class="ziggy"><span class="punctuation_bracket">[</span><span class="string">&quot;hello&quot;</span><span class="punctuation_delimiter">,</span> <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">42</span><span class="punctuation_bracket">]</span>
 </code></pre>
-<p>Arguably not as good:</p><pre><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Command</span> <span class="punctuation">|</span> <span class="type">Notification</span>
-
-<span class="keyword">struct</span> <span class="type">Command</span> <span class="punctuation_bracket">{</span> 
-  <span class="keyword type">id</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">sender</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">do</span>: <span class="constant_builtin">bytes</span> 
-<span class="punctuation_bracket">}</span>
-
-<span class="keyword">struct</span> <span class="type">Notification</span> <span class="punctuation_bracket">{</span> 
-  <span class="keyword type">id</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">sender</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">text</span>: <span class="constant_builtin">bytes</span>
-<span class="punctuation_bracket">}</span>
-
-</code></pre>
-</li><li><p>Ziggy documents are more powerful than Ziggy Schema. For example this is a perfectly valid Ziggy document that can’t be described precisely by a Ziggy Schema:</p><pre><code class="ziggy"><span class="punctuation_bracket">[</span><span class="string">&quot;hello&quot;</span><span class="punctuation_delimiter">,</span> <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">42</span><span class="punctuation_bracket">]</span>
-</code></pre>
-</li></ul><p>If you’re reading and writing Ziggy documents within a single application where you don’t have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.</p></div>
+</li></ul><p>If you’re reading and writing Ziggy Documents within a single application where you don’t have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.</p></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/schema-structure/">
@@ -1064,9 +1028,9 @@
 					</a>
 				</div>
 				<div>
-					<a href="/documentation/tagged-literals/">
+					<a href="/documentation/parsers/">
 						<p>
-							<span class="title">Tagged Literals</span>
+							<span class="title">Parsers</span>
 							→
 						</p>
 					</a>

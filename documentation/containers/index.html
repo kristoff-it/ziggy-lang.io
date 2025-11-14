@@ -324,11 +324,7 @@
 					<summary>Design Tips</summary>
 					<ul>
 						<li>
-							<a class="" href="/documentation/struct-unions/">Struct Unions</a>
-						</li>
-					
-						<li>
-							<a class="" href="/documentation/tagged-literals/">Tagged Literals</a>
+							<a class="" href="/documentation/unions/">Tagged Unions</a>
 						</li>
 					</ul>
 				</details>
@@ -397,7 +393,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1>Ziggy Container Value Types</h1><h2>Arrays</h2><p>Ziggy uses <code>[]</code> (square brackets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.</p><p>Ziggy arrays can contain different types of values and can be nested arbitrarily deep.</p><p>Examples: <code>[1, 2, 3]</code>, <code>[true, null, 42]</code>, <code>[&quot;hello&quot;, [1], []]</code></p><h2>Maps</h2><p>Maps are the first key-value mapping notation available in Ziggy.</p><p>Maps are meant to denote key-value mappings where key names are controlled <strong>by the user</strong>.</p><p>It’s common for configuration files and API messages to have key-value mappings where key names are meant to be part of a schema, while some other key-value mappings are instead meant to be fully controlled by the user.</p><p>One example of this is NPM’s <code>package.json</code>:</p><pre><code class="json">{
+			<div><h1>Ziggy Container Value Types</h1><h2>Arrays</h2><p>Ziggy uses <code>[]</code> (square brackets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.</p><p>Ziggy arrays can contain different types of values and can be nested arbitrarily deep, although there are some caveats with how that interacts with Ziggy Schemas (more on that in the Ziggy Schema section).</p><p>Examples: <code>[1, 2, 3]</code>, <code>[true, null, 42]</code>, <code>[&quot;hello&quot;, [1], []]</code></p><h2>Dictionaries</h2><p>Dictionaries (or just ‘dicts’) are the first key-value mapping notation available in Ziggy.</p><p>Dictionaries are meant to denote key-value mappings where key names are controlled <strong>by the user</strong>.</p><p>It’s common for configuration files and API messages to have key-value mappings where key names are meant to be part of a schema, while some other key-value mappings are instead meant to be fully controlled by the user.</p><p>One example of this is NPM’s <code>package.json</code>:</p><pre><code class="json">{
   <span class="string_special_key string">&quot;name&quot;</span>: <span class="string">&quot;ziggy&quot;</span>,
   <span class="string_special_key string">&quot;dependencies&quot;</span>: {
     <span class="string_special_key string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span>,
@@ -405,12 +401,12 @@
   }
 }
 </code></pre>
-<p>In this example you can see how <code>&quot;name&quot;</code> and <code>&quot;dependencies&quot;</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>&quot;dependencies&quot;</code> would be a map.</p><p>Ziggy map syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
+<p>In this example you can see how <code>&quot;name&quot;</code> and <code>&quot;dependencies&quot;</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>&quot;dependencies&quot;</code> would be a map.</p><p>Ziggy dictionary syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
   <span class="string">&quot;hello&quot;</span>: <span class="string">&quot;world&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="string">&quot;foo&quot;</span>: <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p>Ziggy maps have the same notation as JSON objects but allow trailing commas.</p><p>A hypothetical <code>package.ziggy</code>, where the outer key-value map is expressed as a struct, would look like this:</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
+<p>Ziggy dicts have the same notation as JSON objects but allow trailing commas, and in fact all valid JSON files are valid Ziggy files made up of dicts.</p><p>A hypothetical <code>package.ziggy</code>, where the outer key-value map is expressed as a struct, would look like this:</p><pre><code class="ziggy"><span class="error">.</span><span class="punctuation_bracket">{</span>
   .<span class="keyword">name</span> = <span class="string">&quot;ziggy&quot;</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
     <span class="string">&quot;react&quot;</span>: <span class="string">&quot;next&quot;</span><span class="punctuation_delimiter">,</span>
@@ -418,7 +414,7 @@
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<h2>Structs</h2><p>Structs are the second key-value mapping notation available in Ziggy. Structs are meant to denote key-value mappings where key names are controlled <strong>by the application</strong> (i.e. must follow a schema).</p><p>Judicious use of struct syntax should help users understand the data layout even before they reach for a Ziggy Schema or some other kind of documentation.</p><p>Basic struct syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
+<h2>Structs</h2><p>Structs are the second key-value mapping notation available in Ziggy. Structs are meant to denote key-value mappings where key names are controlled <strong>by the application</strong> (i.e. must follow a schema).</p><p>Judicious use of struct syntax should help users understand the data layout even before they reach for a Ziggy Schema or some other kind of documentation.</p><p>Basic struct syntax looks like this:</p><pre><code class="ziggy"><span class="error">.</span><span class="punctuation_bracket">{</span>
   .<span class="keyword">hello</span> = <span class="string">&quot;world&quot;</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">foo</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
@@ -426,20 +422,7 @@
 <p><em>NOTE: like arrays and maps, structs also allow trailing commas.</em></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">&quot;world&quot;</span><span class="punctuation_delimiter">,</span>
 .<span class="keyword">foo</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<h3>Named structs</h3><p>Structs can have a name attached to them.</p><p>This feature is particularly useful when used in conjunction with Ziggy Schemas to define <strong>struct unions</strong>.</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
-    .<span class="keyword">name</span> = <span class="string">&quot;Ziggy&quot;</span><span class="punctuation_delimiter">,</span>
-    .<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
-        <span class="string">&quot;foo&quot;</span>: <span class="type">Remote</span> <span class="punctuation_bracket">{</span>
-            .<span class="keyword">url</span> = <span class="string">&quot;https://github.com/&quot;</span><span class="punctuation_delimiter">,</span>
-            .<span class="keyword">hash</span> = <span class="string">&quot;123abcdef&quot;</span><span class="punctuation_delimiter">,</span>  
-        <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
-        <span class="string">&quot;bar&quot;</span>: <span class="type">Local</span> <span class="punctuation_bracket">{</span>
-            .<span class="keyword">path</span> = <span class="string">&quot;foo/bar/baz&quot;</span><span class="punctuation_delimiter">,</span>
-        <span class="punctuation_bracket">}</span>
-    <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
-<span class="punctuation_bracket">}</span>
-</code></pre>
-</div>
+<h3>Tagged Unions</h3><p>Sometimes also called “sum types”, tagged unions are containers where only one of the possible fields is active at a time.</p><p>Tagged unions are especially useful when the Ziggy Document they appear in is paired with a Ziggy Schema.</p><p>A tagged union can have no payload (think of it as having a <code>void</code> payload if you’re familiar with Zig), in which case it’s effectively equivalent to an enum literal.</p><p>Examples: <code>.foo</code>, <code>.bar</code>, <code>.baz</code></p><p>A tagged union can have any other Ziggy Document value as payload:</p><p>Examples: <code>.foo(42)</code>, <code>.bar(false)</code>, <code>.baz(&quot;banana&quot;)</code>, <code>.qux({&quot;foo&quot;: .bar})</code></p></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/scalars/">
