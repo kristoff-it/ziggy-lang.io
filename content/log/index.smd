@@ -36,8 +36,8 @@ Directly from the commit message:
 >Ziggy Schema:
 >- Renamed Map to Dictionary (shortened to 'dict' in some contexts).
 >- Changed slice / dict type expression syntax:
->  - Slice is now `[]MyStruct` (it was `[MyStruct]` before)
->  - Dict is now `{:}MyStruct` (it was `map[MyStruct]` before)
+>    - Slice is now `[]MyStruct` (it was `[MyStruct]` before)
+>    - Dict is now `{:}MyStruct` (it was `map[MyStruct]` before)
 >- Removed Struct union syntax
 >- Introduced union definitions (same as structs but with `union` instead of `struct` before the type name). Union fields can omit their value, like in Zig.
 >- Root type expression changed from, e.g. `root = []mytype` to `$ = []mytype`.
