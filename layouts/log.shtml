@@ -10,7 +10,7 @@
 
     #content h2 {
       margin-top: 1.5em;
-      border-bottom: 2px dotted #aaa;
+      border-bottom: 2px dotted var(--border-color);
     }
 
     pre {
