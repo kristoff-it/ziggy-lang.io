@@ -10,15 +10,11 @@
 
 Ziggy diagnostics, documentation and autocompletion for your editor.
 
-## Development status
-Main features implemented, some autocomplete behavior could be improved.
-
-Not fully tested, users could experience bugs.
-
-
 ## Detection of Ziggy Schemas
-The LSP will automatically pick up the schema for a document if both share the same name and location.
+Ziggy tooling looks for matching Ziggy Schemas in two ways:
 
-Suppose that your application has a config file located at `~/.config/myapp/config.ziggy`. If your application also generates `~/.config/myapp/config.ziggy-schema`, then your users will automatically get diagnostics, docs and autocompletion support when opening `config.ziggy`.
-
-
+1. Document and Schema share the same file name and are placed in the same
+   directory (e.g. `foo.ziggy` -> `foo.ziggy-schema`), like before.
+2. Presence of a Ziggy Schema named `.ziggy-schema` which will apply to all Ziggy
+   Documents in the subtree that do not have a Schema file with the same name (or
+   another .ziggy-schema file closer to them).

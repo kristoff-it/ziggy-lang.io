@@ -8,30 +8,27 @@
 ---
 
 # Serialization Example
-To access the ziggy module, simply add top-level import
+First import `ziggy` (see [Getting Started](getting-started-dev) to learn how to add Ziggy as a dependency):
 ```zig
 const ziggy = @import("ziggy");
 ```
 
 ## Serializing
-Take a variable you would want to serialize, let's call it `foo`
+`ziggy.serialize` is the function that turns a Zig value into a Ziggy document.
 
-`ziggy` includes a function called `stringify`, you call the function with the variable you want to serialize, configure the serializer and give it any kind of writer that implements `std.io.Writer` type
+Usage is extremely straight-forward, just make sure to read the relative doc comments.
 
-In our case we will serialize our variable into a string using `ArrayList(u8)`
-Make sure you also have an `allocator` ready
+In case you want to serialize a value but keep it in memory, you can use `std.Io.Writer.Allocating`:
 
 ```zig
-var output_buffer = std.ArrayList(u8).init(allocator);
-defer output_buffer.deinit();
+var out: std.Io.Writer.Allocating = .init(gpa);
+defer out.deinit();
 
-try ziggy.stringify(foo, .{}, output_buffer.writer());
+try ziggy.serialize(foo, .{}, output_buffer.writer());
 ```
-The function can fail, either `catch` the error or `try` and let it return the error further
+The second parameter of the function can be used to configure the Serializer, its type is `ziggy.Serializer.Options`
 
-The second parameter of the function can be used to configure the Serializer using `StringifyOptions`
-
-To get our result, simply read from `output_buffer.items`
+To get our result, simply read from `out.written()`
 ```zig
-std.debug.print("{s}\n", .{output_buffer.items});
+std.debug.print("{s}\n", .{out.written()});
 ```

@@ -265,9 +265,7 @@
 				</details>
 				<details open>
 					<summary>Design Tips</summary>
-					<ul :loop="$site.pages('documentation/struct-unions', 
-                                'documentation/tagged-literals',
-          )">
+					<ul :loop="$site.pages('documentation/unions')">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
 							   href="$loop.it.link()"

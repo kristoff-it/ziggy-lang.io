@@ -13,6 +13,50 @@ This is a non-exhaustive, curated list of changes meant to help users quickly se
 Refer to [the repository](https://github.com/kristoff-it/ziggy) and the [issue tracker](https://github.com/kristoff-it/ziggy/issues) for more in-depth information.
 
 
+## 2025-11-14
+Huge rewrite of most things plus some changes to both Ziggy Document and Ziggy Schema syntaxes. This was just merged to main branch.
+
+Fair warning, until this change is merged into Zine, there's a good chance that you will encounter bugs if you use this commit.
+
+Directly from the commit message:
+
+>This is a huge commit that changes almost every line of code and introduces some syntax changes.
+>
+>Note that it's very likely that this commit contains bugs and small regressions. I will soon update the Ziggy dependency in Zine and iron out many of them, but this work has not happened yet at the time of this commit.
+>
+>First changes to the languages:
+>
+>Ziggy Document:
+>- Removed "custom literal" syntax. The whole concept is gone.
+>- Removed struct name syntax, now structs open with `.{`, like in Zig.
+>- Introduced enum syntax, same as Zig (e.g. `.myenumcase`)
+>- Introduced tagged union syntax, which looks like a decl literal function call in Zig (e.g. `.myunioncase("myvalue")`).
+>- Comments can now be placed anywhere in the document.
+>
+>Ziggy Schema:
+>- Renamed Map to Dictionary (shortened to 'dict' in some contexts).
+>- Changed slice / dict type expression syntax:
+>  - Slice is now `[]MyStruct` (it was `[MyStruct]` before)
+>  - Dict is now `{:}MyStruct` (it was `map[MyStruct]` before)
+>- Removed Struct union syntax
+>- Introduced union definitions (same as structs but with `union` instead of `struct` before the type name). Union fields can omit their value, like in Zig.
+>- Root type expression changed from, e.g. `root = []mytype` to `$ = []mytype`.
+>- Struct and union type definitions can now be nested but for now some rigid name scoping rules apply, including the fact that you cannot use name paths to refer to types (e.g. `Foo.Bar` is not allowed). Some of these restrictions will be lifted in the future.
+>
+>Implementation changes:
+>
+>- Ziggy Document and Schema matching now happens in two ways:
+>
+>  1. Document and Schema share the same file name and are placed in the same directory (e.g. `foo.ziggy` -> `foo.ziggy-schema`), like before.
+>  2. Presence of a Ziggy Schema named `.ziggy-schema` which will apply to all Ziggy Documents in the subtree that do not have a Schema file with the same name (or another `.ziggy-schema` file closer to them).
+>
+>- Ziggy Schema tooling will report when a Schema creates an infinite type (e.g. a struct that has itself as the value of one of its fields).
+>
+>- All previous functionality should still be present, but some definitions have been renamed and/or moved around, make sure to read fully `root.zig` and the documentation of all public definitions relevant to your use cases.
+>
+>- `ziggy_options.stringify` and `ziggy_options.parse` have been renamed to `serialize` and `deserialize` respectively (still namespaced under `ziggy_options`) and now accept some parameters in a slightly different way. See all the public functions of `Serializer` and `Deserializer` for new convenience functions that you can access from your custom serialization / deserialization procedures.
+
+
 ## 2025-03-11
 Improved Ziggy frontmatter parsing. Previously we were considering the frontmatter
 framing delimiters `---` as external text that the Ziggy parser should not concern

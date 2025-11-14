@@ -70,19 +70,3 @@ Example:
 **Note that multiline literals don't support escape sequences which makes them handy when you need a "raw string" to express things like regular expressions.**
 
 Lastly, multiline literals don't include the last newline, so to have a trailing newline be part of your bytes, you will need to add a final empty line.
-
-
-## Tagged literals
-Tagged literals are byte literals that have a "label" attached to them. This label can be used by applications to recognize special literals that represent values such as dates, for example.
-
-The Ziggy data language doesn't define any standard tag, leaving it to each application to define the meaning and expected syntax of their tags.
-
-Tagged literals are particularly useful when used in conjunction with Ziggy Schemas as that will give users documentation and autocomplete support, while parsers will be able to map tagged literals to custom parsing functions (e.g., all `@date`s will be parsed as `Date` types).
-
-A tagged literal has the following structure: `@tagName("bytes literal")`. The tag name must be an identifier prefixed by `@`. 
-
-
-*NOTE: multiline bytes literals cannot be tagged.*
-
-Examples: `@date("2020-12-01")`, `@v("1.0.0")`, `@foo("bar")`
-

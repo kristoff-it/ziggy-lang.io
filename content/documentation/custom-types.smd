@@ -10,46 +10,20 @@
 
 In this section we're going to see types that must be defined before they can be used in a type expression.
 
-## Tagged literal
-
-### Definition
-A tagged literal can be defined in two ways:
-
-- as an `enum`, when all possible values come from a fixed list.
-- as `bytes` otherwise.
-
-#### Enum definition
-```ziggy-schema
-@fruits = enum { apple, banana, cherry },
-```
-#### Bytes definition
-It's generally a good idea to give a doc comment to byte tagged literals.
-
-```ziggy-schema
-/// A RFC3339 date literal, e.g. `2024-01-01T00:00:00`
-@date = bytes,
-```
-
-### Expression
-You can use the `@`-prefixed tag name to denote a tagged literal type.
-
-Examples: `@v`, `map[@date]`, `[@fruit]`, `?@spdx`
-
 ## Struct
 
 ### Definition
 
-Here's an example struct definion:
+Here's an example struct definition:
 
 ```ziggy-schema
 ///An example struct representing a person.
 struct Person {
   name: bytes,
-  birthday: @date,
   height: float,
   ///Null when person has no pet.
   pet_name: ?bytes,
-  interests: [bytes],
+  interests: []bytes,
 }
 ```
 
@@ -57,49 +31,46 @@ In this example `Person` is the struct name. It's recommended to use TitleCase f
 
 A struct can have zero or more comma separated field definitions. A field definition comprises an identifier, followed by `:` and a type expression.
 
-Both struct definitions and their fields can have an optional doc comment attached to them.
+Both struct definitions and their fields can have an optional doc comment attached to them which will be shown to users by the Ziggy LSP.
 
 ### Expression
 A struct can be referenced in a type expression by its name.
 
-Examples: `Person`, `map[Person]`, `[Command]`, `?Notification`
+Examples: `Person`, `{:}Person`, `[]Command`, `?Notification`
 
-## Struct Union
+## Tagged Union
 
-Struct unions denote when a value can be one of two or more struct types.
+Sometimes also called "sum types", tagged unions are containers where only one of the possible fields is active at a time.
 
-Struct unions aren't required to be defined beforehand but are listed in this page as they depend on at least two struct definitions to be used.
-
-### Expression
-
-A struct union expression is a list of `|` separated **struct names** .
-
-When you need to make a struct union optional, you must surround it with parentheses.  
-
-
-Examples: `Command | Notification`, `map[Person | Company]`, `?(Foo | Bar)`
-
-Example of usage in a struct definition:
+### Definition
+Here's an example union definition:
 
 ```ziggy-schema
-///A UUIDv4 value.
-@uuid = bytes,
-///Possible command actions.
-@action = enum { clear_chat, ban_user },
-
-struct Message {
-  id: @uuid,
-  payload: Command | Notification,
-}
-
-struct Command {
-  do: @action,
-  sender: bytes,
-}
-
-struct Notification {
-  title: bytes,
-  text: bytes,
-  level: int,
+///An example struct representing a person.
+union Date {
+   /// An ISO something something date, e.g. "1990-01-01T00:00:00"
+   iso: bytes, 
+   /// A unix second timestamp, e.g. 1763128087
+   unix: int,
+   /// Unknown date
+   unknown,
 }
 ```
+
+This type would match the following use in a Ziggy Document:
+```ziggy
+.title = "My blog post",
+.date = .iso("2025-01-01T:00:00:00")
+```
+
+In this example we chose `iso`, which is a union case that has a `bytes` payload.
+
+Union cases can also have no payload, in which case their syntax looks as follows:
+
+```ziggy
+.title = "A mystical blog post",
+.date = .unknown,
+```
+### Expression
+Just like structs, a tagged union can be referenced in a type expression by its name.
+

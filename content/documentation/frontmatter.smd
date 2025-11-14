@@ -7,6 +7,8 @@
 .tags = [],
 ---
 
+# Frontmatter 
+
 All Ziggy pasers support parsing a Ziggy document used as frontmatter in an
 external document file format, like SuperMD.
 
@@ -29,8 +31,7 @@ As you can see the Ziggy document is framed by two `---` delimiters.
 The Ziggy LSP can be configured to run on SuperMD files and it will correctly
 provide diagnostics for the frontmatter section of the document.
 
-
-See the frontmatter-related options in `ziggy.Ast` and `ziggy.Parser` to learn
+See the delimiter-related options in `ziggy.Ast` and `ziggy.Deserializer` to learn
 how to parse a Ziggy frontmatter out of an external document.
 
 

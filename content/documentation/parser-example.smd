@@ -8,7 +8,7 @@
 ---
 
 # Parser Example
-To access the ziggy module, simply add top-level import
+First import `ziggy` (see [Getting Started](getting-started-dev) to learn how to add Ziggy as a dependency):
 ```zig
 const ziggy = @import("ziggy");
 ```
@@ -16,14 +16,14 @@ const ziggy = @import("ziggy");
 Ziggy has two main parser APIs:
 - `ziggy.Ast`, which allows you to parse a Ziggy file into an AST, useful when
   doing source-level analysis of Ziggy documents.
-- `ziggy.Parser`, a type-driven parser that allows you to parse a Ziggy document
-  either into a known type defined by you, or into a `ziggy.dynamic.Value` (a
+- `ziggy.Deserializer`, a type-driven parser that allows you to parse a Ziggy
+  document either into a known type defined by you, or into a `ziggy.Dynamic` (a
   type able to represent any Ziggy document).
 
 The AST parser is a bit of a specialty parser so we won't expand on it in this
 document.
 
-## Parsing a Ziggy document
+## Deserializing a Zig value
 First, define a type you want Ziggy document to reflect
 
 ```zig
@@ -33,23 +33,25 @@ const Example = struct {
 };
 ```
 
-`ziggy.Parser` includes a function called `parseLeaky` (which is also re-exported
-by the root namespace), you can call the function, and it will return instance
-of your type from the parsed string:
+Then call `ziggy.deserializeLeaky` to obtain an instance of `Example`
 
 ```zig
-const example = try ziggy.parseLeaky(Example, allocator, str, .{});
+var meta: ziggy.Deserializer.Meta = .init;
+const example = try ziggy.deserializeLeaky(Example, allocator, str, &meta, .{});
 ```
-Now you can access the data through the returned value. The function will only
-return `error.Syntax` in case of a syntax error. If you want more detailed
-diagnostics, provide an instance of `ziggy.Diagnostic` to the last argument of
-`parseLeaky`. In case of an error you will be able to inspect it to get more
-information about the error (it also has convenience formatting functions).
+Now you can access the data through the returned value.
 
-The last parameter is an instance of `ziggy.ParseOptions` and can define more
-parsing options.
+In case of error, see the documentation of `deserializeLeaky` to learn how to
+properly report it to the user.
+
+The last parameter is an instance of `ziggy.Deserializer.Options` and can define
+more parsing options.
 
 Parsing a Ziggy document might require to heap allocate values (e.g. to unescape
 a string), and it's normally problematic to keep track of such occurrences,
 meaning that you should use a `std.heap.ArenaAllocator` (or equivalents) in order
 to prevent memory leakages (hence the `Leaky` part of the function name).
+
+For convenience you can use `ziggy.deserialize`, which will automatically bundle
+the result value in a type that includes an arena allocator. Make sure to call
+`deinit` on the returned value to free all related memory.

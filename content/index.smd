@@ -7,60 +7,71 @@
 .tags = [],
 .custom = {
     "main-sample": 
-      \\.id = @uuid("..."),
+      \\.id = .uuid("..."),
       \\.time = 1710085168,
-      \\.payload = Command {
-      \\  .do = @action("clear_chat"),
+      \\.payload = .command(.{
+      \\  .do = .clear_chat,
       \\  .sender = "kristoff-it",
       \\  .roles = ["admin", "mod"],
       \\  .extra = {
       \\    "agent": "Mozilla/5.0",
       \\    "os": "Linux/x64", 
-      \\  },
+      \\  }),
       \\}
       ,
     "package-schema": 
       \\root = Package
       \\
-      \\/// A Semantic Versioning version string.
-      \\@v = bytes,
-      \\/// A valid SPDX expression.
-      \\@spdx = bytes,
-      \\
       \\struct Package {
       \\  name: bytes,
-      \\  version: @v,
-      \\  license: @spdx,
+      \\  version: bytes,
+      \\  license: License,
       \\  description: bytes,
       \\  dependencies: map[bytes],
-      \\  repository: Git | Npm,
-      \\}
+      \\  repository: Repository,
       \\
-      \\struct Git { url: bytes, directory: ?bytes }
-      \\struct Npm { name: bytes }
+      \\}
+	  \\
+	  \\union License {
+	  \\  /// Valid SPDX identifier 
+	  \\  spdx: bytes,
+	  \\  /// URL to license definition
+	  \\  custom: bytes
+	  \\} 
+	  \\
+	  \\union Repository {
+	  \\  git: Git,
+	  \\  npm: Npm,
+	  \\
+      \\  struct Git { url: bytes, directory: ?bytes }
+      \\  struct Npm { name: bytes }
+      \\}
     ,
     "message-schema": 
-      \\root = Message
-      \\
-      \\/// A UUIDv5 value.
-      \\@uuid = bytes,
-      \\@action = enum { clear_chat, ban_user },
+      \\$ = Message
       \\
       \\struct Message {
-      \\  id: @uuid,
+      \\  id: Id,
       \\  time: int,
-      \\  payload: Command | Notification,
-      \\}
+      \\  payload: Payload,
+	  \\
+	  \\  union Payload {
+	  \\    command: Command,
+	  \\    notification: Notification, 
+	  \\
+      \\    struct Command {
+      \\      do: Action,
+      \\      sender: bytes,
+      \\      roles: []bytes,
+      \\      /// Optional metadata. 
+      \\      extra: ?{:}bytes,
+	  \\   
+	  \\      union Action { clear_chat, ban_user: bytes }
+      \\    }
       \\
-      \\struct Command {
-      \\  do: @action,
-      \\  sender: bytes,
-      \\  roles: [bytes],
-      \\  /// Optional metadata. 
-      \\  extra: ?map[bytes],
+      \\    struct Notification { text: bytes, lvl: int }
+	  \\  }
       \\}
-      \\
-      \\struct Notification { text: bytes, lvl: int }
 
       ,
       "cli": 
@@ -104,16 +115,16 @@
   "package-ziggy":
       \\{
       \\  .name = "ziggy",
-      \\  .version = @v("1.0.0"),
-      \\  .license = @spdx("MIT"),
+      \\  .version = "1.0.0",
+      \\  .license = .spdx("MIT"),
       \\  .dependencies = {
       \\    "react": "next",
       \\    "leftpad": "^1.0.0",
       \\  },
-      \\  .repository = Git {
-      \\    // "type" is now the struct name
+      \\  .repository = .git(.{
+      \\    // "type" is now the union case
       \\    .url = "https://github.com",
-      \\  },
+      \\  }),
       \\  .description = 
       \\    \\# Ziggy
       \\    \\
@@ -127,21 +138,16 @@
 
 []($section.id('first-section'))
 ## Notation designed to help users grok data layouts
-### Structs vs maps
-Ziggy uses different notation for key-value pairs when the keys are
-controlled by the application (i.e. keys must follow a schema), versus
-when the user is in control, and thus expected to come up with key names.
+### Structs vs Dictionaries
+Ziggy has two notations for key-value pairs. Structs are for when valid keys are specified in a Ziggy Schema, and dictionaries are for when key names are up to the user.
 
-### Struct unions
+This helps users get a better intuition for the schema before they even see it, and it also offers affodances like knowing when it makes sense to "goto definition" on a field.
+
+### Tagged Unions
 
 **Ever had to fight JSON to express a tagged union?**
 Ziggy structs have names that can be used by both humans and tooling
 to discriminate between union cases.
-
-### Tagged literals
-
-Tagged literals help you express things such as **`@date("2024-01-01")`**,
-**`@keys("crtl+c")`**, or **`@foo("bar")`**.
 
 ### ...and more quality of life features!
 
@@ -167,7 +173,7 @@ See an example `package.json` vs a (hypothetical) Ziggy version.
     **can't**
     define
     every possible
-    data layout!]($link.page('documentation/struct-unions'))
+    data layout!]($link.page('documentation/unions'))
 
 
 

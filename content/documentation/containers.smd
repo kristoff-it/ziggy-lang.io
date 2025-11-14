@@ -10,14 +10,14 @@
 ## Arrays
 Ziggy uses `[]` (square brackets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.
 
-Ziggy arrays can contain different types of values and can be nested arbitrarily deep.
+Ziggy arrays can contain different types of values and can be nested arbitrarily deep, although there are some caveats with how that interacts with Ziggy Schemas (more on that in the Ziggy Schema section).
 
 Examples: `[1, 2, 3]`, `[true, null, 42]`, `["hello", [1], []]`
 
-## Maps
-Maps are the first key-value mapping notation available in Ziggy.
+## Dictionaries
+Dictionaries (or just 'dicts') are the first key-value mapping notation available in Ziggy.
 
-Maps are meant to denote key-value mappings where key names are controlled **by the user**.
+Dictionaries are meant to denote key-value mappings where key names are controlled **by the user**.
 
 It's common for configuration files and API messages to have key-value mappings where key names are meant to be part of a schema, while some other key-value mappings are instead meant to be fully controlled by the user. 
 
@@ -34,7 +34,7 @@ One example of this is NPM's `package.json`:
 
 In this example you can see how `"name"` and `"dependencies"` are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while `"dependencies"` would be a map.
 
-Ziggy map syntax looks like this:
+Ziggy dictionary syntax looks like this:
 ```ziggy
 {
   "hello": "world",
@@ -42,12 +42,12 @@ Ziggy map syntax looks like this:
 }
 ```
 
-Ziggy maps have the same notation as JSON objects but allow trailing commas.
+Ziggy dicts have the same notation as JSON objects but allow trailing commas, and in fact all valid JSON files are valid Ziggy files made up of dicts.
 
 A hypothetical `package.ziggy`, where the outer key-value map is expressed as a struct, would look like this:
 
 ```ziggy
-{
+.{
   .name = "ziggy",
   .dependencies = {
     "react": "next",
@@ -65,7 +65,7 @@ Judicious use of struct syntax should help users understand the data layout even
 
 Basic struct syntax looks like this:
 ```ziggy
-{
+.{
   .hello = "world",
   .foo = true,
 }
@@ -81,23 +81,16 @@ This is the same as the previous example:
 .foo = true,
 ```
 
-### Named structs
-Structs can have a name attached to them. 
+### Tagged Unions 
+Sometimes also called "sum types", tagged unions are containers where only one of the possible fields is active at a time.
 
-This feature is particularly useful when used in conjunction with Ziggy Schemas to define **struct unions**.
+Tagged unions are especially useful when the Ziggy Document they appear in is paired with a Ziggy Schema.
 
-```ziggy
-{
-    .name = "Ziggy",
-    .dependencies = {
-        "foo": Remote {
-            .url = "https://github.com/",
-            .hash = "123abcdef",  
-        },
-        "bar": Local {
-            .path = "foo/bar/baz",
-        }
-    },
-}
-```
+A tagged union can have no payload (think of it as having a `void` payload if you're familiar with Zig), in which case it's effectively equivalent to an enum literal.
+
+Examples: `.foo`, `.bar`, `.baz`
+
+A tagged union can have any other Ziggy Document value as payload:
+
+Examples: `.foo(42)`, `.bar(false)`, `.baz("banana")`, `.qux({"foo": .bar})`
 
