@@ -1,38 +1,20 @@
 :root {
-  --border-color: hsl(200deg, 20%, 67%);
-  --text: rgb(20, 27, 31);
-  font-size: 1.2em;
   color-scheme: light dark;
+  font-size: 1.2em;
+
+  --border-color: light-dark(hsl(200deg, 20%, 67%), hsl(200deg, 20%, 20%));
+  --text: light-dark(rgb(20, 27, 31), #ddd);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --border-color: hsl(200deg, 20%, 20%);
-    --text: #ddd;
-    font-size: 1.2em;
-  }
-
-  b,
-  strong,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: #eee;
-  }
-
-  a {
-    color: yellow;
-  }
+a {
+  color: light-dark(blue, yellow);
 }
 
 
 body {
   margin: 0;
   font-family: 'Epilogue', sans-serif;
-  background-color: white;
+  background-color: light-dark(white, #151b23);
   color: var(--text);
   display: flex;
   flex-direction: column;
@@ -41,13 +23,6 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   box-sizing: border-box;
-}
-
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #151b23;
-  }
 }
 
 p {
@@ -66,14 +41,8 @@ p {
   position: sticky;
   z-index: 50;
   top: 0;
-  background-color: #ffffffbb;
+  background-color: light-dark(#fffb, #fff2);
   backdrop-filter: blur(8px);
-}
-
-@media (prefers-color-scheme: dark) {
-  #top-nav {
-    background-color: #ffffff22;
-  }
 }
 
 #top-nav-container {
@@ -109,18 +78,8 @@ p {
 }
 
 #top-nav-menu a:hover {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--text);
   margin-bottom: -3px;
-}
-
-@media (prefers-color-scheme: dark) {
-  #top-nav-menu a {
-    color: var(--text-color);
-  }
-
-  #top-nav-menu a:hover {
-    border-color: var(--text-color);
-  }
 }
 
 #content {
