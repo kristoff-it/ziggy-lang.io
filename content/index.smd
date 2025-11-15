@@ -1,139 +1,136 @@
 ---
 .title = "Home",
-.date =  "2020-07-06T00:00:00",
+.date = "2020-07-06T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "index.shtml",
 .tags = [],
 .custom = {
     "main-sample": 
-      \\.id = .uuid("..."),
-      \\.time = 631148400,
-      \\.payload = .command(.{
-      \\  .do = .clear_chat,
-      \\  .sender = "kristoff-it",
-      \\  .roles = ["admin", "mod"],
-      \\  .extra = {
-      \\    "agent": "Mozilla/5.0",
-      \\    "os": "Linux/x64", 
-      \\  }),
-      \\}
-      ,
+        \\.id = .uuid("..."),
+        \\.time = 631148400,
+        \\.payload = .command(.{
+        \\  .do = .clear_chat,
+        \\  .sender = "kristoff-it",
+        \\  .roles = ["admin", "mod"],
+        \\  .extra = {
+        \\    "agent": "Mozilla/5.0",
+        \\    "os": "Linux/x64", 
+        \\  }),
+        \\}
+    ,
     "package-schema": 
-      \\root = Package
-      \\
-      \\struct Package {
-      \\  name: bytes,
-      \\  version: bytes,
-      \\  license: License,
-      \\  description: bytes,
-      \\  dependencies: {:}bytes,
-      \\  repository: Repository,
-      \\
-      \\}
-	  \\
-	  \\union License {
-	  \\  /// Valid SPDX identifier 
-	  \\  spdx: bytes,
-	  \\  /// URL to license definition
-	  \\  custom: bytes
-	  \\} 
-	  \\
-	  \\union Repository {
-	  \\  git: Git,
-	  \\  npm: Npm,
-	  \\
-      \\  struct Git { url: bytes, directory: ?bytes }
-      \\  struct Npm { name: bytes }
-      \\}
+        \\$ = Package
+        \\
+        \\struct Package {
+        \\  name: bytes,
+        \\  version: bytes,
+        \\  license: License,
+        \\  description: bytes,
+        \\  dependencies: {:}bytes,
+        \\  repository: Repository,
+        \\
+        \\}
+        \\
+        \\union License {
+        \\  /// Valid SPDX identifier 
+        \\  spdx: bytes,
+        \\  /// URL to license definition
+        \\  custom: bytes
+        \\} 
+        \\
+        \\union Repository {
+        \\  git: Git,
+        \\  npm: Npm,
+        \\
+        \\  struct Git { url: bytes, directory: ?bytes }
+        \\  struct Npm { name: bytes }
+        \\}
     ,
     "message-schema": 
-      \\$ = Message
-      \\
-      \\struct Message {
-      \\  id: Id,
-      \\  time: int,
-      \\  payload: Payload,
-	  \\
-	  \\  union Id { uuid: bytes, seq: int }
-	  \\  union Payload {
-	  \\    command: Command,
-	  \\    notification: Notification, 
-	  \\
-      \\    struct Command {
-      \\      do: Action,
-      \\      sender: bytes,
-      \\      roles: []bytes,
-      \\      /// Optional metadata. 
-      \\      extra: ?{:}bytes,
-	  \\   
-	  \\      union Action { clear_chat, ban_user: bytes }
-      \\    }
-      \\
-      \\    struct Notification { text: bytes, lvl: int }
-	  \\  }
-      \\}
-
-      ,
-      "cli": 
-      \\$ ziggy help
-      \\
-      \\Usage: ziggy COMMAND [OPTIONS]
-      \\
-      \\Commands: 
-      \\  fmt          Format Ziggy files      
-      \\  query, q     Query Ziggy files 
-      \\  check        Check Ziggy files against a Ziggy schema 
-      \\  convert      Convert between JSON, YAML, TOML files and Ziggy
-      \\  lsp          Start the Ziggy LSP
-      \\  help         Show this menu and exit
-      \\
-      \\General Options:
-      \\  --help, -h   Print command specific usage
-      \\
-      ,
-  "package-json":
-      \\{
-      \\  "name": "ziggy",
-      \\  "version": "1.0.0",
-      \\  "license": "MIT",
-      \\  "dependencies": {
-      \\    "react": "next",
-      \\    "leftpad": "^1.0.0"
-      \\  },
-      \\  "repository": {
-      \\    "type": "git",
-      \\    "url" : "https://github.com"
-      \\ },
-      \\  "description": 
-      \\    "# Ziggy\n\nA Data Serializa..."
-      \\
-      \\
-      \\
-      \\}
-  ,
-
-  "package-ziggy":
-      \\{
-      \\  .name = "ziggy",
-      \\  .version = "1.0.0",
-      \\  .license = .spdx("MIT"),
-      \\  .dependencies = {
-      \\    "react": "next",
-      \\    "leftpad": "^1.0.0",
-      \\  },
-      \\  .repository = .git(.{
-      \\    // "type" is now the union case
-      \\    .url = "https://github.com",
-      \\  }),
-      \\  .description = 
-      \\    \\# Ziggy
-      \\    \\
-      \\    \\A Data Serialization Language.
-      \\  ,
-      \\}
-  ,
- 
+        \\$ = Message
+        \\
+        \\struct Message {
+        \\  id: Id,
+        \\  time: int,
+        \\  payload: Payload,
+        \\
+        \\  union Id { uuid: bytes, seq: int }
+        \\  union Payload {
+        \\    command: Command,
+        \\    notification: Notification, 
+        \\
+        \\    struct Command {
+        \\      do: Action,
+        \\      sender: bytes,
+        \\      roles: []bytes,
+        \\      /// Optional metadata. 
+        \\      extra: ?{:}bytes,
+        \\   
+        \\      union Action { clear_chat, ban_user: bytes }
+        \\    }
+        \\
+        \\    struct Notification { text: bytes, lvl: int }
+        \\  }
+        \\}
+    ,
+    "cli": 
+        \\$ ziggy help
+        \\
+        \\Usage: ziggy COMMAND [OPTIONS]
+        \\
+        \\Commands: 
+        \\  fmt          Format Ziggy files      
+        \\  query, q     Query Ziggy files 
+        \\  check        Check Ziggy files against a Ziggy schema 
+        \\  convert      Convert between JSON, YAML, TOML files and Ziggy
+        \\  lsp          Start the Ziggy LSP
+        \\  help         Show this menu and exit
+        \\
+        \\General Options:
+        \\  --help, -h   Print command specific usage
+        \\
+    ,
+    "package-json": 
+        \\{
+        \\  "name": "ziggy",
+        \\  "version": "1.0.0",
+        \\  "license": "MIT",
+        \\  "dependencies": {
+        \\    "react": "next",
+        \\    "leftpad": "^1.0.0"
+        \\  },
+        \\  "repository": {
+        \\    "type": "git",
+        \\    "url" : "https://github.com"
+        \\ },
+        \\  "description": 
+        \\    "# Ziggy\n\nA Data Serializa..."
+        \\
+        \\
+        \\
+        \\}
+    ,
+    "package-ziggy": 
+        \\{
+        \\  .name = "ziggy",
+        \\  .version = "1.0.0",
+        \\  .license = .spdx("MIT"),
+        \\  .dependencies = {
+        \\    "react": "next",
+        \\    "leftpad": "^1.0.0",
+        \\  },
+        \\  .repository = .git(.{
+        \\    // "type" is now the union case
+        \\    .url = "https://github.com",
+        \\  }),
+        \\  .description = 
+        \\    \\# Ziggy
+        \\    \\
+        \\    \\A Data Serialization Language.
+        \\  ,
+        \\}
+    ,
 }
 --- 
 
@@ -181,3 +178,4 @@ See an example `package.json` vs a (hypothetical) Ziggy version.
 []($section.id('third-section'))
 ## Tooling Supremacy
 One official CLI tool that solves the most common needs, like **auto-formatting**, **schema validation**, **format conversion**, **querying** (coming soon) and **LSP support** for comfortable editing in your favorite text editor or IDE.
+
