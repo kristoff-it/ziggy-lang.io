@@ -32,7 +32,7 @@ One example of this is NPM's `package.json`:
 }
 ```
 
-In this example you can see how `"name"` and `"dependencies"` are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while `"dependencies"` would be a map.
+In this example you can see how `"name"` and `"dependencies"` are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while `"dependencies"` would be a dict.
 
 Ziggy dictionary syntax looks like this:
 ```ziggy
@@ -70,7 +70,7 @@ Basic struct syntax looks like this:
   .foo = true,
 }
 ```
-*NOTE: like arrays and maps, structs also allow trailing commas.*
+*NOTE: like arrays and dicts, structs also allow trailing commas.*
 
 ### Omitting top-level curlies
 When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.
@@ -89,4 +89,4 @@ Similarly to enum literals, union literals are meant to represent one option out
 
 Examples: `.unix(631148400)`, `.foo(42)`,  `.bar("banana")`, `.baz({"foo": .bar})`
 
-Tagged unions are especially useful when the Ziggy Documents they appear in are paired with a Ziggy Schema.
+Union literals are especially useful when the Ziggy Documents they appear in are paired with a Ziggy Schema.

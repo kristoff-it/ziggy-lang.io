@@ -9,109 +9,113 @@
 # Ziggy Schema File Structure
 
 ## File Extension
-A Ziggy Schema file can have either a `ziggy-schema` or a `zgy-schema` file extension.
+A Ziggy Schema file has a `.ziggy-schema` file extension.
 
-## Contents
+## File structure
 Here's an example Ziggy Schema:
 
 ```ziggy-schema
-root = Message
+$ = Foo
 
+struct Foo {
+   /// Fields can have doc comments.
+   foo: Bar,
+   bar: Baz,
 
-///A UUIDv4 value.
-@uuid = bytes,
-///Possible command actions.
-@action = enum { clear_chat, ban_user },
-
-struct Message {
-  id: @uuid,
-  payload: Command | Notification,
+   /// Type definitions too can have doc comments.
+   struct Bar {
+      baz: any,
+   }
 }
 
-struct Command {
-  do: @action,
-  sender: bytes,
-}
-
-struct Notification {
-  title: bytes,
-  text: bytes,
-  level: int,
+union Baz {
+   qux: int,
+   qax: bytes,
+   qix,
 }
 ```
 
-A Ziggy schema is comprised of three main sections:
+A Ziggy schema is comprised of two main sections:
 
-- the `root` definition
-- a list of comma separated tag literal definitions
-- a list of struct definitions
+- the `$` definition
+- a series of custom type definitions
 
-### The `root` definition
-The first line of a Ziggy Schema defines what is the type of the value that corresponding Ziggy Documents encode. 
+### The `$` definition
+The first line of a Ziggy Schema defines the type of the top-level value of matching Ziggy Documents. 
 
-Most of the time one should expect the root value to be a struct name, but that is not always the case as a Ziggy Document can encode any possible Ziggy value, not just structs.
+In Ziggy lingo, `$` represents the top-level value (a concept shared with Scripty and other tooling in the Zine ecosystem), to which we assign a type expression.
+
+The `$` definition accepts a type expression because Ziggy Documents are allowed to have non-struct values at the top level. For comparison, while this is technically true also for JSON, in practice many JSON parsers expect the top-level value to be a JSON object, something that we want to avoid for Ziggy Documents.
 
 For example the following are all valid Ziggy Schemas:
 
 ```ziggy-schema
-root = bytes
+/// This matches the following Ziggy Document:
+/// `"banana"`
+$ = bytes
 ```
 
 ```ziggy-schema
-root = [int]
+/// This matches the following Ziggy Document:
+/// `[1,2,3]`
+$ = []int
 ```
 
 ```ziggy-schema
-root = map[?[float]]
+/// This matches the following Ziggy Document:
+/// `{"foo": null, "bar": [true]}`
+$ = {:}?[]bool
 ```
 
-```ziggy-schema
-root = [@fruit]
+### Type definitions
 
-@fruit = enum { apple, banana, cherry },
+The main section of a Ziggy Schema is a list of type definitions.
+
+Ziggy Schemas allow you to specify `struct` and `union` types.
+See the [Custom Types](custom-types) page for more information.
+
+
+## Schema - Document pairing
+
+This is how Ziggy tooling decides which Ziggy Schema should be used for a given Ziggy Document.
+
+### 1. Same name
+
+When a Ziggy Document and a Ziggy Schema share the same name and are located in the same directory.
+
+Example: `path/to/foo.ziggy` -> `path/to/foo.ziggy-schema`
+
+### 2. Dot schema
+
+When a directory contains a `.ziggy-schema` file, it will be used for all Ziggy
+Documents in the entire directory subtree that do not have a Schema with the
+same name (as explained above).
+
+For example, given this directory structure:
+
+```
+foo
+├── .ziggy-schema
+├── bar.ziggy
+├── baz.ziggy
+├── baz.ziggy-schema
+├── fruits
+│   ├── apple.ziggy
+│   └── banana.ziggy
+└── qux
+    ├── .ziggy-schema
+    ├── qax.ziggy
+    └── qix.ziggy
 ```
 
-### Tagged literal definitions
+Results in the following pairings:
 
-After the root definition follows a list of comma-separated tagged literals. All tagged literals mentioned in the schema must be mentioned in that list of definitions.
-
-```ziggy-schema
-root = [Foo]
-
-@uuid = bytes,
-@date = bytes,
-@fruit = enum { apple, banana, cherry },
-
-struct Foo {
-  id: @uuid,
-  date: ?@date,
-  fruits: [@fruit],
-}
 ```
-
-### Struct definitions
-
-The final section of a Ziggy Schema file is a list of struct definitions.
-
-
-```ziggy-schema
-root = [A | B | C]
-
-@uuid = bytes,
-
-struct A {
-  id: @uuid,
-  foo: bytes,
-}
-
-struct B {
-  id: @uuid,
-  bar: bytes,
-}
-
-struct C {
-  id: @uuid,
-  baz: bytes,
-}
+foo/bar.ziggy           -> foo/.ziggy-schema 
+foo/baz.ziggy           -> foo/baz.ziggy-schema 
+foo/fruits/apple.ziggy  -> foo/.ziggy-schema
+foo/fruits/banana.ziggy -> foo/.ziggy-schema
+foo/qux/qax.ziggy       -> foo/qux/.ziggy-schema 
+foo/qux/qix.ziggy       -> foo/qux/.ziggy-schema 
 ```
 

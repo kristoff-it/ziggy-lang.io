@@ -99,7 +99,7 @@
 			padding-right: 0;
 		}
 		
-		p code {
+		p code, i code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;

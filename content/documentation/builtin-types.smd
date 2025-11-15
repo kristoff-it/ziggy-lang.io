@@ -9,7 +9,9 @@
 # Ziggy Schema Builtin Types
 
 ## `any`
-Ziggy Schemas have one keyword for expressing that a value can be of any possible type:  `any`
+Ziggy Schemas have one keyword for expressing that a Ziggy Document value can be of any possible type:  `any`
+
+All Ziggy Document values are compatible with `any`, but it should be considered a last-resort escape hatch. You should prefer more precise typing whenever prossible.
 
 ## Basic types
 Ziggy Schemas have a type name for all basic Ziggy scalar literals. 
@@ -41,7 +43,7 @@ Ziggy dicts can be defined using the `{:}T` notation, where `T` is a type expres
 Examples: `{:}bytes`, `{:}bool`, `{:}?[]bytes`
 
 
-## What About Heterogeneous Arrays And Maps?
+## What About Heterogeneous Arrays And Dictionaries?
 
 Ziggy documents can indeed express heterogeneous collections:
 

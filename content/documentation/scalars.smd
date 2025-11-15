@@ -77,4 +77,4 @@ Enums literals represent one option out of a limited set. They start with a `.` 
 
 Examples: `.foo`, `.bar`, `.foo_bar`
 
-Enum values are the scalar counterpart to union cases, presented in the [Container Values](containers) section. Together they make up the Ziggy Document syntax that maps to *tagged unions* in Ziggy Schema.
+Enum literals are the scalar counterpart to union literals, presented in the [Container Values](containers) section. Together they make up the Ziggy Document syntax that maps to *tagged unions* in Ziggy Schema.

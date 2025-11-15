@@ -14,7 +14,7 @@ Formats Ziggy Documents and Ziggy Schemas.
 
 ## Trailing Commas
 
-Trailing commas in structs, maps, and arrays tell the autoformatter to perform vertical alignment.
+Trailing commas in structs, dicts, and arrays tell the autoformatter to perform vertical alignment.
 
 Lack of a trailing comma requests horizontal alignment instead.
 
@@ -48,7 +48,7 @@ Given this Ziggy document:
 .bar = {
   "arst": true,
   "qwfp": {
-    "another": "map",
+    "another": "dict",
     "nested": "more deeply",
   },
 }
@@ -61,7 +61,7 @@ Give a `.` to the value of `bar`:
 .bar = .{ // <----- here!
   "arst": true,
   "qwfp": {
-    "another": "map",
+    "another": "dict",
     "nested": "more deeply",
   },
 }
@@ -74,7 +74,7 @@ On save the autoformatter will turn all dict-style fields into struct-style fiel
 .bar = .{
   .arst = true,
   .qwfp = {
-    "another": "map",
+    "another": "dict",
     "nested": "more deeply",
   },
 }
@@ -88,4 +88,4 @@ Ziggy Documents are a superset of JSON, and you can both use `ziggy fmt` and `zi
 
 By removing the `.` in front of a struct you can have `ziggy fmt` apply the inverse transformation to what you saw above.
 
-But why would you? More structs more glory!
+But why would you? *More structs, more glory!*
