@@ -119,7 +119,7 @@
 			padding-right: 0;
 		}
 		
-		p code {
+		p code, i code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
@@ -405,7 +405,7 @@
   }
 }
 </code></pre>
-<p>In this example you can see how <code>&quot;name&quot;</code> and <code>&quot;dependencies&quot;</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>&quot;dependencies&quot;</code> would be a map.</p><p>Ziggy dictionary syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
+<p>In this example you can see how <code>&quot;name&quot;</code> and <code>&quot;dependencies&quot;</code> are part of a schema, while dependency names are up to the user. In Ziggy the outer key-value mapping would be represented as a struct, while <code>&quot;dependencies&quot;</code> would be a dict.</p><p>Ziggy dictionary syntax looks like this:</p><pre><code class="ziggy"><span class="punctuation_bracket">{</span>
   <span class="string">&quot;hello&quot;</span>: <span class="string">&quot;world&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="string">&quot;foo&quot;</span>: <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
@@ -423,10 +423,10 @@
   .<span class="keyword">foo</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p><em>NOTE: like arrays and maps, structs also allow trailing commas.</em></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">&quot;world&quot;</span><span class="punctuation_delimiter">,</span>
+<p><em>NOTE: like arrays and dicts, structs also allow trailing commas.</em></p><h3>Omitting top-level curlies</h3><p>When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.</p><p>This is the same as the previous example:</p><pre><code class="ziggy">.<span class="keyword">hello</span> = <span class="string">&quot;world&quot;</span><span class="punctuation_delimiter">,</span>
 .<span class="keyword">foo</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<h2>Union literal</h2><p>Union literals are the container counterpart to <em>enum literals</em>. They have the same structure as enum literals, immediately followed by a value enclosed between parentheses. There can be no space between the identifier and the opening parenthesis.</p><p>Similarly to enum literals, union literals are meant to represent one option out of a limited set. Differently from enums, which do not hold a payload, union literals have a single Ziggy value as their payload.</p><p>Examples: <code>.unix(631148400)</code>, <code>.foo(42)</code>,  <code>.bar(&quot;banana&quot;)</code>, <code>.baz({&quot;foo&quot;: .bar})</code></p><p>Tagged unions are especially useful when the Ziggy Documents they appear in are paired with a Ziggy Schema.</p></div>
+<h2>Union literal</h2><p>Union literals are the container counterpart to <em>enum literals</em>. They have the same structure as enum literals, immediately followed by a value enclosed between parentheses. There can be no space between the identifier and the opening parenthesis.</p><p>Similarly to enum literals, union literals are meant to represent one option out of a limited set. Differently from enums, which do not hold a payload, union literals have a single Ziggy value as their payload.</p><p>Examples: <code>.unix(631148400)</code>, <code>.foo(42)</code>,  <code>.bar(&quot;banana&quot;)</code>, <code>.baz({&quot;foo&quot;: .bar})</code></p><p>Union literals are especially useful when the Ziggy Documents they appear in are paired with a Ziggy Schema.</p></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/scalars/">

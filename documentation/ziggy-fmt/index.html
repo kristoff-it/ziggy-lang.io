@@ -119,7 +119,7 @@
 			padding-right: 0;
 		}
 		
-		p code {
+		p code, i code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
@@ -397,7 +397,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1><code>ziggy fmt</code></h1><p>Formats Ziggy Documents and Ziggy Schemas.</p><p><strong>It’s highly recommended you enable format on save in your editor to get the most out of the autoformatter.</strong></p><h2>Trailing Commas</h2><p>Trailing commas in structs, maps, and arrays tell the autoformatter to perform vertical alignment.</p><p>Lack of a trailing comma requests horizontal alignment instead.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span> .<span class="keyword">bar</span> = <span class="punctuation_bracket">[</span><span class="constant_numeric">1</span><span class="punctuation_delimiter">,</span> 
+			<div><h1><code>ziggy fmt</code></h1><p>Formats Ziggy Documents and Ziggy Schemas.</p><p><strong>It’s highly recommended you enable format on save in your editor to get the most out of the autoformatter.</strong></p><h2>Trailing Commas</h2><p>Trailing commas in structs, dicts, and arrays tell the autoformatter to perform vertical alignment.</p><p>Lack of a trailing comma requests horizontal alignment instead.</p><p>Given this Ziggy document:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span> .<span class="keyword">bar</span> = <span class="punctuation_bracket">[</span><span class="constant_numeric">1</span><span class="punctuation_delimiter">,</span> 
 <span class="constant_numeric">2</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">3</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span> .<span class="keyword">baz</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
 </code></pre>
 <p>This is the autoformatted result:</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="string">&quot;bar&quot;</span><span class="punctuation_delimiter">,</span>
@@ -408,7 +408,7 @@
 .<span class="keyword">bar</span> = <span class="punctuation_bracket">{</span>
   <span class="string">&quot;arst&quot;</span>: <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
   <span class="string">&quot;qwfp&quot;</span>: <span class="punctuation_bracket">{</span>
-    <span class="string">&quot;another&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;another&quot;</span>: <span class="string">&quot;dict&quot;</span><span class="punctuation_delimiter">,</span>
     <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
@@ -417,7 +417,7 @@
 .<span class="keyword">bar</span> = <span class="error">.</span><span class="punctuation_bracket">{</span> <span class="comment_line">// &lt;----- here!</span>
   <span class="string">&quot;arst&quot;</span>: <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
   <span class="string">&quot;qwfp&quot;</span>: <span class="punctuation_bracket">{</span>
-    <span class="string">&quot;another&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;another&quot;</span>: <span class="string">&quot;dict&quot;</span><span class="punctuation_delimiter">,</span>
     <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
@@ -426,12 +426,12 @@
 .<span class="keyword">bar</span> = <span class="error">.</span><span class="punctuation_bracket">{</span>
   .<span class="keyword">arst</span> = <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span>
   .<span class="keyword">qwfp</span> = <span class="punctuation_bracket">{</span>
-    <span class="string">&quot;another&quot;</span>: <span class="string">&quot;map&quot;</span><span class="punctuation_delimiter">,</span>
+    <span class="string">&quot;another&quot;</span>: <span class="string">&quot;dict&quot;</span><span class="punctuation_delimiter">,</span>
     <span class="string">&quot;nested&quot;</span>: <span class="string">&quot;more deeply&quot;</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p><em>Note how the innermost dictionary was <strong>not</strong> transformed.</em></p><p>Ziggy Documents are a superset of JSON, and you can both use <code>ziggy fmt</code> and <code>ziggy convert</code> to help you upgrade your JSON documents to Ziggy Documents.</p><h2>Downgrading Structs</h2><p>By removing the <code>.</code> in front of a struct you can have <code>ziggy fmt</code> apply the inverse transformation to what you saw above.</p><p>But why would you? More structs more glory!</p></div>
+<p><em>Note how the innermost dictionary was <strong>not</strong> transformed.</em></p><p>Ziggy Documents are a superset of JSON, and you can both use <code>ziggy fmt</code> and <code>ziggy convert</code> to help you upgrade your JSON documents to Ziggy Documents.</p><h2>Downgrading Structs</h2><p>By removing the <code>.</code> in front of a struct you can have <code>ziggy fmt</code> apply the inverse transformation to what you saw above.</p><p>But why would you? <em>More structs, more glory!</em></p></div>
 			<nav id="footer">
 				<div>
 					<a href="/documentation/parsers/">
