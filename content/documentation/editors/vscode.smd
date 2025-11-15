@@ -1,6 +1,6 @@
 ---
 .title = "VSCode",
-.date =  "2002-01-01T00:00:00",
+.date = "2002-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -12,3 +12,4 @@ Make sure the [Ziggy CLI tool](/documentation/getting-started/) is available in 
 
 
 If you don't see LSP diagnostics when editing Ziggy files, it means that VSCode could not find the `ziggy` executable.
+

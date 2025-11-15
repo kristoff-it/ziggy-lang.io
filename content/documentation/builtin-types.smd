@@ -1,6 +1,6 @@
 ---
 .title = "Builtin Types",
-.date =  "2008-01-01T00:00:00",
+.date = "2008-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -61,3 +61,4 @@ Ziggy documents can indeed express heterogeneous collections:
 But Ziggy Schema can at best represent those types as `[]any` and `{:}any`. While you are certainly allowed to create Ziggy documents of this kind, in situations where you have external consumers that could benefit from a Ziggy Schema, you are *kindly* encouraged by the language to use structs to express type variablily.
 
 In the `Custom Types` section you will also learn how to use Tagged Unions to solve some related use cases.
+

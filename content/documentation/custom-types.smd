@@ -1,6 +1,6 @@
 ---
 .title = "Custom Types",
-.date =  "2009-01-01T00:00:00",
+.date = "2009-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -73,4 +73,5 @@ Union cases can also have no payload, in which case their syntax looks as follow
 ```
 ### Expression
 Just like structs, a tagged union can be referenced in a type expression by its name.
+
 

@@ -1,6 +1,6 @@
 ---
 .title = "Neovim",
-.date =  "2003-01-01T00:00:00",
+.date = "2003-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -116,4 +116,5 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 ```
+
 

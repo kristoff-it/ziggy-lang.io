@@ -1,6 +1,6 @@
 ---
 .title = "Helix",
-.date =  "2004-01-01T00:00:00",
+.date = "2004-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -65,6 +65,7 @@ args = ["lsp", "--schema"]
 ## 3. Build Tree Sitter grammars
 
 Run `hx --grammar build`, it should report that `ziggy` and `ziggy_schema` were built successfully.
+
 
 
 

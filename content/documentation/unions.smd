@@ -1,6 +1,6 @@
 ---
 .title = "Tagged Unions",
-.date =  "2011-01-01T00:00:00",
+.date = "2011-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -202,4 +202,5 @@ This has two big advantages:
   ``` 
 
 If you're reading and writing Ziggy Documents within a single application where you don't have external consumers that would benefit from a Ziggy Schema, feel free to adopt any arbitrary layout that works for you.
+
 

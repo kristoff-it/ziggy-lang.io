@@ -1,6 +1,6 @@
 ---
 .title = "Getting Started",
-.date =  "2025-03-10T18:54:59",
+.date = "2025-03-10T18:54:59",
 .author = "LowByteFox",
 .draft = false,
 .layout = "documentation.shtml",
@@ -45,3 +45,4 @@ Now just add it to the executable module as an import using `addImport` like so
 exe_mod.addImport("ziggy", ziggy_dep.module("ziggy"));
 ```
 Again, `exe_mod` may be called differently in your project
+

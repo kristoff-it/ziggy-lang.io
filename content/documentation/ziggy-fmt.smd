@@ -1,6 +1,6 @@
 ---
 .title = "ziggy fmt",
-.date =  "2014-01-01T00:00:00",
+.date = "2014-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -89,3 +89,4 @@ Ziggy Documents are a superset of JSON, and you can both use `ziggy fmt` and `zi
 By removing the `.` in front of a struct you can have `ziggy fmt` apply the inverse transformation to what you saw above.
 
 But why would you? *More structs, more glory!*
+

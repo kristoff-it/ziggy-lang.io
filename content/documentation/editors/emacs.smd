@@ -1,6 +1,6 @@
 ---
 .title = "Emacs",
-.date =  "2025-10-07T00:00:00",
+.date = "2025-10-07T00:00:00",
 .author = "Davide Colazingari",
 .draft = false,
 .layout = "documentation.shtml",
@@ -54,3 +54,4 @@ Instead, to use `ziggy` LSP with `lsp-mode`, add the following to your configura
 						:activation-fn (lsp-activate-on "ziggy")
 						:server-id 'ziggy)))
 ```
+

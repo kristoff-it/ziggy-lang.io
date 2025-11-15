@@ -1,6 +1,6 @@
 ---
 .title = "Getting Started",
-.date =  "2001-01-01T00:00:00",
+.date = "2001-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -39,3 +39,4 @@ Once downloaded, you will need to put the `ziggy` executable in your `PATH` so t
 ### Next steps
 
 Add Ziggy syntax highlighting and Ziggy LSP support to your editor by following one of the guides in the Editor Configuration section.
+

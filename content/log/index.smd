@@ -1,6 +1,6 @@
 ---
 .title = "Changelog",
-.date =  "2000-01-01T00:00:00",
+.date = "2000-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "log.shtml",
@@ -69,3 +69,4 @@ See [documentation/frontmatter/](documentation/frontmatter) for more info.
 
 ## 2024-03-20
 Website launched!
+

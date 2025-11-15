@@ -1,6 +1,6 @@
 ---
 .title = "Parser Example",
-.date =  "2025-03-10T19:11:59",
+.date = "2025-03-10T19:11:59",
 .author = "LowByteFox",
 .draft = false,
 .layout = "documentation.shtml",
@@ -55,3 +55,4 @@ to prevent memory leakages (hence the `Leaky` part of the function name).
 For convenience you can use `ziggy.deserialize`, which will automatically bundle
 the result value in a type that includes an arena allocator. Make sure to call
 `deinit` on the returned value to free all related memory.
+

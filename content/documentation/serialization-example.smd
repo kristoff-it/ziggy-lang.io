@@ -1,6 +1,6 @@
 ---
 .title = "Serialization Example",
-.date =  "2025-03-10T19:12:20",
+.date = "2025-03-10T19:12:20",
 .author = "LowByteFox",
 .draft = false,
 .layout = "documentation.shtml",
@@ -32,3 +32,4 @@ To get our result, simply read from `out.written()`
 ```zig
 std.debug.print("{s}\n", .{out.written()});
 ```
+

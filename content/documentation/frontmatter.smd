@@ -1,6 +1,6 @@
 ---
 .title = "Frontmatter",
-.date =  "2025-03-11T19:11:59",
+.date = "2025-03-11T19:11:59",
 .author = "",
 .draft = false,
 .layout = "documentation.shtml",
@@ -33,6 +33,7 @@ provide diagnostics for the frontmatter section of the document.
 
 See the delimiter-related options in `ziggy.Ast` and `ziggy.Deserializer` to learn
 how to parse a Ziggy frontmatter out of an external document.
+
 
 
 

@@ -1,6 +1,6 @@
 ---
 .title = "Container Values",
-.date =  "2006-01-01T00:00:00",
+.date = "2006-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -90,3 +90,4 @@ Similarly to enum literals, union literals are meant to represent one option out
 Examples: `.unix(631148400)`, `.foo(42)`,  `.bar("banana")`, `.baz({"foo": .bar})`
 
 Union literals are especially useful when the Ziggy Documents they appear in are paired with a Ziggy Schema.
+

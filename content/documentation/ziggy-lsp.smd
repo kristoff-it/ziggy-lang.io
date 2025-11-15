@@ -1,6 +1,6 @@
 ---
 .title = "ziggy lsp",
-.date =  "2018-01-01T00:00:00",
+.date = "2018-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",

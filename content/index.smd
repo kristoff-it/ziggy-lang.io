@@ -179,3 +179,4 @@ See an example `package.json` vs a (hypothetical) Ziggy version.
 ## Tooling Supremacy
 One official CLI tool that solves the most common needs, like **auto-formatting**, **schema validation**, **format conversion**, **querying** (coming soon) and **LSP support** for comfortable editing in your favorite text editor or IDE.
 
+

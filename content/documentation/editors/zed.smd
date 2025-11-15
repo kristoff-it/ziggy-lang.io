@@ -1,6 +1,6 @@
 ---
 .title = "Zed",
-.date =  "2025-10-31T00:00",
+.date = "2025-10-31T00:00",
 .author = "Louis Vignoli",
 .draft = false,
 .layout = "documentation.shtml",
@@ -14,3 +14,4 @@ It provides grammar features, as syntax hihglighting and outlines.
 If the ziggy executable is in your path, diagnostics from schema validation will be available.
 
 Source is there: https://github.com/lvignoli/zed-ziggy.
+

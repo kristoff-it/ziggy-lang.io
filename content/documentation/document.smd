@@ -1,6 +1,6 @@
 ---
 .title = "Document Structure",
-.date =  "2007-01-01T00:00:00",
+.date = "2007-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -56,3 +56,4 @@ Ziggy comments are all single-line (there's no multi-line comment syntax, you're
   // baz
 ],
 ```
+

@@ -1,6 +1,6 @@
 ---
 .title = "Parsers",
-.date =  "2013-01-01T00:00:00",
+.date = "2013-01-01T00:00:00",
 .author = "Loris Cro",
 .draft = false,
 .layout = "documentation.shtml",
@@ -18,3 +18,4 @@ The official Ziggy implementation.
 An unofficial port in Python.
 
 [https://github.com/lvignoli/ziggy-python](https://github.com/lvignoli/ziggy-python)
+

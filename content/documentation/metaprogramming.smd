@@ -1,6 +1,6 @@
 ---
 .title = "Metaprogramming",
-.date =  "2025-03-11T19:11:59",
+.date = "2025-03-11T19:11:59",
 .author = "",
 .draft = false,
 .layout = "documentation.shtml",
@@ -9,3 +9,4 @@
 
 // TODO: explain how `ziggy_options` can be used to change the behavior of the parser
 // TODO: talk about ziggy schemas
+
