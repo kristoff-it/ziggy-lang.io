@@ -81,16 +81,12 @@ This is the same as the previous example:
 .foo = true,
 ```
 
-### Tagged Unions 
-Sometimes also called "sum types", tagged unions are containers where only one of the possible fields is active at a time.
+## Union literal
 
-Tagged unions are especially useful when the Ziggy Document they appear in is paired with a Ziggy Schema.
+Union literals are the container counterpart to *enum literals*. They have the same structure as enum literals, immediately followed by a value enclosed between parentheses. There can be no space between the identifier and the opening parenthesis.
 
-A tagged union can have no payload (think of it as having a `void` payload if you're familiar with Zig), in which case it's effectively equivalent to an enum literal.
+Similarly to enum literals, union literals are meant to represent one option out of a limited set. Differently from enums, which do not hold a payload, union literals have a single Ziggy value as their payload.
 
-Examples: `.foo`, `.bar`, `.baz`
+Examples: `.unix(631148400)`, `.foo(42)`,  `.bar("banana")`, `.baz({"foo": .bar})`
 
-A tagged union can have any other Ziggy Document value as payload:
-
-Examples: `.foo(42)`, `.bar(false)`, `.baz("banana")`, `.qux({"foo": .bar})`
-
+Tagged unions are especially useful when the Ziggy Documents they appear in are paired with a Ziggy Schema.

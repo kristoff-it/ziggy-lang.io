@@ -8,7 +8,7 @@
 .custom = {
     "main-sample": 
       \\.id = .uuid("..."),
-      \\.time = 1710085168,
+      \\.time = 631148400,
       \\.payload = .command(.{
       \\  .do = .clear_chat,
       \\  .sender = "kristoff-it",
@@ -27,7 +27,7 @@
       \\  version: bytes,
       \\  license: License,
       \\  description: bytes,
-      \\  dependencies: map[bytes],
+      \\  dependencies: {:}bytes,
       \\  repository: Repository,
       \\
       \\}
@@ -55,6 +55,7 @@
       \\  time: int,
       \\  payload: Payload,
 	  \\
+	  \\  union Id { uuid: bytes, seq: int }
 	  \\  union Payload {
 	  \\    command: Command,
 	  \\    notification: Notification, 

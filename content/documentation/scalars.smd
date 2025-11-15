@@ -69,4 +69,12 @@ Example:
 ```
 **Note that multiline literals don't support escape sequences which makes them handy when you need a "raw string" to express things like regular expressions.**
 
-Lastly, multiline literals don't include the last newline, so to have a trailing newline be part of your bytes, you will need to add a final empty line.
+Lastly, multiline literals don't include the last newline, so to have a trailing newline be part of your bytes, you will need to add an extra final empty line.
+
+## Enum literals
+
+Enums literals represent one option out of a limited set. They start with a `.` followed by a simple identifier (`a-zA-Z0-9_`).
+
+Examples: `.foo`, `.bar`, `.foo_bar`
+
+Enum values are the scalar counterpart to union cases, presented in the [Container Values](containers) section. Together they make up the Ziggy Document syntax that maps to *tagged unions* in Ziggy Schema.
