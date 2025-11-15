@@ -299,7 +299,7 @@
       </div>
       <div id="main-code" class="flex-item">
         <pre id="main1-ziggy" class="flex-item"><code class="ziggy">.<span class="keyword">id</span> = <span class="error">.uuid</span><span class="error punctuation_bracket">(</span><span class="string">&quot;...&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">time</span> = <span class="constant_numeric">1710085168</span><span class="punctuation_delimiter">,</span>
+.<span class="keyword">time</span> = <span class="constant_numeric">631148400</span><span class="punctuation_delimiter">,</span>
 .<span class="keyword">payload</span> = <span class="error">.command</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
   .<span class="keyword">do</span> = <span class="error">.clear_chat</span><span class="error punctuation_delimiter">,</span><span class="error">
   .sender =</span> <span class="string">&quot;kristoff-it&quot;</span><span class="punctuation_delimiter">,</span>
@@ -380,7 +380,7 @@
   <span class="keyword type">version</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
   <span class="keyword type">license</span>: <span class="type">License</span><span class="punctuation_delimiter">,</span>
   <span class="keyword type">description</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">dependencies</span>: <span class="keyword">map</span><span class="punctuation_bracket">[</span><span class="constant_builtin">bytes</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword type">dependencies</span>: <span class="error punctuation_bracket">{</span><span class="error">:</span><span class="error punctuation_bracket">}</span><span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
   <span class="keyword type">repository</span>: <span class="type">Repository</span><span class="punctuation_delimiter">,</span>
 
 <span class="punctuation_bracket">}</span>
@@ -410,6 +410,7 @@
   <span class="type">time</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
   <span class="type">payload</span>: <span class="type">Payload</span><span class="punctuation_delimiter">,</span>
 
+  <span class="type">union</span> <span class="type">Id</span> <span class="punctuation_bracket">{</span> <span class="type">uuid</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="type">seq</span>: <span class="constant_builtin">int</span> <span class="punctuation_bracket">}</span>
   <span class="type">union</span> <span class="type">Payload</span> <span class="punctuation_bracket">{</span>
     <span class="type">command</span>: <span class="type">Command</span><span class="punctuation_delimiter">,</span>
     <span class="type">notification</span>: <span class="type">Notification</span><span class="punctuation_delimiter">,</span> 
