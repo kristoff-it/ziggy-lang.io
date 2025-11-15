@@ -373,32 +373,32 @@
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
         <label class="label label-left" for="tab3">package.ziggy-schema</label>
         <div class="panel" tabindex="1">
-          <pre class="tab-sample" id="schema1"><code class="ziggy-schema"><span class="keyword">root</span> = <span class="type">Package</span>
+          <pre class="tab-sample" id="schema1"><code class="ziggy-schema"><span class="error">$</span> = <span class="type">Package</span>
 
 <span class="keyword">struct</span> <span class="type">Package</span> <span class="punctuation_bracket">{</span>
-  <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">version</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">license</span>: <span class="type">License</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">description</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">dependencies</span>: <span class="error punctuation_bracket">{</span><span class="error">:</span><span class="error punctuation_bracket">}</span><span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-  <span class="keyword type">repository</span>: <span class="type">Repository</span><span class="punctuation_delimiter">,</span>
+  <span class="type">name</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="type">version</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="type">license</span>: <span class="type">License</span><span class="punctuation_delimiter">,</span>
+  <span class="type">description</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="type">dependencies</span>: <span class="punctuation_bracket">{</span>:<span class="punctuation_bracket">}</span><span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="type">repository</span>: <span class="type">Repository</span><span class="punctuation_delimiter">,</span>
 
 <span class="punctuation_bracket">}</span>
 
-<span class="error type">union</span><span class="error"> </span><span class="error type">License</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
-  </span><span class="error comment_line_documentation">/// Valid SPDX identifier </span><span class="error">
-  </span><span class="error type">spdx</span><span class="error">: </span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span>
-  <span class="comment_line_documentation">/// URL to license definition</span>
-  <span class="error type">custom</span><span class="error">: </span><span class="error constant_builtin">bytes</span><span class="error">
-</span><span class="error punctuation_bracket">}</span><span class="error"> 
+<span class="type">union</span> <span class="type">License</span> <span class="punctuation_bracket">{</span>
+  /// Valid SPDX identifier 
+  <span class="type">spdx</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  /// URL to license definition
+  <span class="type">custom</span>: <span class="constant_builtin">bytes</span>
+<span class="punctuation_bracket">}</span> 
 
-</span><span class="error type">union</span><span class="error"> </span><span class="error type">Repository</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
-  </span><span class="error type">git</span><span class="error">: </span><span class="error type">Git</span><span class="error punctuation_delimiter">,</span><span class="error">
-  </span><span class="error type">npm</span><span class="error">: </span><span class="error type">Npm</span><span class="error punctuation_delimiter">,</span>
+<span class="type">union</span> <span class="type">Repository</span> <span class="punctuation_bracket">{</span>
+  <span class="type">git</span>: <span class="type">Git</span><span class="punctuation_delimiter">,</span>
+  <span class="type">npm</span>: <span class="type">Npm</span><span class="punctuation_delimiter">,</span>
 
-  <span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation_bracket">{</span> <span class="keyword type">url</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="keyword type">directory</span>: <span class="type">?</span><span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
-  <span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation_bracket">{</span> <span class="keyword type">name</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
-<span class="error punctuation_bracket">}</span></code></pre>
+  <span class="keyword">struct</span> <span class="type">Git</span> <span class="punctuation_bracket">{</span> <span class="type">url</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span> <span class="type">directory</span>: <span class="type">?</span><span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+  <span class="keyword">struct</span> <span class="type">Npm</span> <span class="punctuation_bracket">{</span> <span class="type">name</span>: <span class="constant_builtin">bytes</span> <span class="punctuation_bracket">}</span>
+<span class="punctuation_bracket">}</span></code></pre>
         </div>
         <input class="radiotab" name="schema-tabs" tabindex="2" type="radio" id="tab4">
         <label class="label label-right" for="tab4">message.ziggy-schema</label>
