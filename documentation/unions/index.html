@@ -931,31 +931,31 @@
       ]
     }
   }
-},</code></pre></p><p><strong>Where JSON Schema tries to describe any possible JSON data layout, Ziggy Schema is by design only able to describe precisely only a well-defined subset of combinations.</strong></p><p>This is true not just of the schema language but also of some Ziggy Document notation. For example Ziggy has structs and dicts, but no notation for a key-value mapping where <em>some</em> keys are fixed, while <em>some others</em> are up to the user. It should go without saying that JSON schema <a href="https://json-schema.org/understanding-json-schema/reference/object#additionalproperties" target="_blank">does indeed allow to model that as well</a>.</p><h3>Unions all the way down</h3><p>The problem of schema expressivity is at its core a problem about expressing unions.</p><p>A schema is a way of saying that a value can be either <code>A</code> or <code>B</code>, where both could be a a variety of things: different values (e.g. strings that belong to a list or that match a pattern), different types, structs with a given set of fields, etc.</p><p>The more nuanced you want your <em>unions</em> to be, the more syntax and complexity you will need to pull in.</p><p><strong>One key consideration about this problem is that many data layouts are functionally equivalent, and that guiding data layout designers towards well-understood patterns can not only help reduce the complexity of the schema language, but also of data layouts found in the wild.</strong></p><h3>Unions in Ziggy Schema</h3><p>Consider the two following Ziggy documents which are meant to model when an application should refresh itself. In the first example we are giving to <code>refresh</code> a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we’re passing a string that represents a logic condition that must be true to trigger a refresh.</p><pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="constant_numeric">10</span>
+},</code></pre></p><p><strong>Where JSON Schema tries to describe any possible JSON data layout, Ziggy Schema is by design only able to describe precisely only a well-defined subset of combinations.</strong></p><p>This is true not just of the schema language but also of some Ziggy Document notation. For example Ziggy has structs and dicts, but no notation for a key-value mapping where <em>some</em> keys are fixed, while <em>some others</em> are up to the user. It should go without saying that JSON schema <a href="https://json-schema.org/understanding-json-schema/reference/object#additionalproperties" target="_blank">does indeed allow to model that as well</a>.</p><h3>Unions all the way down</h3><p>The problem of schema expressivity is at its core a problem about expressing unions.</p><p>A schema is a way of saying that a value can be either <code>A</code> or <code>B</code>, where both could be a a variety of things: different values (e.g. strings that belong to a list or that match a pattern), different types, structs with a given set of fields, etc.</p><p>The more nuanced you want your <em>unions</em> to be, the more syntax and complexity you will need to pull in.</p><p><strong>One key consideration about this problem is that many data layouts are functionally equivalent, and that guiding data layout designers towards well-understood patterns can not only help reduce the complexity of the schema language, but also of data layouts found in the wild.</strong></p><h3>Unions in Ziggy Schema</h3><p>Consider the two following Ziggy documents which are meant to model when an application should refresh itself. In the first example we are giving to <code>refresh</code> a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we’re passing a string that represents a logic condition that must be true to trigger a refresh.</p><pre><code class="ziggy">.<span class="field">refresh</span> <span class="punctuation">=</span> <span class="constant_numeric">10</span>
 </code></pre>
-<pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span>
+<pre><code class="ziggy">.<span class="field">refresh</span> <span class="punctuation">=</span> <span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span>
 </code></pre>
-<p>This kind of data layout is fairly common in JSON, where a field can hold different types each with a different meaning.</p><p>In Ziggy this data layout is not idiomatic and in fact Ziggy Schema can only model this <em>union</em> with <code>any</code>:</p><pre><code class="ziggy-schema"><span class="error">$</span> = <span class="type">App</span>
+<p>This kind of data layout is fairly common in JSON, where a field can hold different types each with a different meaning.</p><p>In Ziggy this data layout is not idiomatic and in fact Ziggy Schema can only model this <em>union</em> with <code>any</code>:</p><pre><code class="ziggy-schema"><span class="keyword">$</span> = <span class="identifier type">App</span>
 
-<span class="keyword">struct</span> <span class="type">App</span> <span class="punctuation_bracket">{</span>
-  <span class="type">refresh</span>: <span class="keyword">any</span><span class="punctuation_delimiter">,</span>
+<span class="keyword">struct</span> <span class="identifier type">App</span> <span class="punctuation_bracket">{</span>
+  <span class="identifier">refresh</span><span class="punctuation">:</span> <span class="keyword">any</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p>Let’s fix the previous example using a tagged union:</p><pre><code class="ziggy"><span class="error">.refresh = .interval</span><span class="error punctuation_bracket">(</span><span class="error">10</span><span class="error punctuation_bracket">)</span><span class="error punctuation_delimiter">,</span>
+<p>Let’s fix the previous example using a tagged union:</p><pre><code class="ziggy">.<span class="field">refresh</span> <span class="punctuation">=</span> <span class="constant">.interval</span><span class="punctuation_bracket">(</span><span class="constant_numeric">10</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<pre><code class="ziggy">.<span class="keyword">refresh</span> = <span class="error">.condition</span><span class="error punctuation_bracket">(</span><span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+<pre><code class="ziggy">.<span class="field">refresh</span> <span class="punctuation">=</span> <span class="constant">.condition</span><span class="punctuation_bracket">(</span><span class="string">&quot;foo.bar &amp;&amp; bar.baz&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<p>This is now the corresponding schema (much better):</p><pre><code class="ziggy-schema"><span class="error">$</span> = <span class="type">App</span>
+<p>This is now the corresponding schema (much better):</p><pre><code class="ziggy-schema"><span class="keyword">$</span> = <span class="identifier type">App</span>
 
-<span class="keyword">struct</span> <span class="type">App</span> <span class="punctuation_bracket">{</span>
-  <span class="type">refresh</span>: <span class="type">Refresh</span><span class="punctuation_delimiter">,</span>
+<span class="keyword">struct</span> <span class="identifier type">App</span> <span class="punctuation_bracket">{</span>
+  <span class="identifier">refresh</span><span class="punctuation">:</span> <span class="identifier type">Refresh</span><span class="punctuation_delimiter">,</span>
 
-  <span class="type">union</span> <span class="type">Refresh</span> <span class="punctuation_bracket">{</span>
-    /// Interval between refreshes, in seconds
-    <span class="type">interval</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
-    ///A logical condition that triggers a new  
-    ///refresh whenever it evaluates to true.
-    <span class="type">condition</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+  <span class="keyword">union</span> <span class="identifier type">Refresh</span> <span class="punctuation_bracket">{</span>
+    <span class="comment_line_documentation">/// Interval between refreshes, in seconds</span>
+    <span class="identifier">interval</span><span class="punctuation">:</span> <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
+    <span class="comment_line_documentation">///A logical condition that triggers a new  
+    ///refresh whenever it evaluates to true.</span>
+    <span class="identifier">condition</span><span class="punctuation">:</span> <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
   <span class="punctuation_bracket">}</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
@@ -1001,22 +1001,22 @@
   <span class="constant variable_builtin type variable_member variable">path</span><span class="punctuation_delimiter">:</span> <span class="operator">?</span><span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="keyword">const</span> <span class="type_builtin">u8</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">;</span>
 </code></pre>
-<p>Ziggy unions use struct names to indicate the active union case, turning the previous example into the following document:</p><pre><code class="ziggy">.<span class="keyword">dependencies</span> = <span class="punctuation_bracket">{</span>
-  <span class="string">&quot;foo&quot;</span>: <span class="error">.remote</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
-    .<span class="keyword">url</span> = <span class="string">&quot;http://...&quot;</span><span class="punctuation_delimiter">,</span>
-    .<span class="keyword">hash</span> = <span class="string">&quot;...&quot;</span>
-  <span class="punctuation_bracket">}</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
-  <span class="string">&quot;bar&quot;</span>: <span class="error">.local</span><span class="error punctuation_bracket">(</span><span class="error">.</span><span class="punctuation_bracket">{</span>
-    .<span class="keyword">path</span> = <span class="string">&quot;/home/kristoff/ziggy&quot;</span><span class="punctuation_delimiter">,</span>
-  <span class="punctuation_bracket">}</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+<p>Ziggy unions use struct names to indicate the active union case, turning the previous example into the following document:</p><pre><code class="ziggy">.<span class="field">dependencies</span> <span class="punctuation">=</span> <span class="punctuation_bracket">{</span>
+  <span class="string">&quot;foo&quot;</span><span class="punctuation">:</span> <span class="constant">.remote</span><span class="punctuation_bracket">(</span>.<span class="punctuation_bracket">{</span>
+    .<span class="field">url</span> <span class="punctuation">=</span> <span class="string">&quot;http://...&quot;</span><span class="punctuation_delimiter">,</span>
+    .<span class="field">hash</span> <span class="punctuation">=</span> <span class="string">&quot;...&quot;</span>
+  <span class="punctuation_bracket">}</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+  <span class="string">&quot;bar&quot;</span><span class="punctuation">:</span> <span class="constant">.local</span><span class="punctuation_bracket">(</span>.<span class="punctuation_bracket">{</span>
+    .<span class="field">path</span> <span class="punctuation">=</span> <span class="string">&quot;/home/kristoff/ziggy&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="punctuation_bracket">}</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 </code></pre>
-<p>This has two big advantages:</p><ul><li>guarantees that parsers see the union case before the value</li><li>helps the LSP provide relevant diagnostics and autocomplete without needing to guess which is the active union case</li></ul><h2>Concrete tips</h2><ul><li><p>When a key-value map has some fixed and some user-defined fields, push the latter kind of fields into a nested dict value.</p><pre><code class="ziggy">.<span class="keyword">title</span> = <span class="string">&quot;foo&quot;</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">date</span> = <span class="error">.iso</span><span class="error punctuation_bracket">(</span><span class="string">&quot;2024-01-01&quot;</span><span class="error punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">draft</span> = <span class="constant_builtin_boolean">false</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">custom</span> = <span class="punctuation_bracket">{</span>
-  <span class="string">&quot;put&quot;</span>: <span class="string">&quot;here&quot;</span><span class="punctuation_delimiter">,</span>
-  <span class="string">&quot;custom&quot;</span>: <span class="string">&quot;fields&quot;</span><span class="punctuation_delimiter">,</span>
+<p>This has two big advantages:</p><ul><li>guarantees that parsers see the union case before the value</li><li>helps the LSP provide relevant diagnostics and autocomplete without needing to guess which is the active union case</li></ul><h2>Concrete tips</h2><ul><li><p>When a key-value map has some fixed and some user-defined fields, push the latter kind of fields into a nested dict value.</p><pre><code class="ziggy">.<span class="field">title</span> <span class="punctuation">=</span> <span class="string">&quot;foo&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="field">date</span> <span class="punctuation">=</span> <span class="constant">.iso</span><span class="punctuation_bracket">(</span><span class="string">&quot;2024-01-01&quot;</span><span class="punctuation_bracket">)</span><span class="punctuation_delimiter">,</span>
+.<span class="field">draft</span> <span class="punctuation">=</span> <span class="constant_builtin_boolean">false</span><span class="punctuation_delimiter">,</span>
+.<span class="field">custom</span> <span class="punctuation">=</span> <span class="punctuation_bracket">{</span>
+  <span class="string">&quot;put&quot;</span><span class="punctuation">:</span> <span class="string">&quot;here&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="string">&quot;custom&quot;</span><span class="punctuation">:</span> <span class="string">&quot;fields&quot;</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 </code></pre>
 </li><li><p>Ziggy Documents are more powerful than Ziggy Schema. For example this is a perfectly valid Ziggy document that can’t be described precisely by a Ziggy Schema:</p><pre><code class="ziggy"><span class="punctuation_bracket">[</span><span class="string">&quot;hello&quot;</span><span class="punctuation_delimiter">,</span> <span class="constant_builtin_boolean">true</span><span class="punctuation_delimiter">,</span> <span class="constant_numeric">42</span><span class="punctuation_bracket">]</span>

@@ -397,36 +397,36 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1>Ziggy Schema File Structure</h1><h2>File Extension</h2><p>A Ziggy Schema file has a <code>.ziggy-schema</code> file extension.</p><h2>File structure</h2><p>Here’s an example Ziggy Schema:</p><pre><code class="ziggy-schema"><span class="error">$</span> = <span class="type">Foo</span>
+			<div><h1>Ziggy Schema File Structure</h1><h2>File Extension</h2><p>A Ziggy Schema file has a <code>.ziggy-schema</code> file extension.</p><h2>File structure</h2><p>Here’s an example Ziggy Schema:</p><pre><code class="ziggy-schema"><span class="keyword">$</span> = <span class="identifier type">Foo</span>
 
-<span class="keyword">struct</span> <span class="type">Foo</span> <span class="punctuation_bracket">{</span>
-   /// Fields can have doc comments.
-   <span class="type">foo</span>: <span class="type">Bar</span><span class="punctuation_delimiter">,</span>
-   <span class="type">bar</span>: <span class="type">Baz</span><span class="punctuation_delimiter">,</span>
+<span class="keyword">struct</span> <span class="identifier type">Foo</span> <span class="punctuation_bracket">{</span>
+   <span class="comment_line_documentation">/// Fields can have doc comments.</span>
+   <span class="identifier">foo</span><span class="punctuation">:</span> <span class="identifier type">Bar</span><span class="punctuation_delimiter">,</span>
+   <span class="identifier">bar</span><span class="punctuation">:</span> <span class="identifier type">Baz</span><span class="punctuation_delimiter">,</span>
 
-   /// Type definitions too can have doc comments.
-   <span class="keyword">struct</span> <span class="type">Bar</span> <span class="punctuation_bracket">{</span>
-      <span class="type">baz</span>: <span class="keyword">any</span><span class="punctuation_delimiter">,</span>
+   <span class="comment_line_documentation">/// Type definitions too can have doc comments.</span>
+   <span class="keyword">struct</span> <span class="identifier type">Bar</span> <span class="punctuation_bracket">{</span>
+      <span class="identifier">baz</span><span class="punctuation">:</span> <span class="keyword">any</span><span class="punctuation_delimiter">,</span>
    <span class="punctuation_bracket">}</span>
 <span class="punctuation_bracket">}</span>
 
-<span class="type">union</span> <span class="type">Baz</span> <span class="punctuation_bracket">{</span>
-   <span class="type">qux</span>: <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
-   <span class="type">qax</span>: <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
-   <span class="type">qix</span><span class="punctuation_delimiter">,</span>
+<span class="keyword">union</span> <span class="identifier type">Baz</span> <span class="punctuation_bracket">{</span>
+   <span class="identifier">qux</span><span class="punctuation">:</span> <span class="constant_builtin">int</span><span class="punctuation_delimiter">,</span>
+   <span class="identifier">qax</span><span class="punctuation">:</span> <span class="constant_builtin">bytes</span><span class="punctuation_delimiter">,</span>
+   <span class="identifier">qix</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
-<p>A Ziggy schema is comprised of two main sections:</p><ul><li>the <code>$</code> definition</li><li>a series of custom type definitions</li></ul><h3>The <code>$</code> definition</h3><p>The first line of a Ziggy Schema defines the type of the top-level value of matching Ziggy Documents.</p><p>In Ziggy lingo, <code>$</code> represents the top-level value (a concept shared with Scripty and other tooling in the Zine ecosystem), to which we assign a type expression.</p><p>The <code>$</code> definition accepts a type expression because Ziggy Documents are allowed to have non-struct values at the top level. For comparison, while this is technically true also for JSON, in practice many JSON parsers expect the top-level value to be a JSON object, something that we want to avoid for Ziggy Documents.</p><p>For example the following are all valid Ziggy Schemas:</p><pre><code class="ziggy-schema"><span class="error">/// This matches the following Ziggy Document:
-/// `&quot;banana&quot;`
-</span><span class="error">$</span> = <span class="constant_builtin">bytes</span>
+<p>A Ziggy schema is comprised of two main sections:</p><ul><li>the <code>$</code> definition</li><li>a series of custom type definitions</li></ul><h3>The <code>$</code> definition</h3><p>The first line of a Ziggy Schema defines the type of the top-level value of matching Ziggy Documents.</p><p>In Ziggy lingo, <code>$</code> represents the top-level value (a concept shared with Scripty and other tooling in the Zine ecosystem), to which we assign a type expression.</p><p>The <code>$</code> definition accepts a type expression because Ziggy Documents are allowed to have non-struct values at the top level. For comparison, while this is technically true also for JSON, in practice many JSON parsers expect the top-level value to be a JSON object, something that we want to avoid for Ziggy Documents.</p><p>For example the following are all valid Ziggy Schemas:</p><pre><code class="ziggy-schema"><span class="comment_line_documentation">/// This matches the following Ziggy Document:
+/// `&quot;banana&quot;`</span>
+<span class="keyword">$</span> = <span class="constant_builtin">bytes</span>
 </code></pre>
-<pre><code class="ziggy-schema"><span class="error">/// This matches the following Ziggy Document:
-/// `[1,2,3]`
-</span><span class="error">$</span> = <span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="constant_builtin">int</span>
+<pre><code class="ziggy-schema"><span class="comment_line_documentation">/// This matches the following Ziggy Document:
+/// `[1,2,3]`</span>
+<span class="keyword">$</span> = <span class="type">[]</span><span class="constant_builtin">int</span>
 </code></pre>
-<pre><code class="ziggy-schema"><span class="error">/// This matches the following Ziggy Document:
-/// `{&quot;foo&quot;: null, &quot;bar&quot;: [true]}`
-</span><span class="error">$</span> = <span class="punctuation_bracket">{</span>:<span class="punctuation_bracket">}</span><span class="type">?</span><span class="punctuation_bracket">[</span><span class="punctuation_bracket">]</span><span class="constant_builtin">bool</span>
+<pre><code class="ziggy-schema"><span class="comment_line_documentation">/// This matches the following Ziggy Document:
+/// `{&quot;foo&quot;: null, &quot;bar&quot;: [true]}`</span>
+<span class="keyword">$</span> = <span class="type">{:}</span><span class="type">?</span><span class="type">[]</span><span class="constant_builtin">bool</span>
 </code></pre>
 <h3>Type definitions</h3><p>The main section of a Ziggy Schema is a list of type definitions.</p><p>Ziggy Schemas allow you to specify <code>struct</code> and <code>union</code> types. See the <a href="/documentation/custom-types/">Custom Types</a> page for more information.</p><h2>Schema - Document pairing</h2><p>This is how Ziggy tooling decides which Ziggy Schema should be used for a given Ziggy Document.</p><h3>1. Same name</h3><p>When a Ziggy Document and a Ziggy Schema share the same name and are located in the same directory.</p><p>Example: <code>path/to/foo.ziggy</code> -> <code>path/to/foo.ziggy-schema</code></p><h3>2. Dot schema</h3><p>When a directory contains a <code>.ziggy-schema</code> file, it will be used for all Ziggy Documents in the entire directory subtree that do not have a Schema with the same name (as explained above).</p><p>For example, given this directory structure:</p><pre><code>foo
 ├── .ziggy-schema

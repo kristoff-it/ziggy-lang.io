@@ -397,30 +397,30 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1>Ziggy Schema Custom Types</h1><p>In this section we’re going to see types that must be defined before they can be used in a type expression.</p><h2>Struct</h2><h3>Definition</h3><p>Here’s an example struct definition:</p><pre><code class="ziggy-schema"><span class="error">///An example struct representing a person.
-</span><span class="error keyword">struct</span><span class="error"> </span><span class="error type">Person</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
-  </span><span class="error type">name</span><span class="error">: </span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error">
-  </span><span class="error type">height</span><span class="error">: </span><span class="error constant_builtin">float</span><span class="error punctuation_delimiter">,</span><span class="error">
+			<div><h1>Ziggy Schema Custom Types</h1><p>In this section we’re going to see types that must be defined before they can be used in a type expression.</p><h2>Struct</h2><h3>Definition</h3><p>Here’s an example struct definition:</p><pre><code class="ziggy-schema"><span class="error comment_line_documentation">///An example struct representing a person.</span><span class="error">
+</span><span class="error keyword">struct</span><span class="error"> </span><span class="error identifier">Person</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
+  </span><span class="error identifier">name</span><span class="error punctuation">:</span><span class="error"> </span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error">
+  </span><span class="error identifier">height</span><span class="error punctuation">:</span><span class="error"> </span><span class="error constant_builtin">float</span><span class="error punctuation_delimiter">,</span><span class="error">
   ///Null when person has no pet.
-  </span><span class="error type">pet_name</span><span class="error">: </span><span class="error type">?</span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error">
-  </span><span class="error type">interests</span><span class="error">: </span><span class="error punctuation_bracket">[</span><span class="error punctuation_bracket">]</span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error">
+  </span><span class="error identifier">pet_name</span><span class="error punctuation">:</span><span class="error"> </span><span class="error type">?</span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error">
+  </span><span class="error identifier">interests</span><span class="error punctuation">:</span><span class="error"> </span><span class="error type">[]</span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error">
 </span><span class="error punctuation_bracket">}</span><span class="error">
 </span></code></pre>
-<p>In this example <code>Person</code> is the struct name. It’s recommended to use TitleCase for struct names, but not mandatory.</p><p>A struct can have zero or more comma separated field definitions. A field definition comprises an identifier, followed by <code>:</code> and a type expression.</p><p>Both struct definitions and their fields can have an optional doc comment attached to them which will be shown to users by the Ziggy LSP.</p><h3>Expression</h3><p>A struct can be referenced in a type expression by its name.</p><p>Examples: <code>Person</code>, <code>{:}Person</code>, <code>[]Command</code>, <code>?Notification</code></p><h2>Tagged Union</h2><p>Sometimes also called “sum types”, tagged unions are containers where only one of the possible fields is active at a time.</p><h3>Definition</h3><p>Here’s an example union definition:</p><pre><code class="ziggy-schema"><span class="error">///An example struct representing a person.
-</span><span class="error type">union</span><span class="error"> </span><span class="error type">Date</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
+<p>In this example <code>Person</code> is the struct name. It’s recommended to use TitleCase for struct names, but not mandatory.</p><p>A struct can have zero or more comma separated field definitions. A field definition comprises an identifier, followed by <code>:</code> and a type expression.</p><p>Both struct definitions and their fields can have an optional doc comment attached to them which will be shown to users by the Ziggy LSP.</p><h3>Expression</h3><p>A struct can be referenced in a type expression by its name.</p><p>Examples: <code>Person</code>, <code>{:}Person</code>, <code>[]Command</code>, <code>?Notification</code></p><h2>Tagged Union</h2><p>Sometimes also called “sum types”, tagged unions are containers where only one of the possible fields is active at a time.</p><h3>Definition</h3><p>Here’s an example union definition:</p><pre><code class="ziggy-schema"><span class="error comment_line_documentation">///An example struct representing a person.</span><span class="error">
+</span><span class="error keyword">union</span><span class="error"> </span><span class="error identifier">Date</span><span class="error"> </span><span class="error punctuation_bracket">{</span><span class="error">
    /// An ISO something something date, e.g. &quot;1990-01-01T00:00:00&quot;
-   </span><span class="error type">iso</span><span class="error">: </span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error"> 
+   </span><span class="error identifier">iso</span><span class="error punctuation">:</span><span class="error"> </span><span class="error constant_builtin">bytes</span><span class="error punctuation_delimiter">,</span><span class="error"> 
    /// A unix second timestamp, e.g. 1763128087
-   </span><span class="error type">unix</span><span class="error">: </span><span class="error constant_builtin">int</span><span class="error punctuation_delimiter">,</span><span class="error">
+   </span><span class="error identifier">unix</span><span class="error punctuation">:</span><span class="error"> </span><span class="error constant_builtin">int</span><span class="error punctuation_delimiter">,</span><span class="error">
    /// Unknown date
-   </span><span class="error keyword">unknown</span><span class="error punctuation_delimiter">,</span><span class="error">
+   </span><span class="error identifier">unknown</span><span class="error punctuation_delimiter">,</span><span class="error">
 </span><span class="error punctuation_bracket">}</span><span class="error">
 </span></code></pre>
-<p>This type would match the following use in a Ziggy Document:</p><pre><code class="ziggy">.<span class="keyword">title</span> = <span class="string">&quot;My blog post&quot;</span><span class="punctuation_delimiter">,</span>
-.<span class="keyword">date</span> = <span class="error">.iso</span><span class="error punctuation_bracket">(</span><span class="string">&quot;2025-01-01T:00:00:00&quot;</span><span class="error punctuation_bracket">)</span>
+<p>This type would match the following use in a Ziggy Document:</p><pre><code class="ziggy">.<span class="field">title</span> <span class="punctuation">=</span> <span class="string">&quot;My blog post&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="field">date</span> <span class="punctuation">=</span> <span class="constant">.iso</span><span class="punctuation_bracket">(</span><span class="string">&quot;2025-01-01T:00:00:00&quot;</span><span class="punctuation_bracket">)</span>
 </code></pre>
-<p>In this example we chose <code>iso</code>, which is a union case that has a <code>bytes</code> payload.</p><p>Union cases can also have no payload, in which case their syntax looks as follows:</p><pre><code class="ziggy">.<span class="keyword">title</span> = <span class="string">&quot;A mystical blog post&quot;</span><span class="error punctuation_delimiter">,</span><span class="error">
-.date = .unknown</span><span class="punctuation_delimiter">,</span>
+<p>In this example we chose <code>iso</code>, which is a union case that has a <code>bytes</code> payload.</p><p>Union cases can also have no payload, in which case their syntax looks as follows:</p><pre><code class="ziggy">.<span class="field">title</span> <span class="punctuation">=</span> <span class="string">&quot;A mystical blog post&quot;</span><span class="punctuation_delimiter">,</span>
+.<span class="field">date</span> <span class="punctuation">=</span> <span class="constant">.unknown</span><span class="punctuation_delimiter">,</span>
 </code></pre>
 <h3>Expression</h3><p>Just like structs, a tagged union can be referenced in a type expression by its name.</p></div>
 			<nav id="footer">

@@ -402,22 +402,22 @@
 <pre><code class="ziggy"><span class="constant_numeric">42</span>
 </code></pre>
 <pre><code class="ziggy"><span class="punctuation_bracket">{</span>
-  <span class="string">&quot;this&quot;</span>: <span class="string">&quot;is&quot;</span><span class="punctuation_delimiter">,</span>
-  <span class="string">&quot;a&quot;</span>: <span class="string">&quot;dict&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="string">&quot;this&quot;</span><span class="punctuation">:</span> <span class="string">&quot;is&quot;</span><span class="punctuation_delimiter">,</span>
+  <span class="string">&quot;a&quot;</span><span class="punctuation">:</span> <span class="string">&quot;dict&quot;</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">}</span>
 </code></pre>
 <pre><code class="ziggy"><span class="punctuation_bracket">[</span>
-  <span class="error">.</span><span class="punctuation_bracket">{</span> .<span class="keyword">more</span> = <span class="string">&quot;structs&quot;</span> <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span> 
-  <span class="error">.</span><span class="punctuation_bracket">{</span> .<span class="keyword">more</span> = <span class="string">&quot;glory&quot;</span> <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
+  .<span class="punctuation_bracket">{</span> .<span class="field">more</span> <span class="punctuation">=</span> <span class="string">&quot;structs&quot;</span> <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span> 
+  .<span class="punctuation_bracket">{</span> .<span class="field">more</span> <span class="punctuation">=</span> <span class="string">&quot;glory&quot;</span> <span class="punctuation_bracket">}</span><span class="punctuation_delimiter">,</span>
 <span class="punctuation_bracket">]</span>
 </code></pre>
-<h2>Comments</h2><p>Ziggy allows you to put comments in a document. Ziggy comments are all single-line (there’s no multi-line comment syntax, you’re welcome).</p><pre><code class="ziggy">.<span class="keyword">foo</span> = <span class="error">bar</span><span class="error punctuation_delimiter">,</span><span class="error">
-//.bar = baz,
-.tags =</span> <span class="punctuation_bracket">[</span>
-  <span class="string">&quot;tag1&quot;</span><span class="punctuation_delimiter">,</span> <span class="comment_line">// foo</span>
-  <span class="string">&quot;tag3&quot;</span><span class="punctuation_delimiter">,</span> <span class="comment_line">// foobar
-  // baz</span>
-<span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
+<h2>Comments</h2><p>Ziggy allows you to put comments in a document. Ziggy comments are all single-line (there’s no multi-line comment syntax, you’re welcome).</p><pre><code class="ziggy">.<span class="field">foo</span> <span class="punctuation">=</span> <span class="error">bar</span><span class="error punctuation_delimiter">,</span>
+<span class="comment_line">//.bar = baz,
+</span><span class="error constant">.tags</span><span class="error"> </span><span class="error punctuation">=</span> <span class="punctuation_bracket">[</span>
+  <span class="string">&quot;tag1&quot;</span><span class="punctuation_delimiter">,</span> <span class="comment_line">// foo
+</span>  <span class="string">&quot;tag3&quot;</span><span class="punctuation_delimiter">,</span> <span class="comment_line">// foobar
+</span>  <span class="comment_line">// baz
+</span><span class="punctuation_bracket">]</span><span class="punctuation_delimiter">,</span>
 </code></pre>
 </div>
 			<nav id="footer">
