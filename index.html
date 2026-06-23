@@ -269,10 +269,10 @@
 					<span>v0.0.1</span>
 				</span>
 				<div id="top-nav-menu">
-					<a href="/documentation/getting-started/">
+					<a href="/docs/getting-started/">
 						Quickstart
 					</a>
-					<a href="/documentation/about/">
+					<a href="/docs/about/">
 						Documentation
 					</a>
 					<a href="/log/">
@@ -317,7 +317,7 @@
   <div style="margin-top:40px;"></div>
   <div id="features">
     <div class="flex">
-      <div class="flex-item"><div id="first-section"><h2>Notation designed to help users grok data layouts</h2><h3>Structs vs Dictionaries</h3><p>Ziggy has two notations for key-value pairs. Structs are for when valid keys are specified in a Ziggy Schema, and dictionaries are for when key names are up to the user.</p><p>This helps users get a better intuition for the schema before they even see it, and it also offers affodances like knowing when it makes sense to “goto definition” on a field.</p><h3>Tagged Unions</h3><p><strong>Ever had to fight JSON to express a tagged union?</strong> Ziggy structs have names that can be used by both humans and tooling to discriminate between union cases.</p><h3>…and more quality of life features!</h3><p>Optional top-level curlies, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.</p><p>See an example <code>package.json</code> vs a (hypothetical) Ziggy version.</p></div>
+      <div class="flex-item"><div id="first-section"><h2>Notation designed to help users grok data layouts</h2><h3>Structs vs Dictionaries</h3><p>Ziggy has two notations for key-value pairs. Structs are for when valid keys are specified in a Ziggy Schema, and dictionaries are for when key names are up to the user.</p><p>This helps users get a better intuition for the schema before they even see it, and it also offers affodances like knowing when it makes sense to “goto definition” on a field.</p><h3>Ziggy is a superset of JSON</h3><p>A JSON object is a Ziggy Dictionary, giving you a convenient upgrade path.</p><h3>…and more quality of life features!</h3><p>Tagged unions, multi-line string literals, trailing commas, comments, underscores in numeric literals, etc.</p><p>See here to the right an example <code>package.json</code> vs a (hypothetical) Ziggy version.</p></div>
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tab1" checked="checked">
@@ -367,7 +367,7 @@
       </div>
     </div>
     <div class="flex">
-      <div class="flex-item"><div id="second-section"><h2>A schema language for creating and documenting clear data layouts</h2><p>Ziggy schemas help you define data layouts that are easy to grasp and validate for correctness. Ziggy schemas can define struct unions, enums and custom string literals.</p><p>The Ziggy LSP will be able to use your schema definitions to show diagnostics, contextual help and give autocomplete suggestions to your users.</p><p>Other tooling will be able to use schemas to autogenerate compatible type definitions.</p><p>The best feature of Ziggy schemas is that <a href="/documentation/unions/">they <strong>can’t</strong> define every possible data layout!</a></p></div>
+      <div class="flex-item"><div id="second-section"><h2>A schema language for creating and documenting clear data layouts</h2><p>Ziggy schemas help you define data layouts that are easy to grasp and val.author = “”, .date for correctness. Ziggy schemas can define struct unions, enums and custom string literals.</p><p>The Ziggy LSP will be able to use your schema definitions to show diagnostics, contextual help and give autocomplete suggestions to your users.</p><p>Other tooling will be able to use schemas to autogenerate compatible type definitions.</p><p>The best feature of Ziggy schemas is that <a href="/docs/unions/">they <strong>can’t</strong> define every possible data layout!</a></p></div>
       </div>
       <div class="flex-big tabs">
         <input class="radiotab" name="schema-tabs" tabindex="1" type="radio" id="tab3" checked="checked">
