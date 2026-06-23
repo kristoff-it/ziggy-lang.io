@@ -1,11 +1,9 @@
 ---
 .title = "Container Values",
-.date = "2006-01-01T00:00:00",
-.author = "Loris Cro",
-.draft = false,
+.date = .date("2006-01-01T00:00:00"),
 .layout = "documentation.shtml",
-.tags = [],
 ---
+
 # Ziggy Container Value Types
 ## Arrays
 Ziggy uses `[]` (square brackets) to denote arrays. An array can contain zero or more elements separated by commas. Trailing commas are allowed.
@@ -73,7 +71,7 @@ Basic struct syntax looks like this:
 *NOTE: like arrays and dicts, structs also allow trailing commas.*
 
 ### Omitting top-level curlies
-When a Ziggy document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.
+When a Ziggy Document has a top-level value of type struct, the outer curlies can be omitted to reclaim one level of indentation. This syntactical trick helps making Ziggy a more suitable language for config files and Markdown frontmatters.
 
 This is the same as the previous example:
 ```ziggy

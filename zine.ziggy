@@ -1,4 +1,5 @@
-Site {
+.zine_version = "0.12.0",
+.site = .simple(.{
     .title = "Ziggy Data Language",
     .host_url = "https://ziggy-lang.io",
     .content_dir_path = "content",
@@ -27,4 +28,5 @@ Site {
         "Epilogue/Epilogue-Thin.ttf",
         "Epilogue/Epilogue-ThinItalic.ttf",
     ],
-}
+}),
+

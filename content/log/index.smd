@@ -1,22 +1,36 @@
 ---
 .title = "Changelog",
-.date = "2000-01-01T00:00:00",
-.author = "Loris Cro",
-.draft = false,
+.date = .date("2000-01-01T00:00:00"),
 .layout = "log.shtml",
-.tags = [],
 ---
 # Changelog 
 ## About
-This is a non-exhaustive, curated list of changes meant to help users quickly see what has improved since they last checked.
+This is a non-exhaustive, curated list of changes meant to help users
+quickly see what has improved since they last checked.
 
-Refer to [the repository](https://github.com/kristoff-it/ziggy) and the [issue tracker](https://github.com/kristoff-it/ziggy/issues) for more in-depth information.
+Refer to [the repository](https://github.com/kristoff-it/ziggy) and the
+[issue tracker](https://github.com/kristoff-it/ziggy/issues) for more
+in-depth information.
 
+## 2026-06-23
+
+- Ziggy Schemas now allow to specify omissible fields (see new docs page)
+- Zig types can now be tested for compatibility against Ziggy Schemas
+- (De)Serializer now accepts a new type for `ziggy_options` with extended functionality.
+- The Language Server now supports a mostly complete but rudimentary implementation of
+  autocompletion/hover/goto definition. It's not yet at the level of SuperHTML but it's
+  just a matter of polishing the existing implementation.
+
+Plus a big list of bugfixes and minor improvements.
+
+We're almost ready to update Zine to latest Ziggy.
 
 ## 2025-11-14
-Huge rewrite of most things plus some changes to both Ziggy Document and Ziggy Schema syntaxes. This was just merged to main branch.
+Huge rewrite of most things plus some changes to both Ziggy Document and
+Ziggy Schema syntaxes. This was just merged to main branch.
 
-Fair warning, until this change is merged into Zine, there's a good chance that you will encounter bugs if you use this commit.
+Fair warning, until this change is merged into Zine, there's a good chance
+that you will encounter bugs if you use this commit.
 
 Directly from the commit message:
 
@@ -64,7 +78,6 @@ itself with, but it turns out that it's a great idea to add them as tokens to th
 tokenizer and instructing parsers to be aware when attempting to parse a Ziggy
 document embedded as frontmatter in an external document (e.g. SuperMD).
 
-See [documentation/frontmatter/](documentation/frontmatter) for more info.
 
 
 ## 2024-03-20

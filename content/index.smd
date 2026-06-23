@@ -1,10 +1,7 @@
 ---
 .title = "Home",
-.date = "2020-07-06T00:00:00",
-.author = "Loris Cro",
-.draft = false,
+.date = .date("2020-07-06T00:00:00"),
 .layout = "index.shtml",
-.tags = [],
 .custom = {
     "main-sample": 
         \\.id = .uuid("..."),
@@ -148,18 +145,15 @@ This helps users get a better intuition for the schema before they even see
 it, and it also offers affodances like knowing when it makes sense to "goto
 definition" on a field.
 
-### Tagged Unions
-
-**Ever had to fight JSON to express a tagged union?** Ziggy structs have
-names that can be used by both humans and tooling to discriminate between
-union cases.
+### Ziggy is a superset of JSON
+A JSON object is a Ziggy Dictionary, giving you a convenient upgrade path.
 
 ### ...and more quality of life features!
 
-Optional top-level curlies, multi-line string literals, trailing commas,
+Tagged unions, multi-line string literals, trailing commas,
 comments, underscores in numeric literals, etc.
 
-See an example `package.json` vs a (hypothetical) Ziggy version.
+See here to the right an example `package.json` vs a (hypothetical) Ziggy version.
 
 [](<$section.id('second-section')>)
 
@@ -177,7 +171,7 @@ Other tooling will be able to use schemas to autogenerate compatible type
 definitions.
 
 The best feature of Ziggy schemas is that
-[they **can't** define every possible data layout!](<$link.page('documentation/unions')>)
+[they **can't** define every possible data layout!](<$link.page('docs/unions')>)
 
 [](<$section.id('third-section')>)
 

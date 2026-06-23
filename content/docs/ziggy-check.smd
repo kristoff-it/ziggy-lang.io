@@ -1,10 +1,7 @@
 ---
 .title = "ziggy check",
-.date = "2016-01-01T00:00:00",
-.author = "Loris Cro",
-.draft = false,
+.date = .date("2016-01-01T00:00:00"),
 .layout = "documentation.shtml",
-.tags = [],
 ---
 # `ziggy check`
 

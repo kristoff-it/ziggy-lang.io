@@ -1,10 +1,7 @@
 ---
 .title = "Tagged Unions",
-.date = "2011-01-01T00:00:00",
-.author = "Loris Cro",
-.draft = false,
+.date = .date("2011-01-01T00:00:00"),
 .layout = "documentation.shtml",
-.tags = [],
 ---
 # Understanding Tagged Unions
 
@@ -37,7 +34,7 @@ The more nuanced you want your *unions* to be, the more syntax and complexity yo
 
 ### Unions in Ziggy Schema
 
-Consider the two following Ziggy documents which are meant to model when an application should refresh itself. In the first example we are giving to `refresh` a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we're passing a string that represents a logic condition that must be true to trigger a refresh.
+Consider the two following Ziggy Documents which are meant to model when an application should refresh itself. In the first example we are giving to `refresh` a numeric value, indicating how many seconds should pass before a new refresh happens, while in the second case we're passing a string that represents a logic condition that must be true to trigger a refresh.
 
 ```ziggy
 .refresh = 10
@@ -195,7 +192,7 @@ This has two big advantages:
     "custom": "fields",
   },
   ```
-- Ziggy Documents are more powerful than Ziggy Schema. For example this is a perfectly valid Ziggy document that can't be described precisely by a Ziggy Schema:
+- Ziggy Documents are more powerful than Ziggy Schema. For example this is a perfectly valid Ziggy Document that can't be described precisely by a Ziggy Schema:
 
   ```ziggy
   ["hello", true, 42]

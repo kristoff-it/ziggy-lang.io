@@ -1,0 +1,97 @@
+---
+.title = "Default Values and Optional Fields",
+.date = .date("2009-01-01T00:00:00"),
+.layout = "documentation.shtml",
+---
+# Default Values and Optional Fields 
+
+
+It's common for schema languages to let users express the concept that a
+given set of struct fields can be omitted in a document. This is a concept
+that intertwines with default values as usually it's fields for which users
+define a default value that can be omitted.
+
+In the case of Ziggy Schema there is no way to specify the default value of a
+struct field, but there is nevertheless a way to omit fields.
+
+## Omissible struct fields
+
+In Ziggy Schema a struct field can be omitted if its outermost type is one of:
+
+- `?` (optional)
+
+- `[]` (slice)
+
+- `{:}` (dictionary)
+
+In Ziggy Schema semantics these fields are all omissible and expected to respectively
+default to the following Ziggy Document values:
+
+- `null` (null value)
+
+- `[]` (empty slice)
+
+- `{}` (empty dictionary)
+
+As an example, consider the following Ziggy Schema:
+
+```ziggy-schema
+$ = MyStruct
+
+struct MyStruct {
+   enabled: bool,
+   title: ?bytes,
+   numbers: []int,
+   meta: {:}any,
+}
+```
+Both these Ziggy Documents are compatible with it:
+
+```ziggy
+.enabled = true,
+```
+
+```ziggy
+.enabled = true,
+.title = null, // equivalent to omitting the field
+.numbers = [], // equivalent to omitting the field
+.meta = {}, // equivalent to omitting the field
+```
+
+## Programming Language Type <> Schema compatibility
+
+The Zig implementation of Ziggy includes a build-time function that can be
+used in a `build.zig` script to validate compatibility between a Zig type
+decl and a Ziggy Schema.
+
+While it might not be possible to implement the same system for all other
+languages, Ziggy users should expect tooling to support the following behavior:
+
+1. An omitted struct field of optional, slice, or dict outer type, must
+   correctly deserialize as the struct's/object's field default value.
+
+2. An optional struct field must be able to be deserialized into a
+   an equivalent non-optional struct/object field if that field has
+   a default value (in which case `null` needs to be deserialized as
+   the field's default value).
+
+For example the following Zig struct definitions are compatible with
+the Ziggy Schema from before:
+
+```zig
+pub const MyStruct = struct {
+   enabled: bool,
+   title: ?[]const u8 = null, // <-- natural mapping
+   numbers: []const usize = &.{},
+   meta: ziggy.Dictionary = .empty,
+};
+```
+
+```zig
+pub const MyStruct = struct {
+   enabled: bool,
+   title: []const u8 = "(empty title)", // <-- also ok
+   tags: []const usize = &.{},
+   meta: ziggy.Dictionary = .empty,
+};
+```

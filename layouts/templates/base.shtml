@@ -32,10 +32,10 @@
 					<span>v0.0.1</span>
 				</span>
 				<div id="top-nav-menu">
-					<a href="$site.page('documentation/getting-started').link()">
+					<a href="$site.page('docs/getting-started').link()">
 						Quickstart
 					</a>
-					<a href="$site.page('documentation/about').link()">
+					<a href="$site.page('docs/about').link()">
 						Documentation
 					</a>
 					<a href="$site.page('log').link()">

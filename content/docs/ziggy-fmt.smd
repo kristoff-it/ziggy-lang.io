@@ -1,10 +1,7 @@
 ---
 .title = "ziggy fmt",
-.date = "2014-01-01T00:00:00",
-.author = "Loris Cro",
-.draft = false,
+.date = .date("2014-01-01T00:00:00"),
 .layout = "documentation.shtml",
-.tags = [],
 ---
 # `ziggy fmt`
 
@@ -18,7 +15,7 @@ Trailing commas in structs, dicts, and arrays tell the autoformatter to perform 
 
 Lack of a trailing comma requests horizontal alignment instead.
 
-Given this Ziggy document:
+Given this Ziggy Document:
 
 ```ziggy
 .foo = "bar", .bar = [1, 
@@ -40,9 +37,9 @@ Similar behavior also applies to Ziggy Schemas.
 
 ## Upgrading Dictionaries
 
-If a Ziggy document has a dict value in it, you can give it a `.` to have `ziggy fmt` turn it into a struct.
+If a Ziggy Document has a dict value in it, you can give it a `.` to have `ziggy fmt` turn it into a struct.
 
-Given this Ziggy document:
+Given this Ziggy Document:
 ```ziggy
 .foo = "bar",
 .bar = {

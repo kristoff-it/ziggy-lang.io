@@ -52,6 +52,8 @@
 		#sidebar-content {
 			position: sticky;
 			top: 110px;
+			max-height: calc(100vh - 110px);
+			overflow-y: auto;
 		}
 		
 		#footer {
@@ -208,8 +210,8 @@
 			<div id="sidebar-content">
 				<details open>
 					<summary>Overview</summary>
-					<ul :loop="$site.pages('documentation/about', 
-                                'documentation/getting-started'
+					<ul :loop="$site.pages('docs/about', 
+                                'docs/getting-started'
           )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
@@ -221,12 +223,12 @@
 				</details>
 				<details open>
 					<summary>Editor Configuration</summary>
-					<ul :loop="$site.pages('documentation/editors/vscode', 
-                                'documentation/editors/emacs',
-                                'documentation/editors/flow',
-                                'documentation/editors/helix',
-                                'documentation/editors/neovim',
-                                'documentation/editors/zed',
+					<ul :loop="$site.pages('docs/editors/vscode', 
+                                'docs/editors/neovim',
+                                'docs/editors/flow',
+                                'docs/editors/helix',
+                                'docs/editors/emacs',
+                                'docs/editors/zed',
                                )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
@@ -238,9 +240,9 @@
 				</details>
 				<details open>
 					<summary>Ziggy Document</summary>
-					<ul :loop="$site.pages('documentation/scalars', 
-                                'documentation/containers',
-                                'documentation/document',
+					<ul :loop="$site.pages('docs/scalars', 
+                                'docs/containers',
+                                'docs/document',
           )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
@@ -252,21 +254,22 @@
 				</details>
 				<details open>
 					<summary>Ziggy Schema</summary>
-					<ul :loop="$site.pages('documentation/builtin-types', 
-                                'documentation/custom-types',
-                                'documentation/schema-structure',
+					<ul :loop="$site.pages('docs/builtin-types', 
+                                'docs/custom-types',
+                                'docs/schema-structure',
+                                'docs/default-values',
           )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
 							   href="$loop.it.link()"
-							   :text="$loop.it.title"
+							   :html="$loop.it.title"
 							></a>
 						</li>
 					</ul>
 				</details>
 				<details open>
 					<summary>Design Tips</summary>
-					<ul :loop="$site.pages('documentation/unions')">
+					<ul :loop="$site.pages('docs/unions')">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
 							   href="$loop.it.link()"
@@ -278,32 +281,16 @@
 				<details open>
 					<summary>Libraries</summary>
 					<ul>
-						<li><a href="/documentation/parsers/">Parsers</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Using Ziggy from Zig</summary>
-					<ul :loop="$site.pages('documentation/getting-started-dev', 
-                                'documentation/parser-example',
-                                'documentation/frontmatter',
-                                'documentation/serialization-example',
-                                'documentation/metaprogramming',
-          )">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
+						<li><a href="/docs/parsers/">Parsers</a></li>
 					</ul>
 				</details>
 				<details open>
 					<summary>Ziggy CLI Tool</summary>
-					<ul :loop="$site.pages('documentation/ziggy-fmt', 
-                                'documentation/ziggy-query',
-                                'documentation/ziggy-check',
-                                'documentation/ziggy-convert',
-                                'documentation/ziggy-lsp',
+					<ul :loop="$site.pages('docs/ziggy-fmt', 
+                                'docs/ziggy-query',
+                                'docs/ziggy-check',
+                                'docs/ziggy-convert',
+                                'docs/ziggy-lsp',
           )">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
@@ -315,7 +302,7 @@
 				</details>
 				<details>
 					<summary>Specification</summary>
-					<ul :loop="$site.pages('documentation/spec')">
+					<ul :loop="$site.pages('docs/spec')">
 						<li>
 							<a class="$loop.it.isCurrent().then('selected')"
 							   href="$loop.it.link()"
