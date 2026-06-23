@@ -1,6 +1,7 @@
 ---
 .title = "Changelog",
-.date = .date("2000-01-01T00:00:00"),
+.author = "",
+.date = @date("2000-01-01T00:00:00"),
 .layout = "log.shtml",
 ---
 # Changelog 
@@ -23,7 +24,8 @@ in-depth information.
 
 Plus a big list of bugfixes and minor improvements.
 
-We're almost ready to update Zine to latest Ziggy.
+We're almost ready to u.author = "",
+.date Zine to latest Ziggy.
 
 ## 2025-11-14
 Huge rewrite of most things plus some changes to both Ziggy Document and
@@ -36,7 +38,8 @@ Directly from the commit message:
 
 >This is a huge commit that changes almost every line of code and introduces some syntax changes.
 >
->Note that it's very likely that this commit contains bugs and small regressions. I will soon update the Ziggy dependency in Zine and iron out many of them, but this work has not happened yet at the time of this commit.
+>Note that it's very likely that this commit contains bugs and small regressions. I will soon u.author = "",
+.date the Ziggy dependency in Zine and iron out many of them, but this work has not happened yet at the time of this commit.
 >
 >First changes to the languages:
 >

@@ -1,6 +1,7 @@
 ---
 .title = "Schema Structure",
-.date = .date("2010-01-01T00:00:00"),
+.author = "",
+.date = @date("2010-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # Ziggy Schema File Structure

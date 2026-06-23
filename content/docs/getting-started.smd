@@ -1,6 +1,7 @@
 ---
 .title = "Getting Started",
-.date = .date("2001-01-01T00:00:00"),
+.author = "",
+.date = @date("2001-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # Getting Started

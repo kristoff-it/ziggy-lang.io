@@ -1,6 +1,7 @@
 ---
 .title = "ziggy check",
-.date = .date("2016-01-01T00:00:00"),
+.author = "",
+.date = @date("2016-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # `ziggy check`

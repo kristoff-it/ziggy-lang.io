@@ -1,6 +1,7 @@
 ---
 .title = "Getting Started",
-.date = .date("2025-03-10T18:54:59"),
+.author = "",
+.date = @date("2025-03-10T18:54:59"),
 .draft = false,
 .layout = "documentation.shtml",
 .tags = [],

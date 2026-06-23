@@ -1,6 +1,7 @@
 ---
 .title = "Tagged Unions",
-.date = .date("2011-01-01T00:00:00"),
+.author = "",
+.date = @date("2011-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # Understanding Tagged Unions
@@ -185,7 +186,8 @@ This has two big advantages:
 
   ```ziggy
   .title = "foo",
-  .date = .iso("2024-01-01"),
+  .author = "",
+.date = .iso("2024-01-01"),
   .draft = false,
   .custom = {
     "put": "here",

@@ -1,6 +1,7 @@
 ---
 .title = "Zed",
-.date = .date("2025-10-31T00:00"),
+.author = "",
+.date = @date("2025-10-31T00:00"),
 .layout = "documentation.shtml",
 ---
 # Zed

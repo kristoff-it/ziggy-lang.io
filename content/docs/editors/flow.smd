@@ -1,6 +1,7 @@
 ---
 .title = "Flow",
-.date = .date("2004-01-01T00:00:00"),
+.author = "",
+.date = @date("2004-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # Flow Control

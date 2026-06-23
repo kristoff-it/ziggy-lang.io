@@ -1,6 +1,7 @@
 ---
 .title = "ziggy query",
-.date = .date("2015-01-01T00:00:00"),
+.author = "",
+.date = @date("2015-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # `ziggy query`

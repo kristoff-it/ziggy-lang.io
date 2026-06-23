@@ -1,6 +1,7 @@
 ---
 .title = "Custom Types",
-.date = .date("2009-01-01T00:00:00"),
+.author = "",
+.date = @date("2009-01-01T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # Ziggy Schema Custom Types
@@ -57,6 +58,7 @@ union Date {
 This type would match the following use in a Ziggy Document:
 ```ziggy
 .title = "My blog post",
+.author = "",
 .date = .iso("2025-01-01T:00:00:00")
 ```
 
@@ -66,6 +68,7 @@ Union cases can also have no payload, in which case their syntax looks as follow
 
 ```ziggy
 .title = "A mystical blog post",
+.author = "",
 .date = .unknown,
 ```
 ### Expression
