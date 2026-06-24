@@ -37,8 +37,7 @@ Directly from the commit message:
 
 >This is a huge commit that changes almost every line of code and introduces some syntax changes.
 >
->Note that it's very likely that this commit contains bugs and small regressions. I will soon u.author = "",
-.date the Ziggy dependency in Zine and iron out many of them, but this work has not happened yet at the time of this commit.
+>Note that it's very likely that this commit contains bugs and small regressions. I will soon update the Ziggy dependency in Zine and iron out many of them, but this work has not happened yet at the time of this commit.
 >
 >First changes to the languages:
 >
