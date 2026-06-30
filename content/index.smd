@@ -161,8 +161,7 @@ See here to the right an example `package.json` vs a (hypothetical) Ziggy versio
 ## A schema language for creating and documenting clear data layouts
 
 Ziggy schemas help you define data layouts that are easy to grasp and
-val.author = "",
-.date for correctness. Ziggy schemas can define struct unions, enums and
+validate for correctness. Ziggy schemas can define struct unions, enums and
 custom string literals.
 
 The Ziggy LSP will be able to use your schema definitions to show

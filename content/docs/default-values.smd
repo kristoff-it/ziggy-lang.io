@@ -62,8 +62,7 @@ Both these Ziggy Documents are compatible with it:
 ## Programming Language Type <> Schema compatibility
 
 The Zig implementation of Ziggy includes a build-time function that can be
-used in a `build.zig` script to val.author = "",
-.date compatibility between a Zig type
+used in a `build.zig` script to validate compatibility between a Zig type
 decl and a Ziggy Schema.
 
 While it might not be possible to implement the same system for all other
