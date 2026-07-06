@@ -5,7 +5,7 @@
 ---
 # Emacs
 
-[ziggy-mode](https://github.com/dcolazin/ziggy-mode/) is a simple tree-sitter major mode for Emacs 29.1 and later.
+[ziggy-mode](https://codeberg.org/krl/ziggy-mode/) is a simple tree-sitter major mode for Emacs 29.1 and later.
 
 ## Installation
 
