@@ -208,108 +208,31 @@
 	<div id="content">
 		<nav id="sidebar">
 			<div id="sidebar-content">
-				<details open>
-					<summary>Overview</summary>
-					<ul :loop="$site.pages('docs/about', 
-                                'docs/getting-started'
-          )">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Editor Configuration</summary>
-					<ul :loop="$site.pages('docs/editors/vscode', 
-                                'docs/editors/neovim',
-                                'docs/editors/flow',
-                                'docs/editors/helix',
-                                'docs/editors/emacs',
-                                'docs/editors/zed',
-                               )">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Document</summary>
-					<ul :loop="$site.pages('docs/scalars', 
-                                'docs/containers',
-                                'docs/document',
-          )">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy Schema</summary>
-					<ul :loop="$site.pages('docs/builtin-types', 
-                                'docs/custom-types',
-                                'docs/schema-structure',
-                                'docs/default-values',
-          )">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :html="$loop.it.title"
-							></a>
-						</li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Design Tips</summary>
-					<ul :loop="$site.pages('docs/unions')">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Libraries</summary>
-					<ul>
-						<li><a href="/docs/parsers/">Parsers</a></li>
-					</ul>
-				</details>
-				<details open>
-					<summary>Ziggy CLI Tool</summary>
-					<ul :loop="$site.pages('docs/ziggy-fmt', 
-                                'docs/ziggy-query',
-                                'docs/ziggy-check',
-                                'docs/ziggy-convert',
-                                'docs/ziggy-lsp',
-          )">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
+				<details open :loop="$site.page('docs').custom.get('docs-sidebar')">
+					<summary :text="$loop.it.at(0)"></summary>
+					<ul :loop="$loop.it.at(1)">
+						<ctx item="$site.page('docs', $loop.it)">
+							<li>
+								<a class="$ctx.item.isCurrent().then('selected')"
+								   href="$ctx.item.link()"
+								   :text="$ctx.item.title"
+								></a>
+							</li>
+						</ctx>
 					</ul>
 				</details>
 				<details>
 					<summary>Specification</summary>
-					<ul :loop="$site.pages('docs/spec')">
-						<li>
-							<a class="$loop.it.isCurrent().then('selected')"
-							   href="$loop.it.link()"
-							   :text="$loop.it.title"
-							></a>
-						</li>
-					</ul>
+					<ctx item="$site.page('docs/spec')">
+						<ul>
+							<li>
+								<a class="$ctx.item.isCurrent().then('selected')"
+								   href="$ctx.item.link()"
+								   :text="$ctx.item.title"
+								></a>
+							</li>
+						</ul>
+					</ctx>
 				</details>
 			</div>
 		</nav>

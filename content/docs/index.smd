@@ -2,6 +2,67 @@
 .title = "About",
 .date = .date("2000-01-01T00:00:00"),
 .layout = "documentation.shtml",
+.custom = {
+    "docs-sidebar": [
+        [
+            "Overview",
+            [
+                "about",
+                "getting-started",
+            ],
+        ],
+        [
+            "Editor Configuration",
+            [
+                "editors/vscode",
+                "editors/neovim",
+                "editors/flow",
+                "editors/helix",
+                "editors/emacs",
+                "editors/zed",
+            ],
+        ],
+        [
+            "Ziggy Document",
+            [
+                "scalars",
+                "containers",
+                "document",
+            ],
+        ],
+        [
+            "Ziggy Schema",
+            [
+                "builtin-types",
+                "custom-types",
+                "schema-structure",
+                "default-values",
+            ],
+        ],
+        [
+            "Design Tips",
+            [
+                "unions",
+            ],
+        ],
+        [
+            "Libraries",
+            [
+                "parsers",
+            ],
+        ],
+        [
+            "Ziggy CLI Tool",
+            [
+                "ziggy-fmt",
+                "ziggy-query",
+                "ziggy-check",
+                "ziggy-convert",
+                "ziggy-lsp",
+            ],
+        ],
+    ],
+}
 ---
 Select an item from the sidebar to get started.
 

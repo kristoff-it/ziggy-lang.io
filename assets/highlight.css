@@ -83,7 +83,17 @@ code.ziggy .string {
 }
 
 code.ziggy .constant_numeric {
+  color: var(--light-red);
+}
+
+
+code.ziggy .constant_builtin_boolean {
   color: var(--magenta);
+}
+
+code.ziggy .comment_line {
+  font-style: italic;
+  color: var(--comment-gray);
 }
 
 code.ziggy .field {
@@ -174,8 +184,11 @@ code.ziggy-schema {
   color: var(--cyan);
 }
 
-code.ziggy-schema .type {
+code.ziggy-schema .identifier.type {
   color: var(--light-yellow);
+}
+code.ziggy-schema .type {
+  color: var(--magenta);
 }
 
 code.ziggy-schema .keyword,
@@ -183,11 +196,20 @@ code.ziggy-schema .string {
   color: var(--dark-yellow);
 }
 
-code.ziggy-schema .numeric.constant {
-  color: var(--magenta);
+code.ziggy-schema .comment_line_documentation {
+  font-style: italic;
+  font-weight: bold;
 }
 
-code.ziggy-schema .function {
+code.ziggy-schema .constant_builtin {
+  color: var(--light-red);
+}
+
+code.ziggy-schema .constant_builtin {
+  color: var(--light-red);
+}
+
+code.ziggy-schema .identifier {
   color: var(--blue);
 }
 
