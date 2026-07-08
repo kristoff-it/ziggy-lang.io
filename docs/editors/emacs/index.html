@@ -421,29 +421,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><h1>Emacs</h1><p><a href="https://codeberg.org/krl/ziggy-mode/">ziggy-mode</a> is a simple tree-sitter major mode for Emacs 29.1 and later.</p><h2>Installation</h2><p><code>ziggy-mode</code> assumes Emacs was built with tree-sitter support. If <code>(treesit-available-p)</code> evaluates to <code>t</code> then your installation supports tree-sitter; otherwise you might consider building Emacs from source. A guide can be found <a href="https://www.masteringemacs.org/article/how-to-get-started-tree-sitter">here</a>.</p><p><code>ziggy-mode</code> is available on Melpa, so it possible to install it with most package managers. You still need to install the tree-sitter grammars for ziggy and ziggy-schema, for example adding the following snippets in your configuration:</p><pre><code>(unless (treesit-language-available-p &apos;ziggy)
-  (require &apos;treesit)
-  (add-to-list &apos;treesit-language-source-alist
-			   &apos;(ziggy &quot;https://github.com/kristoff-it/ziggy&quot; &quot;main&quot; &quot;tree-sitter-ziggy/src&quot; nil nil))
-  (treesit-install-language-grammar &apos;ziggy))
-
-(unless (treesit-language-available-p &apos;ziggy-schema)
-  (require &apos;treesit)
-  (add-to-list &apos;treesit-language-source-alist
-			   &apos;(ziggy-schema &quot;https://github.com/kristoff-it/ziggy&quot; &quot;main&quot; &quot;tree-sitter-ziggy-schema/src&quot; nil nil))
-  (treesit-install-language-grammar &apos;ziggy-schema))
-</code></pre><p>Moreover, <code>ziggy-mode</code> assumes that <code>ziggy</code> is on your PATH or the variable <code>ziggy-bin</code> is properly customized</p><h2>LSP</h2><p>To use the <code>ziggy</code> LSP with <code>eglot</code>, add the following to your configuration:</p><pre><code>(add-to-list &apos;eglot-server-programs
-             &apos;(((ziggy-mode :language-id &quot;ziggy&quot;)
-                (ziggy-schema-mode :language-id &quot;ziggy-schema&quot;)) &quot;ziggy&quot; &quot;lsp&quot;))
-</code></pre><p>Instead, to use <code>ziggy</code> LSP with <code>lsp-mode</code>, add the following to your configuration:</p><pre><code>(add-hook &apos;ziggy-mode-hook &apos;lsp)
-
-(with-eval-after-load &apos;lsp-mode
-  (add-to-list &apos;lsp-language-id-configuration &apos;(ziggy-mode . &quot;ziggy&quot;))
-  (lsp-register-client (make-lsp-client
-						:new-connection (lsp-stdio-connection &quot;ziggy&quot;)
-						:activation-fn (lsp-activate-on &quot;ziggy&quot;)
-						:server-id &apos;ziggy)))
-</code></pre></div>
+			<div><h1>Emacs</h1><p><a href="https://codeberg.org/krl/ziggy-mode/">ziggy-mode</a> is a simple tree-sitter major mode for Emacs 29.1 and later.</p><h2>Installation</h2><p>Follow the instructions listed on the repository’s README file.</p></div>
 			<nav id="footer">
 				<div>
 					<a href="/docs/getting-started-dev/">
