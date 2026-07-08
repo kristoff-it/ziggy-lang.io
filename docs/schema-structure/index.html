@@ -454,7 +454,7 @@
 </code></pre>
 <h3>Type definitions</h3><p>The main section of a Ziggy Schema is a list of type definitions.</p><p>Ziggy Schemas allow you to specify <code>struct</code> and <code>union</code> types. See the <a href="/docs/custom-types/">Custom Types</a> page for more information.</p><h2>Schema - Document pairing</h2><p>This is how Ziggy tooling decides which Ziggy Schema should be used for a given Ziggy Document.</p><h3>1. Same name</h3><p>When a Ziggy Document and a Ziggy Schema share the same name and are located in the same directory. You can also optionally add a dot in front of the Ziggy Schema file to hide it. If both alternatives are present, the dotless (i.e. visible) file will take precedence.</p><p>Examples:</p><pre><code>path/to/foo.ziggy -&gt; path/to/foo.ziggy-schema
 path/to/foo.ziggy -&gt; path/to/.foo.ziggy-schema
-</code></pre><h3>3. Dot schema</h3><p>When a directory contains a <code>.ziggy-schema</code> file, it will be used for all Ziggy Documents in the entire directory subtree that do not have a Schema with the same name (as explained above).</p><p>For example, given this directory structure:</p><pre><code>foo
+</code></pre><h3>2. Dot schema</h3><p>When a directory contains a <code>.ziggy-schema</code> file, it will be used for all Ziggy Documents in the entire directory subtree that do not have a Schema with the same name (as explained above).</p><p>For example, given this directory structure:</p><pre><code>foo
 ├── .ziggy-schema
 ├── bar.ziggy
 ├── baz.ziggy
