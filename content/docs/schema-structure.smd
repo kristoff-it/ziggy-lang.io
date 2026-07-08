@@ -79,8 +79,14 @@ This is how Ziggy tooling decides which Ziggy Schema should be used for a given 
 ### 1. Same name
 
 When a Ziggy Document and a Ziggy Schema share the same name and are located in the same directory.
+You can also optionally add a dot in front of the Ziggy Schema file to hide it. If both alternatives
+are present, the dotless (i.e. visible) file will take precedence.
 
-Example: `path/to/foo.ziggy` -> `path/to/foo.ziggy-schema`
+Examples:
+```
+path/to/foo.ziggy -> path/to/foo.ziggy-schema
+path/to/foo.ziggy -> path/to/.foo.ziggy-schema
+```
 
 ### 2. Dot schema
 
@@ -115,5 +121,21 @@ foo/fruits/banana.ziggy -> foo/.ziggy-schema
 foo/qux/qax.ziggy       -> foo/qux/.ziggy-schema 
 foo/qux/qix.ziggy       -> foo/qux/.ziggy-schema 
 ```
+
+### SuperMD Frontmatter
+
+Ziggy is the frontmatter language of SuperMD, the content language of [Zine](https://zine-ssg.io).
+To provide users with code intelligence in their editor, the Ziggy LSP can be run on SuperMD files.
+
+When analyzing a SuperMD file, the Ziggy LSP will apply the same rules as above, but on the full
+document name, inclusive of the `.smd` extension.
+
+Examples (in order of decreasing priority):
+```
+path/to/foo.smd -> path/to/foo.smd.ziggy-schema
+path/to/foo.smd -> path/to/.foo.smd.ziggy-schema
+path/to/foo.smd -> path/.smd.ziggy-schema
+```
+
 
 
