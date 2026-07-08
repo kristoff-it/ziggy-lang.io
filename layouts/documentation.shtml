@@ -208,19 +208,21 @@
 	<div id="content">
 		<nav id="sidebar">
 			<div id="sidebar-content">
-				<details open :loop="$site.page('docs').custom.get('docs-sidebar')">
-					<summary :text="$loop.it.at(0)"></summary>
-					<ul :loop="$loop.it.at(1)">
-						<ctx item="$site.page('docs', $loop.it)">
-							<li>
-								<a class="$ctx.item.isCurrent().then('selected')"
-								   href="$ctx.item.link()"
-								   :text="$ctx.item.title"
-								></a>
-							</li>
-						</ctx>
-					</ul>
-				</details>
+				<ctx :loop="$site.page('docs').custom.get('docs-sidebar')">
+					<details open>
+						<summary :text="$loop.it.at(0)"></summary>
+						<ul :loop="$loop.it.at(1)">
+							<ctx item="$site.page('docs', $loop.it)">
+								<li>
+									<a class="$ctx.item.isCurrent().then('selected')"
+									   href="$ctx.item.link()"
+									   :text="$ctx.item.title"
+									></a>
+								</li>
+							</ctx>
+						</ul>
+					</details>
+				</ctx>
 				<details>
 					<summary>Specification</summary>
 					<ctx item="$site.page('docs/spec')">
