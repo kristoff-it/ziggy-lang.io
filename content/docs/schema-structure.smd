@@ -137,5 +137,7 @@ path/to/foo.smd -> path/to/.foo.smd.ziggy-schema
 path/to/foo.smd -> path/.smd.ziggy-schema
 ```
 
+Note how even the 'dot schema' approach still preserves the file extension. This is done to
+prevent SuperMD-specific schemas from *polluting* the Ziggy Document schema space.
 
 
