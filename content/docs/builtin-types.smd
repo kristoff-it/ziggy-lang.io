@@ -55,7 +55,12 @@ Ziggy Documents can indeed express heterogeneous collections:
 }
 ```
 
-But Ziggy Schema can at best represent those types as `[]any` and `{:}any`. While you are certainly allowed to create Ziggy Documents of this kind, in situations where you have external consumers that could benefit from a Ziggy Schema, you are *kindly* encouraged by the language to use structs to express type variablily.
+But Ziggy Schema can at best represent those types as `[]any` and `{:}any`.
+While you are certainly allowed to create Ziggy Documents of this kind, in
+situations where you have external consumers that could benefit from a
+Ziggy Schema, you are *kindly* encouraged by the language to use tagged
+unions to express type variablily.
 
-In the `Custom Types` section you will also learn how to use Tagged Unions to solve some related use cases.
+In the `Custom Types` section you will also learn how to use Tagged Unions
+to solve some related use cases.
 
