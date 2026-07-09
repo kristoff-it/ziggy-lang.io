@@ -1,6 +1,6 @@
 ---
 .title = "Builtin Types",
-.date = .date("2008-01-01T00:00:00"),
+.date = .date("2008-01-02T00:00:00"),
 .layout = "documentation.shtml",
 ---
 # Ziggy Schema Builtin Types

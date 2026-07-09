@@ -38,6 +38,9 @@
 					<a href="$site.page('docs/about').link()">
 						Documentation
 					</a>
+					<a href="$site.page('docs/diagrams').link()">
+						Railroad Diagrams
+					</a>
 					<a href="$site.page('log').link()">
 						Changelog
 					</a>
