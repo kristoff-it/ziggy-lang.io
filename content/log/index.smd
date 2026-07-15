@@ -12,6 +12,58 @@ Refer to [the repository](https://github.com/kristoff-it/ziggy) and the
 [issue tracker](https://github.com/kristoff-it/ziggy/issues) for more
 in-depth information.
 
+## 2026-07-15
+
+### Ziggy Document railroad diagrams are up!
+
+Look at the top menu, it now links to railroad diagrams
+that explain how Ziggy Documents are structured. Same
+idea as the railroad diagrams on json.org, essentially.
+
+I wrote the railroad diagram generator myself and you
+will never be able to guess which data serialization
+file format it accepts as input :^)
+
+https://github.com/kristoff-it/railroad if you want
+to try it out, it also supports live previewing with
+a local live webserver. Make sure to setup the
+corresponding Ziggy Schema correctly to get the best
+editing experience.
+
+Also, if you want to see the source of the diagrams
+on this website, it's the `assets/ziggy.ziggy` file in
+https://github.com/kristoff-it/ziggy-lang.io
+
+I've used this as an opportunity to finalize my
+thinking with regards to how numeric and bytes literals
+should be specified in the grammar. I've always known
+that I wanted Ziggy to be a proper superset of JSON but
+it wasn't clear to me right away how to extend that
+syntax with more Zig-style constructs.
+
+Writing the diagrams has helped understand the problem
+space a bit better and now the next step is to actually
+align the implementation to the latest design. I should
+note though that the diagrams are not the authoritative
+source, I'll write a proper PEG grammar in the near
+future.
+
+### Updated Schema <> Document matching logic
+Given `foo.ziggy`, the Ziggy LSP now will also search for `.foo.ziggy-schema`
+in the same directory as the original document.
+
+Given `foo.smd` the Ziggy LSP will now search for, in order of precedence:
+- `foo.smd.ziggy-schema` (same dir)
+- `.foo.smd.ziggy-schema` (same dir)
+- `.smd.ziggy-schema` (same dir and above)
+
+### Introduced syntax highlighting support
+The Ziggy Document AST renderer can now output syntax-highlighted code
+for both the terminal and HTML. This is still an "experimental" feature
+so expect some more tweaks in the next releases.
+
+See the new `ziggy cat` command for CLI access to the feature.
+
 ## 2026-06-23
 
 - Ziggy Schemas now allow to specify omissible fields (see new docs page)

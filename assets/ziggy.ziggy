@@ -1,0 +1,424 @@
+// Railroad diagram definion for the Ziggy Document language.
+//
+// Render this document using:
+//   https://github.com/kristoff-it/railroad
+//
+{
+    "document": .{
+        .delimiters = .pipes,
+        .body = [
+            .choice([
+                .reference("braceless-struct"),
+                .reference("value"),
+            ]),
+        ],
+    },
+    "braceless-struct": .{
+        .body = [
+            .repeat_separator(.{
+                .item = .reference("struct-field"),
+                .separator = .terminal(","),
+            }),
+            .choice_index(.{
+                .index = 1,
+                .items = [
+                    .terminal(","),
+                    .skip,
+                ],
+            }),
+        ],
+    },
+    "value": .{
+        .body = [
+            .choice_horizontal([
+                .choice([
+                    .terminal("null"),
+                    .reference("bool"),
+                    .reference("integer"),
+                    .reference("float"),
+                    .reference("bytes"),
+                ]),
+                .choice([
+                    .reference("enum"),
+                    .reference("union"),
+                    .reference("array"),
+                    .reference("struct"),
+                    .reference("dictionary"),
+                ]),
+            ]),
+        ],
+    },
+    "bool": .{
+        .body = [
+            .choice_horizontal([
+                .terminal("true"),
+                .terminal("false"),
+            ]),
+        ],
+    },
+    "integer": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .choice([.skip, .terminal("-")]),
+                    .choice([
+                        .sequence([
+                            .terminal("0"),
+                            .choice_last([
+                                .sequence([
+                                    .label(.{
+                                        .label = "hex",
+                                        .item = .terminal("x"),
+                                    }),
+                                    .repeat_separator(.{
+                                        .item = .label(.{
+                                            .label = "hex digits",
+                                            .item = .external("[0-9a-fA-F]"),
+                                        }),
+                                        .separator = .choice_last([.terminal("_"), .skip]),
+                                    }),
+                                ]),
+                                .sequence([
+                                    .label(.{
+                                        .label = "oct",
+                                        .item = .terminal("o"),
+                                    }),
+                                    .repeat_separator(.{
+                                        .item = .external("   [0-7]   "),
+                                        .separator = .choice_last([.terminal("_"), .skip]),
+                                    }),
+                                ]),
+                                .sequence([
+                                    .label(.{
+                                        .label = "bin",
+                                        .item = .terminal("b"),
+                                    }),
+                                    .repeat_separator(.{
+                                        .item = .external("   [0-1]   "),
+                                        .separator = .choice_last([.terminal("_"), .skip]),
+                                    }),
+                                ]),
+                                .skip,
+                            ]),
+                        ]),
+                        .sequence([
+                            .external("[1-9]"),
+                            .choice_last([
+                                .skip,
+                                .sequence([
+                                    .choice([.skip, .terminal("_")]),
+                                    .repeat_separator(.{
+                                        .item = .external("[0-9]"),
+                                        .separator = .choice_last([.terminal("_"), .skip]),
+                                    }),
+                                ]),
+                            ]),
+                        ]),
+                    ]),
+                ]),
+            }),
+        ],
+    },
+    "float": .{
+        .alignment = .left,
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .choice([.skip, .terminal("-")]),
+                    .label(.{
+                        .label = "integral",
+                        .item = .skip,
+                    }),
+                    .sequence_stack([
+                        .choice([
+                            .terminal("0"),
+                            .sequence([
+                                .external("[1-9]"),
+                                .choice_last([
+                                    .skip,
+                                    .sequence([
+                                        .choice([.skip, .terminal("_")]),
+                                        .repeat_separator(.{
+                                            .item = .external("[0-9]"),
+                                            .separator = .choice_last([.terminal("_"), .skip]),
+                                        }),
+                                    ]),
+                                ]),
+                            ]),
+                        ]),
+                        .choice([
+                            .label(.{
+                                .label = "fraction",
+                                .item = .skip,
+                            }),
+                            .sequence([
+                                .terminal("."),
+                                .repeat_separator(.{
+                                    .item = .external("[0-9]"),
+                                    .separator = .choice_last([.terminal("_"), .skip]),
+                                }),
+                            ]),
+                        ]),
+                        .choice([
+                            .label(.{
+                                .label = "exponent",
+                                .item = .skip,
+                            }),
+                            .sequence([
+                                .choice_last([
+                                    .terminal("E"),
+                                    .terminal("e"),
+                                ]),
+                                .choice_middle([
+                                    .terminal("-"),
+                                    .skip,
+                                    .terminal("+"),
+                                ]),
+                                .repeat(.external("[0-9]")),
+                            ]),
+                        ]),
+                    ]),
+                ]),
+            }),
+        ],
+    },
+    "bytes": .{
+        .body = [
+            .choice([
+                .reference("quoted-escapes"),
+                .reference("multiline-string"),
+            ]),
+        ],
+    },
+    "quoted-escapes": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .terminal("\""),
+                    .choice_last([
+                        .skip,
+                        .repeat_separator(.{
+                            .item = .choice([
+                                .external(" printable unicode except [\"\\\\] "),
+                                .sequence([
+                                    .terminal("\\"),
+                                    .choice([
+                                        .choice_horizontal([
+                                            .terminal("\""),
+                                            .terminal("\\"),
+                                            .terminal("/"),
+                                            .terminal("b"),
+                                        ]),
+                                        .choice_horizontal([
+                                            .terminal("f"),
+                                            .terminal("n"),
+                                            .terminal("r"),
+                                            .terminal("t"),
+                                        ]),
+                                        .choice([
+                                            .sequence([
+                                                .terminal("u"),
+                                                .external("4 hex digits"),
+                                            ]),
+                                            .sequence([
+                                                .terminal("x"),
+                                                .external("2 hex digits"),
+                                            ]),
+                                        ]),
+                                    ]),
+                                ]),
+                            ]),
+                        }),
+                    ]),
+                    .terminal("\""),
+                ]),
+            }),
+        ],
+    },
+    "multiline-string": .{
+        .body = [
+            .repeat_separator(.{
+                .item = .group(.{
+                    .label = "no whitespace",
+                    .item = .sequence([
+                        .terminal("\\\\"),
+                        .sequence([
+                            .choice_last([.skip, .repeat(.external("printable unicode and [\\t]"))]),
+                            .choice_last([.external("[\\r]"), .skip]),
+                            .external("[\\n]"),
+                        ]),
+                    ]),
+                }),
+                .separator = .inline_comment("(whitespace is allowed between lines)"),
+            }),
+        ],
+    },
+    "enum": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .terminal("."),
+                    .reference("identifier"),
+                ]),
+            }),
+        ],
+    },
+    "union": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .reference("enum"),
+                    .terminal("("),
+                ]),
+            }),
+            .reference("value"),
+            .terminal(")"),
+        ],
+    },
+    "array": .{
+        .body = [
+            .terminal("["),
+            .choice_index(.{
+                .index = 1,
+                .items = [
+                    .skip,
+                    .sequence([
+                        .repeat_separator(.{
+                            .item = .reference("value"),
+                            .separator = .terminal(","),
+                        }),
+                        .choice_index(.{
+                            .index = 1,
+                            .items = [
+                                .terminal(","),
+                                .skip,
+                            ],
+                        }),
+                    ]),
+                ],
+            }),
+            .terminal("]"),
+        ],
+    },
+    "struct": .{
+        .body = [
+            .terminal(".{"),
+            .choice_index(.{
+                .index = 1,
+                .items = [
+                    .skip,
+                    .sequence([
+                        .repeat_separator(.{
+                            .item = .reference("struct-field"),
+                            .separator = .terminal(","),
+                        }),
+                        .choice_index(.{
+                            .index = 1,
+                            .items = [
+                                .terminal(","),
+                                .skip,
+                            ],
+                        }),
+                    ]),
+                ],
+            }),
+            .terminal("}"),
+        ],
+    },
+    "struct-field": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .terminal("."),
+                    .reference("identifier"),
+                ]),
+            }),
+            .terminal("="),
+            .reference("value"),
+        ],
+    },
+    "dictionary": .{
+        .body = [
+            .terminal("{"),
+            .choice_index(.{
+                .index = 1,
+                .items = [
+                    .skip,
+                    .sequence([
+                        .repeat_separator(.{
+                            .item = .reference("dictionary-field"),
+                            .separator = .terminal(","),
+                        }),
+                        .choice_index(.{
+                            .index = 1,
+                            .items = [
+                                .terminal(","),
+                                .skip,
+                            ],
+                        }),
+                    ]),
+                ],
+            }),
+            .terminal("}"),
+        ],
+    },
+    "dictionary-field": .{
+        .body = [
+            .reference("quoted-escapes"),
+            .terminal(":"),
+            .reference("value"),
+        ],
+    },
+    "identifier": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .external("[a-zA-Z_]"),
+                    .choice_index(.{
+                        .index = 1,
+                        .items = [
+                            .skip,
+                            .repeat_separator(.{
+                                .item = .external("[a-zA-Z0-9_]"),
+                            }),
+                        ],
+                    }),
+                ]),
+            }),
+        ],
+    },
+    "whitespace": .{
+        .description = 
+            \\Optionally present between any two tokens
+            \\except the ones within a 'no whitespace'
+            \\box.
+        ,
+        .body = [
+            .repeat(.choice_last([
+                .reference("comment"),
+                .external("[ \\t\\r\\n]"),
+            ])),
+        ],
+    },
+    "comment": .{
+        .body = [
+            .group(.{
+                .label = "no whitespace",
+                .item = .sequence([
+                    .terminal("//"),
+                    .repeat(.external(" printable unicode and [\\t] ")),
+                    .choice_last([.external("[\\r]"), .skip]),
+                    .external("[\\n]"),
+                ]),
+            }),
+        ],
+    },
+}
+
