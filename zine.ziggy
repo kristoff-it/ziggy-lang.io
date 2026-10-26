@@ -1,4 +1,4 @@
-.zine_version = "0.12.0",
+.zine_version = "0.14.0",
 .site = .simple(.{
     .title = "Ziggy Data Language",
     .host_url = "https://ziggy-lang.io",

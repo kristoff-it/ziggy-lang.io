@@ -13,6 +13,9 @@ These diagrams were generated using https://github.com/kristoff-it/railroad
 
 ```=html
 <style>
+html {
+    scroll-padding-top: 90px;
+}
 svg.railroad-diagram {
     background-color: hsl(30,20%,93%);
 }
@@ -69,7 +72,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </style>
 ```
 
-## Document
+# Document
 
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 268 92" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
@@ -102,7 +105,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Braceless Struct]($text.id("braceless-struct"))
+# [Braceless Struct]($text.id("braceless-struct"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 304 112" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -151,7 +154,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Value]($text.id("value"))
+# [Value]($text.id("value"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 376 199" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -261,7 +264,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Bool]($text.id("bool"))
+# [Bool]($text.id("bool"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 272 80" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -565,7 +568,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <polygon points="474,285 474,295 484,290"></polygon>
 </g></svg>
 ```
-## [Float]($text.id("float"))
+# [Float]($text.id("float"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 610 415" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -826,7 +829,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <polygon points="580,302 580,312 590,307"></polygon>
 </g></svg>
 ```
-## [Bytes]($text.id("bytes"))
+# [Bytes]($text.id("bytes"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 268 92" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1070,7 +1073,104 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Enum]($text.id("enum"))
+# [Multiline String]($text.id("multiline-string"))
+
+```=html
+<svg class="railroad-diagram" viewBox="0 0 638 147" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+
+<g transform="translate(.5 .5)">
+<g>
+<path stroke="black" fill="none" d="M20 75 h20"></path>
+<circle cx="20" cy="75" r="5"></circle>
+</g>
+<path stroke="black" fill="none" d="M40 75 h10"></path>
+<path stroke="black" fill="none" d="M50 75 h0"></path>
+<path stroke="black" fill="none" d="M588 75 h0"></path>
+<path stroke="black" fill="none" d="M50 75h10"></path>
+<g><path stroke="black" fill="none" d="M60 75 h0"></path>
+<path stroke="black" fill="none" d="M578 75 h0"></path>
+<g>
+<path stroke="black" fill="none" d="M60 75 h10"></path>
+<path stroke="black" fill="none" d="M568 75 h10"></path>
+<g class="terminal">
+<path stroke="black" fill="none" d="M70 75 h0"></path>
+<path stroke="black" fill="none" d="M106 75 h0"></path>
+<rect stroke="black" fill="none" x="70" y="64" width="36" height="22" rx="10" ry="10"></rect>
+<text text-anchor="middle" x="88" y="79">\\</text>
+</g>
+<path stroke="black" fill="none" d="M106 75 h10"></path>
+<path stroke="black" fill="none" d="M116 75 h10"></path>
+<g>
+<path stroke="black" fill="none" d="M126 75 h0"></path>
+<path stroke="black" fill="none" d="M568 75 h0"></path>
+<g>
+<path stroke="black" fill="none" d="M126 75 h0"></path>
+<path stroke="black" fill="none" d="M414 75 h0"></path>
+<path stroke="black" fill="none" d="M126 75a 10 10 0 0 0 10 -10v-0a 10 10 0 0 1 10 -10"></path>
+<path stroke="black" fill="none" d="M146 55h248"></path>
+<path stroke="black" fill="none" d="M394 55a 10 10 0 0 1 10 10v0a 10 10 0 0 0 10 10"></path>
+<path stroke="black" fill="none" d="M126 75h20"></path>
+<path stroke="black" fill="none" d="M146 75 h0"></path>
+<path stroke="black" fill="none" d="M394 75 h0"></path>
+<path stroke="black" fill="none" d="M146 75h10"></path>
+<g class="external">
+<path stroke="black" fill="none" d="M156 75 h0"></path>
+<path stroke="black" fill="none" d="M384 75 h0"></path>
+<rect stroke="black" fill="none" x="156" y="64" width="228" height="22" rx="0" ry="0"></rect>
+<text text-anchor="middle" x="270" y="79">printable unicode and [\t]</text>
+</g>
+<path stroke="black" fill="none" d="M384 75h10"></path>
+<path stroke="black" fill="none" d="M156 75a 10 10 0 0 0 -10 10v0a 10 10 0 0 0 10 10"></path>
+<path stroke="black" fill="none" d="M156 95h228"></path>
+<path stroke="black" fill="none" d="M384 95a 10 10 0 0 0 10 -10v-0a 10 10 0 0 0 -10 -10"></path>
+<path stroke="black" fill="none" d="M394 75h20"></path>
+</g>
+<g>
+<path stroke="black" fill="none" d="M414 75 h0"></path>
+<path stroke="black" fill="none" d="M506 75 h0"></path>
+<path stroke="black" fill="none" d="M414 75a 10 10 0 0 0 10 -10v-0a 10 10 0 0 1 10 -10"></path>
+<g class="external">
+<path stroke="black" fill="none" d="M434 55 h0"></path>
+<path stroke="black" fill="none" d="M486 55 h0"></path>
+<rect stroke="black" fill="none" x="434" y="44" width="52" height="22" rx="0" ry="0"></rect>
+<text text-anchor="middle" x="460" y="59">[\r]</text>
+</g>
+<path stroke="black" fill="none" d="M486 55a 10 10 0 0 1 10 10v0a 10 10 0 0 0 10 10"></path>
+<path stroke="black" fill="none" d="M414 75h20"></path>
+<path stroke="black" fill="none" d="M434 75h52"></path>
+<path stroke="black" fill="none" d="M486 75h20"></path>
+</g>
+<path stroke="black" fill="none" d="M506 75 h10"></path>
+<g class="external">
+<path stroke="black" fill="none" d="M516 75 h0"></path>
+<path stroke="black" fill="none" d="M568 75 h0"></path>
+<rect stroke="black" fill="none" x="516" y="64" width="52" height="22" rx="0" ry="0"></rect>
+<text text-anchor="middle" x="542" y="79">[\n]</text>
+</g>
+</g>
+</g>
+<rect stroke="black" fill="none" x="60" y="36" width="518" height="67" rx="10" ry="10" class="group-box"></rect>
+<g class="comment">
+<path stroke="black" fill="none" d="M60 26 h0"></path>
+<path stroke="black" fill="none" d="M171 26 h0"></path>
+<text text-anchor="middle" x="115.5" y="31" class="comment">no whitespace</text>
+</g>
+</g>
+<path stroke="black" fill="none" d="M578 75h10"></path>
+<path stroke="black" fill="none" d="M60 75a 10 10 0 0 0 -10 10v24a 10 10 0 0 0 10 10"></path>
+<g class="comment">
+<path stroke="black" fill="none" d="M60 119 h119.5"></path>
+<path stroke="black" fill="none" d="M458.5 119 h119.5"></path>
+<text text-anchor="middle" x="319" y="124" class="comment">(whitespace is allowed between lines)</text>
+</g>
+<path stroke="black" fill="none" d="M578 119a 10 10 0 0 0 10 -10v-24a 10 10 0 0 0 -10 -10"></path>
+<path stroke="black" fill="none" d="M588 75 h10"></path>
+<path stroke="black" fill="none" d="M598 75 h 10"></path>
+<polygon points="608,70 608,80 618,75"></polygon>
+</g></svg>
+```
+
+# [Enum]($text.id("enum"))
 
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 268 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1116,7 +1216,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 
 
 
-## [Union]($text.id("union"))
+# [Union]($text.id("union"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 348 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1177,7 +1277,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 
 
 
-## [Array]($text.id("array"))
+# [Array]($text.id("array"))
 
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 374 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1256,7 +1356,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 ```
 
 
-## [Struct]($text.id("struct"))
+# [Struct]($text.id("struct"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 438 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1334,7 +1434,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 ```
 
 
-### [Struct Field]($text.id("struct-field"))
+## [Struct Field]($text.id("struct-field"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 396 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1393,7 +1493,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Dictionary]($text.id("dictionary"))
+# [Dictionary]($text.id("dictionary"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 462 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1469,7 +1569,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <polygon points="432,54 432,64 442,59"></polygon>
 </g></svg>
 ```
-### [Dictionary Field]($text.id("dictionary-field"))
+## [Dictionary Field]($text.id("dictionary-field"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 360 62" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1507,7 +1607,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Identifier]($text.id("identifier"))
+# [Identifier]($text.id("identifier"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 398 112" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1565,7 +1665,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g></svg>
 ```
 
-## [Whitespace]($text.id("whitespace"))
+# [Whitespace]($text.id("whitespace"))
 
 Whitespace is implicitly present between all terms except for the ones
 inside of a `no whitespace` box.
@@ -1611,7 +1711,7 @@ inside of a `no whitespace` box.
 <polygon points="222,56 222,66 232,61"></polygon>
 </g></svg>
 ```
-## [Comment]($text.id("comment"))
+# [Comment]($text.id("comment"))
 ```=html
 <svg class="railroad-diagram" viewBox="0 0 604 123" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
