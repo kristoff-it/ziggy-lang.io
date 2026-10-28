@@ -118,7 +118,7 @@
 			padding-right: 0;
 		}
 		
-		p code, i code {
+		p code, i code, li code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
@@ -444,7 +444,7 @@
 			</div>
 		</nav>
 		<div id="main">
-			<div><p><strong>WARNING</strong>: These diagrams represent upcoming design decisions (surrounding byte and numeric literals in particular) in Ziggy which are not implemented yet!</p><p>These diagrams were generated using <a href="https://github.com/kristoff-it/railroad">https://github.com/kristoff-it/railroad</a></p><style>
+			<div><h1>Railroad Diagrams</h1><p>These diagrams represent the full Ziggy Document syntax and can be used as a quick refresher when you don’t remember what is allowed in Ziggy.</p><p>These diagrams were generated using <a href="https://github.com/kristoff-it/railroad">https://github.com/kristoff-it/railroad</a></p><style>
 html {
     scroll-padding-top: 90px;
 }
@@ -502,7 +502,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
     fill: #eee;
 }
 </style>
-<h1>Document</h1><svg class="railroad-diagram" viewBox="0 0 268 92" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2>Document</h2><svg class="railroad-diagram" viewBox="0 0 268 92" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -530,7 +530,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 </g>
 <path stroke="black" fill="none" d="M228 31 h 20 m -10 -10 v 20 m 10 -20 v 20"></path>
 </g></svg>
-<h1><span id="braceless-struct">Braceless Struct</span></h1><svg class="railroad-diagram" viewBox="0 0 304 112" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="braceless-struct">Braceless Struct</span></h2><svg class="railroad-diagram" viewBox="0 0 304 112" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -575,7 +575,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M264 51 h 10"></path>
 <polygon points="274,46 274,56 284,51"></polygon>
 </g></svg>
-<h1><span id="value">Value</span></h1><svg class="railroad-diagram" viewBox="0 0 376 199" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="value">Value</span></h2><svg class="railroad-diagram" viewBox="0 0 376 199" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -681,7 +681,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M336 40 h 10"></path>
 <polygon points="346,35 346,45 356,40"></polygon>
 </g></svg>
-<h1><span id="bool">Bool</span></h1><svg class="railroad-diagram" viewBox="0 0 272 80" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="bool">Bool</span></h2><svg class="railroad-diagram" viewBox="0 0 272 80" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -979,7 +979,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M464 290 h 10"></path>
 <polygon points="474,285 474,295 484,290"></polygon>
 </g></svg>
-<h1><span id="float">Float</span></h1><svg class="railroad-diagram" viewBox="0 0 610 415" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="float">Float</span></h2><svg class="railroad-diagram" viewBox="0 0 610 415" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1237,7 +1237,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M570 307 h 10"></path>
 <polygon points="580,302 580,312 590,307"></polygon>
 </g></svg>
-<h1><span id="bytes">Bytes</span></h1><svg class="railroad-diagram" viewBox="0 0 268 92" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="bytes">Bytes</span></h2><svg class="railroad-diagram" viewBox="0 0 268 92" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1473,7 +1473,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M606 64 h 10"></path>
 <polygon points="616,59 616,69 626,64"></polygon>
 </g></svg>
-<h1><span id="multiline-string">Multiline String</span></h1><svg class="railroad-diagram" viewBox="0 0 546 136" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="multiline-string">Multiline String</span></h2><svg class="railroad-diagram" viewBox="0 0 546 136" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1550,7 +1550,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M506 64 h 10"></path>
 <polygon points="516,59 516,69 526,64"></polygon>
 </g></svg>
-<h1><span id="enum">Enum</span></h1><svg class="railroad-diagram" viewBox="0 0 268 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="enum">Enum</span></h2><svg class="railroad-diagram" viewBox="0 0 268 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1589,7 +1589,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M228 55 h 10"></path>
 <polygon points="238,50 238,60 248,55"></polygon>
 </g></svg>
-<h1><span id="union">Union</span></h1><svg class="railroad-diagram" viewBox="0 0 348 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="union">Union</span></h2><svg class="railroad-diagram" viewBox="0 0 348 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1644,7 +1644,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M308 55 h 10"></path>
 <polygon points="318,50 318,60 328,55"></polygon>
 </g></svg>
-<h1><span id="array">Array</span></h1><svg class="railroad-diagram" viewBox="0 0 374 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="array">Array</span></h2><svg class="railroad-diagram" viewBox="0 0 374 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1717,7 +1717,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M334 59 h 10"></path>
 <polygon points="344,54 344,64 354,59"></polygon>
 </g></svg>
-<h1><span id="struct">Struct</span></h1><svg class="railroad-diagram" viewBox="0 0 438 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="struct">Struct</span></h2><svg class="railroad-diagram" viewBox="0 0 438 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1790,7 +1790,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M398 59 h 10"></path>
 <polygon points="408,54 408,64 418,59"></polygon>
 </g></svg>
-<h2><span id="struct-field">Struct Field</span></h2><svg class="railroad-diagram" viewBox="0 0 396 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h3><span id="struct-field">Struct Field</span></h3><svg class="railroad-diagram" viewBox="0 0 396 94" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1845,7 +1845,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M356 55 h 10"></path>
 <polygon points="366,50 366,60 376,55"></polygon>
 </g></svg>
-<h1><span id="dictionary">Dictionary</span></h1><svg class="railroad-diagram" viewBox="0 0 462 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="dictionary">Dictionary</span></h2><svg class="railroad-diagram" viewBox="0 0 462 120" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1918,7 +1918,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M422 59 h 10"></path>
 <polygon points="432,54 432,64 442,59"></polygon>
 </g></svg>
-<h2><span id="dictionary-field">Dictionary Field</span></h2><svg class="railroad-diagram" viewBox="0 0 360 62" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h3><span id="dictionary-field">Dictionary Field</span></h3><svg class="railroad-diagram" viewBox="0 0 360 62" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -1952,7 +1952,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M320 31 h 10"></path>
 <polygon points="330,26 330,36 340,31"></polygon>
 </g></svg>
-<h1><span id="identifier">Identifier</span></h1><svg class="railroad-diagram" viewBox="0 0 398 112" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="identifier">Identifier</span></h2><svg class="railroad-diagram" viewBox="0 0 398 112" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -2006,7 +2006,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M358 64 h 10"></path>
 <polygon points="368,59 368,69 378,64"></polygon>
 </g></svg>
-<h1><span id="whitespace">Whitespace</span></h1><p>Whitespace is implicitly present between all terms except for the ones inside of a <code>no whitespace</code> box.</p><svg class="railroad-diagram" viewBox="0 0 252 101" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="whitespace">Whitespace</span></h2><p>Whitespace is implicitly present between all terms except for the ones inside of a <code>no whitespace</code> box.</p><svg class="railroad-diagram" viewBox="0 0 252 101" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
@@ -2045,7 +2045,7 @@ svg.railroad-diagram g.diagram-text:hover path.diagram-text {
 <path stroke="black" fill="none" d="M212 61 h 10"></path>
 <polygon points="222,56 222,66 232,61"></polygon>
 </g></svg>
-<h1><span id="comment">Comment</span></h1><svg class="railroad-diagram" viewBox="0 0 512 103" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
+<h2><span id="comment">Comment</span></h2><svg class="railroad-diagram" viewBox="0 0 512 103" xmlns="http://www.w3.org/2000/svg" hmlns:xlink="http://www.w3.org/1999/xlink">
 
 <g transform="translate(.5 .5)">
 <g>
