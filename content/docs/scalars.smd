@@ -21,11 +21,9 @@ Integers can have the following prefixes to indicate a base different than 10:
 Examples: `123`, `0xffffff`, `0xFF_FF_FF`, `0o7_5_5`, `0b01_01_01` 
 
 ### Floats
-Floats support exponential notation and can also be expressed in base 16. Base 10 floats use `e` as the exponent separator, while base 16 floats use `p`. Both letters can also be uppercase.
-
-Base 10 examples: `123.0`, `123_000.456_000`, `123.0e+77`, `123.0E+77`
-
-Base 16 examples: `0x103.70p-5`, `0x103.70`, `0x1234_5678.9ABC_CDEFp-10` 
+Ziggy supports standard float notation and special float values:
+- `123.0`, `123_000.456_000`, `123.0e77`, `123.0E+77`
+- `nan`, `inf`, `-inf`
 
 ## Bools
 `true`, `false`
@@ -47,9 +45,15 @@ To add quotes, newlines or other unprintable byte sequences to a Ziggy bytes lit
 - `\\` backslash
 - `\'` single quote
 - `\xNN` hexadecimal 8-bit byte value (2 digits)
-- `\u{NNNNNN}` hexadecimal Unicode code point UTF-8 encoded (1 or more digits)
+- `\uNNNN` hexadecimal Unicode code point UTF-8 encoded (4 digits)
 
+#### JSON-compatible escape sequences
 
+These sequences are supported in order to make Ziggy a JSON superset.
+
+- `\/` slash
+- `\b` backspace
+- `\f` form feed
 
 Examples: `"🧑‍🚀"`, `"\x1B[?1000h gang"`, `"lorem ipsum\ndolor sit"`, `"h\x65llo world"`, `"\xf0\x9f\x92\xaf"`
 
@@ -65,6 +69,14 @@ Example:
 \\Dolor sit something else.
 ```
 **Note that multiline literals don't support escape sequences which makes them handy when you need a "raw string" to express things like regular expressions.**
+
+**Multiline bytes literals support tab characters.**
+```ziggy
+\\import math
+\\
+\\def main():
+\\	print("this line is indented with a tab")
+```
 
 Lastly, multiline literals don't include the last newline, so to have a trailing newline be part of your bytes, you will need to add an extra final empty line.
 

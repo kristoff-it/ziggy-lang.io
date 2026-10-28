@@ -101,7 +101,7 @@
 			padding-right: 0;
 		}
 		
-		p code, i code {
+		p code, i code, li code {
 			background-color: #333;
 			border-radius: 4px;
 			color: white;
