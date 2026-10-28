@@ -12,6 +12,26 @@ Refer to [the repository](https://github.com/kristoff-it/ziggy) and the
 [issue tracker](https://github.com/kristoff-it/ziggy/issues) for more
 in-depth information.
 
+## 2026-10-28
+
+Ziggy v0.3.0 is out!
+
+Download from GitHub: https://github.com/kristoff-it/ziggy/releases/tag/v0.3.0
+
+I've implemented all the changes previously designed about bytes and
+numeric literals, and now we also have a test suite that guarantees
+compatibility with JSON. This means that Ziggy Document is a superset
+of JSON and that the Ziggy parser (and deserializer) can be used as
+an in-place replacement for JSON parsers.
+
+The Ziggy parser is currently not focusing on maximum performance, but
+it should be plenty fast for most use cases (the parser does some DOD).
+
+This, combined with Ziggy Schema support, makes Ziggy a file format that
+you can daily drive in your own applications. I've personally found it
+to be strongly preferable to JSON in [Zine](https://zine-ssg.io) and
+[railroad](https://github.com/kristoff-it/railroad).
+
 ## 2026-07-15
 
 ### Ziggy Document railroad diagrams are up!
