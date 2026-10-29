@@ -121,6 +121,18 @@
         ],
     },
     "float": .{
+        .body = [
+            .choice_middle([
+                .terminal("nan"),
+                .reference("float-number"),
+                .sequence([
+                    .choice([.skip, .terminal("-")]),
+                    .terminal("inf"),
+                ]),
+            ]),
+        ],
+    },
+    "float-number": .{
         .alignment = .left,
         .body = [
             .group(.{
